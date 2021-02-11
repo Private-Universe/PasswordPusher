@@ -3,9 +3,9 @@
 
 body {
   text-align: center;
-  background: #000000 image-url('outlets.png') repeat;
+  background: #f6f6f6;
   font-family: "Crete Round", Tahoma, Georgia, Verdana, serif;
-  color: #ddd;
+  color: #353535;
   width: 95%;
   font-size: 16px;
   margin-left: auto;
@@ -13,12 +13,12 @@ body {
 }
 
 a:link, a:visited, a:active {
-  color: yellow;
+  color: #1063AD;
   text-decoration: none;
 }
 
 a:hover {
-  color: #00CC00;
+  color: #7DAFDC;
   text-decoration: none;
 }
 
@@ -41,17 +41,17 @@ a:hover {
 }
 
 .normal-yellow-font {
-  color: yellow;
+  color: #094983;
 }
 
 .medium-yellow-font {
   font-size: 2em;
-  color: yellow;
+  color: #094983;
 }
 
 .large-yellow-font {
   font-size: 3em;
-  color: yellow;
+  color: #094983;
 }
 
 .footer {
