@@ -19,8 +19,6 @@
         %input#secret_url{ :value => "#{request.url}", :spellcheck => "false", :readonly => true }
         %button.copy-secret-url{ "data-clipboard-target" => "#secret_url" }
           = image_tag('button_up.png')
-      %span.note
-        This note won't be shown again.
   %p.normal-yellow-font
     Click below to reveal your password
 
