@@ -28,7 +28,7 @@ You can read more about [EzCrypto here](https://github.com/pglombardo/ezcrypto).
 
 | Variable | Description | Default Value |
 | --------- | ------------------ | --- |
-| PAYLOAD_INITIAL_TEXT | Overrides the default password input value. | `Enter the Password to be Shared` |
+| PAYLOAD_INITIAL_TEXT | Overrides the default password input value. | `Enter the password to be shared` |
 | EXPIRE_AFTER_DAYS_DEFAULT | Controls the "Expire After Days" default value in Password#new | 7 |
 | EXPIRE_AFTER_DAYS_MIN | Controls the "Expire After Days" minimum value in Password#new | 1 |
 | EXPIRE_AFTER_DAYS_MAX | Controls the "Expire After Days" maximum value in Password#new | 90 |

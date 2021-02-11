@@ -28,7 +28,7 @@ function showViewsValue(newValue)
 }
 
 
-msg = "Enter the Password to be Shared"
+msg = "Enter the password to be shared"
 function prepareTextField(e) {
   if (e) {
     if (e.value === msg) {
