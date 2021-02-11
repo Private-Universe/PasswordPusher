@@ -1,6 +1,6 @@
 - if @password.expired
   %p.large-yellow-font
-    We apologize but this secret link has expired.
+    We apologise but this secret link has expired.
   %p
     - if @password.deleted
       This secret link was manually expired by one of its viewers and the password has been deleted from the database.
@@ -20,9 +20,7 @@
         %button.copy-secret-url{ "data-clipboard-target" => "#secret_url" }
           = image_tag('button_up.png')
       %span.note
-        This note won't be shown again...
-        %br/
-        Don't believe me?  Go ahead.  Hit reload...
+        This note won't be shown again.
   %p.normal-yellow-font
     Click below to reveal your password
 
@@ -30,17 +28,17 @@
     = @payload
 
   %button#clipboard-button.copy-to-clipboard{ "data-clipboard-target" => "#pass" }
-    Copy to Clipboard
+    Copy to clipboard
 
   %p.pwinstructions
-    Please obtain and securely store this password elsewhere, ideally in a password manager.
+    Please ensure that you retain and store this password in a secure location, typically this will be in your password management application.
 
   %p
     - if @password.views_remaining == 0
-      == This secret link will be deleted in #{pluralize(@password.days_remaining, 'day')} or #{@password.views_remaining} more views (this is the last view).
+      == This secret link will be removed after #{@password.views_remaining} more views or #{pluralize(@password.days_remaining, 'day')} (this is the last view).
     - else
-      == This secret link will be deleted in #{pluralize(@password.days_remaining, 'day')}
-      == or #{pluralize(@password.views_remaining, 'more view')} (whichever occurs first).
+      == This secret link will be removed after #{pluralize(@password.views_remaining, 'more view')}
+      == or #{pluralize(@password.days_remaining, 'day')}, whichever occurs first.
   - if @password.deletable_by_viewer
     %p{ :style => 'font-size: .85em;' }
-      = link_to "Nah. I've got it. Delete this secret link now.", password_path, :id => @password.url_token, :method => :delete, :data => { :confirm => 'This will expire this secret link and remove the password from the database forever.  Are you sure?' }
+      = link_to "Click here to remove the secure link forever, I have already saved it for future use.", password_path, :id => @password.url_token, :method => :delete, :data => { :confirm => 'This will expire this secret link and remove the password from the database forever.  Are you sure?' }
