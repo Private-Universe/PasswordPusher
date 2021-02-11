@@ -8,10 +8,14 @@ ENV APP_ROOT=/opt/PasswordPusher
 ENV PATH=${APP_ROOT}:${PATH} HOME=${APP_ROOT}
 
 RUN ln -fs /usr/share/zoneinfo/Europe/Paris > /etc/localtime
+COPY github_key .
 RUN apt-get update -qq && \
     apt-get install -y --assume-yes build-essential libpq-dev git curl ruby2.7 ruby2.7-dev tzdata sqlite3 ruby-sqlite3 libsqlite3-dev zlib1g-dev nodejs yarnpkg && \
+    ssh-add github_key && \
+    ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts && \
     cd /opt && \
-    git clone https://github.com/Private-Universe/PasswordPusher.git && \
+    eval $(ssh-agent) && \
+    git clone git@github.com:Private-Universe/PasswordPusher.git && \
     touch ${APP_ROOT}/log/private.log && \
     cd ${APP_ROOT} && \
     chown -R 1001:root ${APP_ROOT}
