@@ -1,20 +1,20 @@
 - if @password.expired
   %p.large-yellow-font
-    We apologise but this secret link has expired.
+    We apologise but this secure link has expired.
   %p
     - if @password.deleted
-      This secret link was manually expired by one of its viewers and the password has been deleted from the database.
+      This secure link was manually expired by one of its viewers and the password has been deleted from the database.
     - elsif @password.views_remaining == 0
-      == This secret link has hit its maximum view count (#{@password.expire_after_views}) and the password has been deleted from the database.
+      == This secure link has hit its maximum view count (#{@password.expire_after_views}) and the password has been deleted from the database.
     - elsif @password.days_remaining == 0
-      == This secret link has hit its maximum age (#{@password.expire_after_days} days) and the password has been deleted from the database.
+      == This secure link has hit its maximum age (#{@password.expire_after_days} days) and the password has been deleted from the database.
   %p
     If needed, please contact the person or organisation who gave you this secret URL.
 
 - else
   - if @first_view
     .share_note
-      == This is your password.  Use this secret link to share it:
+      == This is your password.  Use this secure link to share it:
       %div.input_group
         %input#secret_url{ :value => "#{request.url}", :spellcheck => "false", :readonly => true }
         %button.copy-secret-url{ "data-clipboard-target" => "#secret_url" }
@@ -33,10 +33,10 @@
 
   %p
     - if @password.views_remaining == 0
-      == This secret link will be removed after #{@password.views_remaining} more views or #{pluralize(@password.days_remaining, 'day')} (this is the last view).
+      == This secure link will be removed after #{@password.views_remaining} more views or #{pluralize(@password.days_remaining, 'day')} (this is the last view).
     - else
-      == This secret link will be removed after #{pluralize(@password.views_remaining, 'more view')}
+      == This secure link will be removed after #{pluralize(@password.views_remaining, 'more view')}
       == or #{pluralize(@password.days_remaining, 'day')}, whichever occurs first.
   - if @password.deletable_by_viewer
     %p{ :style => 'font-size: .85em;' }
-      = link_to "Click here to remove the secure link forever, I have already saved it for future use.", password_path, :id => @password.url_token, :method => :delete, :data => { :confirm => 'This will expire this secret link and remove the password from the database forever.  Are you sure?' }
+      = link_to "Click here to remove the secure link forever, I have already saved it for future use.", password_path, :id => @password.url_token, :method => :delete, :data => { :confirm => 'This will expire this secure link and remove the password from the database forever.  Are you sure?' }

@@ -10,11 +10,11 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
     assert_response :success
-    assert_select 'p', 'Your password is...'
+    assert_select 'p', 'Click below to reveal your password'
     # Validate the first view share note
     div = css_select 'div.share_note'
     assert(div.length == 1)
-    assert(div.first.content.include?('Use this secret link'))
+    assert(div.first.content.include?('Use this secure link'))
 
     # Assert that the right password is in the page
     divs = css_select 'div#pass'
@@ -24,7 +24,7 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
     # Reload the password page, we should not have the first view share note
     get request.url
     assert_response :success
-    assert_select 'p', 'Your password is...'
+    assert_select 'p', 'Click below to reveal your password'
     div = css_select 'div.share_note'
     assert div.length.zero?
 
@@ -72,12 +72,12 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
     assert_response :success
-    assert_select 'p', 'Your password is...'
+    assert_select 'p', 'Click below to reveal your password'
 
     password_id = request.path.split('/')[2]
     delete_link = css_select "a##{password_id}"
     assert(delete_link.length == 1)
-    assert(delete_link.first.child.content.include?("Nah. I've got it. Delete this secret link now."))
+    assert(delete_link.first.child.content.include?("Click here to remove the secure link forever, I have already saved it for future use."))
   end
 
   def test_deletable_by_viewer_honored_when_false
@@ -89,7 +89,7 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
     assert_response :success
-    assert_select 'p', 'Your password is...'
+    assert_select 'p', 'Click below to reveal your password'
 
     password_id = request.path.split('/')[2]
     delete_link = css_select "a##{password_id}"
