@@ -34,8 +34,11 @@
           }
       }
       ]);
+  %a{ :href => "https://www.privateuniverse.com.au", :title => "https://www.privateuniverse.com.au", :target => "_blank" }
+    %p=image_tag('pulogo.svg', width: '150')
   %body
     .content
       = yield
 
     = javascript_include_tag "application"
+  
