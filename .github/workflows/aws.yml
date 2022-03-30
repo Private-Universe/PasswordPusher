@@ -53,7 +53,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: passwordpusher
+        ECR_REPOSITORY: passwordpusherv2
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and
@@ -70,13 +70,13 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: ecs.json
-        container-name: passwordpusher
+        container-name: passwordpusherv2
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: passwordpusher
-        cluster: PasswordPusher
+        service: passwordpusherv2
+        cluster: PasswordPusherv2
         wait-for-service-stability: true
