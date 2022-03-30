@@ -651,7 +651,7 @@ msgstr "Password Pusher est un logiciel open source"
 #: ../../../app/views/pages/faq.html.erb:60
 msgid ""
 "so the source can be publicly reviewed and can alternatively be run internally"
-" in your organization."
+" in your organisation."
 msgstr ""
 "le code source peut donc être étudié par tout le monde et peut également être "
 "exécuté en interne dans votre organisation."
@@ -695,7 +695,7 @@ msgstr "mon blog"
 #: ../../../app/views/pages/faq.html.erb:75
 msgid ""
 "If this is a concern for you, feel free to review the code, post any questions"
-" that you may have and consider running it internally at your organization ins"
+" that you may have and consider running it internally at your organisation ins"
 "tead."
 msgstr ""
 "Si cela vous préoccupe, n'hésitez pas à examiner le code source, à poster tout"
@@ -739,7 +739,7 @@ msgstr "Est-ce que je peux automatiser la distribution de mot de passe ?"
 
 #: ../../../app/views/pages/faq.html.erb:109
 msgid ""
-"Yes. Using the previously mentioned tools, many users and organizations integr"
+"Yes. Using the previously mentioned tools, many users and organisations integr"
 "ate Password Pusher into their security policies and processes."
 msgstr ""
 "Oui. À l'aide des outils précédemment cités, de nombreux utilisateurs et organ"
@@ -783,7 +783,7 @@ msgid "Running Your Own Private Instance"
 msgstr "Mettre en oeuvre votre propre installation"
 
 #: ../../../app/views/pages/faq.html.erb:134
-msgid "Can I run my own version for my organization internally?"
+msgid "Can I run my own version for my organisation internally?"
 msgstr "Puis-je avoir ma propre instance pour mon organisation en interne ?"
 
 #: ../../../app/views/pages/faq.html.erb:140
@@ -807,7 +807,7 @@ msgid "hint:"
 msgstr "astuce :"
 
 #: ../../../app/views/pages/faq.html.erb:155
-msgid "Are there any licensing restrictions for me, my company or my organization?"
+msgid "Are there any licensing restrictions for me, my company or my organisation?"
 msgstr ""
 "Est-ce qu'il y a des contraintes de licence pour moi, mon entreprise ou mon or"
 "ganisation ?"
@@ -828,7 +828,7 @@ msgstr "Pourquoi voudrais-je exécuter ma propre instance de Password Pusher ?"
 
 #: ../../../app/views/pages/faq.html.erb:175
 msgid ""
-"Some organizations are bound by security policies that prohibit the use of pub"
+"Some organisations are bound by security policies that prohibit the use of pub"
 "lic services for sensitive information such as passwords.  There are even orga"
 "nizations that require all tools to be on private intranets without access to "
 "the outside world."
@@ -867,7 +867,7 @@ msgstr ""
 #: ../../../app/views/pages/faq.html.erb:192
 msgid ""
 "On the other hand, if your instance gets hacked, malicious entities now have a"
-" targeted dictionary of passwords to brute force accounts in your organization"
+" targeted dictionary of passwords to brute force accounts in your organisation"
 ".  Note that this would be limited to pushes which haven't yet hit their expir"
 "ation limits."
 msgstr ""
@@ -914,7 +914,7 @@ msgstr ""
 "."
 
 #: ../../../app/views/pages/faq.html.erb:218
-msgid "Could you add a specific feature for my organization?"
+msgid "Could you add a specific feature for my organisation?"
 msgstr "Pourriez-vous ajouter une nouvelle fonctionnalité pour mon organisation ?"
 
 #: ../../../app/views/pages/faq.html.erb:223
@@ -1641,7 +1641,7 @@ msgstr "Votre url privée"
 
 #: ../../../app/views/passwords/show.html.erb:6
 msgid ""
-"Please obtain and securely store this password elsewhere, ideally in a passwor"
+"Store this password in your password manager."
 "d manager."
 msgstr ""
 "Récupérez et conservez ce mot de passe en sécurité, de préférence dans un gest"
@@ -1691,12 +1691,12 @@ msgid "Your Secret Link Has Expired"
 msgstr "Votre url privée est expirée"
 
 #: ../../../app/views/passwords/show_expired.html.erb:6
-msgid "We apologize but this secret link has expired."
+msgid "We apologise but this secret link has expired."
 msgstr "Désolé, mais cette url privée est expirée."
 
 #: ../../../app/views/passwords/show_expired.html.erb:8
 msgid ""
-"If needed, please contact the person or organization who gave you this secret "
+"If needed, please contact the person or organisation who gave you this secret "
 "URL."
 msgstr ""
 "Au besoin, veuillez contacter la personne ou l'organisation qui vous a fourni "

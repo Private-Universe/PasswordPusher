@@ -661,7 +661,7 @@ msgstr "Empujador de Contraseña es de código abierto"
 #: ../../../app/views/pages/faq.html.erb:60
 msgid ""
 "so the source can be publicly reviewed and can alternatively be run internally"
-" in your organization."
+" in your organisation."
 msgstr ""
 "por lo que la fuente se puede revisar públicamente y, alternativamente, se pue"
 "de ejecutar internamente en su organización."
@@ -704,7 +704,7 @@ msgstr "mi blog"
 #: ../../../app/views/pages/faq.html.erb:75
 msgid ""
 "If this is a concern for you, feel free to review the code, post any questions"
-" that you may have and consider running it internally at your organization ins"
+" that you may have and consider running it internally at your organisation ins"
 "tead."
 msgstr ""
 "Si esto le preocupa, no dude en revisar el código, publicar cualquier pregunta"
@@ -746,7 +746,7 @@ msgstr "¿Puedo automatizar la distribución de mi contraseña?"
 
 #: ../../../app/views/pages/faq.html.erb:109
 msgid ""
-"Yes. Using the previously mentioned tools, many users and organizations integr"
+"Yes. Using the previously mentioned tools, many users and organisations integr"
 "ate Password Pusher into their security policies and processes."
 msgstr ""
 "Si. Con las herramientas mencionadas anteriormente, muchos usuarios y organiza"
@@ -790,7 +790,7 @@ msgid "Running Your Own Private Instance"
 msgstr "Ejecución de su Propia Instancia Privada"
 
 #: ../../../app/views/pages/faq.html.erb:134
-msgid "Can I run my own version for my organization internally?"
+msgid "Can I run my own version for my organisation internally?"
 msgstr "¿Puedo ejecutar mi propia versión para mi organización internamente?"
 
 #: ../../../app/views/pages/faq.html.erb:140
@@ -814,7 +814,7 @@ msgid "hint:"
 msgstr "insinuación:"
 
 #: ../../../app/views/pages/faq.html.erb:155
-msgid "Are there any licensing restrictions for me, my company or my organization?"
+msgid "Are there any licensing restrictions for me, my company or my organisation?"
 msgstr "¿Existe alguna restricción de licencia para mí, mi empresa o mi organización?"
 
 #: ../../../app/views/pages/faq.html.erb:161
@@ -836,7 +836,7 @@ msgstr ""
 
 #: ../../../app/views/pages/faq.html.erb:175
 msgid ""
-"Some organizations are bound by security policies that prohibit the use of pub"
+"Some organisations are bound by security policies that prohibit the use of pub"
 "lic services for sensitive information such as passwords.  There are even orga"
 "nizations that require all tools to be on private intranets without access to "
 "the outside world."
@@ -873,7 +873,7 @@ msgstr ""
 #: ../../../app/views/pages/faq.html.erb:192
 msgid ""
 "On the other hand, if your instance gets hacked, malicious entities now have a"
-" targeted dictionary of passwords to brute force accounts in your organization"
+" targeted dictionary of passwords to brute force accounts in your organisation"
 ".  Note that this would be limited to pushes which haven't yet hit their expir"
 "ation limits."
 msgstr ""
@@ -917,7 +917,7 @@ msgstr ""
 "ra cosa, no dude en ponerse en contacto conmigo: pglombardo en pwpush.com."
 
 #: ../../../app/views/pages/faq.html.erb:218
-msgid "Could you add a specific feature for my organization?"
+msgid "Could you add a specific feature for my organisation?"
 msgstr "¿Podría agregar una función específica para mi organización?"
 
 #: ../../../app/views/pages/faq.html.erb:223
@@ -1646,7 +1646,7 @@ msgstr "Tu Enlace Secreto"
 
 #: ../../../app/views/passwords/show.html.erb:6
 msgid ""
-"Please obtain and securely store this password elsewhere, ideally in a passwor"
+"Store this password in your password manager."
 "d manager."
 msgstr ""
 "Obtenga y almacene de forma segura esta contraseña en otro lugar, idealmente e"
@@ -1696,12 +1696,12 @@ msgid "Your Secret Link Has Expired"
 msgstr "Tu Enlace Secreto ha Expirado"
 
 #: ../../../app/views/passwords/show_expired.html.erb:6
-msgid "We apologize but this secret link has expired."
+msgid "We apologise but this secret link has expired."
 msgstr "Nos disculpamos, pero este enlace secreto ha caducado."
 
 #: ../../../app/views/passwords/show_expired.html.erb:8
 msgid ""
-"If needed, please contact the person or organization who gave you this secret "
+"If needed, please contact the person or organisation who gave you this secret "
 "URL."
 msgstr ""
 "Si es necesario, comuníquese con la persona u organización que le proporcionó "

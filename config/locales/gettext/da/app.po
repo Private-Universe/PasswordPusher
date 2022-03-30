@@ -633,7 +633,7 @@ msgstr "Password Pusher er opensource"
 #: ../../../app/views/pages/faq.html.erb:60
 msgid ""
 "so the source can be publicly reviewed and can alternatively be run internally"
-" in your organization."
+" in your organisation."
 msgstr ""
 "så kildekoden kan gennemgås offentligt og alternativt kan køres internt i din "
 "organisation."
@@ -673,7 +673,7 @@ msgstr "min blog"
 #: ../../../app/views/pages/faq.html.erb:75
 msgid ""
 "If this is a concern for you, feel free to review the code, post any questions"
-" that you may have and consider running it internally at your organization ins"
+" that you may have and consider running it internally at your organisation ins"
 "tead."
 msgstr ""
 "Hvis dette er et problem for dig, er du velkommen til at gennemgå koden, still"
@@ -716,7 +716,7 @@ msgstr "Kan jeg automatisere min adgangskodedistribution?"
 
 #: ../../../app/views/pages/faq.html.erb:109
 msgid ""
-"Yes. Using the previously mentioned tools, many users and organizations integr"
+"Yes. Using the previously mentioned tools, many users and organisations integr"
 "ate Password Pusher into their security policies and processes."
 msgstr ""
 "Ja. Ved at bruge de tidligere nævnte værktøjer integrerer mange brugere og org"
@@ -759,7 +759,7 @@ msgid "Running Your Own Private Instance"
 msgstr "Køre din egen private udgave"
 
 #: ../../../app/views/pages/faq.html.erb:134
-msgid "Can I run my own version for my organization internally?"
+msgid "Can I run my own version for my organisation internally?"
 msgstr "Kan jeg køre min egen version internt i min organisation?"
 
 #: ../../../app/views/pages/faq.html.erb:140
@@ -783,7 +783,7 @@ msgid "hint:"
 msgstr "tip"
 
 #: ../../../app/views/pages/faq.html.erb:155
-msgid "Are there any licensing restrictions for me, my company or my organization?"
+msgid "Are there any licensing restrictions for me, my company or my organisation?"
 msgstr ""
 "Er der nogen licensbegrænsninger for mig, min virksomhed eller min organisatio"
 "n?"
@@ -804,7 +804,7 @@ msgstr "Hvorfor skulle jeg køre min egen private udgave af Password Pusher?"
 
 #: ../../../app/views/pages/faq.html.erb:175
 msgid ""
-"Some organizations are bound by security policies that prohibit the use of pub"
+"Some organisations are bound by security policies that prohibit the use of pub"
 "lic services for sensitive information such as passwords.  There are even orga"
 "nizations that require all tools to be on private intranets without access to "
 "the outside world."
@@ -839,7 +839,7 @@ msgstr ""
 #: ../../../app/views/pages/faq.html.erb:192
 msgid ""
 "On the other hand, if your instance gets hacked, malicious entities now have a"
-" targeted dictionary of passwords to brute force accounts in your organization"
+" targeted dictionary of passwords to brute force accounts in your organisation"
 ".  Note that this would be limited to pushes which haven't yet hit their expir"
 "ation limits."
 msgstr ""
@@ -883,7 +883,7 @@ msgstr ""
 "så tøv ikke med at kontakte mig: pglombardo på pwpush.com."
 
 #: ../../../app/views/pages/faq.html.erb:218
-msgid "Could you add a specific feature for my organization?"
+msgid "Could you add a specific feature for my organisation?"
 msgstr "Kan du tilføje en specifik funktion til min virksomhed / organisation?"
 
 #: ../../../app/views/pages/faq.html.erb:223
@@ -1601,7 +1601,7 @@ msgstr "Dit hemmelige link"
 
 #: ../../../app/views/passwords/show.html.erb:6
 msgid ""
-"Please obtain and securely store this password elsewhere, ideally in a passwor"
+"Store this password in your password manager."
 "d manager."
 msgstr ""
 "Gem denne adgangskode et sikkert sted, Det bedste sted er i en i en applikatio"
@@ -1651,12 +1651,12 @@ msgid "Your Secret Link Has Expired"
 msgstr "Dit hemmelige link er udløbet"
 
 #: ../../../app/views/passwords/show_expired.html.erb:6
-msgid "We apologize but this secret link has expired."
+msgid "We apologise but this secret link has expired."
 msgstr "Vi beklager, men dette hemmelige link er udløbet."
 
 #: ../../../app/views/passwords/show_expired.html.erb:8
 msgid ""
-"If needed, please contact the person or organization who gave you this secret "
+"If needed, please contact the person or organisation who gave you this secret "
 "URL."
 msgstr ""
 "Hvis det er nødvendigt, bedes du kontakte den person eller organisation, der h"

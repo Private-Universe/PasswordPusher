@@ -32,6 +32,6 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
     # Get redirected to the password that is now expired
     follow_redirect!
     assert_response :success
-    assert_select 'p', 'We apologize but this secret link has expired.'
+    assert_select 'p', 'We apologise but this secret link has expired.'
   end
 end

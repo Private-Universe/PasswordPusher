@@ -3,7 +3,15 @@
 <div class="container-fluid h-100 mx-0 py-5 px-0 bg-light">
     <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center bg-light">
         <div class='text-center m-3'>
-          <p class=""><strong><%= _('Please obtain and securely store this password elsewhere, ideally in a password manager.') %></strong></p>
+
+          <%= link_to "https://www.privateuniverse.com.au" do %>
+            <picture>
+              <source srcset="<%= asset_pack_path('media/img/logo-transparent-lg.png') %>" media="(prefers-color-scheme: light) or (prefers-color-scheme: no-preference)">
+              <source srcset="<%= asset_pack_path('media/img/logo-transparent-lg-dark.png') %>" media="(prefers-color-scheme: dark)">
+              <img src="<%= asset_pack_path('media/img/logo-transparent-lg.png') %>" alt="Password Pusher Logo" style='width: 300px; padding: 30px' />
+            </picture>
+          <% end %>
+          <p class=""><strong><%= _('Store this password in your password manager.') %></strong></p>
           <p class="text-muted"><%= _('Your password is blurred out.  Click below to reveal it.') %></p>
           <button class='btn btn-primary' data-clipboard-target='#password_payload' id='copy-to-clipboard-button'>
             <em class="bi bi-clipboard-check"></em> <%= _('Copy to Clipboard') %>

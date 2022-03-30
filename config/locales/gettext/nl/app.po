@@ -646,7 +646,7 @@ msgstr "Wachtwoord Pusher is opensource"
 #: ../../../app/views/pages/faq.html.erb:60
 msgid ""
 "so the source can be publicly reviewed and can alternatively be run internally"
-" in your organization."
+" in your organisation."
 msgstr ""
 "zodat de bron openbaar kan worden beoordeeld en als alternatief intern in uw o"
 "rganisatie kan worden uitgevoerd."
@@ -688,7 +688,7 @@ msgstr "mijn blog"
 #: ../../../app/views/pages/faq.html.erb:75
 msgid ""
 "If this is a concern for you, feel free to review the code, post any questions"
-" that you may have and consider running it internally at your organization ins"
+" that you may have and consider running it internally at your organisation ins"
 "tead."
 msgstr ""
 "Als u zich hier zorgen over maakt, aarzel dan niet om de code door te nemen, e"
@@ -733,7 +733,7 @@ msgstr "Kan ik mijn wachtwoord distributie automatiseren?"
 
 #: ../../../app/views/pages/faq.html.erb:109
 msgid ""
-"Yes. Using the previously mentioned tools, many users and organizations integr"
+"Yes. Using the previously mentioned tools, many users and organisations integr"
 "ate Password Pusher into their security policies and processes."
 msgstr ""
 "Ja. Met behulp van de eerder genoemde tools integreren veel gebruikers en orga"
@@ -776,7 +776,7 @@ msgid "Running Your Own Private Instance"
 msgstr "Uw Eigen Privé-Instantie Uitvoeren"
 
 #: ../../../app/views/pages/faq.html.erb:134
-msgid "Can I run my own version for my organization internally?"
+msgid "Can I run my own version for my organisation internally?"
 msgstr "Kan ik intern mijn eigen versie voor mijn organisatie draaien?"
 
 #: ../../../app/views/pages/faq.html.erb:140
@@ -800,7 +800,7 @@ msgid "hint:"
 msgstr "tip:"
 
 #: ../../../app/views/pages/faq.html.erb:155
-msgid "Are there any licensing restrictions for me, my company or my organization?"
+msgid "Are there any licensing restrictions for me, my company or my organisation?"
 msgstr "Zijn er licentiebeperkingen voor mij, mijn bedrijf of mijn organisatie?"
 
 #: ../../../app/views/pages/faq.html.erb:161
@@ -821,7 +821,7 @@ msgstr ""
 
 #: ../../../app/views/pages/faq.html.erb:175
 msgid ""
-"Some organizations are bound by security policies that prohibit the use of pub"
+"Some organisations are bound by security policies that prohibit the use of pub"
 "lic services for sensitive information such as passwords.  There are even orga"
 "nizations that require all tools to be on private intranets without access to "
 "the outside world."
@@ -858,7 +858,7 @@ msgstr ""
 #: ../../../app/views/pages/faq.html.erb:192
 msgid ""
 "On the other hand, if your instance gets hacked, malicious entities now have a"
-" targeted dictionary of passwords to brute force accounts in your organization"
+" targeted dictionary of passwords to brute force accounts in your organisation"
 ".  Note that this would be limited to pushes which haven't yet hit their expir"
 "ation limits."
 msgstr ""
@@ -903,7 +903,7 @@ msgstr ""
 "m."
 
 #: ../../../app/views/pages/faq.html.erb:218
-msgid "Could you add a specific feature for my organization?"
+msgid "Could you add a specific feature for my organisation?"
 msgstr "Kunt u een specifieke functie voor mijn organisatie toevoegen?"
 
 #: ../../../app/views/pages/faq.html.erb:223
@@ -1605,7 +1605,7 @@ msgstr "Uw Geheime Link"
 
 #: ../../../app/views/passwords/show.html.erb:6
 msgid ""
-"Please obtain and securely store this password elsewhere, ideally in a passwor"
+"Store this password in your password manager."
 "d manager."
 msgstr ""
 "Verkrijg dit wachtwoord en bewaar het veilig ergens anders, bij voorkeur in ee"
@@ -1655,12 +1655,12 @@ msgid "Your Secret Link Has Expired"
 msgstr "Je Geheime Link is Verlopen"
 
 #: ../../../app/views/passwords/show_expired.html.erb:6
-msgid "We apologize but this secret link has expired."
+msgid "We apologise but this secret link has expired."
 msgstr "Onze excuses, maar deze geheime link is verlopen."
 
 #: ../../../app/views/passwords/show_expired.html.erb:8
 msgid ""
-"If needed, please contact the person or organization who gave you this secret "
+"If needed, please contact the person or organisation who gave you this secret "
 "URL."
 msgstr ""
 "Neem indien nodig contact op met de persoon of organisatie die u deze geheime "
