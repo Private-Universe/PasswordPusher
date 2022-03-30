@@ -1,46 +1,35 @@
-FROM docker.io/ubuntu:focal
+# pwpush-postgres
+FROM ruby:3.0.3
 
-# Use the following 2 env variables if you need proxy support in your environment
-#ENV https_proxy=http://10.0.2.2:3128
-#ENV http_proxy=http://10.0.2.2:3128
+LABEL maintainer='pglombardo@hey.com'
 
 ENV APP_ROOT=/opt/PasswordPusher
 ENV PATH=${APP_ROOT}:${PATH} HOME=${APP_ROOT}
+ENV DATABASE_URL=postgres://passwordpusher_user:passwordpusher_passwd@postgres:5432/passwordpusher_db
 
-RUN ln -fs /usr/share/zoneinfo/Europe/Paris > /etc/localtime
-COPY github_key .
+# For the latest yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
 RUN apt-get update -qq && \
-    apt-get install -y --assume-yes build-essential libpq-dev git curl ruby2.7 ruby2.7-dev tzdata sqlite3 ruby-sqlite3 libsqlite3-dev zlib1g-dev nodejs yarnpkg && \
-    eval $(ssh-agent) && \
-    ssh-add github_key && \
-    ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts && \
+    apt-get install -qq -y --assume-yes build-essential apt-utils libpq-dev git curl tzdata libsqlite3-0 libsqlite3-dev zlib1g-dev nodejs yarn && \
     cd /opt && \
-    git clone git@github.com:Private-Universe/PasswordPusher.git && \
-    touch ${APP_ROOT}/log/private.log && \
-    cd ${APP_ROOT} && \
-    chown -R 1001:root ${APP_ROOT}
+    git clone https://github.com/Private-Universe/PasswordPusher.git && \
+    touch ${APP_ROOT}/log/production.log
 
-EXPOSE 5000
-
-RUN gem update --system
-RUN gem install bundler
-RUN gem install thor
-
-USER 1001
 WORKDIR ${APP_ROOT}
+EXPOSE 5100
 
-ENV RAILS_ENV=private
-RUN bundle config set without 'development production test'
+RUN gem install bundler
+
+ENV RACK_ENV=production
+ENV RAILS_ENV=production
+ENV RAILS_SERVE_STATIC_FILES=true
+RUN bundle config set without 'development private test'
 RUN bundle config set deployment 'true'
 
 RUN bundle install
-RUN bundle exec rake assets:precompile
-RUN bundle exec rake db:setup
+RUN yarn install
+RUN bundle exec rails webpacker:compile
 
-USER root
-RUN chmod -R u+x ${APP_ROOT} && \
-    chgrp -R 0 ${APP_ROOT} && \
-    chmod -R g=u ${APP_ROOT} /etc/passwd
-
-USER 1001
-ENTRYPOINT [ "bundle", "exec", "foreman", "start", "internalweb" ]
+ENTRYPOINT ["containers/docker/pwpush-postgres/entrypoint.sh"]
