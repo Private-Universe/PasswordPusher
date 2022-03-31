@@ -1604,9 +1604,7 @@ msgid "Your Secret Link"
 msgstr "Uw Geheime Link"
 
 #: ../../../app/views/passwords/show.html.erb:6
-msgid ""
-"Store this password in your password manager."
-"d manager."
+msgid "Store this password in your password manager."
 msgstr ""
 "Verkrijg dit wachtwoord en bewaar het veilig ergens anders, bij voorkeur in ee"
 "n wachtwoordbeheerder."

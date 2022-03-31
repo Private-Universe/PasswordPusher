@@ -19,8 +19,7 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
 
     # Validate some elements
     p_tags = assert_select 'p'
-    assert p_tags[0].text == 'Please obtain and securely store this password elsewhere, ' \
-                             'ideally in a password manager.'
+    assert p_tags[0].text == 'Store this password in your password manager.'
     assert p_tags[1].text == 'Your password is blurred out.  Click below to reveal it.'
     assert p_tags[2].text.include?('This secret link will be deleted')
 
@@ -48,8 +47,7 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
 
     # Validate some elements
     p_tags = assert_select 'p'
-    assert p_tags[0].text == 'Please obtain and securely store this password elsewhere, ' \
-                             'ideally in a password manager.'
+    assert p_tags[0].text == 'Store this password in your password manager.'
     assert p_tags[1].text == 'Your password is blurred out.  Click below to reveal it.'
     assert p_tags[2].text.include?('This secret link will be deleted')
 
@@ -77,8 +75,7 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
 
     # Validate some elements
     p_tags = assert_select 'p'
-    assert p_tags[0].text == 'Please obtain and securely store this password elsewhere, ' \
-                             'ideally in a password manager.'
+    assert p_tags[0].text == 'Store this password in your password manager.'
     assert p_tags[1].text == 'Your password is blurred out.  Click below to reveal it.'
     assert p_tags[2].text.include?('This secret link will be deleted')
 
@@ -134,8 +131,7 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
 
     # Validate some elements
     p_tags = assert_select 'p'
-    assert p_tags[0].text == 'Please obtain and securely store this password elsewhere, ' \
-                             'ideally in a password manager.'
+    assert p_tags[0].text == 'Store this password in your password manager.'
     assert p_tags[1].text == 'Your password is blurred out.  Click below to reveal it.'
     assert p_tags[2].text.include?('This secret link will be deleted')
 
@@ -160,8 +156,7 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
 
     # Validate some elements
     p_tags = assert_select 'p'
-    assert p_tags[0].text == 'Please obtain and securely store this password elsewhere, ' \
-                             'ideally in a password manager.'
+    assert p_tags[0].text == 'Store this password in your password manager.'
     assert p_tags[1].text == 'Your password is blurred out.  Click below to reveal it.'
     assert p_tags[2].text.include?('This secret link will be deleted')
 

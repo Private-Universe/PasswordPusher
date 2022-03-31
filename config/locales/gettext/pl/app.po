@@ -1624,9 +1624,7 @@ msgid "Your Secret Link"
 msgstr "Twój tajny link"
 
 #: ../../../app/views/passwords/show.html.erb:6
-msgid ""
-"Store this password in your password manager."
-"d manager."
+msgid "Store this password in your password manager."
 msgstr ""
 "Uzyskaj i bezpiecznie przechowuj to hasło w innym miejscu, najlepiej w menedże"
 "rze haseł."

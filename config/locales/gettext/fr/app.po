@@ -1640,9 +1640,7 @@ msgid "Your Secret Link"
 msgstr "Votre url privée"
 
 #: ../../../app/views/passwords/show.html.erb:6
-msgid ""
-"Store this password in your password manager."
-"d manager."
+msgid "Store this password in your password manager."
 msgstr ""
 "Récupérez et conservez ce mot de passe en sécurité, de préférence dans un gest"
 "ionnaire de mot de passe."

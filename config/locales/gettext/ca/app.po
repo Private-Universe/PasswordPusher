@@ -1625,9 +1625,7 @@ msgid "Your Secret Link"
 msgstr "El teu enllaç secret"
 
 #: ../../../app/views/passwords/show.html.erb:6
-msgid ""
-"Store this password in your password manager."
-"d manager."
+msgid "Store this password in your password manager."
 msgstr ""
 "Si us plau, obteniu i emmagatzemeu de manera segura aquesta contrasenya en un "
 "altre lloc, idealment en un gestor de contrasenyes."

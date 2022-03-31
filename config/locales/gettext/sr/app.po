@@ -1458,9 +1458,7 @@ msgid "Your Secret Link"
 msgstr ""
 
 #: ../../../app/views/passwords/show.html.erb:6
-msgid ""
-"Store this password in your password manager."
-"d manager."
+msgid "Store this password in your password manager."
 msgstr ""
 
 #: ../../../app/views/passwords/show.html.erb:7
