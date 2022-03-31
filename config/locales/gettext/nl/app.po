@@ -1521,7 +1521,7 @@ msgid "Pushing..."
 msgstr "Duwen..."
 
 #: ../../../app/views/passwords/preliminary.html.erb:3
-msgid "Click Here to View the Password"
+msgid "Click here to view the password"
 msgstr "Klik Hier om het Wachtwoord te Bekijken"
 
 #: ../../../app/views/passwords/preview.html.erb:1

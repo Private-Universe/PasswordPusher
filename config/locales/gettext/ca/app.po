@@ -1542,7 +1542,7 @@ msgid "Pushing..."
 msgstr "Pujant..."
 
 #: ../../../app/views/passwords/preliminary.html.erb:3
-msgid "Click Here to View the Password"
+msgid "Click here to view the password"
 msgstr "Feu clic aquí per veure la contrasenya"
 
 #: ../../../app/views/passwords/preview.html.erb:1

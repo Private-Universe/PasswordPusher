@@ -1562,7 +1562,7 @@ msgid "Pushing..."
 msgstr "Emprendedor..."
 
 #: ../../../app/views/passwords/preliminary.html.erb:3
-msgid "Click Here to View the Password"
+msgid "Click here to view the password"
 msgstr "Haga clic aquí para ver la contraseña"
 
 #: ../../../app/views/passwords/preview.html.erb:1

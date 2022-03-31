@@ -1,5 +1,12 @@
 <div class="container h-100">
     <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-        <p> <%=link_to _("Click Here to View the Password"), raw_secret_url(@password) %> </p>
+        <%= link_to "https://www.privateuniverse.com.au" do %>
+            <picture>
+                <source srcset="<%= asset_pack_path('media/img/logo-transparent-lg.png') %>" media="(prefers-color-scheme: light) or (prefers-color-scheme: no-preference)">
+                <source srcset="<%= asset_pack_path('media/img/logo-transparent-lg-dark.png') %>" media="(prefers-color-scheme: dark)">
+                <img src="<%= asset_pack_path('media/img/logo-transparent-lg.png') %>" alt="Password Pusher Logo" style='width: 300px; padding: 30px' />
+            </picture>
+        <% end %>
+        <%=link_to _("Click here to view the password"), raw_secret_url(@password), class: 'btn btn-primary' %>
     </div>
 </div>

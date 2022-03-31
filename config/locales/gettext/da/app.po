@@ -1517,7 +1517,7 @@ msgid "Pushing..."
 msgstr "Pusher nu...."
 
 #: ../../../app/views/passwords/preliminary.html.erb:3
-msgid "Click Here to View the Password"
+msgid "Click here to view the password"
 msgstr "Klik her for at se adgangskoden"
 
 #: ../../../app/views/passwords/preview.html.erb:1
