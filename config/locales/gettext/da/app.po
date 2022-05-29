@@ -128,7 +128,7 @@ msgstr "\"Push\" instillinger"
 #: ../../../app/views/dashboard/expired.html.erb:44
 #: ../../../app/views/passwords/audit.html.erb:155
 #: ../../../app/views/passwords/preview.html.erb:54
-#: ../../../app/views/passwords/show.html.erb:68
+#: ../../../app/views/passwords/show.html.erb:70
 msgid "Processing..."
 msgstr "Arbejder..."
 
@@ -389,8 +389,8 @@ msgstr "Mit navn er Peter Giacomo Lombardo. Du kan finde mig på"
 #: ../../../app/views/pages/about.html.erb:28
 #: ../../../app/views/pages/about.html.erb:34
 #: ../../../app/views/passwords/preview.html.erb:33
-#: ../../../app/views/passwords/show.html.erb:29
-#: ../../../app/views/passwords/show.html.erb:34
+#: ../../../app/views/passwords/show.html.erb:31
+#: ../../../app/views/passwords/show.html.erb:36
 msgid "or"
 msgstr "eller"
 
@@ -991,8 +991,8 @@ msgstr "Genereret krypteringsnøgle"
 #: ../../../app/views/pages/generate_key.html.erb:39
 #: ../../../app/views/passwords/audit.html.erb:26
 #: ../../../app/views/passwords/preview.html.erb:25
-#: ../../../app/views/passwords/show.html.erb:9
-#: ../../../app/views/passwords/show.html.erb:48
+#: ../../../app/views/passwords/show.html.erb:23
+#: ../../../app/views/passwords/show.html.erb:50
 msgid "Copy to Clipboard"
 msgstr "Kopier til udklipsholder"
 
@@ -1351,7 +1351,7 @@ msgid "Expire Now"
 msgstr "Udløb nu"
 
 #: ../../../app/views/passwords/audit.html.erb:145
-#: ../../../app/views/passwords/show.html.erb:58
+#: ../../../app/views/passwords/show.html.erb:60
 msgid "Delete This Password?"
 msgstr "Slet denne adgangskode?"
 
@@ -1360,7 +1360,7 @@ msgid "This will expire this secret link and"
 msgstr "Dette vil registrere dette hemmelige link som udløbet"
 
 #: ../../../app/views/passwords/audit.html.erb:149
-#: ../../../app/views/passwords/show.html.erb:63
+#: ../../../app/views/passwords/show.html.erb:65
 msgid "remove the password from the database forever"
 msgstr "fjern adgangskoden fra databasen for evigt"
 
@@ -1373,12 +1373,12 @@ msgstr ""
 " blive vedligeholdt."
 
 #: ../../../app/views/passwords/audit.html.erb:151
-#: ../../../app/views/passwords/show.html.erb:64
+#: ../../../app/views/passwords/show.html.erb:66
 msgid "Are you sure?"
 msgstr "Er du sikker?"
 
 #: ../../../app/views/passwords/audit.html.erb:154
-#: ../../../app/views/passwords/show.html.erb:67
+#: ../../../app/views/passwords/show.html.erb:69
 msgid "Cancel"
 msgstr "Afbryd"
 
@@ -1482,14 +1482,16 @@ msgid "Generate Password"
 msgstr "Generer kodeord"
 
 #: ../../../app/views/passwords/new.html.erb:113
-msgid ""
-"Tip: Only enter the password into the box.  Other identifying information can "
-"compromise security."
+msgid "Use the button above to generate a random password."
 msgstr ""
-"Tip: Indtast kun adgangskode eller tekst i boksen. Andre oplysninger kan kompr"
-"omittere sikkerheden."
 
 #: ../../../app/views/passwords/new.html.erb:114
+msgid ""
+"Tip: Only enter a password into the box.  Other identifying information can co"
+"mpromise security."
+msgstr ""
+
+#: ../../../app/views/passwords/new.html.erb:115
 msgid ""
 "All passwords are encrypted prior to storage and are available to only those w"
 "ith the secret link.  Once expired, encrypted passwords are unequivocally dele"
@@ -1499,20 +1501,20 @@ msgstr ""
 "det hemmelige link. Når de er udløbet, slettes krypterede adgangskoder fra dat"
 "abasen."
 
-#: ../../../app/views/passwords/new.html.erb:121
+#: ../../../app/views/passwords/new.html.erb:122
 #: ../../../app/views/shared/_pw_generator_modal.html.erb:70
 msgid "Save"
 msgstr "Gem"
 
-#: ../../../app/views/passwords/new.html.erb:121
+#: ../../../app/views/passwords/new.html.erb:122
 msgid "the above settings as the page default."
 msgstr "ovenstående indstillinger som sidestandard."
 
-#: ../../../app/views/passwords/new.html.erb:129
+#: ../../../app/views/passwords/new.html.erb:130
 msgid "Push It!"
 msgstr "Push nu!"
 
-#: ../../../app/views/passwords/new.html.erb:129
+#: ../../../app/views/passwords/new.html.erb:130
 msgid "Pushing..."
 msgstr "Pusher nu...."
 
@@ -1537,8 +1539,8 @@ msgid "This newly pushed password will expire after"
 msgstr "Denne nye adgangskode udløber efter"
 
 #: ../../../app/views/passwords/preview.html.erb:32
-#: ../../../app/views/passwords/show.html.erb:28
-#: ../../../app/views/passwords/show.html.erb:33
+#: ../../../app/views/passwords/show.html.erb:30
+#: ../../../app/views/passwords/show.html.erb:35
 msgid "day"
 msgid_plural "days"
 msgstr[0] "dag"
@@ -1609,38 +1611,38 @@ msgstr ""
 msgid "Your password is blurred out.  Click below to reveal it."
 msgstr "Din adgangskode er sløret. Klik nedenfor for at afsløre det."
 
-#: ../../../app/views/passwords/show.html.erb:27
-#: ../../../app/views/passwords/show.html.erb:32
+#: ../../../app/views/passwords/show.html.erb:29
+#: ../../../app/views/passwords/show.html.erb:34
 msgid "This secret link will be deleted in"
 msgstr "Dette hemmelige link vil blive slettet om"
 
-#: ../../../app/views/passwords/show.html.erb:29
+#: ../../../app/views/passwords/show.html.erb:31
 msgid "0 more views"
 msgstr "0 visninger tilbage"
 
-#: ../../../app/views/passwords/show.html.erb:30
+#: ../../../app/views/passwords/show.html.erb:32
 msgid "(this is the last view)."
 msgstr "(dette er den sidste visning)."
 
-#: ../../../app/views/passwords/show.html.erb:35
+#: ../../../app/views/passwords/show.html.erb:37
 msgid "more view"
 msgid_plural "more views"
 msgstr[0] "flere visninger"
 msgstr[1] "flere visninger"
 
-#: ../../../app/views/passwords/show.html.erb:36
+#: ../../../app/views/passwords/show.html.erb:38
 msgid "(whichever occurs first)."
 msgstr "(alt efter hvad der indtræffer først)."
 
-#: ../../../app/views/passwords/show.html.erb:41
+#: ../../../app/views/passwords/show.html.erb:43
 msgid "Delete This Secret Link Now"
 msgstr "Slet dette hemmelige link nu"
 
-#: ../../../app/views/passwords/show.html.erb:62
+#: ../../../app/views/passwords/show.html.erb:64
 msgid "This will expire this secret link and "
 msgstr "Dette vil registrere dette hemmelige link som udløbet"
 
-#: ../../../app/views/passwords/show.html.erb:68
+#: ../../../app/views/passwords/show.html.erb:70
 msgid "Delete"
 msgstr "Slet"
 

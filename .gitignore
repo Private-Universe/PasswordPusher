@@ -13,6 +13,8 @@ public/
 .LSOverride
 .idea
 
+.rbenv-local
+
 # Ignore local Capistrano configs
 /config/deploy/local_cap_config.rb
 
