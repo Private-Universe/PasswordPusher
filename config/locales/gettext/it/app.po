@@ -38,20 +38,20 @@ msgstr "Feedback inviato!"
 msgid "Could not send feedback.  Try again?"
 msgstr "Impossibile inviare feedback. Riprova?"
 
-#: ../../../app/controllers/passwords_controller.rb:134
+#: ../../../app/controllers/passwords_controller.rb:142
 msgid "That push doesn't belong to you."
 msgstr "Quella spinta non ti appartiene."
 
-#: ../../../app/controllers/passwords_controller.rb:148
+#: ../../../app/controllers/passwords_controller.rb:156
 msgid "That push does not belong to you."
 msgstr "Quella spinta non ti appartiene."
 
-#: ../../../app/controllers/passwords_controller.rb:153
+#: ../../../app/controllers/passwords_controller.rb:161
 msgid "That push is not deletable by viewers."
 msgstr "Quella spinta non è cancellabile dagli spettatori."
 
-#: ../../../app/controllers/passwords_controller.rb:169
-#: ../../../app/controllers/passwords_controller.rb:172
+#: ../../../app/controllers/passwords_controller.rb:177
+#: ../../../app/controllers/passwords_controller.rb:180
 msgid "The password has been deleted and secret URL expired."
 msgstr "La password è stata eliminata e l'URL segreto è scaduto."
 
@@ -1519,13 +1519,15 @@ msgstr "Genera password"
 
 #: ../../../app/views/passwords/new.html.erb:113
 msgid "Use the button above to generate a random password."
-msgstr ""
+msgstr "Usa il pulsante sopra per generare una password casuale."
 
 #: ../../../app/views/passwords/new.html.erb:114
 msgid ""
 "Tip: Only enter a password into the box.  Other identifying information can co"
 "mpromise security."
 msgstr ""
+"Suggerimento: inserisci solo una password nella casella. Altre informazioni di"
+" identificazione possono compromettere la sicurezza."
 
 #: ../../../app/views/passwords/new.html.erb:115
 msgid ""
