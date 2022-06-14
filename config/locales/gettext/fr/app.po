@@ -38,20 +38,20 @@ msgstr "Commentaire envoyé !"
 msgid "Could not send feedback.  Try again?"
 msgstr "Impossible d'envoyer le commentaire. Pouvez-vous réessayer ?"
 
-#: ../../../app/controllers/passwords_controller.rb:134
+#: ../../../app/controllers/passwords_controller.rb:142
 msgid "That push doesn't belong to you."
 msgstr "Cette publication ne vous appartient pas."
 
-#: ../../../app/controllers/passwords_controller.rb:148
+#: ../../../app/controllers/passwords_controller.rb:156
 msgid "That push does not belong to you."
 msgstr "Cette publication ne vous appartient pas."
 
-#: ../../../app/controllers/passwords_controller.rb:153
+#: ../../../app/controllers/passwords_controller.rb:161
 msgid "That push is not deletable by viewers."
 msgstr "Cette publication ne peut pas être supprimée par l'utilisateur"
 
-#: ../../../app/controllers/passwords_controller.rb:169
-#: ../../../app/controllers/passwords_controller.rb:172
+#: ../../../app/controllers/passwords_controller.rb:177
+#: ../../../app/controllers/passwords_controller.rb:180
 msgid "The password has been deleted and secret URL expired."
 msgstr "Le contenu a été supprimé et l'URL privée n'est plus valable."
 
@@ -1522,13 +1522,15 @@ msgstr "Générer un mot de passe"
 
 #: ../../../app/views/passwords/new.html.erb:113
 msgid "Use the button above to generate a random password."
-msgstr ""
+msgstr "Utilisez le bouton ci-dessus pour générer un mot de passe aléatoire."
 
 #: ../../../app/views/passwords/new.html.erb:114
 msgid ""
 "Tip: Only enter a password into the box.  Other identifying information can co"
 "mpromise security."
 msgstr ""
+"Astuce : Entrez uniquement un mot de passe dans la case. D'autres informations"
+" d'identification peuvent compromettre la sécurité."
 
 #: ../../../app/views/passwords/new.html.erb:115
 msgid ""
