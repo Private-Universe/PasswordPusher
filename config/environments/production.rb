@@ -22,10 +22,10 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  config.middleware.use Rack::Throttle::Daily,    max: 1000  # requests
-  config.middleware.use Rack::Throttle::Hourly,   max: 100   # requests
-  config.middleware.use Rack::Throttle::Minute,   max: 30    # requests
-  config.middleware.use Rack::Throttle::Second,   max: 2     # requests
+  config.middleware.use Rack::Throttle::Daily,    max: Settings.throttling.daily
+  config.middleware.use Rack::Throttle::Hourly,   max: Settings.throttling.hourly
+  config.middleware.use Rack::Throttle::Minute,   max: Settings.throttling.minute
+  config.middleware.use Rack::Throttle::Second,   max: Settings.throttling.second
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -80,10 +80,22 @@ Rails.application.configure do
     user_name: Settings.mail.smtp_user_name,
     password: Settings.mail.smtp_password,
     authentication: Settings.mail.smtp_authentication,
-    enable_starttls_auto: Settings.mail.smtp_starttls,
+    enable_starttls_auto: Settings.mail.smtp_enable_starttls_auto,
     open_timeout: Settings.mail.smtp_open_timeout,
     read_timeout: Settings.mail.smtp_read_timeout
   }
+
+  if Settings.mail.smtp_domain
+    config.action_mailer.smtp_settings[:domain] = Settings.mail.smtp_domain
+  end
+
+  if Settings.mail.smtp_openssl_verify_mode
+    config.action_mailer.smtp_settings[:openssl_verify_mode] = Settings.mail.smtp_openssl_verify_mode.to_sym
+  end
+
+  if Settings.mail.smtp_enable_starttls
+    config.action_mailer.smtp_settings[:enable_starttls] = Settings.mail.smtp_enable_starttls
+  end
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

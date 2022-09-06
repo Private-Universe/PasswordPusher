@@ -621,6 +621,9 @@ paket-files/
 *.odx.cs
 *.xsd.cs
 
+# Local .env files
+.env
+
 # OpenCover UI analysis results
 OpenCover/
 
