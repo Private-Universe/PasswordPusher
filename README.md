@@ -1,3 +1,10 @@
+# Upgrading
+* `git remote add upstream https://github.com/pglombardo/PasswordPusher.git`
+* `git checkout -b v1.17.1-PU`
+* `git fetch --all --tags`
+* `git merge v1.17.1 --strategy-option ours`
+* `git push`
+
 <div align="center">
 
 ![Password Pusher Front Page](https://pwpush.s3.eu-west-1.amazonaws.com/pwpush-horizontal-logo.png)
