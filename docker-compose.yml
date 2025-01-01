@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: passwordpusher_db
+      POSTGRES_USER: passwordpusher_user
+      POSTGRES_PASSWORD: passwordpusher_passwd
+
+  app:
+    build: .
+    ports:
+      - "5100:5100"
+    depends_on:
+      - postgres

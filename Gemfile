@@ -15,8 +15,6 @@ group :development do
 
   # Visual Studio Additions
   gem 'rubocop'
-  gem 'ruby-debug-ide'
-  gem 'debase', '0.2.5.beta2'
 end
 
 group :test do
@@ -52,7 +50,7 @@ gem 'rack-attack'
 # $ bundle install
 # gem 'therubyracer'
 #
-gem 'lockbox'
+gem 'lockbox', '< 2.0'
 gem 'high_voltage'
 gem 'kramdown', require: false
 

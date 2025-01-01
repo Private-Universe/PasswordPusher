@@ -1,5 +1,5 @@
 # pwpush-postgres
-FROM ruby:3-slim
+FROM ruby:3.2-slim
 
 LABEL maintainer='pglombardo@hey.com'
 
@@ -17,6 +17,10 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get update -qq && \
     apt-get install -qq -y --assume-yes build-essential apt-utils libpq-dev git curl tzdata zlib1g-dev nodejs yarn
 
+RUN apt-get install -y \
+    build-essential \
+    libpq-dev
+
 RUN mkdir -p ${APP_ROOT}
 ADD ./ ${APP_ROOT}/
 
@@ -30,6 +34,8 @@ ENV RAILS_ENV=production
 ENV RAILS_SERVE_STATIC_FILES=true
 RUN bundle config set without 'development private test'
 RUN bundle config set deployment 'true'
+
+ENV NODE_OPTIONS=--openssl-legacy-provider
 
 RUN bundle install
 RUN yarn install
