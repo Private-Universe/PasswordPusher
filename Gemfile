@@ -106,7 +106,7 @@ group :production do
 end
 
 group :private do
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 2.5'
 end
 
 group :production, :private do
