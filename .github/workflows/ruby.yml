@@ -31,12 +31,13 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          # bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          bundler-cache: false  # temporary cache clean
 
-      - name: Setup Node 14
+      - name: Setup Node 16
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 16.x
 
       - name: Get yarn cache
         id: yarn-cache

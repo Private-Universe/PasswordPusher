@@ -103,13 +103,13 @@ group :production do
   gem 'pg'
   gem 'sentry-ruby'
   gem 'sentry-rails', '>= 5.0.2'
+  gem 'rack-timeout'
 end
 
 group :private do
-  gem 'sqlite3', '~> 2.5'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :production, :private do
-  gem 'rack-timeout'
   gem 'rack-throttle'
 end
