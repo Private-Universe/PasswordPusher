@@ -89,6 +89,7 @@ gem 'translation'
 gem 'mail_form', '>= 1.9.0'
 gem 'apipie-rails'
 gem 'simple_token_authentication', '~> 1.0'
+gem 'rack-timeout'
 
 # Fix for https://github.com/pglombardo/PasswordPusher/issues/397
 # In place until Rails 7.0.1 upgrade
@@ -103,13 +104,4 @@ group :production do
   gem 'pg'
   gem 'sentry-ruby'
   gem 'sentry-rails', '>= 5.0.2'
-  gem 'rack-timeout'
-end
-
-group :private do
-  gem 'sqlite3', '~> 1.4'
-end
-
-group :production, :private do
-  gem 'rack-throttle'
 end

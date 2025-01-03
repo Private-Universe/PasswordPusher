@@ -72,6 +72,8 @@ jobs:
         task-definition: ecs.json
         container-name: passwordpusherv2
         image: ${{ steps.build-image.outputs.image }}
+        secrets: |
+          DATABASE_URL=${{ secrets.DATABASE_URL }}
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1

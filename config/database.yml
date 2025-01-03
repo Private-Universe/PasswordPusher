@@ -16,5 +16,5 @@ private:
   <<: *base
 
 production:
-  database: db/production.sqlite3
-  <<: *base
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: 5

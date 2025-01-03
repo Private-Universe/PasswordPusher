@@ -5,7 +5,6 @@ LABEL maintainer='pglombardo@hey.com'
 
 ENV APP_ROOT=/opt/PasswordPusher
 ENV PATH=${APP_ROOT}:${PATH} HOME=${APP_ROOT}
-ENV DATABASE_URL=postgres://passwordpusher_user:passwordpusher_passwd@postgres:5432/passwordpusher_db
 
 RUN apt-get update && apt-get install -y curl ca-certificates gnupg
 
@@ -29,16 +28,24 @@ EXPOSE 5100
 
 RUN gem install bundler
 
-ENV RACK_ENV=production
-ENV RAILS_ENV=production
-ENV RAILS_SERVE_STATIC_FILES=true
-RUN bundle config set without 'development private test'
+# Set to development for build steps
+ENV RAILS_ENV=development
+ENV RACK_ENV=development
+
+# Configure bundler
+RUN bundle config set without 'production private test'
 RUN bundle config set deployment 'true'
 
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
 RUN bundle install
 RUN yarn install
+
 RUN bundle exec rails webpacker:compile
+
+# Set to production for runtime
+ENV RAILS_ENV=production
+ENV RACK_ENV=production
+# DATABASE_URL will be injected at runtime via ECS task definition
 
 ENTRYPOINT ["containers/docker/pwpush-postgres/entrypoint.sh"]
