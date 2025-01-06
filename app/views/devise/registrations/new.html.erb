@@ -1,6 +1,6 @@
 <% title(I18n.t('devise.general.sign_up')) %>
 <h2 class='my-3'><%= I18n.t('devise.general.sign_up') %></h1>
-  
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="form-floating">
@@ -11,6 +11,10 @@
   <div class="form-floating">
     <input class="form-control" autocomplete="new-password" type="password" name="user[password]" id="user_password" required>
     <%= f.label I18n.t('devise.registrations.password'), for: :user_password %>
+  </div>
+
+  <div class="form-floating">
+    <%= invisible_captcha %>
   </div>
 
   <div class="form-floating">

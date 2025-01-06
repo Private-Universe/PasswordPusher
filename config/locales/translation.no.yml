@@ -2,27 +2,10 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/no
+# https://translation.io/pglombardo/pwpush-oss/no
 #
 ---
 'no':
-  routes:
-    cancel: Avbryt
-    passwords: passord
-    new: ny
-    active: aktiv
-    expired: utløpt
-    preview: forhåndsvisning
-    audit: revidere
-    pages: sider
-    users: brukere
-    sign_in: Logg_inn
-    sign_out: logg_ut
-    sign_up: meld_deg_inn
-    password: passord
-    edit: redigere
-    confirmation: bekreftelse
-    unlock: låse opp
   date:
     day_names:
     - Søndag
@@ -84,6 +67,7 @@
           tb: TB
           pb: PB
           eb: EB
+          zb: ZB
       decimal_units:
         units:
           thousand: Tusen
@@ -133,6 +117,8 @@
       not_saved:
         one: 'Én feil gjorde at %{resource} ikke kunne lagres:'
         other: "%{count} feil gjorde at %{resource} ikke kunne lagres:"
+      in: må være i %{count}
+      password_too_long: er for lang
     unavailable_session: Sesjon %{id} er ikke lenger tilgjengelig i minnet. Hvis du
       tilfeldigvis kjører på en multiprosessserver (som Unicorn eller Puma), lagrer
       ikke prosessen denne forespørselen %{id} i minnet. Vurder å gjøre om antallet
@@ -141,6 +127,11 @@
     connection_refused: |
       Oops! Kan ikke koble til Web Console mellomvare den.
       Sørg for at Rails utviklingsserveren kjører.
+    template:
+      body: 'Det var problemer med følgende felt:'
+      header:
+        one: 1 feil forhindret at denne %{model} ble lagret
+        other: "%{count}-feil forhindret at denne %{model} ble lagret"
   activerecord:
     errors:
       messages:
@@ -149,6 +140,35 @@
           has_one: Kan ikke slette oppføring fordi det eksisterer en avhengighet %{record}
           has_many: Kan ikke slette oppføring fordi det eksisterer en avhengighet
             %{record}
+    attributes:
+      user:
+        confirmation_sent_at: Bekreftelse sendt
+        confirmation_token: Bekreftelsesnøkkel
+        confirmed_at: Bekreftet
+        created_at: Opprettet
+        current_password: Nåværende passord
+        current_sign_in_at: Gjeldende innlogging
+        current_sign_in_ip: Gjeldende innlogget IP
+        email: Epost
+        encrypted_password: Kryptert passord
+        failed_attempts: Mislykkede forsøk
+        last_sign_in_at: Sist innlogget
+        last_sign_in_ip: Sist innlogget IP
+        locked_at: Låst
+        password: Passord
+        password_confirmation: Passordbekreftelse
+        remember_created_at: Huskenøkkel opprettet
+        remember_me: Husk meg
+        reset_password_sent_at: Passordgjenoppretting sendt
+        reset_password_token: Passordgjenopprettingsnøkkel
+        sign_in_count: Antall innlogginger
+        unconfirmed_email: Ubekreftet epost
+        unlock_token: Nøkkelsymbol
+        updated_at: Oppdatert
+    models:
+      user:
+        one: Bruker
+        other: Brukere
   datetime:
     distance_in_words:
       half_a_minute: et halvt minutt
@@ -185,6 +205,9 @@
       almost_x_years:
         one: Nesten 1 år
         other: Nesten %{count} år
+      x_years:
+        one: 1 år
+        other: "%{count} år"
     prompts:
       year: År
       month: Måned
@@ -199,23 +222,19 @@
       create: Opprett %{model}
       update: Oppdater %{model}
       submit: Lagre %{model}
-  will_paginate:
-    previous_label: "← Forrige"
-    next_label: Neste →
-    page_gap: "&hellip;\n"
-    container_aria_label: Paginering
-    page_aria_label: Side %{page}
     page_entries_info:
-      single_page:
-        zero: Ingen %{model} funnet
-        one: Viser 1 %{model}
-        other: Viser alle %{count} %{model}
-      single_page_html:
-        zero: Ingen %{model} funnet
-        one: Viser <b>1</b> %{model}
-        other: Viser <b>alle %{count}</b> %{model}
-      multi_page: Viser %{model} %{from} - %{to} av %{count} totalt
-      multi_page_html: Viser %{model} <b>%{from} - %{to}</b> av <b>%{count}</b> totalt
+      entry:
+        zero: innganger
+        one: inngang
+        other: innganger
+      one_page:
+        display_entries:
+          zero: Ingen %{entry_name} funnet
+          one: Viser <b>1</b> %{entry_name}
+          other: Viser <b>alle %{count}</b> %{entry_name}
+      more_pages:
+        display_entries: Viser %{entry_name} <b>%{first} - %{last}</b> av <b>%{total}</b>
+          totalt
   flash:
     actions:
       create:
@@ -236,6 +255,8 @@
       resend_title: Send bekreftelsesinstruksjoner på nytt
       resend_header: Send bekreftelsesinstruksjoner på nytt
       resend_button: Send igjen
+      new:
+        resend_confirmation_instructions: Send nye bekreftelsesinstruksjoner
     failure:
       already_authenticated: Du er allerede logget inn.
       inactive: Din konto er ikke aktivert enda.
@@ -249,14 +270,35 @@
     mailer:
       confirmation_instructions:
         subject: Bekreftelsesinstruksjoner
+        action: Bekreft min konto
+        greeting: Velkommen %{recipient}!
+        instruction: 'Du kan bekrefte kontoen din gjennom linken nedenfor:'
       reset_password_instructions:
         subject: Nullstilling av passord
+        action: Endre passord
+        greeting: Hallo %{recipient}!
+        instruction: Noen har bedt om en link til å endre ditt passord og du kan gjøre
+          det her.
+        instruction_2: Hvis du ikke har bedt om dette, vennligst overse denne eposten.
+        instruction_3: Ditt passord vil ikke bli endret med mindre du følger linken
+          ovenfor og oppretter et nytt ett.
       unlock_instructions:
         subject: Gjenåpning av konto
+        action: Lås opp konto
+        greeting: Hallo %{recipient}!
+        instruction: 'Klikk på linken nedenfor for å låse opp kontoen din:'
+        message: Kontoen din har blitt låst på grunn av alt for mange mislykkede påloggingsforsøk.
       email_changed:
         subject: E-post endret
+        greeting: Hallo %{recipient}!
+        message: Vi kontakter deg for å varsle deg om at e-posten din er endret til
+          %{email}.
+        message_unconfirmed: Vi kontakter deg for å varsle deg om at e-posten din
+          endres til %{email}.
       password_change:
         subject: Passord endret
+        greeting: Hallo %{recipient}!
+        message: Vi kontakter deg for å meddele at ditt passord har blitt endret.
     omniauth_callbacks:
       failure: Kunne ikke autorisere deg fra %{kind} fordi "%{reason}".
       success: Vellykket autorisering fra %{kind}.
@@ -276,6 +318,15 @@
       forgot_title: Glemt passord
       forgot_header: Glemt passord
       forgot_button: Send tilbakestillingsinstruksjoner
+      edit:
+        change_my_password: Endre passord
+        change_your_password: Endre ditt passord
+        confirm_new_password: Bekreft nytt passord
+        new_password: Nytt passord
+      new:
+        forgot_your_password: Glemt passord?
+        send_me_reset_password_instructions: Send meg instruksjoner for å sette nytt
+          passord
     registrations:
       destroyed: Farvel! Din konto er nå slettet. Vi håper å se deg igjen snart.
       signed_up: Velkommen! Din registrering er vellykket.
@@ -307,6 +358,31 @@
       create_account: Opprett konto
       email: E-post
       password_confirmation: Passord bekreftelse
+      edit:
+        are_you_sure: Er du sikker?
+        cancel_my_account: Deaktiver konto
+        currently_waiting_confirmation_for_email: 'Venter på bekreftelse for: %{email}'
+        leave_blank_if_you_don_t_want_to_change_it: la stå tomt dersom du ikke vil
+          endre det
+        title: Rediger %{resource}
+        unhappy: Misfornøyd?
+        update: Oppdater
+        we_need_your_current_password_to_confirm_your_changes: vi trenger du nåværende
+          passord for å bekrefte endringene du har gjort
+        cancel_my_account_confirm_description_html: Dette vil permanent slette alle
+          data knyttet til kontoen din. Denne handlingen kan ikke angres.<br/><br/>
+          For å bekrefte, skriv inn e-postadressen din for å bekrefte og slette kontoen
+          din.
+        cancel_my_account_description: Dette vil permanent slette alle data knyttet
+          til kontoen din. Denne handlingen kan ikke angres.
+        saving: Lagrer...
+      new:
+        sign_up: Opprett konto
+        account_or_team_name: Konto eller teamnavn
+        login_html: Eller %{link}
+        submitting: Sender inn...
+        terms_html: Jeg godtar %{terms} og %{privacy}
+      preferred_language: Foretrukket Språk
     unlocks:
       send_instructions: Du vil innen få minutter motta en epost med instruksjoner
         for å gjenåpne din konto.
@@ -316,6 +392,8 @@
       unlock_title: Har du ikke mottatt instruksjoner for å låse opp kontoen din?
       unlock_header: Har du ikke mottatt instruksjoner for å låse opp kontoen din?
       unlock_button: Send igjen
+      new:
+        resend_unlock_instructions: Send nye aktiveringsinstruksjoner
     general:
       remember_me: Husk meg
       login: Logg Inn
@@ -324,34 +402,1361 @@
       didnt_confirmation: Har du ikke mottatt instruksjoner for bekreftelse?
       didnt_unlock: Har du ikke mottatt instruksjoner for å låse opp kontoen din?
       email: E-post
+    sessions:
+      new:
+        sign_in: Logg inn
+        sign_up_html: Eller %{link}
+      already_signed_out: Logget ut
+      signed_in: Du er nå innlogget.
+      signed_out: Du er nå logget ut.
+    shared:
+      links:
+        back: Tilbake
+        didn_t_receive_confirmation_instructions: Ikke mottatt bekreftelsesinstruksjoner?
+        didn_t_receive_unlock_instructions: Ikke mottatt aktiveringsinstruksjoner?
+        forgot_your_password: Glemt passord?
+        sign_in: Logg inn
+        sign_in_with_provider: Logg inn med %{provider}
+        sign_up: Opprett konto
+        redirecting: Omdirigerer...
+      minimum_password_length:
+        one: "(%{count} tegn minimum)"
+        other: "(%{count} tegn minimum)"
   apipie:
     resources: Ressurser
-    resource:
-    description:
-    no_docs_found:
-    no_docs_found_descr:
-    follow_instructions_html:
-    follow_instructions_href:
-    oops:
-    resource_not_found_html:
-    method_not_found_html:
-    goto_homepage_html:
-    goto_homepage_href:
-    required:
-    optional:
-    nil_allowed:
-    param_name:
-    params:
+    resource: Ressurs
+    description: Beskrivelse
+    no_docs_found: Finner ingen dokumentasjon
+    no_docs_found_descr: Vi har ikke funnet noen dokumentasjon for API-en din.
+    follow_instructions_html: Følg %{href} for hvordan du beskriver kontrollerene
+      dine.
+    follow_instructions_href: Ytterligere instruksjoner
+    oops: Oops!!
+    resource_not_found_html: Finner ikke ressurs %{resource}.
+    method_not_found_html: Metode %{method} ikke funnet for ressurs %{resource}.
+    goto_homepage_html: Prøv å gå til %{href}
+    goto_homepage_href: "%{app_name} Hjemmeside for API-dokumentasjon"
+    required: nødvendig
+    optional: valgfri
+    nil_allowed: null tillatt
+    param_name: Param navn
+    params: Params
     examples: Eksempler
-    metadata:
-    errors:
-    error_code:
-    error_description:
-    error_metadata:
-    supported_formats:
-    enable_javascript_html:
-    comments_powered_by_disqus:
-    api_documentation:
-    headers:
-    header_name:
-    code:
+    metadata: Metadata
+    errors: Feil
+    error_code: Kode
+    error_description: Beskrivelse
+    error_metadata: Metadata
+    supported_formats: Støttede formater
+    enable_javascript_html: Aktiver JavaScript for å se %{comments_href}.
+    comments_powered_by_disqus: kommentarer drevet av %{disqus}
+    api_documentation: API-dokumentasjon
+    headers: Overskrifter
+    header_name: Overskriftsnavn
+    code: Kode
+    deprecated: Avviklet
+    deprecation_details: Avskrivningsdetaljer
+    deprecation:
+      attributes:
+        deprecated_in: Avviklet i
+        sunset_at: Solnedgang kl
+        info: Info
+    returns: Returnerer
+    blank_allowed: blank tillatt
+  i18n_tasks:
+    add_missing:
+      added:
+        one: Lagt til %{count}-nøkkel
+        other: Lagt til %{count}-nøkler
+    cmd:
+      args:
+        default_text: 'Standard: %{value}'
+        desc:
+          all_locales: Ikke forvent at nøkkelmønstre starter med en lokalitet, bruk
+            dem i stedet på alle lokaliteter implisitt.
+          config: Overstyr konfigurasjonsplassering
+          confirm: Bekreft automatisk
+          data_format: 'Dataformat: %{valid_text}.'
+          keep_order: Hold rekkefølgen på nøklene
+          key_pattern: Filtrer etter nøkkelmønster (f.eks. 'common.*')
+          locale_to_translate_from: Sted å oversette fra
+          locales_filter: 'Språk(er) som skal behandles. Spesiell: base'
+          missing_types: 'Filtrer etter typer: %{valid}'
+          nostdin: Ikke les fra stdin
+          out_format: 'Utdataformat: %{valid_text}'
+          pattern_router: 'Bruk mønsterruter: nøkler flyttet per config data.write'
+          strict: Unngå å utlede dynamiske nøkkelbruk som t("cats.#{cat}.name"). Har
+            forrang over konfigurasjonsinnstillingen hvis den er angitt.
+          translation_backend: Oversettelsesstøtte (google eller deepl)
+          value: 'Verdi. Interpolerer: %{value}, %{human_key}, %{key}, %{default},
+            %{value_or_human_key}, %{value_or_default_or_human_key}'
+      desc:
+        add_missing: legg til manglende nøkler til lokalitetsdata, match eventuelt
+          et mønster
+        check_consistent_interpolations: verifiser at alle oversettelser bruker korrekte
+          interpolasjonsvariabler
+        check_normalized: verifisere at alle oversettelsesdata er normalisert
+        config: vise i18n-oppgavekonfigurasjon
+        data: vis lokalitetsdata
+        data_merge: slå sammen lokalitetsdata med trær
+        data_remove: fjerne nøkler som finnes i treet fra data
+        data_write: erstatte lokalitetsdata med tre
+        eq_base: vis oversettelser lik grunnverdi
+        find: vis hvor nøkler brukes i koden
+        gem_path: vis vei til perlen
+        health: er alt ok?
+        irb: start REPL-økten innenfor i18n-oppgaver kontekst
+        missing: vis manglende oversettelser, match eventuelt et mønster
+        mv: gi nytt navn/slå sammen nøklene i lokalitetsdata som samsvarer med det
+          gitte mønsteret
+        normalize: 'normaliser oversettelsesdata: sorter og flytt til de riktige filene'
+        remove_unused: fjerne ubrukte nøkler
+        rm: fjern nøklene i lokalitetsdata som samsvarer med det gitte mønsteret
+        translate_missing: oversett manglende nøkler med Google Translate eller DeepL
+          Pro, match eventuelt et mønster
+        tree_convert: konvertere treet mellom formater
+        tree_filter: filtrer tre etter nøkkelmønster
+        tree_merge: slå sammen trær
+        tree_mv_key: gi nytt navn/slå sammen/fjern tastene som samsvarer med det gitte
+          mønsteret
+        tree_set_value: angi verdier for nøkler, match eventuelt et mønster
+        tree_subtract: tre A minus nøklene i tre B
+        tree_translate: Google Oversett et tre til rotlokaliteter
+        unused: vis ubrukte oversettelser
+        cp: kopier nøklene i lokalitetsdata som samsvarer med det gitte mønsteret
+      encourage:
+      - Godt jobbet!
+      - Bra gjort!
+      - Perfekt!
+      enum_list_opt:
+        invalid: "%{invalid} er ikke i: %{valid}."
+      enum_opt:
+        invalid: "%{invalid} er ikke en av: %{valid}."
+      errors:
+        invalid_format: 'ugyldig format: %{invalid}. gyldig: %{valid}.'
+        invalid_locale: 'ugyldig lokalitet: %{invalid}'
+        invalid_missing_type:
+          one: 'ugyldig type: %{invalid}. gyldig: %{valid}.'
+          other: 'ukjente typer: %{invalid}. gyldig: %{valid}.'
+        pass_forest: passere lokalskog
+    common:
+      continue_q: Fortsette?
+      key: Nøkkel
+      locale: Språk
+      n_more: "%{count} mer"
+      value: Verdi
+    data_stats:
+      text: har %{key_count}-nøkler på tvers av %{locale_count}-lokaliteter. I gjennomsnitt
+        er verdiene %{value_chars_avg}-tegn lange, nøkler har %{key_segments_avg}-segmenter,
+        en lokalitet har %{per_locale_avg}-nøkler.
+      text_single_locale: har %{key_count} nøkler totalt. I gjennomsnitt er verdiene
+        %{value_chars_avg}-tegn lange, nøkler har %{key_segments_avg}-segmenter.
+      title: Skog (%{locales})
+    deepl_translate:
+      errors:
+        no_api_key: Sett opp DeepL Pro API-nøkkel via DEEPL_AUTH_KEY miljøvariabel
+          eller translation.deepl_api_key i config/i18n-tasks.yml. Få nøkkelen på
+          https://www.deepl.com/pro.
+        no_results: DeepL ga ingen resultater.
+        specific_target_missing: Du må oppgi en spesifikk variant for det gitte målspråket,
+          f.eks. en-us i stedet for en.
+    google_translate:
+      errors:
+        no_api_key: Angi Google API-nøkkel via GOOGLE_TRANSLATE_API_KEY miljøvariabel
+          eller translation.google_translate_api_key i config/i18n-tasks.yml. Få nøkkelen
+          på https://code.google.com/apis/console.
+        no_results: Google Translate ga ingen resultater. Sørg for at faktureringsinformasjon
+          er angitt på https://code.google.com/apis/console.
+    health:
+      no_keys_detected: Ingen nøkler oppdaget. Sjekk data.read i config/i18n-tasks.yml.
+    inconsistent_interpolations:
+      none: Ingen inkonsistente interpolasjoner funnet.
+    missing:
+      details_title: Verdi i andre lokaliteter eller kilde
+      none: Ingen oversettelser mangler.
+    remove_unused:
+      confirm:
+        one: "%{count}-oversettelse vil bli fjernet fra %{locales}."
+        other: "%{count}-oversettelse vil bli fjernet fra %{locales}."
+      noop: Ingen ubrukte nøkler å fjerne
+      removed: Fjernet %{count}-nøkler
+    translate_missing:
+      translated: Oversatt %{count}-nøkler
+    unused:
+      none: Hver oversettelse er i bruk.
+    usages:
+      none: Ingen nøkkelbruk funnet.
+    yandex_translate:
+      errors:
+        no_api_key: Angi Yandex API-nøkkel via YANDEX_API_KEY miljøvariabel eller
+          translation.yandex_api_key i config/i18n-tasks.yml. Få nøkkelen på https://tech.yandex.com/translate.
+        no_results: Yandex ga ingen resultater.
+    openai_translate:
+      errors:
+        no_api_key: Angi OpenAI API-nøkkel via OPENAI_API_KEY miljøvariabel eller
+          translation.openai_api_key i config/i18n-tasks.yml. Få nøkkelen på https://openai.com/.
+        no_results: OpenAI ga ingen resultater.
+  views:
+    pagination:
+      first: "«Først"
+      last: Siste "
+      previous: "‹ Forrige"
+      next: Neste ›
+      truncate: "&hellip;"
+  administrate:
+    actions:
+      confirm: Er du sikker?
+      destroy: Ødelegge
+      edit: Redigere
+      edit_resource: Rediger %{name}
+      show_resource: Vis %{name}
+      new_resource: Ny %{name}
+      back: Tilbake
+    controller:
+      create:
+        success: "%{resource} ble opprettet."
+      destroy:
+        success: "%{resource} ble vellykket ødelagt."
+      update:
+        success: "%{resource} ble oppdatert."
+    fields:
+      has_many:
+        more: Viser %{count} av %{total_count}
+        none: Ingen
+    form:
+      error: feil
+      errors: "%{pluralized_errors} forbød at denne %{resource_name} ble lagret:"
+    navigation:
+      back_to_app: Tilbake til appen
+      worker: Bakgrunnsjobber
+    search:
+      clear: Tøm søk
+      label: Søk %{resource}
+  layouts:
+    admin:
+      application:
+        admin_intro: Dette admin-dashbordet gir direkte databasetilgang til Password
+          Pusher-applikasjonen. Vær forsiktig og vurder å ta en sikkerhetskopi før
+          du gjør endringer.
+        admin_note: 'Merk: Å ødelegge en post ødelegger også alle underordnede poster.
+          For eksempel vil ødeleggelse av en bruker også ødelegge alle pushede passord,
+          filer og nettadresser for den brukeren.'
+  accounts:
+    policy:
+      pwgen_syllables_count_help: Antall stavelser i det genererte passordet.
+      edit: Rediger policy
+      personal_policy: Personlig policy
+      personal_policy_help: En policy er et sett med regler som gjelder for alle push-er
+        som er opprettet av deg.
+      header_timed_expiration: Tidsbestemt utløp
+      expire_after_duration_min: Minimum varighet
+      expire_after_duration_min_help: Minimumsvarigheten før et push utløper.
+      expire_after_duration_max: Maksimal varighet
+      expire_after_duration_max_help: Maksimal varighet før et push utløper.
+      expire_after_duration_default: Standardvarighet
+      expire_after_duration_default_help: Standardvarigheten før et push utløper.
+      header_view_expiration: Visningsutløp
+      expire_after_views_min: Minimum antall visninger
+      expire_after_views_min_help: Minimum antall visninger før et push utløper.
+      expire_after_views_max: Maksimalt antall visninger
+      expire_after_views_max_help: Maksimalt antall visninger før et push utløper.
+        [Maks. 100]
+      expire_after_views_default: Standard antall visninger
+      expire_after_views_default_help: Standard antall visninger før et push utløper.
+      header_payload_limits: Innholdsgrenser
+      push_text_max: Maksimal tekststørrelse
+      push_text_max_help: Maksimal størrelse på tekst i en push. Målt i byte. [Maks.
+        1048576]
+      push_files_max: Maksimalt tillatte filer
+      push_files_max_help: Maksimalt antall filer tillatt i en push. [Maks. 100]
+      header_retrieval_step: Steg for 1-klikks-henting
+      enable_retrieval_step: Aktiver?
+      enable_retrieval_step_help: Vil du aktivere 1-klikks-henting for dette teamet?
+        Hvis deaktivert, vil dette alternativet være skjult og ikke bli brukt.
+      retrieval_step_default: Standardverdi
+      retrieval_step_default_help: Standardverdien for trinnalternativet 1-Click Retrieval.
+      retrieval_step_forced: Tvinge standardverdien?
+      retrieval_step_forced_help: Tvinger bruk av dette alternativet med standardverdien
+        for alle teammedlemmer. Det kan ikke endres av teammedlemmer.
+      hide_retrieval_step: Skjul alternativ?
+      hide_retrieval_step_help: Skjuler alternativet for 1-klikks-henting for teammedlemmene.
+        Dette er nyttig for å tvinge frem standardalternativet uten å vise det til
+        teammedlemmer.
+      header_deletable: Kan slettes av Mottaker
+      enable_deletable: Aktiver?
+      enable_deletable_help: Vil du aktivere dette alternativet for teamet? Hvis deaktivert,
+        vil dette alternativet være skjult og ikke bli brukt.
+      deletable_default: Standardverdi
+      deletable_default_help: Standardverdien for alternativet Slettbar av Mottaker.
+      deletable_forced: Tvinge standardverdien?
+      deletable_forced_help: Tvinger bruk av dette alternativet med standardverdien
+        for alle teammedlemmer. Det kan ikke endres av teammedlemmer.
+      hide_deletable: Skjul alternativ?
+      hide_deletable_help: Skjuler alternativet Slettbar av Mottaker fra teammedlemmene.
+        Dette er nyttig for å tvinge frem standardalternativet uten å vise det til
+        teammedlemmer.
+      hide_passphrase: Skjul alternativ?
+      hide_passphrase_help: Skjuler alternativet for Passordlås. Nyttig for å deaktivere
+        bruken av dette alternativet fullstendig.
+      enable_blur: Aktiver?
+      enable_blur_help: Sladding av innhold skjuler innholdet av informasjonen på
+        leveringssiden med hemmelig URL. Mottakere kan slå av og på skjuling av innhold
+        med et klikk for å vise de originale dataene.
+      header_passphrase: Passordlås
+      header_blur: Sladding av innhold
+      header_pwgen: Passordgenerering
+      save: Oppdater teampolicy
+      enable_pwgen: Aktiver?
+      enable_pwgen_help: Vil du aktivere alternativet for passordgenerering for dette
+        teamet? Hvis deaktivert, vil dette alternativet være skjult og ikke brukt.
+      pwgen_configurable: Konfigurerbar?
+      pwgen_configurable_help: Vil du tillate teammedlemmer å konfigurere passordgeneratoren?
+        Hvis deaktivert, vil alternativet tvinges til konfigurasjonen nedenfor og
+        kan ikke endres av teammedlemmer.
+      pwgen_has_numbers: Ta med tall?
+      pwgen_has_numbers_help: Ta med tall i det genererte passordet.
+      pwgen_title_cased: Tittel Cased?
+      pwgen_title_cased_help: Tittel de genererte passorddelene.
+      pwgen_use_separators: Bruker du separatorer?
+      pwgen_use_separators_help: Bruk skilletegn i det genererte passordet.
+      pwgen_consonants: Konsonanter
+      pwgen_consonants_help: Konsonantene som skal brukes i det genererte passordet.
+      pwgen_vowels: Vokaler
+      pwgen_vowels_help: Vokalene som skal brukes i det genererte passordet.
+      pwgen_separators: Delere
+      pwgen_separators_help: Separatorene som skal brukes i det genererte passordet.
+      pwgen_min_syllable_length: Minste stavelseslengde
+      pwgen_min_syllable_length_help: Minimumslengden på en stavelse i det genererte
+        passordet.
+      pwgen_max_syllable_length: Maksimal stavelseslengde
+      pwgen_max_syllable_length_help: Den maksimale lengden på en stavelse i det genererte
+        passordet.
+      pwgen_syllables_count: Stavelser teller
+      policy: Politikk
+      account_policy: Kontopolicy
+      account_policy_help: Kontoretningslinjene er et sett med regler som gjelder
+        for alle medlemmer av denne kontoen.
+      header_pull_passphrase: Passordlås
+      header_pull_retrieval_step: 1-klikk hentingstrinn
+      header_pull_timed_expiration: Tidsbestemt utløp
+      header_pwgen_options: Alternativer for passordgenerering
+      pull_close_after_duration_default: Standardvarighet
+      pull_close_after_duration_default_help: Når en forespørsel mottar et svar, er
+        dette standardvarigheten før den utløper.
+      pull_close_after_duration_max: Maksimal varighet
+      pull_close_after_duration_max_help: Når en forespørsel mottar et svar, er dette
+        maksimal varighet før den utløper.
+      pull_close_after_duration_min: Minimum varighet
+      pull_close_after_duration_min_help: Når en forespørsel mottar et svar, er dette
+        minimumsvarigheten før den utløper.
+      pull_enable_retrieval_step: Aktiver?
+      pull_enable_retrieval_step_help: Vil du aktivere 1-klikks-henting for dette
+        teamet? Hvis deaktivert, vil dette alternativet være skjult og ikke bli brukt.
+      pull_header_passphrase: Passordlås
+      pull_header_retrieval_step: 1-klikk hentingstrinn
+      pull_hide_passphrase: Skjul alternativ?
+      pull_hide_passphrase_help: Skjuler alternativet for Passordlås. Nyttig for å
+        deaktivere bruken av dette alternativet fullstendig.
+      pull_hide_retrieval_step: Skjul alternativ?
+      pull_hide_retrieval_step_help: Skjuler alternativet for 1-klikks-henting for
+        teammedlemmene. Dette er nyttig for å tvinge frem standardalternativet uten
+        å vise det til teammedlemmer.
+      pull_retrieval_step_default: Standardverdi
+      pull_retrieval_step_default_help: Standardverdien for trinnalternativet 1-Click
+        Retrieval.
+      pull_retrieval_step_forced: Tvinge standardverdien?
+      pull_retrieval_step_forced_help: Tvinger bruk av dette alternativet med standardverdien
+        for alle teammedlemmer. Det kan ikke endres av teammedlemmer.
+      require_2fa: Krever du tofaktorautentisering?
+      require_2fa_help: Krev at kontomedlemmer bruker tofaktorautentisering (2FA)
+        for å få tilgang til denne kontoen.
+      security_header_logins: Innloggingssikkerhet
+    account_invitations:
+      max_users: Du har nådd maksimalt antall brukere for teamet ditt. Kontakt oss
+        for å oppgradere og legge til flere brukere.
+    brand:
+      delivery_blur_tip: 'Tips: Du kan veksle mellom bruk av nyttelastsløring i Team
+        Policy-innstillingene.'
+      delivery_description: Leveringssiden er siden sluttbrukerne vil se når innholdet
+        i push-en vises.
+      delivery_preview: Nedenfor er en forhåndsvisning av når sluttbrukerne vil se
+        når <em>push-innholdet vises</em> .
+      expired_description: Den utløpte siden er siden sluttbrukerne vil se når push-en
+        har utløpt.
+      expired_preview: Nedenfor er en forhåndsvisning av hva sluttbrukerne vil se
+        når <em>push har utløpt</em> .
+      form:
+        logo_info: Følgende logo kan brukes til å tilpasse og merke push-sidene som
+          sluttbrukerne vil se.
+        no_logo: Ingen logo er lastet opp ennå. Last opp en logo for å komme i gang.
+        show_expiration: Vil du vise gjenværende varighet og visninger?
+        show_logo: Vis logo?
+      navbar:
+        brand: Logo
+        delivery: Leveranse
+        edit_brand: Rediger merke
+        edit_delivery: Rediger levering
+        edit_expired: Rediger utløpt
+        edit_passphrase: Rediger passordfrase
+        edit_preliminary: Rediger 1-klikk henting
+        expired: Utløpt
+        passphrase: Passordlås
+        preliminary: 1-klikk Hent
+        edit_request_: Rediger forespørsel klar
+        edit_request_delivery: Rediger forespørsel om levering
+        edit_request_ready: Rediger forespørsel klar
+        request_delivery: Be om levering
+        request_ready: Forespørselen er klar
+      passphrase_description: Passordfrasesiden brukes som en del av funksjonen Passphrase
+        Lockdown. Brukere som mottar push-en må angi en passordfrase for å få tilgang
+        til innholdet.
+      passphrase_preview: Nedenfor er en forhåndsvisning av hva sluttbrukerne vil
+        se når du <em>blir bedt om en passordfrase</em> .
+      preliminary_description: 1-klikks gjenfinningssiden bidrar til å unngå at roboter,
+        chattesystemer og skannere spiser opp visninger. Brukere som mottar push-meldingen
+        må klikke seg gjennom denne foreløpige siden for å få tilgang til innholdet.
+      preliminary_preview: Nedenfor er en forhåndsvisning av hva sluttbrukerne vil
+        se for <em>alternativet for 1-klikks hentingstrinn</em> .
+      preview:
+        payload: Dette er et eksempel på en nyttelast som vil bli vist til sluttbrukeren.
+        request_payload: Dette er et eksempel på en forespørsel som vil bli vist til
+          sluttbrukeren.
+      save: Lagre
+      tip_custom_domain: "<strong>Tips for profesjonelle abonnenter</strong> : Du
+        kan konfigurere et tilpasset domene i %{link}."
+      tip_team_page: Lagkonfigurasjonsside
+      header_lead: Her kan du tilpasse utseendet på pushene og forespørslene som sendes
+        til brukerne dine.
+      header_sublead: Tilpass logoen, meldinger, legg til lenker, veksle mellom synligheten
+        av elementer og mer.
+      request_delivery_description: Leveringssiden er siden sluttbrukerne vil se når
+        de mottar en forespørsel.
+      request_delivery_preview: Nedenfor er en forhåndsvisning av en forespørsel.
+      request_ready_description: Klar-siden vises når en forespørsel allerede har
+        mottatt svar.
+      request_ready_preview: Nedenfor er en forhåndsvisning av forespørselsklar-siden
+        for sluttbrukere.
+      title: Push & Request Branding
+    brands:
+      form:
+        documentation: dokumentasjon
+        domain_documentation: Se %{link} for mer informasjon om konfigurering av et
+          tilpasset domene.
+        domain_note_1: "<strong>Skriv inn domenenavnet</strong> uten protokollen eller
+          banen som <code>pwp.example.com</code> ."
+        domain_note_2: "<strong>Konfigurer DNS-innstillingene</strong> : Opprett en
+          ALIAS-post som peker til <code>domain.pwpush.com</code> ."
+        domain_note_3: Det kan ta opptil 24 timer før DNS-innstillingene sprer seg.
+        domain_note_4: Når du har konfigurert DNS-innstillingene, kan du <strong>teste
+          domenet</strong> ved å gå til %{link} i nettleseren din. Du bør se en grønn
+          skjerm som signaliserer suksess.
+        domain_placeholder: 'Pro-abonnenter: Bruk Password Pusher for å levere push
+          med firmaets domene.'
+    edit_policy:
+      edit_policy: Rediger policy
+    form:
+      custom_domain_notes: Egendefinerte domenemerknader
+    form_brand:
+      branding: Merkevarebygging
+  tag_line: Gå videre. Send e-post til et annet passord.
+  app_name: Passord pusher
+  application:
+    card_newsletter:
+      enter_email: Skriv inn din email...
+      subscribe: Abonnere
+      get_the_newsletter: Få nyhetsbrevet
+      updates_on: Oppdateringer om store utgivelser, sikkerhetsproblemer, funksjoner,
+        integrasjoner, tips og mer.
+    cookie_consent:
+      notice: Nettleserinformasjonskapsler hjelper til med å få dette verktøyet til
+        å fungere. Ved å bruke den godtar du bruken av disse informasjonskapslene.
+    footer:
+      best_practices: Beste praksis
+      docker: Docker containere
+      faq: FAQ
+      feedback: Tilbakemelding
+      github: GitHub
+      key_generator: Nøkkelgenerator
+      newsletter: Nyhetsbrev
+      password_generator: Passordgenerator
+      api_docs: API-dokumentasjon
+      features: Egenskaper
+      languages: Språk
+      pricing: Prissetting
+      support: Støtte
+    pw_generator_modal:
+      cancel: Avbryt
+      configure: Konfigurer passordgenerering
+      consonants: Konsonanter
+      generate_password: Generer passord
+      include_numbers: Ta med tall
+      load_preset: Last inn en forhåndsinnstilling
+      max_syllable_length: Maksimal stavelseslengde
+      min_syllable_length: Minste stavelseslengde
+      num_syllables: Antall stavelser
+      reset: Tilbakestill til standardinnstillinger
+      save: Lagre
+      separators: Delere
+      test: Test generasjon
+      test_area: Testområde
+      use_separators: Bruk delere
+      use_titlecase: Bruk tittelsak
+      vowels: Vokaler
+    navbar:
+      edit_policy: Politikk
+      branding: Merkevarebygging
+    secret_url_bar:
+      secret_link_lang: Hemmelig lenkespråk
+      autodetect: Automatisk gjenkjenning
+    left_nav:
+      pushes: Dytter
+      pulls: Forespørsler ᴮᴱᵀᴬ
+    right_nav:
+      features: Egenskaper
+    push_expiration:
+      will_expire_in: 'Linken for filnedlasting ovenfor vil utløpe om:'
+      you_can_refresh: Du kan oppdatere siden for å gjenskape nye nedlastingskoblinger
+        hvis visninger gjenstår.
+    layout:
+      blank_brand:
+        description: Denne koblingen er satt til å utløpe automatisk og selvslette
+          etter en angitt tid eller antall visninger.
+        title: Du har fått tilsendt en hemmelig lenke.
+    policy_navbar:
+      password_generator: Passordgenerator
+      pushes: Dytter
+      requests: Forespørsler
+      security: Sikkerhet
+  audit_logs:
+    audit_log:
+      log_created: Push opprettet på %{date} av %{user}
+      log_expired: Push utløp manuelt på %{date} av %{user}
+      log_failed_view: Mislykket visningsforsøk fra IP-adressen %{ip} på %{date} av
+        %{user}
+      log_viewed: Vellykket visning fra IP-adresse %{ip} på %{date} av %{user}
+      unknown: Ukjent
+      log_failed_passphrase: Mislykket passordfraseforsøk på %{date} av %{user}
+      ip_address: 'IP-adresse:'
+      referrer: 'Henviser:'
+      user_agent: 'Brukeragent:'
+      automatic: Automatisk
+      log_close: Stengt på %{date} av %{user}. Svar slettet.
+      log_response: Mottakersvar mottatt %{date} av %{user}
+      log_retrieve: Hent siden vist på %{date} av %{user}
+  dashboard:
+    show:
+      detail: Detalj
+      event: Begivenhet
+      when: Når
+  duration:
+    format_d:
+      one: 1 dag
+      other: "%{count} dager"
+    format_dhm: "%{days} dag(er), %{hours} time(r) og %{minutes} minutt(er)"
+    format_h:
+      one: 1 time
+      other: "%{count} time(r)"
+    format_hm: "%{hours} time(r) og %{minutes} minutt(er)"
+    format_m:
+      one: 1 minutt
+      other: "%{count} minutt(er)"
+  feedbacks:
+    create:
+      feedback_sent: Tilbakemelding sendt! Vi vil komme tilbake til deg så snart som
+        mulig.
+      failed_spam_test: Vi beklager, men du mislyktes i spam-kontrollen. Du kan prøve
+        å kontakte oss på Github i stedet.
+      failed_to_send: Kunne ikke sende tilbakemelding. Noe var galt. Vennligst prøv
+        igjen eller kontakt oss på Github.
+    new:
+      email: E-post
+      have_idea: Har du en idé eller et ønske? Noe du ikke liker? Vil du hjelpe til?
+        Vi vil høre det!
+      math_question: Hva er hundre minus 3?
+      send_feedback: Send tilbakemelding
+      tip: 'Tips: Kopier meldingen til utklippstavlen i den usannsynlige sjansen for
+        at innsending mislykkes.'
+      your_name: Navnet ditt
+  none: Ingen
+  pages:
+    about:
+      about_1: Password Pusher er et verktøy som brukes til å dele passord og annen
+        sensitiv informasjon med andre mennesker på en sikker måte.
+      about_2: Med Password Pusher kan du opprette en unik engangs-URL som utløper
+        etter en viss tid eller etter at den har blitt åpnet et visst antall ganger,
+        og sikrer at informasjonen din forblir privat og sikker.
+      about_3: Den brukes ofte av enkeltpersoner og organisasjoner til å dele påloggingsinformasjon
+        eller andre sensitive data med kolleger, klienter eller partnere.
+      about_4: Password Pusher er en enkel og praktisk løsning for sikker deling av
+        passord uten behov for e-post eller andre mindre sikre kommunikasjonsmetoder.
+      about_pwpush: Om Password Pusher
+      hosted_at_html: Hosted på <a href="https://pwpush.com">pwpush.com</a> eller
+        du kan kjøre din egen private instans hvor du vil.
+      my_name: Mitt navn er Peter Giacomo Lombardo. Du finner meg på %{linkedin},
+        %{github} eller %{blog}.
+      source_avail_html: Kildekoden er <a href="https://github.com/pglombardo/PasswordPusher"
+        target="_blank" rel="noopener noreferrer">tilgjengelig på GitHub</a> . Det
+        er åpen kildekode og gratis for alle å bruke, gjennomgå eller endre.
+      the_author: Forfatteren
+  pushes:
+    access:
+      incorrect: Passordet er feil. Vennligst prøv igjen eller kontakt personen eller
+        organisasjonen som sendte deg denne linken.
+    audit:
+      1click_retrieval_step: 1-klikk hentingstrinn
+      1click_retrieval_step_help: Bidrar til å unngå at chatsystemer og URL-skannere
+        spiser opp visninger.
+      active: Aktiv
+      attached_files: Vedlagte filer
+      audit_log_for: Revisjonslogg for %{push_id}
+      contains_text: Inneholder tekst
+      contains_text_help: Har et tekstinnhold blitt lagt til denne pushen?
+      current_status: Nåværende status
+      deletable_by_viewers: Slettbar av Mottakere
+      deletable_by_viewers_help: Dette lar sluttbrukere slette innholdet når det er
+        hentet.
+      end_audit_log: Slutt på revisjonslogg
+      event_log: Revisjonslogg
+      expire_after: 'Utløper etter:'
+      expire_after_time_help: Pushet utløper etter denne tiden fra opprettelsen.
+      expire_after_view_help: Pushet utløper etter dette antallet visninger.
+      expire_now: Utløper nå
+      expire_now_confirm: Dette vil utløpe denne hemmelige koblingen og slette alt
+        relatert innhold fra databasen for alltid. Revisjonsloggen (inkludert fremtidige
+        forsøk på visninger) vil fortsatt opprettholdes fremover. Er du sikker?
+      expired: Utløpt
+      failed_view_attempts: Mislykkede visningsforsøk
+      failed_view_attempts_help: Antall forsøk på å se denne push etter utløp.
+      filename: Filnavn
+      files_deleted: Alle tidligere vedlagte filer er slettet, eller det var ingen
+        vedlagt."
+      log_note: Når push mottar aktivitet, vil en logg over hver med identifiserende
+        informasjon vises her.
+      message_length: Meldingslengde
+      message_length_help: Lengden på det vedlagte tekstinnholdet.
+      none: Ingen
+      num_files_attached: Antall filer vedlagt
+      num_files_attached_help: Antall filer knyttet til denne push.
+      passphrase_lock: Passphrase Lockdown
+      passphrase_lock_help: Krev at mottakerne skriver inn en passordfrase for å se
+        denne push-en.
+      push_date: Trykket på %{date}
+      reference_note: Referansemerknad
+      secret_url: Hemmelig URL for denne push
+      size: 'Størrelse: %{size}'
+      start_audit_log: Start av revisjonslogg
+      state: Stat
+      state_help_active: Aktiv og fortsatt tilgjengelig for visning.
+      state_help_expired: Push-innholdet er slettet og den hemmelige URL-en utløpt.
+      successful_views: Vellykkede visninger
+      successful_views_help: Antall ganger push-en har blitt sett.
+      time_remaining: Gjenstående tid
+      time_remaining_help: Hvor lang tid som gjenstår før push-en utløper.
+      title: Trykk på revisjonslogg
+      visible_to: Bare synlig for deg
+      preview: Del denne push
+      not_owner: Det pushet tilhører ikke deg.
+      push_creation: Opprettet på %{date} av %{name}
+    copy_to_clipboard: Kopier til utklippstavle
+    deleted: Slettet
+    expiration_html: Denne hemmelige lenken og alt innhold vil bli slettet i <strong>%{duration}</strong>
+      eller <strong>%{count} flere visninger</strong> , avhengig av hva som inntreffer
+      først.
+    expire:
+      expired: Push-innholdet er slettet og den hemmelige URL-en utløpt.
+      not_deletable: Den push-en kan ikke slettes av mottakere.
+      already_expired: Den push har allerede utløpt.
+    form:
+      12_hours: 12 timer
+      15_minutes: 15 minutter
+      1_day: 1 dag
+      1_hour: 1 time
+      1_month: 1 måned
+      1_week: 1 uke
+      1click: Bruk et 1-klikks gjenopprettelsestrinn
+      1click_tip: Bidrar til å unngå at chattesystemer og skannere spiser opp visninger.
+      2_days: 2 dager
+      2_months: 2 måneder
+      2_weeks: 2 uker
+      30_minutes: 30 minutter
+      3_days: 3 dager
+      3_months: 3 måneder
+      3_weeks: 3 uker
+      45_minutes: 45 minutter
+      4_days: 4 dager
+      5_days: 5 dager
+      6_days: 6 dager
+      6_hours: 6 timer
+      audit_tip: Når du er logget på, holdes en revisjonslogg over aktivitet og er
+        tilgjengelig på ubestemt tid.
+      deletable: Tillat umiddelbar sletting
+      deletable_tip: Tillat brukere å slette denne push når den er hentet.
+      encryption_tip: Innhold er kryptert før lagring og er kun tilgjengelig for de
+        med den hemmelige lenken.
+      expiration_label: 'Utløp denne push og slett etter:'
+      expiration_tip: Når den er utløpt, slettes alt innhold og filer i push umiddelbart
+        og fullstendig.
+      note_label: Referansemerknad
+      note_placeholder: Et privat notat for å hjelpe med å huske hvem eller hva dette
+        pushet er for.
+      passphrase_placeholder: Krev at mottakerne skriver inn en passordfrase for å
+        se denne push-en.
+      password_tip: 'Tips: Skriv bare inn et passord i boksen. Annen identifiserende
+        informasjon kan kompromittere sikkerheten.'
+      payload_placeholder: Skriv inn passordet, teksten eller URL-en du vil pushe...
+      push_it: Push den!
+      upload_limit: Du kan laste opp opptil 10 filer per trykk.
+      view: Utsikt
+      views: Visninger
+      payload_url_placeholder: Skriv inn nettadressen du vil omdirigere til...
+      url_push_tip: Den opprettede push vil omdirigere til URL-en som er oppgitt.
+      account_policy: Kontopolicy
+      passphrase_lockdown: Passphrase Lockdown
+      policy_tip: 'Tips: Du kan angi standardinnstillinger og mer i %{link}.'
+      short_expiration_tip: Korte utløpstider og visningstall reduserer eksponeringsrisikoen.
+      qr_payload_placeholder: Skriv inn opptil 1024 alfanumeriske tegn...
+      qr_tip: Kun alfanumeriske tegn. Opptil 1024 tegn er tillatt.
+    index:
+      actions: Handlinger
+      clear_filters: Tøm filtre
+      created: Opprettet
+      file_count: Filer
+      note: Merk
+      nothing_here: Det er ingenting her ennå.
+      push_id: Push ID
+      pushes: Dytter
+      active: Aktiv
+      expired: Utløpt
+      all: Alle
+      remaining: Gjenstående
+      team_pushes: Team skyver
+      pushes_help: Denne siden viser alle push opprettet av deg.
+      team_pushes_help: Denne siden viser alle push opprettet av alle medlemmene av
+        kontoen.
+    'no': Nei
+    none: Ingen
+    passphrase:
+      enter_passphrase: Skriv inn passordfrase
+      go: Gå
+      placeholder: Skriv inn den hemmelige passordfrasen som følger med denne nettadressen
+      tip: Skriv inn den hemmelige passordfrasen
+    payload: Innhold
+    preliminary:
+      click_proceed: Klikk her for å fortsette
+      title: Klikk for å fortsette
+    preview:
+      link_lang_tip: 'Tips: Sender du til en internasjonal bruker? Endre det hemmelige
+        lenkespråket ved å bruke rullegardinmenyen til høyre for URL-en.'
+      or: eller
+      push_another: Skyv en annen
+      push_created: Din push er opprettet.
+      use_link_to_share: 'Bruk denne hemmelige lenken for å dele den:'
+      view_push_now: Se denne push nå
+      will_burn_view: "(vil brenne en visning)"
+      example: Eksempel
+      generate: generere
+      include_id: Inkluder ID
+      message_example: Vennligst sørg for at dette dokumentet er sikkert destruert
+        etter henting for å beskytte sensitiv informasjon og opprettholde konfidensialitet.
+      message_placeholder: Valgfri egendefinert melding
+      print_and_share: Skriv ut og del
+      print_and_share_tip: Generer en utskrivbar side for sluttbrukere
+      show_expiration: Vis utløpsdetaljer
+      link_lang_auto: Alternativt vil automatisk gjenkjenning velge et språk basert
+        på nettleserinnstillingene for sluttbrukeren.
+    provide_text_or_file: For å lage en push må du enten gi tekst, legge ved en fil
+      eller begge deler.
+    push:
+      expired: Utløpt
+      none: Ingen
+      title: Ny Push
+      unknown: Ukjent
+    settings: Innstillinger
+    show:
+      click_to_reveal: Innholdet er uskarpt. Klikk nedenfor for å avsløre det.
+      delete_now: Slett denne hemmelige lenken nå
+      delete_now_confirm: Dette vil utløpe denne hemmelige koblingen og slette alt
+        relatert innhold fra databasen for alltid. Er du sikker?
+      download_file: Last ned fil
+      obtain: Hent og lagre dette innholdet på en sikker måte ved å bruke en passordbehandler
+        og/eller kryptert lagring. Husk å slette alle data som ikke lenger er nødvendige.
+      open_file: Åpen fil
+      your_link: Din hemmelige lenke
+      intro: Følgende innhold er sendt til deg.
+    show_expired:
+      expired_help: Om nødvendig, vennligst kontakt personen eller organisasjonen
+        som ga deg denne hemmelige nettadressen.
+      expired_message: Vi beklager, men denne hemmelige lenken er utløpt.
+      link_expired: Din hemmelige lenke har utløpt
+    view:
+      one: 1 visning
+      other: "%{count} visninger"
+    view_audit_log: Se revisjonslogg
+    whichever: "(det som kommer først)"
+    'yes': Ja
+    payload_too_large: Nyttelasten er for stor. Du kan bare skyve opp til %{count}
+      byte.
+    too_many_files: Du kan bare legge ved opptil %{count} filer per trykk.
+    navbar:
+      files: Filer
+      text: Passord og tekst
+      url: URL-er
+      qr: QR-koder ᴮᴱᵀᴬ
+    new:
+      title: Send et passord, tekst eller fil på en sikker måte
+    create:
+      premium_required: Du må abonnere for å legge ved filer.
+      qr_max_length: Nyttelasten for QR-koden er for stor. Du kan bare skyve opp til
+        %{count} byte.
+    update:
+      successful: Push ble oppdatert.
+  static:
+    about:
+      about_1: Password Pusher er et verktøy som brukes til å dele passord og annen
+        sensitiv informasjon med andre mennesker på en sikker måte.
+      about_2: Med Password Pusher kan du opprette en unik engangs-URL som utløper
+        etter en viss tid eller etter at den har blitt åpnet et visst antall ganger,
+        og sikrer at informasjonen din forblir privat og sikker.
+      about_3: Den brukes ofte av enkeltpersoner og organisasjoner til å dele påloggingsinformasjon
+        eller andre sensitive data med kolleger, klienter eller partnere.
+      about_4: Password Pusher er en enkel og praktisk løsning for sikker deling av
+        passord uten behov for e-post eller andre mindre sikre kommunikasjonsmetoder.
+      about_5: Hosted på %{pwpush_link} eller du kan kjøre din egen private instans
+        hvor du vil.
+      about_6: Kildekoden er tilgjengelig på %{github_link}. Det er åpen kildekode
+        og gratis for alle å bruke, gjennomgå eller endre.
+      age_body: Den første git-forpliktelsen til Password Pusher var <strong>28. desember
+        2011</strong> . pwpush.com gikk live kort tid etter.
+      age_title: Mer enn %{years_count} år gammel
+      author_1: Mitt navn er Peter Giacomo Lombardo. Du finner meg på %{linkedin},
+        %{github} eller %{blog}.
+      author_2: For oppdateringer, følg Password Pusher på %{twitter} (eller min %{twitter_personal})
+        eller abonner på %{newsletter}.
+      github: Github
+      pwpush_domain: pwpush.com
+      section_about: Om
+      section_author: Forfatteren
+      title: Om Password Pusher
+      birthday: Fødselsdag
+      original_theme: Det originale temaet
+      original_theme_body: Det originale nettstedets design besto av en mørk bakgrunn
+        med en fet gul skrift.
+    generate_key:
+      env_var: Du kan bruke denne nøkkelen til applikasjonen din ved å angi miljøvariabelen
+      generate_key: Generer nøkkel
+      generated: Generert krypteringsnøkkel
+      intro: Denne siden brukes som et hjelpeverktøy for å generere en tilfeldig krypteringsnøkkel
+        for selvhostede forekomster av Password Pusher.
+      intro_2: Password Pusher krypterer sensitive data i databasen. Selv om det er
+        en standardnøkkel inkludert, er det best å bruke din egen tilpassede krypteringsnøkkel.
+      intro_3: Med hver oppdatering genererer denne siden en ny krypteringsnøkkel.
+        Du kan bruke den tilfeldig genererte koden nedenfor for å konfigurere Password
+        Pusher-forekomsten.
+      note_1: Hvis en krypteringsnøkkel ikke er oppgitt, brukes en standardnøkkel.
+      note_2: Den beste sikkerheten for private forekomster av Password Pusher er
+        å bruke din egen tilpassede krypteringsnøkkel, selv om det ikke er nødvendig.
+      note_3: Risikoen ved å bruke standardnøkkelen reduseres hvis du holder forekomsten
+        sikker og push-utløpene korte. f.eks. 1 dag/1 visning versus 100 dager/100
+        visninger.
+      note_4: Når et push utløper, slettes alle krypterte data i det pushet.
+      note_5: Endring av en krypteringsnøkkel der gamle pusher allerede eksisterer,
+        vil gjøre disse eldre pushene uleselige. Med andre ord vil innholdet bli forvrengt.
+        Nye pusher fremover vil fungere fint.
+      note_6: 'Nøkkelgenerering kan også gjøres fra kommandolinjen i applikasjonskilden
+        ved å utføre:'
+      notes: 'Merknader:'
+      reload: Last inn denne siden på nytt for å generere en ny nøkkel på nytt.
+      title: Generer en krypteringsnøkkel
+      explanation: Forklaring
+    password_generator:
+      push_it: Trykk på dette passordet
+      pwgen_title: Passordgenerator
+    features:
+      intro_4: 'Det er fire forskjellige varianter av Password Pusher som passer dine
+        behov: <strong>Open Source</strong> , <strong>Premium</strong> , <strong>Pro</strong>
+        og <strong>Self-Hosted</strong> .'
+      intro_5: Nedenfor er en funksjonsmatrise som skisserer hovedtrekkene til hver
+        smak.
+      title: Egenskaper
+    languages:
+      lang_description: Nedenfor er språkene som Password Pusher støtter. Det er 30
+        støttede språk. Når du er selvhosting, kan du aktivere eller deaktivere språk
+        for din forekomst.
+      languages: Språk
+      pwp_languages: Passord pusher språk
+    pricing:
+      coming_soon: En selvvertsbasert plan for Pro-funksjonene kommer snart.
+      custom_subhead: Støtte åpen kildekode. Få premiumfunksjoner.
+      feature_pipeline: Premium-funksjoner flyttes med jevne mellomrom til åpen kildekode-utgaven.
+      footer_note: Abonnementer er for pwpush.com og finansierer utviklingen av åpen
+        kildekode-utgaven.
+  zero_minutes: 0 minutter
+  users:
+    agreements:
+      privacy_policy:
+        privacy_policy: Personvernerklæring
+      terms_of_service:
+        terms_of_service: Vilkår for bruk
+  confirmation_go: Klikk her for å bekrefte kontoen din
+  admin:
+    config:
+      menu_item: Konfigurasjon
+      overview:
+        description: Innstillingene i denne delen brukes til å konfigurere applikasjonen
+          globalt. Når endringer er gjort, kan programmet startes på nytt for å bruke
+          de nye innstillingene.
+        subtitle: Her kan du tilpasse innstillingene for Password Pusher.
+        title: Applikasjonskonfigurasjon
+      reset: Tilbakestill til standardinnstillinger
+      reset_confirm: Er du sikker på at du vil tilbakestille konfigurasjonen på denne
+        siden til standardverdiene? Dette vil ikke påvirke innstillingene på andre
+        sider.
+      save: Lagre
+  models:
+    pwp_config:
+      app_config: Applikasjonskonfigurasjon
+      as_container_hint: Beholderen som skal brukes til å lagre filer.
+      as_container_label: AS Container
+      as_storage_access_key_hint: Lagringstilgangsnøkkelen som skal brukes for autentisering
+        med AS-serveren.
+      as_storage_access_key_label: AS Storage Access Key
+      as_storage_account_name_hint: Lagringskontonavnet som skal brukes til å lagre
+        filer.
+      as_storage_account_name_label: AS lagringskontonavn
+      config_encryption_key_hint: Krypteringsnøkkelen som skal brukes til å kryptere
+        og dekryptere disse konfigurasjonsdataene.
+      config_encryption_key_label: Konfigurer krypteringsnøkkel
+      dark_logo_hint: Logo til bruk for det mørke temaet. Sørg for at fillagring er
+        riktig konfigurert først.
+      dark_logo_label: Nettstedlogo med mørkt tema
+      default_locale_hint: Standardspråket som skal brukes for applikasjonen.
+      default_locale_label: Standardspråk
+      email_raise_delivery_errors_hint: Angir om en feilmelding skal oppstå hvis e-postlevering
+        ikke kan fullføres. Den er som standard sant.
+      email_raise_delivery_errors_label: Hev leveringsfeil
+      email_subtitle: Her kan du tilpasse hvordan Password Pusher sender e-poster.
+      email_title: E-postkonfigurasjon
+      enabled_languages_hint: De valgte språkene nedenfor vil være tilgjengelige for
+        alle brukere.
+      enabled_languages_label: Aktiverte språk
+      encryption_subtitle: Her kan du tilpasse krypteringsinnstillingene for Password
+        Pusher.
+      encryption_title: Krypteringskonfigurasjon
+      file_subtitle: Her kan du tilpasse hvordan Password Pusher lagrer opplastede
+        filer.
+      file_title: Konfigurasjon av fillagring
+      from_address_hint: E-postadressen som skal brukes som avsender av e-post.
+      from_address_label: Fra adresse
+      gcs_bucket_hint: Bøtten som skal brukes til å lagre filer.
+      gcs_bucket_label: GCS bøtte
+      gcs_credentials_hint: Påloggingsinformasjonen som skal brukes for autentisering
+        med GCS-serveren.
+      gcs_credentials_label: GCS-legitimasjon
+      gcs_gsa_email_hint: GSA-e-posten som skal brukes for autentisering med GCS-serveren.
+      gcs_gsa_email_label: GCS GSA e-post
+      gcs_iam_hint: IAM som skal brukes for autentisering med GCS-serveren.
+      gcs_iam_label: GCS IAM
+      gcs_project_hint: Prosjektet som skal brukes til å lagre filer.
+      gcs_project_label: GCS-prosjektet
+      language_subtitle: Her kan du tilpasse språkene som Password Pusher støtter.
+      language_title: Språkkonfigurasjon
+      light_logo_hint: Logo til bruk for lystemaet. Sørg for at fillagring er riktig
+        konfigurert først.
+      light_logo_label: Lett tema nettstedlogo
+      login_subtitle: Her kan du tilpasse hvordan Password Pusher håndterer pålogginger.
+      login_tip: Tupp
+      login_tip_body: 'Bruk dette verktøyet til å teste e-postmønstrene dine:'
+      login_title: Innloggingskonfigurasjon
+      override_base_url_hint: Brukes til å fremtvinge basis-URL-en til genererte hemmelige
+        URL-er.
+      override_base_url_label: Overstyr base-URL
+      push_encryption_key_hint: Krypteringsnøkkelen som skal brukes til å kryptere
+        og dekryptere push.
+      push_encryption_key_label: Trykk på krypteringsnøkkel
+      s3_access_key_id_hint: Tilgangsnøkkel-IDen som skal brukes for autentisering
+        med S3-serveren.
+      s3_access_key_id_label: S3 tilgangsnøkkel-ID
+      s3_bucket_hint: Bøtten som skal brukes til å lagre filer.
+      s3_bucket_label: S3 bøtte
+      s3_endpoint_hint: Endepunktet til S3-serveren som skal brukes til å lagre filer.
+      s3_endpoint_label: S3 endepunkt
+      s3_region_hint: Regionen til S3-serveren som skal brukes til å lagre filer.
+      s3_region_label: S3-regionen
+      s3_secret_access_key_hint: Den hemmelige tilgangsnøkkelen som skal brukes for
+        autentisering med S3-serveren.
+      s3_secret_access_key_label: S3 hemmelig tilgangsnøkkel
+      signup_email_regexp_hint: E-poster som ikke samsvarer med dette mønsteret vil
+        bli avvist.
+      signup_email_regexp_label: Registrering E-post Regexp
+      site_name_hint: Navnet på nettstedet som skal brukes i topp- og bunnteksten.
+      site_name_label: Navn på nettsted
+      site_tagline_hint: Slagordet til nettstedet som skal brukes i topp- og bunntekst.
+      site_tagline_label: Site Tagline
+      smtp_address_hint: Adressen til SMTP-serveren som skal brukes til å sende e-post.
+      smtp_address_label: SMTP-serveradresse
+      smtp_authentication_hint: Type autentisering som skal brukes med SMTP-serveren.
+      smtp_authentication_label: SMTP-autentiseringstype
+      smtp_domain_hint: Domenet til SMTP-serveren som skal brukes til å sende e-post.
+      smtp_domain_label: SMTP-domene
+      smtp_enable_starttls_auto_hint: Oppdager om STARTTLS er aktivert i SMTP-serveren
+        din og begynner å bruke den. Den er som standard sant.
+      smtp_enable_starttls_auto_label: SMTP Automatisk STARTTLS
+      smtp_enable_starttls_hint: Bruk STARTTLS når du kobler til SMTP-serveren din
+        og mislykkes hvis den ikke støttes. Den er som standard falsk.
+      smtp_enable_starttls_label: SMTP Aktiver STARTTLS
+      smtp_openssl_verify_mode_hint: OpenSSL-verifiseringsmodusen som skal brukes
+        når du kobler til SMTP-serveren.
+      smtp_openssl_verify_mode_label: SMTP OpenSSL Verify Mode
+      smtp_password_hint: Passordet som skal brukes for autentisering med SMTP-serveren.
+      smtp_password_label: SMTP-passord
+      smtp_port_hint: Porten til SMTP-serveren som skal brukes til å sende e-post.
+      smtp_port_label: SMTP-port
+      smtp_user_name_hint: Brukernavnet som skal brukes for autentisering med SMTP-serveren.
+      smtp_user_name_label: SMTP-brukernavn
+      storage_hint: Lagringstypen som skal brukes til å lagre filer. Den er som standard
+        :local.
+      storage_label: Oppbevaring
+  notifiers:
+    pull:
+      response_notifier:
+        message: Din forespørsels-ID %{url_token} har mottatt et svar. Den vil bli
+          stengt og utløpt i %{remaining}.
+        now_closed_message: Din forespørsels-ID %{url_token} har mottatt et svar.
+          Søknaden har siden blitt lukket.
+        email:
+          description_html: Forespørsels-ID <strong>%{url_token}</strong> har mottatt
+            et svar. Den vil bli stengt og utløpt i <strong>%{remaining}</strong>
+            .
+          html_header: Din forespørsel har mottatt et svar.
+          subject: Din forespørsel har mottatt svar
+          view_audit_log: Se forespørsel
+  pulls:
+    access:
+      incorrect: Passordet er feil. Vennligst prøv igjen eller kontakt personen eller
+        organisasjonen som sendte deg denne linken.
+    audit:
+      1click_retrieval_step: 1-klikk hentingstrinn
+      1click_retrieval_step_help: Bidrar til å unngå at chatsystemer og URL-skannere
+        spiser opp visninger.
+      active: Aktiv
+      attached_files: Vedlagte filer
+      attached_files_help: Har filer blitt lagt ved denne forespørselen?
+      audit_log_for: Revisjonslogg for %{pull_id}
+      closed: Lukket
+      contains_text: Inneholder tekst
+      contains_text_help: Har en tekstnyttelast blitt lagt til denne forespørselen?
+      created: Opprettet
+      created_by: Laget av %{user}
+      current_status: Nåværende status
+      deletable_by_viewers: Slettbar av Mottakere
+      deletable_by_viewers_help: Dette lar sluttbrukere slette innholdet når det er
+        hentet.
+      detail: Detalj
+      end_audit_log: Slutt på revisjonslogg
+      event: Begivenhet
+      event_log: Revisjonslogg
+      expire_after: 'Utløper etter:'
+      expire_after_time_help: Forespørselen utløper etter denne tidsperioden fra opprettelsen.
+      expire_after_view_help: Forespørselen utløper etter dette antallet visninger.
+      expire_now: Utløper nå
+      expire_now_confirm: Dette vil utløpe denne hemmelige koblingen og slette alt
+        relatert innhold fra databasen for alltid. Revisjonsloggen (inkludert fremtidige
+        forsøk på visninger) vil fortsatt opprettholdes fremover. Er du sikker?
+      expired: Utløpt
+      failed_view: Mislykket visningsforsøk
+      failed_view_attempts: Mislykkede visningsforsøk
+      failed_view_attempts_help: Antall forsøk på å se denne forespørselen etter utløp.
+      filename: Filnavn
+      files_deleted: Alle tidligere vedlagte filer er slettet, eller det var ingen
+        vedlagt."
+      log_note: Etter hvert som forespørselen mottar aktivitet, vil en logg over hver
+        med identifiserende informasjon vises her.
+      manual_expiration: Manuell utløp
+      message_length: Meldingslengde
+      message_length_help: Lengden på det vedlagte tekstinnholdet.
+      none: Ingen
+      num_files_attached: Antall filer vedlagt
+      num_files_attached_help: Antall filer vedlagt denne forespørselen.
+      open: Forespørsel åpen
+      passphrase_lock: Passphrase Lockdown
+      passphrase_lock_help: Krev at mottakerne oppgir en passordfrase for å se denne
+        forespørselen.
+      payload: Innhold
+      preview: Dele
+      pull_creation: Opprettet på %{date} av %{name}
+      ready: Svar klar
+      reference_note: Referansemerknad
+      request_date: Opprettet på %{date}
+      retrieve: Hent
+      secret_url: Hemmelig URL for denne forespørselen
+      size: 'Størrelse: %{size}'
+      start_audit_log: Start av revisjonslogg
+      start_log: Start av revisjonslogg
+      state: Stat
+      state_help_closed: Forespørselen er lukket og svarinnholdet er slettet.
+      state_help_open: Forespørselen er åpen og har ikke mottatt svar ennå.
+      state_help_ready: Mottakeren har svart på forespørselen og innholdet er klart
+        for henting.
+      successful_view: Vellykket visning
+      successful_views: Vellykkede visninger
+      successful_views_help: Antall ganger forespørselen har blitt sett.
+      time_remaining: Gjenstående tid
+      time_remaining_help: Hvor lang tid som gjenstår før forespørselen lukkes og
+        innhold slettes.
+      title: 'Revisjonslogg for forespørsels-ID: %{pull_id}'
+      visible_to: Bare synlig for deg
+      when: Når
+    close:
+      done: Svaret ble slettet og forespørselen ble lukket.
+    copy_to_clipboard: Kopier til utklippstavle
+    create:
+      need_subscription: Du må abonnere for å legge ved filer.
+    day:
+      one: 1 dag
+      other: "%{count} dager"
+    deleted: Slettet
+    expiration_html: Denne hemmelige lenken og alt innhold vil bli slettet i <strong>%{duration}</strong>
+      eller <strong>%{count} flere visninger</strong> , avhengig av hva som inntreffer
+      først.
+    expire:
+      already_expired: Den forespørselen er allerede utløpt.
+      expired: Forespørselsinnholdet er slettet og den hemmelige nettadressen er utløpt.
+      not_deletable: Den forespørselen kan ikke slettes av seerne.
+    form:
+      12_hours: 12 timer
+      15_minutes: 15 minutter
+      1_day: 1 dag
+      1_hour: 1 time
+      1_month: 1 måned
+      1_week: 1 uke
+      1click: Bruk et 1-klikks gjenopprettelsestrinn
+      1click_tip: Hjelper med å unngå chat-systemer og URL-skannere
+      2_days: 2 dager
+      2_months: 2 måneder
+      2_weeks: 2 uker
+      30_minutes: 30 minutter
+      3_days: 3 dager
+      3_months: 3 måneder
+      3_weeks: 3 uker
+      45_minutes: 45 minutter
+      4_days: 4 dager
+      5_days: 5 dager
+      6_days: 6 dager
+      6_hours: 6 timer
+      attach_files: Legg ved filer
+      attach_files_help: 'Eksempel: Et skjema som skal fylles ut.'
+      audit_tip: Når du er logget på, holdes en revisjonslogg over aktivitet og er
+        tilgjengelig på ubestemt tid.
+      beta: Denne funksjonen er BETA og kan endres. Tilbakemeldinger settes pris på!
+      day: Dag
+      days: Dager
+      deletable: Tillat umiddelbar sletting
+      deletable_tip: Tillat brukere å slette denne forespørselen når den er hentet.
+      encryption_tip: En delbar hemmelig URL vil bli opprettet for forespørselen din.
+      expiration_label: 'Når et svar er mottatt, vil den innsendte informasjonen bli
+        slettet etter:'
+      expiration_tip: Mottakeren av denne hemmelige URL-adressen kan se forespørselen
+        og svare med tekst eller filer.
+      generator_tip: Bruk knappen ovenfor for å generere et tilfeldig passord.
+      hour: Time
+      hours: Timer
+      login_to_upload: Logg på for å laste opp og legge ved filer til denne forespørselen...
+      minutes: Minutter
+      month: Måned
+      months: Måneder
+      note_label: Referansemerknad
+      note_placeholder: En privat merknad for denne forespørselen. Kryptert og synlig
+        kun for deg og teamet ditt.
+      passphrase_label: Passordlås
+      passphrase_lockdown: Passphrase Lockdown
+      passphrase_placeholder: Krev at mottakeren skriver inn en passordfrase for å
+        svare på denne forespørselen.
+      password_tip: 'Eksempel: Hei John, kan du skrive inn brukernavnet ditt og legge
+        ved dokumentene dine her? Så snart vi har mottatt det, tar vi kontakt med
+        deg snart.'
+      payload_url_placeholder: Skriv inn nettadressen du vil omdirigere til...
+      pull_it: Opprett forespørsel
+      request_placeholder: Skriv inn forespørselen din her...
+      respond: Send ditt svar
+      response_placeholder: Skriv inn svaret ditt her...
+      tip_section_title: Be om sensitiv informasjon på en sikker måte fra dine kunder,
+        kolleger eller kunder.
+      upload_limit: Du kan laste opp opptil %{count} filer per forespørsel.
+      url_pull_tip: Den opprettede forespørselen vil omdirigere til URL-en som er
+        oppgitt.
+      view: Utsikt
+      views: Visninger
+      week: Uke
+      weeks: Uker
+    hour:
+      one: 1 time
+      other: "%{count} timer"
+    index:
+      actions: Handlinger
+      active: Aktiv
+      all: Alle
+      clear_filters: Tøm filtre
+      closed: Lukket
+      created: Opprettet
+      created_by: Av
+      deletion: Sletting i
+      expired: Utløpt
+      expires: Utløper
+      file_count: Filer
+      note: Merk
+      nothing_here: Det er ingenting her ennå.
+      open: Åpne
+      pull_id: Be om ID
+      pulls: Forespørsler
+      ready: Ferdig
+      remaining_time: Gjenstående tid
+      state: Stat
+      status: Status
+      team_pulls: Teamforespørsler
+      views: Visninger
+      views_remaining: Gjenstående visninger
+      pulls_help: Denne siden viser alle forespørsler opprettet av deg.
+      team_pulls_help: Denne siden viser alle forespørsler opprettet av alle medlemmene
+        av denne kontoen.
+    minute:
+      one: 1 minutt
+      other: "%{count} minutter"
+    more_view:
+      one: 1 visning til
+      other: "%{count} flere visninger"
+    navbar:
+      files: Filer
+      text: Passord og tekst
+      url: URL-er
+    new:
+      title: Send et passord, tekst eller fil på en sikker måte
+    'no': Nei
+    none: Ingen
+    passphrase:
+      enter_passphrase: Skriv inn passordfrase
+      go: Gå
+      placeholder: Skriv inn den hemmelige passordfrasen som følger med denne nettadressen
+      tip: Skriv inn den hemmelige passordfrasen
+    payload: Innhold
+    payload_too_large: Nyttelasten er for stor. Du kan bare legge inn opptil %{count}
+      byte.
+    preliminary:
+      click_proceed: Klikk her for å fortsette
+      title: Klikk for å fortsette
+    preview:
+      and: og
+      can_be: kan være
+      can_not_be: Kan ikke være
+      deleted_by_viewers: slettet av mottakere.
+      example: Eksempel
+      generate: generere
+      include_id: Inkluder ID
+      link_lang_auto: Alternativt vil automatisk gjenkjenning velge et språk basert
+        på nettleserinnstillingene for sluttbrukeren.
+      link_lang_tip: 'Tips: Sender du en forespørsel til en internasjonal bruker?
+        Endre det hemmelige lenkespråket ved å bruke rullegardinmenyen til høyre for
+        URL-en.'
+      message_example: Vennligst sørg for at dette dokumentet er sikkert destruert
+        etter henting for å beskytte sensitiv informasjon og opprettholde konfidensialitet.
+      message_placeholder: Valgfri egendefinert melding
+      or: eller
+      or_after: eller etter
+      print_and_share: Skriv ut og del
+      print_and_share_tip: Generer en utskrivbar side for sluttbrukere
+      pull_another: Gjør en ny forespørsel
+      pull_created: Forespørselen din er opprettet.
+      show_expiration: Vis utløpsdetaljer
+      use_link_to_share: 'Bruk denne hemmelige lenken for å dele den:'
+      view_pull_now: Se denne forespørselen nå
+      will_burn_view: "(vil brenne en visning)"
+      will_expire_after: Denne forespørselen utløper om
+      with_preliminary_step: Den inkluderer også et %{strong_start}1-klikks foreløpig
+        gjenfinningstrinn%{strong_end}.
+    provide_text_or_file: For å opprette en forespørsel må du enten gi tekst, legge
+      ved en fil eller begge deler.
+    pull:
+      audit: Revidere
+      closed: Lukket
+      none: Ingen
+      not_applicable: N/A
+      open: Forespørsel åpen
+      preview: Forhåndsvisning
+      pull_controls: Be om kontroller
+      ready: Svar klar
+      retrieve: Hent
+      share: Dele
+      title: Ny forespørsel
+      unknown: Ukjent
+      view: Utsikt
+    retrieve:
+      attached_files: Vedlagte filer
+      audit: Revisjonslogg
+      close_now: Lukke
+      close_now_confirm: Avslutningsforespørsel vil umiddelbart slette all sensitiv
+        informasjon og filer. Tilsynsloggen vil opprettholdes på ubestemt tid. Er
+        du sikker?
+      close_warning: Denne forespørselen vil automatisk bli lukket og all sensitiv
+        informasjon slettet i %{duration}.
+      closed: Denne forespørselen er lukket og alle sensitive data slettet.
+      deleted: Alt innhold er slettet.
+      no_response: Det er ikke mottatt noe svar ennå.
+      preview: Dele
+      pull_creation: Opprettet på %{date} av %{name}
+      reference_note: Referansemerknad
+      state: Stat
+      state_closed: Lukket
+      state_help_closed: Forespørselen er lukket og svarinnholdet er slettet.
+      state_help_open: Forespørselen er åpen og har ikke mottatt svar ennå.
+      state_help_ready: Mottakeren har svart på forespørselen og innholdet er klart
+        for henting.
+      state_open: Åpne
+      state_ready: Ferdig
+      the_request: Forespørselen
+      the_response: Mottakerens svar
+      title: 'Henting for forespørsels-ID: %{pull_id}'
+      visible_to: Bare synlig for deg
+    settings: Innstillinger
+    show:
+      blurred: Passordet ditt er uklart. Klikk nedenfor for å se det.
+      click_to_reveal: Innholdet er uskarpt. Klikk nedenfor for å avsløre det.
+      delete_now: Slett denne hemmelige lenken nå
+      delete_now_confirm: Dette vil utløpe denne hemmelige koblingen og slette alt
+        relatert innhold fra databasen for alltid. Er du sikker?
+      download_file: Last ned fil
+      intro: Følgende forespørsel er sendt til deg.
+      last_view: Dette er den siste utsikten.
+      open_file: Åpen fil
+      please_download: Last ned og lagre på et sikkert område.
+      response_retrieval: Henting av svar
+      security_note: Informasjonen som sendes inn her vil bli lagret på en sikker
+        måte, kun tilgjengelig for forespørselen og fullstendig slettet i %{duration}.
+      will_be_deleted: Denne hemmelige lenken og alt innhold vil bli slettet i %{b_tag}%{time_count}
+        %{time_unit}%{b_tag} eller %{b_tag}%{view_count} mer %{view_unit}%{b_tag}
+        (avhengig av hva som inntreffer først).
+      your_link: Du har mottatt en forespørsel
+      your_response: Ditt svar
+    show_expired:
+      expired_help: Om nødvendig, vennligst kontakt personen eller organisasjonen
+        som ga deg denne hemmelige nettadressen.
+      expired_message: Vi beklager, men denne hemmelige lenken er utløpt.
+      link_expired: Din hemmelige lenke har utløpt
+    show_ready:
+      help: Hvis du har spørsmål eller trenger mer hjelp, vennligst kontakt personen
+        eller organisasjonen som sendte deg denne lenken.
+      message: Takk for ditt svar. Anmoderen er varslet og vil snart kontakte deg.
+      title: Takk for ditt svar.
+    too_many_files: Du kan bare legge ved opptil %{count} filer per forespørsel.
+    update:
+      done: Takk. Svaret ditt ble mottatt.
+    view:
+      one: 1 visning
+      other: "%{count} visninger"
+    view_audit_log: Se revisjonslogg
+    whichever: "(det som kommer først)"
+    'yes': Ja
+  words:
+    audit: Revidere
+    forbidden: Forbudt
+    not_found: Ikke funnet
+    share: Dele
+    expired: Utløpt
