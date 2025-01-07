@@ -2,10 +2,6 @@
 # Created by https://www.gitignore.io/api/osx,python,pycharm,windows,visualstudio,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=osx,python,pycharm,windows,visualstudio,visualstudiocode
 
-# Local build
-vendor/
-public/
-
 ### OSX ###
 # General
 .DS_Store
@@ -26,6 +22,8 @@ public/
 
 # Ignore the default SQLite database.
 *.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
@@ -325,7 +323,6 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
 [Oo]bj/
 [Ll]og/
 
@@ -623,6 +620,7 @@ paket-files/
 
 # Local .env files
 .env
+.dockerenv
 
 # OpenCover UI analysis results
 OpenCover/
@@ -655,3 +653,15 @@ MigrationBackup/
 config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
+
+# ActiveStorage
+storage/
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+bin/*.rb
+
+/config/credentials/development.key
+/config/credentials/staging.key
+/config/credentials/production.key

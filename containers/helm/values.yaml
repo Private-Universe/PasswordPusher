@@ -1,0 +1,27 @@
+---
+nameOverride: ""
+fullnameOverride: ""
+replicaCount: 1
+
+deployment:
+  labels:
+    app: "pwpush"
+    # component: ingress-controller
+    # type: nginx
+  containerPort: 5100
+  readinessProbe:
+    enabled: true
+    path: /
+  livenessProbe:
+    enabled: true
+    path: /
+
+image:
+  repository: docker.io/pglombardo/pwpush
+  pullPolicy: Always
+  tag: "release"
+
+service:
+  type: ClusterIP
+  port: 5100
+  sessionAffinity: None

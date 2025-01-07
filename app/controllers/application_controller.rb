@@ -1,27 +1,21 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery unless: -> { request.format.json? }
-  around_action :set_locale_from_url
+  add_flash_types :info, :error, :success, :warning
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def not_found
-    raise ActionController::RoutingError.new(_('Not Found'))
-  end
-
-  # unless Rails.application.config.consider_all_requests_local
-  #   rescue_from Exception, with: lambda { |exception| render_error 500, exception }
-  #   rescue_from ActionController::RoutingError, ActionController::UnknownController,
-  #         ::AbstractController::ActionNotFound, ActiveRecord::RecordNotFound,
-  #         with: lambda { |exception| render_error 404, exception }
-  # end
-  # rescue_from ApplicationController::RoutingError, ApplicationController::UnknownController,
-  #     ::AbstractController::ActionNotFound, ApplicationRecord::RecordNotFound,
-  #     with: lambda { |exception| render_error 404, exception }
+  include SetLocale
 
   private
 
-  def render_error(status, exception)
-    respond_to do |format|
-      format.html { render template: "errors/error_#{status}", layout: 'layouts/application', status: status }
-      format.all  { render nothing: true, status: status }
-    end
+  # To add extra fields to Devise registration, add the attribute names to `extra_keys`
+  # See: https://stackoverflow.com/questions/64057147/attributes-not-saving-with-devise-and-accepts-nested-attributes-for
+  def configure_permitted_parameters
+    extra_keys = [:preferred_language]
+    signup_keys = extra_keys + []
+    devise_parameter_sanitizer.permit(:sign_up, keys: signup_keys)
+    devise_parameter_sanitizer.permit(:account_update, keys: extra_keys)
+    devise_parameter_sanitizer.permit(:accept_invitation, keys: extra_keys)
   end
 end

@@ -2,27 +2,10 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/pglombardo/pwpush/es
+# https://translation.io/pglombardo/pwpush-oss/es
 #
 ---
 es:
-  routes:
-    cancel: cancelar
-    passwords: contraseñas
-    new: nuevo
-    active: activo
-    expired: caducado
-    preview: preestreno
-    audit: auditoría
-    pages: paginas
-    users: usuarios
-    sign_in: iniciar_sesión
-    sign_out: desconectar
-    sign_up: regístrate
-    password: contraseña
-    edit: editar
-    confirmation: confirmación
-    unlock: desbloquear
   date:
     day_names:
     - domingo
@@ -84,6 +67,7 @@ es:
           tb: TB
           pb: PB
           eb: EB
+          zb: ZB
       decimal_units:
         units:
           thousand: mil
@@ -98,19 +82,19 @@ es:
       inclusion: no está incluido en la lista
       exclusion: está reservado
       invalid: no es válido
-      confirmation: no coincide
+      confirmation: no coincide con %{attribute}
       accepted: debe ser aceptado
       empty: no puede estar vacío
       blank: no puede estar en blanco
       present: debe estar en blanco
       too_long:
-        one: es demasiado largo (1 carácter máximo)
+        one: es demasiado largo (%{count} carácter máximo)
         other: es demasiado largo (%{count} caracteres máximo)
       too_short:
-        one: es demasiado corto (1 carácter mínimo)
+        one: es demasiado corto (%{count} carácter mínimo)
         other: es demasiado corto (%{count} caracteres mínimo)
       wrong_length:
-        one: no tiene la longitud correcta (1 carácter exactos)
+        one: no tiene la longitud correcta (%{count} carácter exactos)
         other: no tiene la longitud correcta (%{count} caracteres exactos)
       not_a_number: no es un número
       not_an_integer: debe ser un entero
@@ -125,69 +109,104 @@ es:
       required: debe existir
       taken: ya está en uso
       already_confirmed: ya ha sido confirmado, por favor intenta iniciar sesión
-      confirmation_period_expired: necesita confirmarse dentro de %{period}, por favor
-        solicita una nueva
+      confirmation_period_expired: necesitaba confirmación en un período de %{period},
+        por favor solicita una nueva
       expired: ha expirado, por favor solicita una nueva
       not_found: no se ha encontrado
       not_locked: no estaba bloqueada
       not_saved:
         one: 'Ocurrió un error al tratar de guardar %{resource}:'
         other: 'Ocurrieron %{count} errores al tratar de guardar %{resource}:'
-    unavailable_session: |
+      in: debe estar dentro de %{count}
+      password_too_long: es demasiado largo
+    unavailable_session: |-
       La sesión %{id} ya no está disponible en la memoria.
 
-      Si se ejecuta en un servidor de procesos múltiples (como Unicorn o Puma), el proceso
-      este hit de solicitud no almacena %{id} en la memoria. Considere la posibilidad de convertir el número de
-      Procesa / trabaja a uno (1) o usa un servidor diferente en desarrollo.
-    unacceptable_request: 'Una versión compatible Se espera que en la cabecera Aceptar.
-
-      '
+      Si estás ejecutando un servidor de procesos múltiples (como Unicorn o Puma), el proceso al que hace referencia esta solicitud no está en la memoria. Considera la posibilidad de reducir el número de procesos/hilos a uno (1) o usa un servidor diferente en desarrollo.
+    unacceptable_request: Se espera una version compatible en la cabecera Accept.
     connection_refused: |
-      Ups! No se pudo conectar a la consola Web de middleware.
-      Por favor asegúrese de que un servidor de desarrollo carriles se está ejecutando.
+      ¡Ups! No se pudo conectar a la consola Web de middleware.
+      Por favor asegúrate de que un servidor de desarrollo de Rails se está ejecutando.
+    template:
+      body: 'Se encontraron problemas con los siguientes campos:'
+      header:
+        one: No se pudo guardar este/a %{model} porque se encontró %{count} error
+        other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
   activerecord:
     errors:
       messages:
-        record_invalid: 'La validación falló: %{errors}'
+        record_invalid: 'La validación falló: %{errors} veces'
         restrict_dependent_destroy:
-          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
-          has_many: No se puede eliminar el registro porque existen %{record} dependientes
+          has_one: No se puede eliminar el registro porque existe %{record} dependencia
+          has_many: No se puede eliminar el registro porque existen %{record} dependiencias
+    attributes:
+      user:
+        confirmation_sent_at: Fecha de envío de confirmación
+        confirmation_token: Token de confirmación
+        confirmed_at: Fecha de confirmación
+        created_at: Fecha de creación
+        current_password: Contraseña actual
+        current_sign_in_at: Fecha de inicio de sesión actual
+        current_sign_in_ip: IP de inicio de sesión actual
+        email: Correo electrónico
+        encrypted_password: Contraseña cifrada
+        failed_attempts: Intentos fallidos
+        last_sign_in_at: Fecha del último inicio de sesión
+        last_sign_in_ip: IP del último inicio de sesión
+        locked_at: Fecha de bloqueo
+        password: Contraseña
+        password_confirmation: Confirmación de la contraseña
+        remember_created_at: Fecha de creación del 'Recuérdame'
+        remember_me: Recuérdame
+        reset_password_sent_at: Fecha del envío de restablecimiento de contraseña
+        reset_password_token: Token para restablecer contraseña
+        sign_in_count: Número de inicios de sesión
+        unconfirmed_email: Correo electrónico no confirmado
+        unlock_token: Token de desbloqueo
+        updated_at: Fecha de actualización
+    models:
+      user:
+        one: Usuario
+        other: Usuarios
   datetime:
     distance_in_words:
       half_a_minute: medio minuto
       less_than_x_seconds:
-        one: menos de 1 segundo
+        one: menos de %{count} segundo
         other: menos de %{count} segundos
       x_seconds:
-        one: 1 segundo
+        one: "%{count} segundo"
         other: "%{count} segundos"
       less_than_x_minutes:
         one: menos de 1 minuto
         other: menos de %{count} minutos
       x_minutes:
-        one: 1 minuto
+        one: "%{count} minuto"
         other: "%{count} minutos"
       about_x_hours:
-        one: alrededor de 1 hora
+        one: alrededor de %{count} hora
         other: alrededor de %{count} horas
       x_days:
-        one: 1 día
+        one: "%{count} día"
         other: "%{count} días"
       about_x_months:
-        one: alrededor de 1 mes
+        one: alrededor de %{count} mes
         other: alrededor de %{count} meses
       x_months:
-        one: 1 mes
+        one: "%{count} mes"
         other: "%{count} meses"
       about_x_years:
-        one: alrededor de 1 año
+        one: alrededor de %{count} año
         other: alrededor de %{count} años
       over_x_years:
-        one: más de 1 año
+        one: más de %{count} año
         other: más de %{count} años
       almost_x_years:
-        one: casi 1 año
+        one: casi %{count} año
         other: casi %{count} años
+      x_years:
+        one: "%{count} año"
+        other: "%{count} años"
     prompts:
       year: Año
       month: Mes
@@ -197,29 +216,24 @@ es:
       second: Segundo
   helpers:
     select:
-      prompt: Por favor seleccione
+      prompt: Por favor selecciona
     submit:
       create: Crear %{model}
       update: Actualizar %{model}
       submit: Guardar %{model}
-  will_paginate:
-    previous_label: "← Atrás"
-    next_label: Siguiente →
-    page_gap: "&hellip;"
-    container_aria_label: Paginación
-    page_aria_label: Página %{page}
     page_entries_info:
-      single_page:
-        zero: No se encontraron %{model}
-        one: Mostrando 1 %{model}
-        other: Mostrando en total %{count} %{model}
-      single_page_html:
-        zero: No se encontraron %{model}
-        one: Mostrando <b>1</b> %{model}
-        other: Mostrando en <b>total&nbsp;%{count}</b> %{model}
-      multi_page: Mostrando %{model} %{from} - %{to} de %{count} en total
-      multi_page_html: Mostrando %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> de <b>%{count}</b>
-        en total
+      entry:
+        zero: entradas
+        one: entrada
+        other: entradas
+      one_page:
+        display_entries:
+          zero: No se han encontrado %{entry_name}
+          one: Mostrando <b>%{count}</b> %{entry_name}
+          other: Mostrando <b>un total de %{count}</b> %{entry_name}
+      more_pages:
+        display_entries: Mostrando <b>%{first}&nbsp;-&nbsp;%{last}</b> %{entry_name}
+          de <b>%{total}</b> en total
   flash:
     actions:
       create:
@@ -231,15 +245,17 @@ es:
         alert: "%{resource_name} no pudo ser destruido."
   devise:
     confirmations:
-      confirmed: Tu cuenta ha sido confirmada satisfactoriamente.
-      send_instructions: Vas a recibir un correo con instrucciones sobre cómo confirmar
-        tu cuenta en unos minutos.
-      send_paranoid_instructions: Si tu correo existe en nuestra base de datos, en
-        unos minutos recibirás un correo con instrucciones sobre cómo confirmar tu
-        cuenta.
-      resend_title: Vuelva a Enviar Instrucciones de Confirmación
-      resend_header: Vuelva a Enviar Instrucciones de Confirmación
+      confirmed: Tu dirección de correo electrónico ha sido confirmada exitosamente.
+      send_instructions: Vas a recibir un correo con instrucciones para confirmar
+        tu dirección de correo electrónico en unos minutos.
+      send_paranoid_instructions: Si tu dirección de correo electrónico existe en
+        nuestra base de datos, en unos minutos recibirás un correo con instrucciones
+        para confirmarla.
+      resend_title: Reenviar instrucciones de confirmación
+      resend_header: Reenviar instrucciones de confirmación
       resend_button: Reenviar
+      new:
+        resend_confirmation_instructions: Reenviar instrucciones de confirmación
     failure:
       already_authenticated: Ya has iniciado sesión.
       inactive: Tu cuenta aún no ha sido activada.
@@ -247,105 +263,190 @@ es:
       locked: Tu cuenta está bloqueada.
       last_attempt: Tienes un intento más antes de que tu cuenta sea bloqueada.
       not_found_in_database: "%{authentication_keys} o contraseña inválidos."
-      timeout: Tu sesión expiró. Por favor, inicia sesión nuevamente para continuar.
+      timeout: Tu sesión ha expirado. Por favor, inicia sesión de nuevo para continuar.
       unauthenticated: Tienes que iniciar sesión o registrarte para poder continuar.
-      unconfirmed: Tienes que confirmar tu cuenta para poder continuar.
+      unconfirmed: Tienes que confirmar tu dirección de correo electrónico para poder
+        continuar.
     mailer:
       confirmation_instructions:
         subject: Instrucciones de confirmación
+        action: Confirmar mi cuenta
+        greeting: "¡Bienvenido %{recipient}!"
+        instruction: 'Puedes confirmar la dirección de correo electrónico de tu cuenta
+          a través de este enlace:'
       reset_password_instructions:
         subject: Instrucciones de recuperación de contraseña
+        action: Actualizar mi contraseña
+        greeting: "¡Hola %{recipient}!"
+        instruction: Alguien ha solicitado un enlace para actualizar tu contraseña.
+          Puedes hacerlo a través del siguiente enlace.
+        instruction_2: Si no lo has solicitado, por favor ignora este mensaje.
+        instruction_3: Tu contraseña no será actualizada hasta que accedas al enlace
+          y crees una nueva.
       unlock_instructions:
         subject: Instrucciones para desbloquear
+        action: Desbloquear mi cuenta
+        greeting: "¡Hola %{recipient}!"
+        instruction: 'Haz clic en el siguiente enlace para desbloquear tu cuenta:'
+        message: Tu cuenta ha sido bloqueada debido a una cantidad excesiva de intentos
+          fallidos de inicio de sesión.
       email_changed:
-        subject: Email cambiado
+        subject: Dirección de correo electrónico actualizada
+        greeting: "¡Hola %{recipient}!"
+        message: Nos comunicamos contigo para notificarte que tu dirección de correo
+          electrónico se ha actualizado a %{email}.
+        message_unconfirmed: Nos comunicamos contigo para notificarte que tu dirección
+          de correo electrónico se actualizará a %{email}.
       password_change:
-        subject: Contraseña cambiada
+        subject: Contraseña actualizada
+        greeting: "¡Hola %{recipient}!"
+        message: Nos comunicamos contigo para notificarte que tu contraseña ha sido
+          actualizada.
     omniauth_callbacks:
-      failure: No has sido autorizado en la cuenta %{kind} porque "%{reason}".
-      success: Has sido autorizado satisfactoriamente en la cuenta %{kind}.
+      failure: No has sido autenticado en la cuenta %{kind}, porque "%{reason}".
+      success: Has sido autenticado con éxito en la cuenta %{kind}.
     passwords:
       no_token: No puedes acceder a esta página si no es a través de un enlace para
-        resetear tu contraseña. Si has llegado hasta aquí desde el email para resetear
+        restablecer tu contraseña. Si has llegado aquí desde el mensaje para restablecer
         tu contraseña, por favor asegúrate de que la URL introducida está completa.
-      send_instructions: Recibirás un correo con instrucciones sobre cómo resetear
+      send_instructions: Recibirás un correo con instrucciones sobre cómo restablecer
         tu contraseña en unos pocos minutos.
-      send_paranoid_instructions: Si tu correo existe en nuestra base de datos, recibirás
-        un correo con instrucciones sobre cómo resetear tu contraseña en tu bandeja
-        de entrada.
-      updated: Se ha cambiado tu contraseña. Ya iniciaste sesión.
-      updated_not_active: Tu contraseña fue cambiada.
-      reset_title: Restablecer la Contraseña
-      reset_button: Actualizar Cuenta
-      forgot_title: Se te olvidó tu contraseña
-      forgot_header: Se te olvidó tu contraseña
-      forgot_button: Enviar Instrucciones de Restablecimiento
+      send_paranoid_instructions: Si tu correo electrónico existe en nuestra base
+        de datos, recibirás un mensaje con instrucciones sobre cómo restablecer tu
+        contraseña.
+      updated: Se ha actualizado tu contraseña con éxito y ya has iniciado sesión.
+      updated_not_active: Tu contraseña ha sido actualizada.
+      reset_title: Restablecer la contraseña
+      reset_button: Actualizar cuenta
+      forgot_title: He olvidado mi contraseña
+      forgot_header: He olvidado mi contraseña
+      forgot_button: Enviar instrucciones de restablecimiento
+      edit:
+        change_my_password: Actualizar mi contraseña
+        change_your_password: Actualiza tu contraseña
+        confirm_new_password: Confirma la nueva contraseña
+        new_password: Nueva contraseña
+      new:
+        forgot_your_password: "¿Has olvidado tu contraseña?"
+        send_me_reset_password_instructions: Envíame las instrucciones para restablecer
+          mi contraseña
     registrations:
       destroyed: "¡Adiós! Tu cuenta ha sido cancelada correctamente. Esperamos verte
         pronto."
-      signed_up: Bienvenido. Tu cuenta fue creada.
-      signed_up_but_inactive: Tu cuenta ha sido creada correctamente. Sin embargo,
-        no hemos podido iniciar la sesión porque tu cuenta aún no está activada.
-      signed_up_but_locked: Tu cuenta ha sido creada correctamente. Sin embargo, no
-        hemos podido iniciar la sesión porque que tu cuenta está bloqueada.
+      signed_up: "¡Bienvenido! Te has registrado con éxito. Por favor revisa tu correo
+        electrónico para obtener un enlace de confirmación."
+      signed_up_but_inactive: Te has registrado correctamente. Sin embargo, no pudimos
+        iniciar sesión porque tu cuenta aún no está activada.
+      signed_up_but_locked: Te has registrado correctamente. Sin embargo, no pudimos
+        iniciar sesión porque tu cuenta está bloqueada.
       signed_up_but_unconfirmed: Se ha enviado un mensaje con un enlace de confirmación
         a tu correo electrónico. Abre el enlace para activar tu cuenta.
       update_needs_confirmation: Has actualizado tu cuenta correctamente, pero es
         necesario confirmar tu nuevo correo electrónico. Por favor, comprueba tu correo
-        y sigue el enlace de confirmación para finalizar la comprobación del nuevo
-        correo electrónico.
-      updated: Tu cuenta se ha actualizado.
-      updated_but_not_signed_in: Su cuenta se ha actualizado correctamente, pero como
-        se cambió su contraseña, debe iniciar sesión nuevamente
-      update_email: Actualizar Correo Electrónico
+        y abre el enlace de confirmación para finalizar la validación del nuevo correo
+        electrónico.
+      updated: Tu cuenta se ha actualizado con éxito.
+      updated_but_not_signed_in: Tu cuenta se ha actualizado correctamente, pero como
+        has actualizado tu contraseña, debes iniciar sesión nuevamente.
+      update_email: Actualizar correo electrónico
       currently_waiting: Actualmente a la espera de confirmación para
-      change_password: Cambiar la Contraseña
-      change_password_hint: Déjelo en blanco si no desea cambiarlo.
-      new_password: Nueva Contraseña
-      new_password_confirmation: Confirmación de Nueva Contraseña
+      change_password: Actualizar la contraseña
+      change_password_hint: Dejar en blanco si no deseas actualizar.
+      new_password: Nueva contraseña
+      new_password_confirmation: Confirmación de la nueva contraseña
       password: contraseña
-      password_minimum: Se requiere un mínimo de% d caracteres, pero cuantos más,
+      password_minimum: Se requiere un mínimo de %d caracteres, pero cuantos más,
         mejor.
       verification: Verificación
-      verification_text: Ingrese su contraseña actual para validar los cambios anteriores.
-      update_account: Actualizar Cuenta
-      edit_account: Editar Cuenta
-      create_account: Crear una Cuenta
-      email: Email
-      password_confirmation: Confirmación De Contraseña
+      verification_text: Introduce tu contraseña actual para validar los cambios anteriores.
+      update_account: Actualizar cuenta
+      edit_account: Editar cuenta
+      create_account: Crear una cuenta
+      email: Correo electrónico
+      password_confirmation: Confirmación de la contraseña
+      edit:
+        are_you_sure: "¿Estás seguro?"
+        cancel_my_account: Anular mi cuenta
+        currently_waiting_confirmation_for_email: 'Actualmente esperando la confirmacion
+          de: %{email} '
+        leave_blank_if_you_don_t_want_to_change_it: dejar en blanco si no deseas actualizar
+        title: Editar %{resource}
+        unhappy: "¿Descontento?"
+        update: Actualizar
+        we_need_your_current_password_to_confirm_your_changes: necesitamos tu contraseña
+          actual para confirmar los cambios
+        cancel_my_account_confirm_description_html: Esto borrará permanentemente todos
+          los datos asociados a tu cuenta. Esta acción no se puede deshacer.<br/><br/>
+          Para verificar, escriba su dirección de correo electrónico para confirmar
+          y eliminar su cuenta.
+        cancel_my_account_description: Esto borrará permanentemente todos los datos
+          asociados a tu cuenta. Esta acción no se puede deshacer.
+        saving: Ahorro...
+      new:
+        sign_up: Registrarse
+        account_or_team_name: Nombre de cuenta o equipo
+        login_html: O %{link}
+        submitting: Sumisión...
+        terms_html: Acepto %{terms} y %{privacy}
+      preferred_language: Idioma preferido
     unlocks:
-      send_instructions: Vas a recibir instrucciones para desbloquear tu cuenta en
-        unos pocos minutos.
-      send_paranoid_instructions: Si tu cuenta existe, vas a recibir instrucciones
-        para desbloquear tu cuenta en unos pocos minutos.
-      unlocked: Tu cuenta ha sido desbloqueada. Ya puedes iniciar sesión.
+      send_instructions: Vas a recibir un correo con instrucciones para desbloquear
+        tu cuenta en pocos minutos.
+      send_paranoid_instructions: Si tu cuenta existe, vas a recibir un correo con
+        instrucciones para desbloquear tu cuenta en pocos minutos.
+      unlocked: Tu cuenta ha sido desbloqueada exitosamente. Por favor inicia sesión
+        para continuar.
       unlock_title: Reenviar Instrucciones de Desbloquear
-      unlock_header: Reenviar Instrucciones de Desbloquear
+      unlock_header: Reenviar instrucciones para desbloquear
       unlock_button: Reenviar
+      new:
+        resend_unlock_instructions: Reenviar instrucciones para desbloquear
     general:
       remember_me: Recuérdame
-      login: Iniciar Sesión
-      forgot_your: Olvidaste tu contraseña?
-      didnt_confirmation: "¿No has recibido la confirmación?"
-      didnt_unlock: No recibió instrucciones de desbloqueo?
-      sign_up: Inscribirse
-      email: Email
+      login: Iniciar sesión
+      sign_up: Registrarse
+      forgot_your: "¿Olvidaste tu contraseña?"
+      didnt_confirmation: "¿No has recibido las instrucciones de confirmación?"
+      didnt_unlock: "¿No has recibido las instrucciones de desbloqueo?"
+      email: Correo electrónico
+    sessions:
+      new:
+        sign_in: Iniciar sesión
+        sign_up_html: O %{link}
+      already_signed_out: Sesión finalizada.
+      signed_in: Sesión iniciada.
+      signed_out: Sesión finalizada.
+    shared:
+      links:
+        back: Atrás
+        didn_t_receive_confirmation_instructions: "¿No has recibido las instrucciones
+          de confirmación?"
+        didn_t_receive_unlock_instructions: "¿No has recibido las instrucciones para
+          desbloquear?"
+        forgot_your_password: "¿Has olvidado tu contraseña?"
+        sign_in: Iniciar sesión
+        sign_in_with_provider: Iniciar sesión con %{provider}
+        sign_up: Registrarse
+        redirecting: Redirigiendo...
+      minimum_password_length:
+        one: "(%{count} caracteres como mínimo)"
+        other: "(%{count} caracteres como mínimo)"
   apipie:
     resources: Recursos
     resource: Recurso
     description: Descripción
     no_docs_found: No se encontró documentación
     no_docs_found_descr: No hemos encontrado ninguna documentación para su API.
-    follow_instructions_html: Siga %{href} sobre cómo describir sus controladores.
+    follow_instructions_html: Visita %{href} para saber cómo describir tus controladores.
     follow_instructions_href: más instrucciones
     oops: "¡¡Ups!!"
     resource_not_found_html: Recurso %{resource} no encontrado.
     method_not_found_html: Método %{method} no encontrado para el recurso %{resource}.
     goto_homepage_html: Intenta ir a %{href}
-    goto_homepage_href: "%{app_name} Página de inicio de la documentación de la API"
+    goto_homepage_href: "%{app_name} página de inicio de la documentación de la API"
     required: requerido
     optional: opcional
-    nil_allowed: cero permitido
+    nil_allowed: valor nulo permitido
     param_name: Nombre del parámetro
     params: Parámetros
     examples: Ejemplos
@@ -354,10 +455,1384 @@ es:
     error_code: Código
     error_description: Descripción
     error_metadata: Metadatos
-    supported_formats: Formatos Compatibles
-    enable_javascript_html: Habilite JavaScript para ver el %{comments_href}.
-    comments_powered_by_disqus: comentarios impulsados por %{disqus}
+    supported_formats: Formatos compatibles
+    enable_javascript_html: Habilita JavaScript para ver el comentario %{comments_href}.
+    comments_powered_by_disqus: comentarios gestionados por %{disqus}
     api_documentation: Documentación de la API
     headers: Encabezados
     header_name: Nombre del encabezado
     code: Código
+    deprecated: Obsoleto
+    deprecation_details: Detalles de la obsolescencia
+    deprecation:
+      attributes:
+        deprecated_in: 'Fecha de obsolescencia '
+        sunset_at: Fecha de la puesta de sol
+        info: Información
+    returns: Devoluciones
+    blank_allowed: espacio en blanco permitido
+  i18n_tasks:
+    add_missing:
+      added:
+        one: Se agregó %{count} clave
+        other: Se agragaron %{count} claves
+    cmd:
+      args:
+        default_text: 'Predeterminado: %{value}'
+        desc:
+          all_locales: No esperes que los patrones clave comiencen con una configuración
+            regional; en su lugar, aplícalos implícitamente a todas las configuraciones
+            regionales.
+          config: Anular configuración de ubicación
+          confirm: Confirmar automáticamente
+          data_format: 'Formato de datos: %{valid_text}.'
+          keep_order: Mantener el orden de las claves
+          key_pattern: Filtrar por patrón clave (p. ej., 'común.*')
+          locale_to_translate_from: Configuración regional desde la que traducir
+          locales_filter: 'Configuración(es) regional(es) a procesar. Especial: base'
+          missing_types: 'Filtrar por tipos: %{valid}'
+          nostdin: No leer del stdin
+          out_format: 'Formato de salida: %{valid_text}'
+          pattern_router: 'Usar patrón de enrutador: claves movidas por configuración
+            data.write'
+          strict: Evita inferir usos de claves dinámicas como t("cats.#{cat}.name").
+            Tiene prioridad sobre el ajuste de configuración si está establecido.
+          translation_backend: Backend de traducción (google o deepl)
+          value: 'Valor. Interpola: %{value}, %{human_key}, %{key}, %{default}, %{value_or_human_key},
+            %{value_or_default_or_human_key}'
+      desc:
+        add_missing: agregar claves faltantes a los datos de configuración regional,
+          opcionalmente hacer coincidir un patrón
+        check_consistent_interpolations: verificar que todas las traducciones usen
+          las variables de interpolación correctas
+        check_normalized: verificar que todos los datos de traducción estén normalizados
+        config: mostrar la configuración de i18n-tasks
+        data: mostrar datos de configuración regional
+        data_merge: fusionar datos de configuración regional con árboles de datos
+        data_remove: eliminar las claves presentes en el árbol de los datos
+        data_write: reemplazar los datos de configuración regional con el árbol de
+          datos
+        eq_base: mostrar traducciones iguales al valor base
+        find: mostrar dónde se usan las claves en el código
+        gem_path: muestra la ruta al "gem"
+        health: "¿está todo bien?"
+        irb: iniciar sesión REPL dentro del contexto i18n-tasks
+        missing: mostrar traducciones faltantes, opcionalmente hacer coincidir un
+          patrón
+        mv: actualizar el nombre/combinar las claves en los datos de configuración
+          regional que coincidan con el patrón dado
+        normalize: 'normaliza los datos de traducción: ordena y muévete a los archivos
+          correctos'
+        remove_unused: eliminar claves no utilizadas
+        rm: elimina las claves en los datos de configuración regional que coincidan
+          con el patrón dado
+        translate_missing: traducir las claves que faltan con Google Translate o DeepL
+          Pro, opcionalmente hacer coincidir un patrón
+        tree_convert: migrar árbol de datos entre formatos
+        tree_filter: árbol de filtros por patrón clave
+        tree_merge: fusionar árboles de datos
+        tree_mv_key: actualizar el nombre/combinar/eliminar las claves que coincidan
+          con el patrón dado
+        tree_set_value: establecer valores de claves, opcionalmente hacer coincidir
+          un patrón
+        tree_subtract: árbol A menos las claves en el árbol B
+        tree_translate: Google Translate traduce un árbol a configuraciones regionales
+          raíz
+        unused: mostrar traducciones no utilizadas
+        cp: copie las claves en los datos locales que coincidan con el patrón dado
+      encourage:
+      - "¡Buen trabajo!"
+      - "¡Bien hecho!"
+      - "¡Perfecto!"
+      enum_list_opt:
+        invalid: "%{invalid} no está en: %{valid}."
+      enum_opt:
+        invalid: "%{invalid} no es uno de: %{valid}."
+      errors:
+        invalid_format: 'formato no válido: %{invalid}. válido: %{valid}.'
+        invalid_locale: 'configuración regional no válida: %{invalid}'
+        invalid_missing_type:
+          one: 'tipo inválido: %{invalid}. válido: %{valid}.'
+          other: 'tipos desconocidos: %{invalid}. válido: %{valid}.'
+        pass_forest: pasar árboles de configuración regional
+    common:
+      continue_q: "¿Continuar?"
+      key: Clave
+      locale: Configuración regional
+      n_more: "%{count} más"
+      value: Valor
+    data_stats:
+      text: tiene %{key_count} claves en las %{locale_count} configuraciones regionales.
+        En promedio, los valores tienen una longitud de %{value_chars_avg} caracteres,
+        las claves tienen %{key_segments_avg} segmentos, una configuración regional
+        tiene %{per_locale_avg} claves.
+      text_single_locale: tiene %{key_count} claves en total. En promedio, los valores
+        tienen una longitud de caracteres %{value_chars_avg}, las claves tienen segmentos
+        %{key_segments_avg}.
+      title: Arboles (%{locales})
+    deepl_translate:
+      errors:
+        no_api_key: Configura la clave API de DeepL Pro a través de la variable de
+          entorno DEEPL_AUTH_KEY o translation.deepl_api_key en config/i18n-tasks.yml.
+          Obtén la clave en https://www.deepl.com/pro.
+        no_results: DeepL no devolvió resultados.
+        specific_target_missing: Debes proporcionar una variante específica para el
+          idioma de destino determinado, por ejemplo, en-us en lugar de en.
+    google_translate:
+      errors:
+        no_api_key: Configura la clave API de Google a través de la variable de entorno
+          GOOGLE_TRANSLATE_API_KEY o translation.google_translate_api_key en config/i18n-tasks.yml.
+          Obtén la clave en https://code.google.com/apis/console.
+        no_results: Google Translate no devolvió resultados. Asegúratee de que la
+          información de facturación esté configurada en https://code.google.com/apis/console.
+    health:
+      no_keys_detected: No se han detectado claves. Comprueba data.read en config/i18n-tasks.yml.
+    inconsistent_interpolations:
+      none: No se encontraron interpolaciones inconsistentes.
+    missing:
+      details_title: Valor en otras configuraciones regionales o fuente
+      none: No falta ninguna traducción.
+    remove_unused:
+      confirm:
+        one: La traducción %{count} se eliminará de %{locales}.
+        other: La traducción %{count} se eliminará de %{locales}.
+      noop: No hay claves no utilizadas para eliminar
+      removed: "%{count} claves eliminadas"
+    translate_missing:
+      translated: "%{count} claves traducidas"
+    unused:
+      none: Cada traducción está en uso.
+    usages:
+      none: No se encontraron usos clave.
+    yandex_translate:
+      errors:
+        no_api_key: Establezca la clave API de Yandex a través de la variable de entorno
+          YANDEX_API_KEY o translation.yandex_api_key en config/i18n-tasks.yml. Obtenga
+          la clave en https://tech.yandex.com/translate.
+        no_results: Yandex no devolvió resultados.
+    openai_translate:
+      errors:
+        no_api_key: Configure la clave API de OpenAI a través de la variable de entorno
+          OPENAI_API_KEY o Translation.openai_api_key en config/i18n-tasks.yml. Obtenga
+          la clave en https://openai.com/.
+        no_results: OpenAI no arrojó resultados.
+  views:
+    pagination:
+      first: "&laquo; Primera"
+      last: Última &raquo;
+      previous: "&lsaquo; Anterior"
+      next: Siguiente &rsaquo;
+      truncate: "&hellip;"
+  administrate:
+    actions:
+      confirm: "¿Estás seguro?"
+      destroy: Destruir
+      edit: Editar
+      edit_resource: Editar %{name}
+      show_resource: Mostrar %{name}
+      new_resource: Nuevo %{name}
+      back: Atrás
+    controller:
+      create:
+        success: "%{resource} se creó correctamente."
+      destroy:
+        success: "%{resource} se destruyó con éxito."
+      update:
+        success: "%{resource} se actualizó correctamente."
+    fields:
+      has_many:
+        more: Mostrando %{count} de %{total_count}
+        none: Ninguna
+    form:
+      error: error
+      errors: "%{pluralized_errors} prohibió que se guardara este %{resource_name}:"
+    navigation:
+      back_to_app: Volver a la aplicación
+      worker: Trabajos de fondo
+    search:
+      clear: Borrar búsqueda
+      label: Buscar %{resource}
+  layouts:
+    admin:
+      application:
+        admin_intro: Este panel de administración proporciona acceso directo a la
+          base de datos de la aplicación Password Pusher. Tenga cuidado y considere
+          hacer una copia de seguridad antes de realizar cualquier cambio.
+        admin_note: 'Nota: La destrucción de un registro también destruye todos los
+          registros secundarios. Por ejemplo, destruir un usuario también destruirá
+          todas las contraseñas, archivos y URL ingresados para ese usuario.'
+  accounts:
+    policy:
+      pwgen_syllables_count_help: El número de sílabas de la contraseña generada.
+      edit: Editar política
+      personal_policy: Póliza Personal
+      personal_policy_help: Una política es un conjunto de reglas que se aplican a
+        todos los envíos creados por usted.
+      header_timed_expiration: Vencimiento programado
+      expire_after_duration_min: Duración mínima
+      expire_after_duration_min_help: La duración mínima antes de que caduque un envío.
+      expire_after_duration_max: Duración máxima
+      expire_after_duration_max_help: La duración máxima antes de que caduque un envío.
+      expire_after_duration_default: Duración predeterminada
+      expire_after_duration_default_help: La duración predeterminada antes de que
+        caduque una inserción.
+      header_view_expiration: Ver vencimiento
+      expire_after_views_min: Recuento mínimo de vistas
+      expire_after_views_min_help: El número mínimo de vistas antes de que caduque
+        un envío.
+      expire_after_views_max: Recuento máximo de vistas
+      expire_after_views_max_help: El número máximo de vistas antes de que caduque
+        un envío. [Máx. 100]
+      expire_after_views_default: Recuento de vistas predeterminado
+      expire_after_views_default_help: El número predeterminado de vistas antes de
+        que caduque un envío.
+      header_payload_limits: Límites de carga útil
+      push_text_max: Tamaño máximo de texto
+      push_text_max_help: El tamaño máximo de texto en un push. Medido en bytes. [Máx.
+        1048576]
+      push_files_max: Archivos máximos permitidos
+      push_files_max_help: El número máximo de archivos permitidos en un envío. [Máx.
+        100]
+      header_retrieval_step: Paso de recuperación con 1 clic
+      enable_retrieval_step: "¿Permitir?"
+      enable_retrieval_step_help: "¿Habilitar la recuperación con 1 clic para este
+        equipo? Si está desactivada, esta opción quedará oculta y no se utilizará."
+      retrieval_step_default: Valor por defecto
+      retrieval_step_default_help: El valor predeterminado para la opción del paso
+        de recuperación con 1 clic.
+      retrieval_step_forced: "¿Forzar el valor predeterminado?"
+      retrieval_step_forced_help: Fuerza el uso de esta opción con el valor predeterminado
+        para todos los miembros del equipo. Los miembros del equipo no pueden cambiarlo.
+      hide_retrieval_step: "¿Ocultar opción?"
+      hide_retrieval_step_help: Oculta la opción del paso de recuperación con 1 clic
+        a los miembros del equipo. Esto es útil para forzar la opción predeterminada
+        sin mostrársela a los miembros del equipo.
+      header_deletable: Eliminable por el espectador
+      enable_deletable: "¿Permitir?"
+      enable_deletable_help: "¿Habilitar esta opción para el equipo? Si está desactivada,
+        esta opción quedará oculta y no se utilizará."
+      deletable_default: Valor por defecto
+      deletable_default_help: El valor predeterminado para la opción Eliminable por
+        el visor.
+      deletable_forced: "¿Forzar el valor predeterminado?"
+      deletable_forced_help: Fuerza el uso de esta opción con el valor predeterminado
+        para todos los miembros del equipo. Los miembros del equipo no pueden cambiarlo.
+      hide_deletable: "¿Ocultar opción?"
+      hide_deletable_help: Oculta la opción Eliminable por espectador a los miembros
+        del equipo. Esto es útil para forzar la opción predeterminada sin mostrársela
+        a los miembros del equipo.
+      hide_passphrase: "¿Ocultar opción?"
+      hide_passphrase_help: Oculta la opción Bloqueo de frase de contraseña. Útil
+        para desactivar completamente el uso de esta opción.
+      enable_blur: "¿Permitir?"
+      enable_blur_help: Payload Blurring oscurece el contenido de la carga útil en
+        la página de entrega de URL secreta. Los destinatarios pueden alternar el
+        desenfoque con un clic para revelar los datos originales.
+      header_passphrase: Bloqueo de frase de contraseña
+      header_blur: Desenfoque de carga útil
+      header_pwgen: Generación de contraseña
+      save: Actualizar la política del equipo
+      enable_pwgen: "¿Permitir?"
+      enable_pwgen_help: "¿Habilitar la opción de Generación de Contraseña para este
+        equipo? Si está desactivada, esta opción quedará oculta y no se utilizará."
+      pwgen_configurable: "¿Configurable?"
+      pwgen_configurable_help: "¿Permitir que los miembros del equipo configuren el
+        generador de contraseñas? Si está deshabilitada, la opción se forzará a la
+        configuración siguiente y los miembros del equipo no podrán cambiarla."
+      pwgen_has_numbers: "¿Incluir números?"
+      pwgen_has_numbers_help: Incluya números en la contraseña generada.
+      pwgen_title_cased: "¿Título en mayúsculas?"
+      pwgen_title_cased_help: Caso del título las partes de la contraseña generada.
+      pwgen_use_separators: "¿Usar separadores?"
+      pwgen_use_separators_help: Utilice separadores en la contraseña generada.
+      pwgen_consonants: Consonantes
+      pwgen_consonants_help: Las consonantes a utilizar en la contraseña generada.
+      pwgen_vowels: Vocales
+      pwgen_vowels_help: Las vocales a utilizar en la contraseña generada.
+      pwgen_separators: Separadores
+      pwgen_separators_help: Los separadores que se utilizarán en la contraseña generada.
+      pwgen_min_syllable_length: Longitud mínima de la sílaba
+      pwgen_min_syllable_length_help: La longitud mínima de una sílaba en la contraseña
+        generada.
+      pwgen_max_syllable_length: Longitud máxima de la sílaba
+      pwgen_max_syllable_length_help: La longitud máxima de una sílaba en la contraseña
+        generada.
+      pwgen_syllables_count: Cuenta de sílabas
+      policy: Política
+      account_policy: Política de cuenta
+      account_policy_help: La política de cuenta es un conjunto de reglas que se aplican
+        a todos los miembros de esta cuenta.
+      header_pull_passphrase: Bloqueo de frase de contraseña
+      header_pull_retrieval_step: Paso de recuperación con 1 clic
+      header_pull_timed_expiration: Vencimiento programado
+      header_pwgen_options: Opciones de generación de contraseñas
+      pull_close_after_duration_default: Duración predeterminada
+      pull_close_after_duration_default_help: Una vez que una solicitud recibe una
+        respuesta, esta es la duración predeterminada antes de que expire.
+      pull_close_after_duration_max: Duración máxima
+      pull_close_after_duration_max_help: Una vez que una solicitud recibe una respuesta,
+        esta es la duración máxima antes de que expire.
+      pull_close_after_duration_min: Duración mínima
+      pull_close_after_duration_min_help: Una vez que una solicitud recibe una respuesta,
+        esta es la duración mínima antes de que expire.
+      pull_enable_retrieval_step: "¿Permitir?"
+      pull_enable_retrieval_step_help: "¿Habilitar la recuperación con 1 clic para
+        este equipo? Si está desactivada, esta opción quedará oculta y no se utilizará."
+      pull_header_passphrase: Bloqueo de frase de contraseña
+      pull_header_retrieval_step: Paso de recuperación con 1 clic
+      pull_hide_passphrase: "¿Ocultar opción?"
+      pull_hide_passphrase_help: Oculta la opción Bloqueo de frase de contraseña.
+        Útil para desactivar completamente el uso de esta opción.
+      pull_hide_retrieval_step: "¿Ocultar opción?"
+      pull_hide_retrieval_step_help: Oculta la opción del paso de recuperación con
+        1 clic a los miembros del equipo. Esto es útil para forzar la opción predeterminada
+        sin mostrársela a los miembros del equipo.
+      pull_retrieval_step_default: Valor por defecto
+      pull_retrieval_step_default_help: El valor predeterminado para la opción del
+        paso de recuperación con 1 clic.
+      pull_retrieval_step_forced: "¿Forzar el valor predeterminado?"
+      pull_retrieval_step_forced_help: Fuerza el uso de esta opción con el valor predeterminado
+        para todos los miembros del equipo. Los miembros del equipo no pueden cambiarlo.
+      require_2fa: "¿Se requiere autenticación de dos factores?"
+      require_2fa_help: Requerir que los miembros de la cuenta utilicen la autenticación
+        de dos factores (2FA) para acceder a esta cuenta.
+      security_header_logins: Seguridad de inicio de sesión
+    account_invitations:
+      max_users: Has alcanzado el número máximo de usuarios para tu equipo. Ponte
+        en contacto con nosotros para actualizar y agregar más usuarios.
+    brand:
+      delivery_blur_tip: 'Consejo: puedes alternar el uso del desenfoque de carga
+        útil en la configuración de la Política de equipo.'
+      delivery_description: La página de entrega es la página que verán los usuarios
+        finales cuando visualicen el contenido del push.
+      delivery_preview: A continuación se muestra una vista previa de cuándo verán
+        los usuarios finales cuándo <em>se visualiza el contenido push</em> .
+      expired_description: La página vencida es la página que verán los usuarios finales
+        cuando el push haya expirado.
+      expired_preview: A continuación se muestra una vista previa de lo que verán
+        los usuarios finales cuando <em>caduque el push</em> .
+      form:
+        logo_info: El siguiente logotipo se puede utilizar para personalizar y marcar
+          las páginas push que verán sus usuarios finales.
+        no_logo: Aún no se ha cargado ningún logotipo. Sube un logotipo para comenzar.
+        show_expiration: "¿Mostrar duración restante y mensaje de vistas?"
+        show_logo: "¿Mostrar logotipo?"
+      navbar:
+        brand: Logo
+        delivery: Entrega
+        edit_brand: Editar marca
+        edit_delivery: Editar Entrega
+        edit_expired: Editar Caducado
+        edit_passphrase: Editar frase de contraseña
+        edit_preliminary: Editar Recuperación con un solo clic
+        expired: Expirado
+        passphrase: Bloqueo de frase de contraseña
+        preliminary: Recuperación con un solo clic
+        edit_request_: Solicitud de edición lista
+        edit_request_delivery: Editar solicitud de entrega
+        edit_request_ready: Solicitud de edición lista
+        request_delivery: Solicitar entrega
+        request_ready: Solicitud lista
+      passphrase_description: La página de contraseñas se utiliza como parte de la
+        función de bloqueo de contraseñas. Los usuarios que reciben la notificación
+        deben ingresar una contraseña para acceder al contenido.
+      passphrase_preview: A continuación se muestra una vista previa de lo que verán
+        los usuarios finales cuando <em>se les solicite una frase de contraseña</em>
+        .
+      preliminary_description: La página de recuperación con un solo clic ayuda a
+        evitar que los bots, los sistemas de chat y los escáneres consuman las visitas.
+        Los usuarios que reciben el mensaje deben hacer clic en esta página preliminar
+        para acceder al contenido.
+      preliminary_preview: A continuación se muestra una vista previa de lo que verán
+        los usuarios finales para la <em>opción del paso de recuperación de 1 clic</em>
+        .
+      preview:
+        payload: Este es un ejemplo de una carga útil que se mostrará al usuario final.
+        request_payload: Este es un ejemplo de una solicitud que se mostrará al usuario
+          final.
+      save: Guardar
+      tip_custom_domain: "<strong>Consejo para suscriptores profesionales</strong>
+        : puedes configurar un dominio personalizado en tu %{link}."
+      tip_team_page: Página de configuración del equipo
+      header_lead: Aquí puedes personalizar la apariencia de los push y solicitudes
+        que se envían a tus usuarios.
+      header_sublead: Personaliza el logotipo, la mensajería, añade enlaces, alterna
+        la visibilidad de los elementos y más.
+      request_delivery_description: La página de entrega es la página que verán los
+        usuarios finales cuando reciban una solicitud.
+      request_delivery_preview: A continuación se muestra una vista previa de una
+        solicitud.
+      request_ready_description: La página lista se muestra cuando una solicitud ya
+        ha recibido una respuesta.
+      request_ready_preview: A continuación se muestra una vista previa de la página
+        de solicitud lista para los usuarios finales.
+      title: Push & Request - Marca
+    brands:
+      form:
+        documentation: documentación
+        domain_documentation: Consulte %{link} para obtener más información sobre
+          cómo configurar un dominio personalizado.
+        domain_note_1: "<strong>Ingrese el nombre de dominio</strong> sin el protocolo
+          o la ruta, como <code>pwp.example.com</code> ."
+        domain_note_2: "<strong>Configure los ajustes de DNS</strong> : Cree un registro
+          ALIAS que apunte a <code>domain.pwpush.com</code> ."
+        domain_note_3: La configuración de DNS puede tardar hasta 24 horas en propagarse.
+        domain_note_4: Una vez que hayas configurado los ajustes de DNS, puedes <strong>probar
+          el dominio</strong> visitando %{link} en tu navegador. Deberías ver una
+          pantalla verde que indica que la operación se realizó correctamente.
+        domain_placeholder: 'Suscriptores Pro: utilice Password Pusher para enviar
+          notificaciones con el dominio de su empresa.'
+    edit_policy:
+      edit_policy: Editar política
+    form:
+      custom_domain_notes: Notas de dominio personalizadas
+    form_brand:
+      branding: Herrada
+  tag_line: Adelante. Envíe otra contraseña por correo electrónico.
+  app_name: Empujador de contraseñas
+  application:
+    card_newsletter:
+      enter_email: Introduce tu correo electrónico...
+      subscribe: Suscribir
+      get_the_newsletter: Obtener el boletín
+      updates_on: Actualizaciones sobre grandes lanzamientos, problemas de seguridad,
+        características, integraciones, consejos y más.
+    cookie_consent:
+      notice: Las cookies del navegador ayudan a que esta herramienta funcione. Al
+        usarlo, aceptas el uso de estas cookies.
+    footer:
+      best_practices: Mejores prácticas
+      docker: Contenedores Docker
+      faq: FAQ
+      feedback: Comentario
+      github: GitHub
+      key_generator: Generador de clave
+      newsletter: Boletin informativo
+      password_generator: Generador de contraseñas
+      api_docs: Documentación API
+      features: Características
+      languages: Idiomas
+      pricing: Precios
+      support: Apoyo
+    pw_generator_modal:
+      cancel: Cancelar
+      configure: Configurar la generación de contraseñas
+      consonants: Consonantes
+      generate_password: Generar Contraseña
+      include_numbers: Incluir números
+      load_preset: Cargar un preajuste
+      max_syllable_length: Longitud máxima de sílabas
+      min_syllable_length: Longitud mínima de sílabas
+      num_syllables: Número de sílabas
+      reset: Restablecer los valores predeterminados
+      save: Guardar
+      separators: Separadores
+      test: Generación de pruebas
+      test_area: Área de prueba
+      use_separators: Usar separadores
+      use_titlecase: Usar mayúsculas
+      vowels: Vocales
+    navbar:
+      edit_policy: Política
+      branding: Herrada
+    secret_url_bar:
+      secret_link_lang: Idioma del enlace secreto
+      autodetect: Detección automática
+    left_nav:
+      pushes: empuja
+      pulls: Solicitudes ᴮᴱᵀᴬ
+    right_nav:
+      features: Características
+    push_expiration:
+      will_expire_in: 'Los enlaces de descarga de archivos anteriores caducarán en:'
+      you_can_refresh: Puede actualizar la página para regenerar nuevos enlaces de
+        descarga si aún quedan vistas.
+    layout:
+      blank_brand:
+        description: Este enlace está configurado para expirar automáticamente y eliminarse
+          automáticamente después de un tiempo o una cantidad de vistas específicos.
+        title: Se le ha enviado un enlace secreto.
+    policy_navbar:
+      password_generator: Generador de contraseñas
+      pushes: empuja
+      requests: Peticiones
+      security: Seguridad
+  audit_logs:
+    audit_log:
+      log_created: Push creado en %{date} por %{user}
+      log_expired: El push expiró manualmente en %{date} por %{user}
+      log_failed_view: Intento fallido de visualización desde la dirección IP %{ip}
+        en %{date} por %{user}
+      log_viewed: Vista exitosa desde la dirección IP %{ip} en %{date} por %{user}
+      unknown: Desconocido
+      log_failed_passphrase: Intento fallido de frase de contraseña en %{date} por
+        %{user}
+      ip_address: 'Dirección IP:'
+      referrer: 'Referente:'
+      user_agent: 'Agente de usuario:'
+      automatic: Automático
+      log_close: Cerrado el %{date} por %{user}. Respuesta eliminada.
+      log_response: Respuesta del destinatario recibida el %{date} por %{user}
+      log_retrieve: Recuperar página vista en %{date} por %{user}
+  dashboard:
+    show:
+      detail: Detalle
+      event: Evento
+      when: Cuando
+  duration:
+    format_d:
+      one: 1 día
+      other: "%{count} días"
+    format_dhm: "%{days} día(s), %{hours} hora(s) y %{minutes} minuto(s)"
+    format_h:
+      one: 1 hora
+      other: "%{count} hora(s)"
+    format_hm: "%{hours} hora(s) y %{minutes} minuto(s)"
+    format_m:
+      one: 1 minuto
+      other: "%{count} minuto(s)"
+  feedbacks:
+    create:
+      feedback_sent: Comentarios enviados! Nos pondremos en contacto con usted lo
+        antes posible.
+      failed_spam_test: Nuestras disculpas, pero no pasó la verificación de correo
+        no deseado. En su lugar, podría intentar contactarnos en Github.
+      failed_to_send: No se pudo enviar comentarios. Algo andaba mal. Inténtelo de
+        nuevo o contáctenos en Github.
+    new:
+      email: Email
+      have_idea: "¿Tienes una idea o un deseo? ¿Algo que no te gusta? ¿Quieres ayudar?
+        ¡Queremos oírlo!"
+      math_question: "¿Cuánto es cien menos 3?"
+      send_feedback: Enviar comentarios
+      tip: 'Consejo: Copie su mensaje en el portapapeles en la improbable posibilidad
+        de que falle el envío.'
+      your_name: Tu nombre
+  none: Ninguna
+  pages:
+    about:
+      about_1: Password Pusher es una herramienta que se utiliza para compartir contraseñas
+        y otra información confidencial con otras personas de forma segura.
+      about_2: Con Password Pusher, puede crear una URL única que caducará después
+        de una cierta cantidad de tiempo o después de que se haya accedido a ella
+        una cierta cantidad de veces, lo que garantiza que su información permanezca
+        privada y segura.
+      about_3: A menudo, las personas y las organizaciones lo utilizan para compartir
+        credenciales de inicio de sesión u otros datos confidenciales con colegas,
+        clientes o socios.
+      about_4: Password Pusher es una solución simple y conveniente para compartir
+        contraseñas de forma segura sin necesidad de correo electrónico u otros métodos
+        de comunicación menos seguros.
+      about_pwpush: Acerca de Password Pusher
+      hosted_at_html: Alojado en <a href="https://pwpush.com">pwpush.com</a> o puede
+        ejecutar su propia instancia privada donde quiera.
+      my_name: Mi nombre es Pedro Giacomo Lombardo. Puedes encontrarme en %{linkedin},
+        %{github} o %{blog}.
+      source_avail_html: El código fuente está <a href="https://github.com/pglombardo/PasswordPusher"
+        target="_blank" rel="noopener noreferrer">disponible en GitHub</a> . Es de
+        código abierto y gratuito para que cualquiera pueda usarlo, revisarlo o modificarlo.
+      the_author: El autor
+  pushes:
+    access:
+      incorrect: Esa contraseña es incorrecta. Vuelve a intentarlo o comunícate con
+        la persona u organización que te envió este vínculo.
+    audit:
+      1click_retrieval_step: Paso de recuperación con 1 clic
+      1click_retrieval_step_help: Ayuda a evitar que los sistemas de chat y los escáneres
+        de URL consuman vistas.
+      active: Activo
+      attached_files: Archivos adjuntos
+      audit_log_for: Registro de auditoría para %{push_id}
+      contains_text: Contiene texto
+      contains_text_help: "¿Se ha agregado una carga útil de texto a este enlace?"
+      current_status: Estado Actual
+      deletable_by_viewers: Eliminable por los espectadores
+      deletable_by_viewers_help: Esto permite a los usuarios finales eliminar el contenido
+        una vez recuperado.
+      end_audit_log: Fin del Registro de Auditoría
+      event_log: Registro de auditoría
+      expire_after: 'Caducar después:'
+      expire_after_time_help: El envío caduca después de este período de tiempo desde
+        su creación.
+      expire_after_view_help: El enlace caduca después de esta cantidad de vistas.
+      expire_now: Caduca Ahora
+      expire_now_confirm: Esto hará caducar este enlace secreto y eliminará todo el
+        contenido relacionado de la base de datos para siempre. El registro de auditoría
+        (incluidos los futuros intentos de visualización) se mantendrá en el futuro.
+        ¿Está seguro?
+      expired: Expirado
+      failed_view_attempts: Intentos de Visualización Fallidos
+      failed_view_attempts_help: El número de intentos de ver este envío después de
+        su vencimiento.
+      filename: Nombre del archivo
+      files_deleted: Todos los archivos adjuntos anteriormente se han eliminado o
+        no había ninguno adjunto."
+      log_note: Cada vez que se utilice un enlace, aquí aparecerá un registro con
+        información de identificación.
+      message_length: Longitud del mensaje
+      message_length_help: La longitud de la carga útil de texto adjunto.
+      none: Ninguna
+      num_files_attached: Número de archivos adjuntos
+      num_files_attached_help: El número de archivos adjuntos a este envío.
+      passphrase_lock: Bloqueo de contraseña
+      passphrase_lock_help: Solicita a los destinatarios que ingresen una contraseña
+        para ver este envío.
+      push_date: Empujado en %{date}
+      reference_note: Nota de Referencia
+      secret_url: URL secreta para este envío
+      size: 'Tamaño: %{size}'
+      start_audit_log: Inicio de registro de auditoría
+      state: Estado
+      state_help_active: Activo y todavía disponible para su visualización.
+      state_help_expired: El contenido del enlace se eliminó y la URL secreta caducó.
+      successful_views: Vistas exitosas
+      successful_views_help: El número de veces que el envío se ha visto correctamente.
+      time_remaining: Tiempo restante
+      time_remaining_help: La cantidad de tiempo que queda antes de que expire el
+        envío.
+      title: Registro de auditoría push
+      visible_to: Visible solo para ti
+      preview: Comparte este push
+      not_owner: Ese enlace no te pertenece.
+      push_creation: Creado el %{date} por %{name}
+    copy_to_clipboard: Copiar al Portapapeles
+    deleted: Eliminado
+    expiration_html: Este enlace secreto y todo el contenido se eliminarán en <strong>%{duration}</strong>
+      o <strong>%{count} más vistas</strong> , lo que ocurra primero.
+    expire:
+      expired: El contenido del enlace se eliminó y la URL secreta caducó.
+      not_deletable: Los espectadores no pueden borrar ese enlace.
+      already_expired: Ese impulso ya expiró.
+    form:
+      12_hours: 12 horas
+      15_minutes: 15 minutos
+      1_day: 1 día
+      1_hour: 1 hora
+      1_month: 1 mes
+      1_week: 1 semana
+      1click: Utilice un paso de recuperación de 1 clic
+      1click_tip: Ayuda a evitar que los sistemas de chat y los escáneres consuman
+        vistas.
+      2_days: 2 días
+      2_months: 2 meses
+      2_weeks: 2 semanas
+      30_minutes: 30 minutos
+      3_days: 3 días
+      3_months: 3 meses
+      3_weeks: 3 semanas
+      45_minutes: 45 minutos
+      4_days: 4 dias
+      5_days: 5 dias
+      6_days: 6 días
+      6_hours: 6 horas
+      audit_tip: Cuando se inicia sesión, se mantiene un registro de auditoría de
+        la actividad y está disponible indefinidamente.
+      deletable: Permitir eliminación inmediata
+      deletable_tip: Permita que los usuarios eliminen este enlace una vez visto.
+      encryption_tip: El contenido se cifra antes del almacenamiento y está disponible
+        solo para aquellos con el enlace secreto.
+      expiration_label: 'Expide este envío y elimínelo después de:'
+      expiration_tip: Una vez caducado, todo el contenido y los archivos del envío
+        se eliminan inmediata y completamente.
+      note_label: Nota de Referencia
+      note_placeholder: Una nota privada para ayudar a recordar para quién o para
+        qué es este impulso.
+      passphrase_placeholder: Solicita a los destinatarios que ingresen una contraseña
+        para ver este envío.
+      password_tip: 'Consejo: Introduzca únicamente una contraseña en el cuadro. Otra
+        información de identificación puede comprometer la seguridad.'
+      payload_placeholder: Ingrese la contraseña, texto o URL para enviar...
+      push_it: "¡Compartir!"
+      upload_limit: Puede cargar hasta 10 archivos por enlace.
+      view: Vista
+      views: Vistas
+      payload_url_placeholder: Introduce URL a la que quieres redirigir...
+      url_push_tip: El envío creado redireccionará a la URL proporcionada.
+      account_policy: Política de cuenta
+      passphrase_lockdown: Bloqueo de contraseña
+      policy_tip: 'Consejo: puedes establecer valores predeterminados y más en tu
+        %{link}.'
+      short_expiration_tip: Los tiempos de expiración cortos y los recuentos de visitas
+        reducen el riesgo de exposición.
+      qr_payload_placeholder: Introduzca hasta 1024 caracteres alfanuméricos...
+      qr_tip: Sólo caracteres alfanuméricos. Se permiten hasta 1024 caracteres.
+    index:
+      actions: Comportamiento
+      clear_filters: Borrar filtros
+      created: Creado
+      file_count: archivos
+      note: Nota
+      nothing_here: No hay nada aquí todavía.
+      push_id: ID
+      pushes: empuja
+      active: Activo
+      expired: Expirado
+      all: Todo
+      remaining: Restante
+      team_pushes: Empujones en equipo
+      pushes_help: Esta página muestra todos los push creados por usted.
+      team_pushes_help: Esta página muestra todos los push creados por todos los miembros
+        de la cuenta.
+    'no': 'No'
+    none: Ninguna
+    passphrase:
+      enter_passphrase: Ingrese la frase de contraseña
+      go: Ir
+      placeholder: Introduzca una frase o palabra secreta que le facilitaron con este
+        enlace
+      tip: Introduzca una frase o palabra secreta
+    payload: Carga útil
+    preliminary:
+      click_proceed: Haz click aquí para continuar
+      title: Haga clic para continuar
+    preview:
+      link_lang_tip: 'Sugerencia: ¿Compartiendo con un usuario internacional? Cambie
+        el idioma del enlace secreto usando el menú desplegable a la derecha de la
+        URL.'
+      or: o
+      push_another: Compartir otro
+      push_created: Tu enlace ha sido creado.
+      use_link_to_share: 'Utiliza este enlace secreto para compartirlo:'
+      view_push_now: Ver este enlace ahora
+      will_burn_view: "(quemará una vista)"
+      example: Ejemplo
+      generate: Generar
+      include_id: Incluir identificación
+      message_example: Asegúrese de que este documento se destruya de forma segura
+        después de recuperarlo para proteger la información confidencial y mantener
+        la confidencialidad.
+      message_placeholder: Mensaje personalizado opcional
+      print_and_share: Imprimir y compartir
+      print_and_share_tip: Genere una página imprimible para usuarios finales
+      show_expiration: Mostrar detalles de vencimiento
+      link_lang_auto: Alternativamente, la detección automática seleccionará un idioma
+        según la configuración del navegador del usuario final.
+    provide_text_or_file: Para crear un envío, debe proporcionar texto, adjuntar un
+      archivo o ambos.
+    push:
+      expired: Expirado
+      none: Ninguna
+      title: Nuevo empujón
+      unknown: Desconocido
+    settings: Ajustes
+    show:
+      click_to_reveal: El contenido está borroso. Haga clic a continuación para revelarlo.
+      delete_now: Eliminar este enlace secreto ahora
+      delete_now_confirm: Esto hará caducar este enlace secreto y eliminará todo el
+        contenido relacionado de la base de datos para siempre. ¿Está seguro?
+      download_file: Descargar archivo
+      obtain: Recupere y almacene de forma segura este contenido mediante un administrador
+        de contraseñas y/o almacenamiento cifrado. Recuerde eliminar de inmediato
+        cualquier dato que ya no sea necesario.
+      open_file: Abrir documento
+      your_link: Tu enlace secreto
+      intro: Se le ha enviado el siguiente contenido.
+    show_expired:
+      expired_help: Si es necesario, comuníquese con la persona u organización que
+        le proporcionó esta URL secreta.
+      expired_message: Lo sentimos, pero este enlace secreto ha caducado.
+      link_expired: Tu enlace secreto ha caducado
+    view:
+      one: 1 vista
+      other: "%{count} vistas"
+    view_audit_log: Ver Registro de Auditoría
+    whichever: "(lo que sea que ocurra primero)"
+    'yes': sí
+    payload_too_large: La carga útil es demasiado grande. Solo puede enviar hasta
+      %{count} bytes.
+    too_many_files: Solo puede adjuntar hasta archivos %{count} por envío.
+    navbar:
+      files: archivos
+      text: Contraseñas y texto
+      url: URL
+      qr: Códigos QR
+    new:
+      title: Enviar una contraseña, un texto o un archivo de forma segura
+    create:
+      premium_required: Necesitas suscribirte para adjuntar archivos.
+      qr_max_length: La carga útil del código QR es demasiado grande. Solo se pueden
+        insertar hasta %{count} bytes.
+    update:
+      successful: Push se actualizó exitosamente.
+  static:
+    about:
+      about_1: Password Pusher es una herramienta que se utiliza para compartir contraseñas
+        y otra información confidencial con otras personas de forma segura.
+      about_2: Con Password Pusher, puede crear una URL única que caducará después
+        de una cierta cantidad de tiempo o después de que se haya accedido a ella
+        una cierta cantidad de veces, lo que garantiza que su información permanezca
+        privada y segura.
+      about_3: A menudo, las personas y las organizaciones lo utilizan para compartir
+        credenciales de inicio de sesión u otros datos confidenciales con colegas,
+        clientes o socios.
+      about_4: Password Pusher es una solución simple y conveniente para compartir
+        contraseñas de forma segura sin necesidad de correo electrónico u otros métodos
+        de comunicación menos seguros.
+      about_5: Alojado en %{pwpush_link} o puedes ejecutar tu propia instancia privada
+        donde quieras.
+      about_6: El código fuente está disponible en %{github_link}. Es de código abierto
+        y gratuito para que cualquiera pueda usarlo, revisarlo o modificarlo.
+      age_body: El primer compromiso de git con Password Pusher fue el <strong>28
+        de diciembre de 2011</strong> . pwpush.com entró en funcionamiento poco después.
+      age_title: Más de %{years_count} años
+      author_1: Mi nombre es Pedro Giacomo Lombardo. Puedes encontrarme en %{linkedin},
+        %{github} o %{blog}.
+      author_2: Para obtener actualizaciones, siga a Password Pusher en %{twitter}
+        (o mi %{twitter_personal}) o suscríbase a %{newsletter}.
+      github: GitHub
+      pwpush_domain: pwpush.com
+      section_about: Sobre Nosotros
+      section_author: El autor
+      title: Acerca de Password Pusher
+      birthday: Cumpleaños
+      original_theme: El Tema Original
+      original_theme_body: El diseño del sitio original consistía en un fondo oscuro
+        con una fuente amarilla en negrita.
+    generate_key:
+      env_var: Puede aplicar esta clave a su aplicación configurando la variable de
+        entorno
+      generate_key: Generar Clave
+      generated: Clave de Cifrado Generada
+      intro: Esta página se utiliza como herramienta auxiliar para generar una clave
+        de cifrado aleatoria para instancias autohospedadas de Password Pusher.
+      intro_2: Password Pusher cifra datos confidenciales en la base de datos. Aunque
+        se incluye una clave predeterminada, se recomienda utilizar su propia clave
+        de cifrado personalizada.
+      intro_3: Con cada actualización, esta página genera una nueva clave de cifrado.
+        Puede utilizar el código generado aleatoriamente a continuación para configurar
+        su instancia de Password Pusher.
+      note_1: Si no se proporciona una clave de cifrado, se utilizará una clave predeterminada.
+      note_2: La mejor seguridad para las instancias privadas de Password Pusher es
+        utilizar su propia clave de cifrado personalizada, aunque no es necesaria.
+      note_3: El riesgo de usar la clave predeterminada se reduce si mantiene su instancia
+        segura y sus vencimientos son breves. p.ej. 1 día / 1 visualización frente
+        a 100 días / 100 visualizaciones.
+      note_4: Una vez que caduca un envío, todos los datos cifrados en ese envío se
+        eliminan.
+      note_5: Cambiar una clave de cifrado donde ya existen enlaces antiguos hará
+        que estos sean ilegibles. En otras palabras, las cargas anteriores dejarán
+        de funcionar. Los nuevos enlaces funcionarán bien.
+      note_6: 'La generación de claves también se puede realizar desde la línea de
+        comando en el código fuente de la aplicación ejecutando:'
+      notes: 'Notas:'
+      reload: Recarga esta página para volver a generar una nueva clave.
+      title: Genere una Clave de Cifrado
+      explanation: Explicación
+    password_generator:
+      push_it: Introduzca esta contraseña
+      pwgen_title: Generador de contraseñas
+    features:
+      intro_4: 'Hay cuatro versiones diferentes de Password Pusher para satisfacer
+        sus necesidades: <strong>Código abierto</strong> , <strong>Premium</strong>
+        , <strong>Pro</strong> y <strong>Autohospedado</strong> .'
+      intro_5: A continuación se muestra una matriz de características que describe
+        las características principales de cada sabor.
+      title: Características
+    languages:
+      lang_description: A continuación se muestran los idiomas que admite Password
+        Pusher. Hay 30 idiomas admitidos. Si utiliza el alojamiento propio, puede
+        habilitar o deshabilitar idiomas para su instancia.
+      languages: Idiomas
+      pwp_languages: Idiomas de Password Pusher
+    pricing:
+      coming_soon: Próximamente estará disponible un plan autohospedado para las funciones
+        Pro.
+      custom_subhead: Apoye el código abierto. Obtenga funciones premium.
+      feature_pipeline: Las funciones premium se trasladan periódicamente a la edición
+        de código abierto.
+      footer_note: Las suscripciones son para pwpush.com y financian el desarrollo
+        de la edición de código abierto.
+  zero_minutes: 0 minutos
+  users:
+    agreements:
+      privacy_policy:
+        privacy_policy: política de privacidad
+      terms_of_service:
+        terms_of_service: Términos de servicio
+  confirmation_go: Haga clic aquí para confirmar su cuenta
+  admin:
+    config:
+      menu_item: Configuración
+      overview:
+        description: Los ajustes de esta sección se utilizan para configurar la aplicación
+          de forma global. Cuando se realizan cambios, es posible reiniciar la aplicación
+          para aplicar los nuevos ajustes.
+        subtitle: Aquí puede personalizar la configuración de Password Pusher.
+        title: Configuración de la aplicación
+      reset: Restablecer los valores predeterminados
+      reset_confirm: "¿Está seguro de que desea restablecer la configuración de esta
+        página a los valores predeterminados? Esto no afectará la configuración de
+        otras páginas."
+      save: Guardar
+  models:
+    pwp_config:
+      app_config: Configuración de la aplicación
+      as_container_hint: El contenedor que se utilizará para almacenar archivos.
+      as_container_label: Contenedor AS
+      as_storage_access_key_hint: La clave de acceso de almacenamiento que se utilizará
+        para autenticarse con el servidor AS.
+      as_storage_access_key_label: Clave de acceso al almacenamiento AS
+      as_storage_account_name_hint: El nombre de la cuenta de almacenamiento que se
+        utilizará para almacenar archivos.
+      as_storage_account_name_label: Nombre de la cuenta de almacenamiento AS
+      config_encryption_key_hint: La clave de cifrado que se utilizará para cifrar
+        y descifrar estos datos de configuración.
+      config_encryption_key_label: Clave de cifrado de configuración
+      dark_logo_hint: Logotipo que se utilizará para el tema oscuro. Asegúrese primero
+        de que el almacenamiento de archivos esté configurado correctamente.
+      dark_logo_label: Logotipo del sitio con tema oscuro
+      default_locale_hint: El idioma predeterminado que se utilizará para la aplicación.
+      default_locale_label: Idioma predeterminado
+      email_raise_delivery_errors_hint: Especifica si se debe generar un error si
+        no se puede completar la entrega del correo electrónico. El valor predeterminado
+        es verdadero.
+      email_raise_delivery_errors_label: Errores de entrega de aumento
+      email_subtitle: Aquí puede personalizar cómo Password Pusher envía correos electrónicos.
+      email_title: Configuración de correo electrónico
+      enabled_languages_hint: Los idiomas seleccionados a continuación estarán disponibles
+        para todos los usuarios.
+      enabled_languages_label: Idiomas habilitados
+      encryption_subtitle: Aquí puede personalizar la configuración de cifrado para
+        Password Pusher.
+      encryption_title: Configuración de cifrado
+      file_subtitle: Aquí puede personalizar cómo Password Pusher almacena los archivos
+        cargados.
+      file_title: Configuración de almacenamiento de archivos
+      from_address_hint: La dirección de correo electrónico que se utilizará como
+        remitente del correo electrónico.
+      from_address_label: Dirección de origen
+      gcs_bucket_hint: El depósito que se utilizará para almacenar archivos.
+      gcs_bucket_label: Cubo GCS
+      gcs_credentials_hint: Las credenciales que se utilizarán para autenticarse con
+        el servidor GCS.
+      gcs_credentials_label: Credenciales GCS
+      gcs_gsa_email_hint: El correo electrónico de GSA que se utilizará para autenticarse
+        con el servidor GCS.
+      gcs_gsa_email_label: Correo electrónico de GCS GSA
+      gcs_iam_hint: El IAM que se utilizará para autenticarse con el servidor GCS.
+      gcs_iam_label: GCS IAM
+      gcs_project_hint: El proyecto a utilizar para almacenar archivos.
+      gcs_project_label: Proyecto GCS
+      language_subtitle: Aquí puedes personalizar los idiomas que admite Password
+        Pusher.
+      language_title: Configuración del idioma
+      light_logo_hint: Logotipo que se utilizará para el tema claro. Asegúrese primero
+        de que el almacenamiento de archivos esté configurado correctamente.
+      light_logo_label: Logotipo del sitio de tema claro
+      login_subtitle: Aquí puede personalizar cómo Password Pusher maneja los inicios
+        de sesión.
+      login_tip: Consejo
+      login_tip_body: 'Utilice esta herramienta para probar sus patrones de correo
+        electrónico:'
+      login_title: Configuración de inicio de sesión
+      override_base_url_hint: Se utiliza para forzar la URL base de las URL secretas
+        generadas.
+      override_base_url_label: Anular URL base
+      push_encryption_key_hint: La clave de cifrado que se utilizará para cifrar y
+        descifrar los envíos.
+      push_encryption_key_label: Clave de cifrado Push
+      s3_access_key_id_hint: El ID de clave de acceso que se utilizará para autenticarse
+        con el servidor S3.
+      s3_access_key_id_label: Identificación de la clave de acceso S3
+      s3_bucket_hint: El depósito que se utilizará para almacenar archivos.
+      s3_bucket_label: Cubo S3
+      s3_endpoint_hint: El punto final del servidor S3 que se utilizará para almacenar
+        archivos.
+      s3_endpoint_label: Punto final S3
+      s3_region_hint: La región del servidor S3 que se utilizará para almacenar archivos.
+      s3_region_label: Región S3
+      s3_secret_access_key_hint: La clave de acceso secreta que se utilizará para
+        autenticarse con el servidor S3.
+      s3_secret_access_key_label: Clave de acceso secreta S3
+      signup_email_regexp_hint: Los correos electrónicos que no coincidan con este
+        patrón serán rechazados.
+      signup_email_regexp_label: Regexp de correo electrónico de registro
+      site_name_hint: El nombre del sitio que se utilizará en el encabezado y el pie
+        de página.
+      site_name_label: Nombre del sitio
+      site_tagline_hint: El lema del sitio que se utilizará en el encabezado y el
+        pie de página.
+      site_tagline_label: Lema del sitio
+      smtp_address_hint: La dirección del servidor SMTP que se utilizará para enviar
+        correo electrónico.
+      smtp_address_label: Dirección del servidor SMTP
+      smtp_authentication_hint: El tipo de autenticación a utilizar con el servidor
+        SMTP.
+      smtp_authentication_label: Tipo de autenticación SMTP
+      smtp_domain_hint: El dominio del servidor SMTP que se utilizará para enviar
+        correo electrónico.
+      smtp_domain_label: Dominio SMTP
+      smtp_enable_starttls_auto_hint: Detecta si STARTTLS está habilitado en el servidor
+        SMTP y comienza a usarlo. El valor predeterminado es verdadero.
+      smtp_enable_starttls_auto_label: SMTP STARTTLS automático
+      smtp_enable_starttls_hint: Utilice STARTTLS al conectarse a su servidor SMTP
+        y fallará si no es compatible. El valor predeterminado es falso.
+      smtp_enable_starttls_label: Habilitar SMTP STARTTLS
+      smtp_openssl_verify_mode_hint: El modo de verificación OpenSSL que se utilizará
+        al conectarse al servidor SMTP.
+      smtp_openssl_verify_mode_label: Modo de verificación SMTP OpenSSL
+      smtp_password_hint: La contraseña que se utilizará para autenticarse con el
+        servidor SMTP.
+      smtp_password_label: Contraseña SMTP
+      smtp_port_hint: El puerto del servidor SMTP que se utilizará para enviar correo
+        electrónico.
+      smtp_port_label: Puerto SMTP
+      smtp_user_name_hint: El nombre de usuario que se utilizará para autenticarse
+        con el servidor SMTP.
+      smtp_user_name_label: Nombre de usuario SMTP
+      storage_hint: El tipo de almacenamiento que se utilizará para guardar archivos.
+        El valor predeterminado es :local.
+      storage_label: Almacenamiento
+  notifiers:
+    pull:
+      response_notifier:
+        message: Su solicitud con ID %{url_token} ha recibido una respuesta. Se cerrará
+          y caducará en %{remaining}.
+        now_closed_message: Su solicitud con ID %{url_token} ha recibido una respuesta.
+          La solicitud ha sido cerrada.
+        email:
+          description_html: La solicitud con ID <strong>%{url_token}</strong> ha recibido
+            una respuesta. Se cerrará y caducará en <strong>%{remaining}</strong>
+            .
+          html_header: Su solicitud ha recibido una respuesta.
+          subject: Su solicitud ha recibido una respuesta
+          view_audit_log: Ver solicitud
+  pulls:
+    access:
+      incorrect: Esa contraseña es incorrecta. Vuelve a intentarlo o comunícate con
+        la persona u organización que te envió este vínculo.
+    audit:
+      1click_retrieval_step: Paso de recuperación con 1 clic
+      1click_retrieval_step_help: Ayuda a evitar que los sistemas de chat y los escáneres
+        de URL consuman vistas.
+      active: Activo
+      attached_files: Archivos adjuntos
+      attached_files_help: "¿Se han adjuntado archivos a esta solicitud?"
+      audit_log_for: Registro de auditoría para %{pull_id}
+      closed: Cerrado
+      contains_text: Contiene texto
+      contains_text_help: "¿Se ha agregado una carga de texto a esta solicitud?"
+      created: Creado
+      created_by: Creado por %{user}
+      current_status: Estado Actual
+      deletable_by_viewers: Eliminable por los espectadores
+      deletable_by_viewers_help: Esto permite a los usuarios finales eliminar el contenido
+        una vez recuperado.
+      detail: Detalle
+      end_audit_log: Fin del Registro de Auditoría
+      event: Evento
+      event_log: Registro de auditoría
+      expire_after: 'Caducar después:'
+      expire_after_time_help: La solicitud caduca después de este período de tiempo
+        desde su creación.
+      expire_after_view_help: La solicitud caduca después de este número de visitas.
+      expire_now: Caduca Ahora
+      expire_now_confirm: Esto hará caducar este enlace secreto y eliminará todo el
+        contenido relacionado de la base de datos para siempre. El registro de auditoría
+        (incluidos los futuros intentos de visualización) se mantendrá en el futuro.
+        ¿Está seguro?
+      expired: Expirado
+      failed_view: Intento de visualización fallido
+      failed_view_attempts: Intentos de Visualización Fallidos
+      failed_view_attempts_help: El número de intentos para ver esta solicitud después
+        de su vencimiento.
+      filename: Nombre del archivo
+      files_deleted: Todos los archivos adjuntos anteriormente se han eliminado o
+        no había ninguno adjunto."
+      log_note: A medida que la solicitud recibe actividad, aquí se mostrará un registro
+        de cada una con información de identificación.
+      manual_expiration: Vencimiento manual
+      message_length: Longitud del mensaje
+      message_length_help: La longitud de la carga útil de texto adjunto.
+      none: Ninguna
+      num_files_attached: Número de archivos adjuntos
+      num_files_attached_help: El número de archivos adjuntos a esta solicitud.
+      open: Solicitud abierta
+      passphrase_lock: Bloqueo de contraseña
+      passphrase_lock_help: Requerir que los destinatarios ingresen una contraseña
+        para ver esta solicitud.
+      payload: Carga útil
+      preview: Compartir
+      pull_creation: Creado el %{date} por %{name}
+      ready: Respuesta lista
+      reference_note: Nota de Referencia
+      request_date: Creado el %{date}
+      retrieve: Recuperar
+      secret_url: URL secreta para esta solicitud
+      size: 'Tamaño: %{size}'
+      start_audit_log: Inicio de registro de auditoría
+      start_log: Inicio de registro de auditoría
+      state: Estado
+      state_help_closed: La solicitud ha sido cerrada y el contenido de la respuesta
+        eliminado.
+      state_help_open: La solicitud está abierta y aún no ha recibido respuesta.
+      state_help_ready: El destinatario ha respondido a la solicitud y el contenido
+        está listo para ser recuperado.
+      successful_view: Vista exitosa
+      successful_views: Vistas exitosas
+      successful_views_help: El número de veces que la solicitud ha sido vista exitosamente.
+      time_remaining: Tiempo restante
+      time_remaining_help: La cantidad de tiempo restante antes de que se cierre la
+        solicitud y se elimine el contenido.
+      title: 'Registro de auditoría para la ID de solicitud: %{pull_id}'
+      visible_to: Visible solo para ti
+      when: Cuando
+    close:
+      done: Respuesta eliminada exitosamente y solicitud cerrada.
+    copy_to_clipboard: Copiar al Portapapeles
+    create:
+      need_subscription: Necesitas suscribirte para adjuntar archivos.
+    day:
+      one: 1 día
+      other: "%{count} días"
+    deleted: Eliminado
+    expiration_html: Este enlace secreto y todo el contenido se eliminarán en <strong>%{duration}</strong>
+      o <strong>%{count} más vistas</strong> , lo que ocurra primero.
+    expire:
+      already_expired: Esa solicitud ya ha expirado.
+      expired: El contenido de la solicitud ha sido eliminado y la URL secreta ha
+        expirado.
+      not_deletable: Los espectadores no pueden eliminar esta solicitud.
+    form:
+      12_hours: 12 horas
+      15_minutes: 15 minutos
+      1_day: 1 día
+      1_hour: 1 hora
+      1_month: 1 mes
+      1_week: 1 semana
+      1click: Utilice un paso de recuperación de 1 clic
+      1click_tip: Ayuda a evitar los sistemas de chat y los escáneres de URL
+      2_days: 2 días
+      2_months: 2 meses
+      2_weeks: 2 semanas
+      30_minutes: 30 minutos
+      3_days: 3 días
+      3_months: 3 meses
+      3_weeks: 3 semanas
+      45_minutes: 45 minutos
+      4_days: 4 dias
+      5_days: 5 dias
+      6_days: 6 días
+      6_hours: 6 horas
+      attach_files: Adjuntar archivos
+      attach_files_help: 'Ejemplo: Un formulario para rellenar.'
+      audit_tip: Cuando se inicia sesión, se mantiene un registro de auditoría de
+        la actividad y está disponible indefinidamente.
+      beta: Esta función es BETA y puede cambiar. ¡Agradecemos sus comentarios!
+      day: Día
+      days: Días
+      deletable: Permitir eliminación inmediata
+      deletable_tip: Permitir a los usuarios eliminar esta solicitud una vez recuperada.
+      encryption_tip: Se creará una URL secreta que podrás compartir para tu solicitud.
+      expiration_label: 'Una vez recibida una respuesta, la información enviada se
+        eliminará después de:'
+      expiration_tip: El destinatario de esta URL secreta puede ver la solicitud y
+        responder con texto o archivos.
+      generator_tip: Usa el botón de arriba para generar una contraseña aleatoria.
+      hour: Hora
+      hours: Horas
+      login_to_upload: Inicie sesión para cargar y adjuntar archivos a esta solicitud...
+      minutes: Minutos
+      month: Mes
+      months: Meses
+      note_label: Nota de Referencia
+      note_placeholder: Una nota privada para esta solicitud. Encriptada y visible
+        solo para usted y su equipo.
+      passphrase_label: Bloqueo de frase de contraseña
+      passphrase_lockdown: Bloqueo de contraseña
+      passphrase_placeholder: Requerir que el destinatario ingrese una contraseña
+        para responder a esta solicitud.
+      password_tip: 'Ejemplo: Hola John, ¿podrías ingresar tu nombre de usuario y
+        adjuntar tus documentos aquí? Una vez que los recibamos, nos comunicaremos
+        contigo muy pronto.'
+      payload_url_placeholder: Introduce URL a la que quieres redirigir...
+      pull_it: Crear solicitud
+      request_placeholder: Introduzca su solicitud aquí...
+      respond: Envía tu respuesta
+      response_placeholder: Ingrese su respuesta aquí...
+      tip_section_title: Solicite de forma segura información confidencial a sus clientes,
+        colegas o consumidores.
+      upload_limit: Puede cargar hasta %{count} archivos por solicitud.
+      url_pull_tip: La solicitud creada redirigirá a la URL proporcionada.
+      view: Vista
+      views: Vistas
+      week: Semana
+      weeks: Semanas
+    hour:
+      one: 1 hora
+      other: "%{count} horas"
+    index:
+      actions: Comportamiento
+      active: Activo
+      all: Todo
+      clear_filters: Borrar filtros
+      closed: Cerrado
+      created: Creado
+      created_by: Por
+      deletion: Eliminación en
+      expired: Expirado
+      expires: Vence
+      file_count: archivos
+      note: Nota
+      nothing_here: No hay nada aquí todavía.
+      open: Abierto
+      pull_id: Solicitar ID
+      pulls: Peticiones
+      ready: Listo
+      remaining_time: Tiempo restante
+      state: Estado
+      status: Estado
+      team_pulls: Solicitudes de equipo
+      views: Vistas
+      views_remaining: Vistas restantes
+      pulls_help: Esta página muestra todas las solicitudes creadas por usted.
+      team_pulls_help: Esta página muestra todas las solicitudes creadas por todos
+        los miembros de esta cuenta.
+    minute:
+      one: 1 minuto
+      other: "%{count} minutos"
+    more_view:
+      one: 1 vista más
+      other: "%{count} más vistas"
+    navbar:
+      files: archivos
+      text: Contraseñas y texto
+      url: URL
+    new:
+      title: Enviar una contraseña, un texto o un archivo de forma segura
+    'no': 'No'
+    none: Ninguna
+    passphrase:
+      enter_passphrase: Ingrese la frase de contraseña
+      go: Ir
+      placeholder: Introduzca una frase o palabra secreta que le facilitaron con este
+        enlace
+      tip: Introduzca una frase o palabra secreta
+    payload: Carga útil
+    payload_too_large: La carga útil es demasiado grande. Solo se pueden introducir
+      hasta %{count} bytes.
+    preliminary:
+      click_proceed: Haz click aquí para continuar
+      title: Haga clic para continuar
+    preview:
+      and: "y"
+      can_be: puede ser
+      can_not_be: no puede ser
+      deleted_by_viewers: eliminado por los espectadores.
+      example: Ejemplo
+      generate: Generar
+      include_id: Incluir identificación
+      link_lang_auto: Alternativamente, la detección automática seleccionará un idioma
+        según la configuración del navegador del usuario final.
+      link_lang_tip: 'Consejo: ¿Desea realizar una solicitud a un usuario internacional?
+        Cambie el idioma del enlace secreto mediante el menú desplegable que se encuentra
+        a la derecha de la URL.'
+      message_example: Asegúrese de que este documento se destruya de forma segura
+        después de recuperarlo para proteger la información confidencial y mantener
+        la confidencialidad.
+      message_placeholder: Mensaje personalizado opcional
+      or: o
+      or_after: o después
+      print_and_share: Imprimir y compartir
+      print_and_share_tip: Genere una página imprimible para usuarios finales
+      pull_another: Hacer otra solicitud
+      pull_created: Su solicitud ha sido creada.
+      show_expiration: Mostrar detalles de vencimiento
+      use_link_to_share: 'Utiliza este enlace secreto para compartirlo:'
+      view_pull_now: Ver esta solicitud ahora
+      will_burn_view: "(quemará una vista)"
+      will_expire_after: Esta solicitud expira en
+      with_preliminary_step: También incluye un paso de recuperación preliminar con
+        1 clic %{strong_start}%{strong_end}.
+    provide_text_or_file: Para crear una solicitud, debe proporcionar texto, adjuntar
+      un archivo o ambos.
+    pull:
+      audit: Auditoría
+      closed: Cerrado
+      none: Ninguna
+      not_applicable: N / A
+      open: Solicitud abierta
+      preview: Vista previa
+      pull_controls: Controles de solicitud
+      ready: Respuesta lista
+      retrieve: Recuperar
+      share: Compartir
+      title: Nueva solicitud
+      unknown: Desconocido
+      view: Vista
+    retrieve:
+      attached_files: Archivos adjuntos
+      audit: Registro de auditoría
+      close_now: Cerca
+      close_now_confirm: Al cerrar la solicitud se eliminarán inmediatamente todos
+        los archivos e información confidencial. El registro de auditoría se mantendrá
+        indefinidamente. ¿Está seguro?
+      close_warning: Esta solicitud se cerrará automáticamente y se eliminará toda
+        la información confidencial en %{duration}.
+      closed: Esta solicitud ha sido cerrada y todos los datos confidenciales han
+        sido eliminados.
+      deleted: Todo el contenido ha sido eliminado.
+      no_response: Aún no hemos recibido respuesta.
+      preview: Compartir
+      pull_creation: Creado el %{date} por %{name}
+      reference_note: Nota de Referencia
+      state: Estado
+      state_closed: Cerrado
+      state_help_closed: La solicitud ha sido cerrada y el contenido de la respuesta
+        eliminado.
+      state_help_open: La solicitud está abierta y aún no ha recibido respuesta.
+      state_help_ready: El destinatario ha respondido a la solicitud y el contenido
+        está listo para ser recuperado.
+      state_open: Abierto
+      state_ready: Listo
+      the_request: La solicitud
+      the_response: La respuesta del destinatario
+      title: 'Recuperación de ID de solicitud: %{pull_id}'
+      visible_to: Visible solo para ti
+    settings: Ajustes
+    show:
+      blurred: Tu contraseña está borrosa. Haz clic a continuación para revelarla.
+      click_to_reveal: El contenido está borroso. Haga clic a continuación para revelarlo.
+      delete_now: Eliminar este enlace secreto ahora
+      delete_now_confirm: Esto hará caducar este enlace secreto y eliminará todo el
+        contenido relacionado de la base de datos para siempre. ¿Está seguro?
+      download_file: Descargar archivo
+      intro: Se le ha enviado la siguiente solicitud.
+      last_view: Esta es la última vista.
+      open_file: Abrir documento
+      please_download: Por favor descárgalo y guárdalo en un área segura.
+      response_retrieval: Recuperación de respuesta
+      security_note: La información enviada aquí se almacenará de forma segura, estará
+        disponible sólo para el solicitante y se eliminará por completo dentro de
+        %{duration}.
+      will_be_deleted: Este enlace secreto y todo el contenido se eliminarán en %{b_tag}%{time_count}
+        %{time_unit}%{b_tag} o %{b_tag}%{view_count} más %{view_unit}%{b_tag} (lo
+        que ocurra primero).
+      your_link: Usted ha recibido una solicitud
+      your_response: Su respuesta
+    show_expired:
+      expired_help: Si es necesario, comuníquese con la persona u organización que
+        le proporcionó esta URL secreta.
+      expired_message: Lo sentimos, pero este enlace secreto ha caducado.
+      link_expired: Tu enlace secreto ha caducado
+    show_ready:
+      help: Si tiene alguna pregunta o necesita más ayuda, comuníquese con la persona
+        u organización que le envió este enlace.
+      message: Gracias por su respuesta. El solicitante ha sido notificado y se pondrá
+        en contacto con usted en breve.
+      title: Gracias por tu respuesta.
+    too_many_files: Solo puedes adjuntar hasta %{count} archivos por solicitud.
+    update:
+      done: Gracias. Su respuesta fue recibida exitosamente.
+    view:
+      one: 1 vista
+      other: "%{count} vistas"
+    view_audit_log: Ver Registro de Auditoría
+    whichever: "(lo que sea que ocurra primero)"
+    'yes': sí
+  words:
+    audit: Auditoría
+    forbidden: Prohibido
+    not_found: Extraviado
+    share: Compartir
+    expired: Expirado
