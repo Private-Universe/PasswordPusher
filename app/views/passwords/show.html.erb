@@ -4,24 +4,11 @@
   <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center bg-light">
     <% unless @push.payload.empty? %>
         <div class='text-center m-3'>
-<<<<<<< HEAD
-
-          <%= link_to "https://www.privateuniverse.com.au" do %>
-            <picture>
-              <source srcset="<%= asset_pack_path('media/img/logo-transparent-lg.png') %>" media="(prefers-color-scheme: light) or (prefers-color-scheme: no-preference)">
-              <source srcset="<%= asset_pack_path('media/img/logo-transparent-lg-dark.png') %>" media="(prefers-color-scheme: dark)">
-              <img src="<%= asset_pack_path('media/img/logo-transparent-lg.png') %>" alt="Password Pusher Logo" style='width: 300px; padding: 30px' />
-            </picture>
-          <% end %>
-          <p class=""><strong><%= _('Store this password in your password manager.') %></strong></p>
-          <p class="text-muted"><%= _('Your password is blurred out.  Click below to reveal it.') %></p>
-=======
           <p class=""><strong><%= _('Please obtain and securely store this content in a secure manner, such as in a password manager.') %></strong></p>
           <% if Settings.pw.enable_blur %>
             <p class="text-muted"><%= _('Your password is blurred out.  Click below to reveal it.') %></p>
           <% end %>
           <%= render partial: 'shared/copy_button', cached: true %>
->>>>>>> 112a4c8f97d210d0850fd265645f9f7fabcd0a77
         </div>
 
         <% if @payload.chomp.match?(/\n/) || @payload.length > 100 %>

@@ -24,5 +24,3 @@ fi
 
 echo "Password Pusher: starting puma webserver..."
 bundle exec puma -C config/puma.rb
-
-exec "$@"

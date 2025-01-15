@@ -65,18 +65,20 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-    # - name: Fill in the new image ID in the Amazon ECS task definition
-    #   id: task-def
-    #   uses: aws-actions/amazon-ecs-render-task-definition@v1
-    #   with:
-    #     task-definition: ecs.json
-    #     container-name: passwordpusherv2
-    #     image: ${{ steps.build-image.outputs.image }}
+    - name: Fill in the new image ID in the Amazon ECS task definition
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: ecs.json
+        container-name: passwordpusherv2
+        image: ${{ steps.build-image.outputs.image }}
+        secrets: |
+          DATABASE_URL=${{ secrets.DATABASE_URL }}
 
-    # - name: Deploy Amazon ECS task definition
-    #   uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-    #   with:
-    #     task-definition: ${{ steps.task-def.outputs.task-definition }}
-    #     service: passwordpusherv2
-    #     cluster: PasswordPusherv2
-    #     wait-for-service-stability: true
+    - name: Deploy Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: passwordpusher
+        cluster: PasswordPusherV3
+        wait-for-service-stability: true
