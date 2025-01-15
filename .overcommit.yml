@@ -1,0 +1,77 @@
+# Use this file to configure the Overcommit hooks you wish to use. This will
+# extend the default configuration defined in:
+# https://github.com/sds/overcommit/blob/main/config/default.yml
+#
+# At the topmost level of this YAML file is a key representing type of hook
+# being run (e.g. pre-commit, commit-msg, etc.). Within each type you can
+# customize each hook, such as whether to only run it on certain files (via
+# `include`), whether to only display output if it fails (via `quiet`), etc.
+#
+# For a complete list of hooks, see:
+# https://github.com/sds/overcommit/tree/main/lib/overcommit/hook
+#
+# For a complete list of options that you can use to customize hooks, see:
+# https://github.com/sds/overcommit#configuration
+#
+# Uncomment the following lines to make the configuration take effect.
+
+verify_signatures: false
+
+PreCommit:
+  I18nTasksNormalize:
+    enabled: true
+    description: 'Run i18n-tasks normalize on locales'
+    required_executable: 'i18n-tasks'
+    include:
+      - 'config/locales/**/*.yml'
+    command: ['bundle', 'exec', 'i18n-tasks', 'normalize']
+    on_warn: fail # Ensure it stops commit if there's a warning
+
+  RuboCop:
+    enabled: true
+    required: true
+    command: ['bundle', 'exec', 'rubocop', '-f', 'simple']
+
+  AutoFixTrailingWhitespace:
+    enabled: true
+    description: 'Removes trailing whitespace in files'
+    command: 'sed -i -e "s/[[:space:]]\+$//"'
+    include: '**/*.{rb,yml}'  # Fix for file pattern matching
+    exclude: ['vendor/**/*']   # You can add more exclusions as needed
+  
+  TrailingWhitespace:
+    enabled: false
+    exclude:
+      - '**/db/structure.sql' # Ignore trailing whitespace in generated files
+  
+  ErbLint:
+    enabled: true
+    required: true
+    command: ['bundle', 'exec', 'erblint', '--lint-all']
+
+#   StandardRB:
+#    enabled: false
+#    required: true
+#    command: ['bundle', 'exec', 'standardrb']
+#  RustyWind:
+#    enabled: true
+#    required: true
+#    command: ['yarn', 'run', 'rustywind-fix']
+
+# PrePush:
+#   RSpec:
+#     enabled: true
+#     required: true
+#     command: ['bundle', 'exec', 'rspec']
+
+#PreCommit:
+#  RuboCop:
+#    enabled: true
+#    on_warn: fail # Treat all warnings as failures
+#
+#PostCheckout:
+#  ALL: # Special hook name that customizes all hooks of this type
+#    quiet: true # Change all post-checkout hooks to only display output on failure
+#
+#  IndexTags:
+#    enabled: true # Generate a tags file with `ctags` each time HEAD changes
