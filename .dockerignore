@@ -1,0 +1,8 @@
+# ignore all Dockerfile copies into the containers since they're not reqiured there
+# and speedup delevoping Dockerfiles
+**/Dockerfile
+.git
+.github
+.env*
+.dockerenv*
+tmp/

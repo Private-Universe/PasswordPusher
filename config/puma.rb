@@ -1,16 +1,23 @@
-workers Integer(ENV['WEB_CONCURRENCY'] || 2)
-threads_count = Integer(ENV['RAILS_MAX_THREADS'] || 5)
+# frozen_string_literal: true
+
+threads_count = Integer(ENV["RAILS_MAX_THREADS"] || 3)
 threads threads_count, threads_count
 
-rackup DefaultRackup
+rails_env = ENV.fetch("RAILS_ENV", "development")
+environment rails_env
 
-environment ENV.fetch('RACK_ENV', 'development')
-port ENV.fetch('PORT', 5100)
+case rails_env
+when "production"
+  # Default to 2 workers.  To override, set the WEB_CONCURRENCY environment variable
+  workers_count = Integer(ENV.fetch("WEB_CONCURRENCY") { 2 })
+  workers workers_count if workers_count > 1
 
-preload_app!
-
-on_worker_boot do
-  # Worker specific setup for Rails 4.1+
-  # See: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#on-worker-boot
-  ActiveRecord::Base.establish_connection
+  preload_app!
+when "development"
+  worker_timeout 3600
 end
+
+# To restart: `bin/pwpush restart`
+plugin :tmp_restart
+
+port ENV.fetch("PORT", 5100)

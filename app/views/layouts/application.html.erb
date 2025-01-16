@@ -1,40 +1,35 @@
 <!DOCTYPE html>
-<html lang="<%=I18n.locale%>">
+<html lang="<%= I18n.locale %>">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-<% if Settings.brand.title %>
   <title><%= content_for?(:html_title) ? yield(:html_title) : Settings.brand.title %></title>
-<% else %>
-  <title><%= content_for?(:html_title) ? yield(:html_title) : _('Password Pusher') %></title>
-<% end %>
 
-<%= render partial: "layouts/ga" if Rails.env == "production" %>
+  <meta content="<%= _('Password Pusher is an application to securely send passwords over the web. Links to passwords expire after a certain number of views and/or time has passed.') %>" name='description'>
+  <meta content='width=device-width, initial-scale=1' name='viewport'>
 
-<%= csrf_meta_tags %>
-<%= csp_meta_tag %>
+  <%= render partial: "shared/layout_icons", cached: true %>
 
-<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= render partial: "layouts/ga" if Rails.env == "production" %>
 
-<meta content="<%= _('Password Pusher is an application to securely send passwords over the web. Links to passwords expire after a certain number of views and/or time has passed.') %>" name='description'>
-<meta content='width=device-width, initial-scale=1' name='viewport'>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-<%= render partial: "shared/layout_icons" %>
-
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
 
 <%= render partial: 'shared/header' %>
-<%= render partial: 'shared/js_lang_strings' %>
 
 <div class="container">
   <%= render partial: 'shared/alerts' %>
-  <%= yield %> 
+  <%= yield %>
 </div>
 
-<%= render partial: 'shared/footer' %>
+<%= render partial: 'shared/footer', cached: true %>
+<%= render partial: 'shared/cookie_consent', cached: true %>
 
 </body>
 </html>
