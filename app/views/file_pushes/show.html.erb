@@ -1,6 +1,13 @@
-<% plain_title(_('Your Secret Link')) %>
+<% plain_title(_('Your Secure Link')) %>
 
 <div class="container-fluid h-100 mx-0 py-0 px-0 bg-light">
+  <%= link_to "https://www.privateuniverse.com.au" do %>
+    <picture>
+      <source srcset="<%= asset_path('logo-transparent-lg.png') %>" media="(prefers-color-scheme: light) or (prefers-color-scheme: no-preference)">
+      <source srcset="<%= asset_path('logo-transparent-lg-dark.png') %>" media="(prefers-color-scheme: dark)">
+      <img src="<%= asset_path('logo-transparent-lg.png') %>" alt="Password Pusher Logo" style='width: 300px; padding: 30px; margin-bottom: 20px;' />
+    </picture>
+  <% end %>
   <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center bg-light" data-controller="copy passwords" data-copy-lang-copied-value="<%= _('Copied!') %>">
     <% if @push.payload.nil? || @push.payload.empty? %>
         <div class='text-center m-3'>
