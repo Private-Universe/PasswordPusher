@@ -36,6 +36,19 @@ enable_url_pushes: false
 #
 enable_file_pushes: false
 
+### QR Code Pushes
+#
+# Enable or disable QR code based pushes.  These allow you to share QR codes securely.
+# Like regular pushes, they expire after a set time or amount of views.
+#
+# Note that `enable_logins` is required for QR code based pushes to work.  It is a
+# feature for logged in users only.
+#
+# Environment variable override:
+# PWP__ENABLE_QR_PUSHES='false'
+#
+enable_qr_pushes: false
+
 ### Logins (User accounts)
 #
 # Logins are disabled by default since they require an MTA (email) server
@@ -50,6 +63,26 @@ enable_file_pushes: false
 # PWP__ENABLE_LOGINS='false'
 #
 enable_logins: false
+
+## Login Session Timeout
+#
+# The duration you want to timeout the user session without activity. After this
+# time the user will be asked for credentials again.
+#
+# Default: 2 hours
+#
+# Examples:
+#
+# login_session_timeout: "15 minutes"
+# login_session_timeout: "6 hours"
+# login_session_timeout: "1 day"
+# login_session_timeout: "3 weeks"
+# login_session_timeout: "1 month"
+#
+# Environment variable override:
+# PWP__LOGIN_SESSION_TIMEOUT='2 hours'
+#
+login_session_timeout: "2 hours"
 
 ## Disable Signups
 #
@@ -469,11 +502,12 @@ files:
   # one of the following values:
   #   * local     - use local disk (likely won't work in container environments)
   #   * amazon    - use Amazon S3 (and provide 's3' credentials below)
+  #   * minio     - use Minio S3 (and provide 's3' credentials below)
   #   * google    - use Google Cloud Storage (and provide 'gcs' credentials below)
   #   * microsoft - use Microsoft Azure Storage (and provide 'as' credentials below)
   #
   # Environment variable override:
-  # PWP__FILES_STORAGE='local'
+  # PWP__FILES__STORAGE='local'
   #
   storage: 'local'
 
@@ -517,6 +551,82 @@ files:
     # Environment Variable Override: PWP__FILES__AS__CONTAINER=''
     container: ''
 
+## Expiration Settings for QR Code Pushes
+#
+qr:
+  # Expire QR Code Pushes After XX Days
+  #
+  # Controls the "Expire After Days" for QR Code Pushes
+  #
+  # Environment variable overrides:
+  # PWP__QR__EXPIRE_AFTER_DAYS_DEFAULT=7
+  # PWP__QR__EXPIRE_AFTER_DAYS_MIN=1
+  # PWP__QR__EXPIRE_AFTER_DAYS_MAX=90
+  #
+  expire_after_days_default: 7
+  expire_after_days_min: 1
+  expire_after_days_max: 90
+
+  # Expire QR Code Pushes After XX Views
+  #
+  # Controls the "Expire After Views" form settings in Password#new
+  #
+  # Environment variable overrides:
+  # PWP__QR__EXPIRE_AFTER_VIEWS_DEFAULT=5
+  # PWP__QR__EXPIRE_AFTER_VIEWS_MIN=1
+  # PWP__QR__EXPIRE_AFTER_VIEWS_MAX=100
+  #
+  expire_after_views_default: 5
+  expire_after_views_min: 1
+  expire_after_views_max: 100
+
+  # Retrieval Step for QR Code Pushes
+  #
+  # This enables or disables the "1-click retrieval step" feature entirely.  For the default value
+  # when it is enabled here, see the next setting.
+  #
+  # Environment variable override:
+  # PWP__QR__ENABLE_RETRIEVAL_STEP='false'
+  #
+  enable_retrieval_step: true
+
+  # Default Form Value for the Retrieval Step
+  #
+  # When the retrieval step is enabled (above), what is the default value on the form?
+  #
+  # When true, secret URLs will be generated as /p/xxxxxxxx/r which will show a page
+  # requiring a click to view the page /p/xxxxxxxx
+  #
+  # Environment variable override:
+  # PWP__QR__RETRIEVAL_STEP_DEFAULT='true'
+  #
+  retrieval_step_default: false
+
+  # Deletable QR Code Pushes
+  #
+  # default: true
+  #
+  # This enables or disables the "Allow Immediate Deletion" feature entirely.  For the default value
+  # when it is enabled here, see the next setting.
+  #
+  # Environment variable override:
+  # PWP__QR__ENABLE_DELETABLE_PUSHES='false'
+  #
+  enable_deletable_pushes: true
+
+  # Deletable Pushes Default Value
+  #
+  # default: true
+  #
+  # When this is set to true, this option does two things:
+  #   1. Sets the default check state for the "Allow users to delete this push once retrieved." checkbox
+  #   2. JSON API: Sets the default value for newly pushed pushs if
+  #       unspecified
+  #
+  # Environment variable override:
+  # PWP__QR__DELETABLE_PUSHES_DEFAULT='false'
+  #
+  deletable_pushes_default: true
 
 ### Password Generator Defaults
 #
@@ -860,6 +970,7 @@ default_locale: :en
 enabled_language_codes:
   - ca    # 'Català'
   - cs    # 'Čeština'
+  - cy    # 'Cymraeg'
   - da    # 'Dansk'
   - de    # 'Deutsch'
   - en    # 'English'
@@ -868,6 +979,7 @@ enabled_language_codes:
   - eu    # 'Euskara'
   - fi    # 'Suomi'
   - fr    # 'Français'
+  - ga    # 'Gaeilge'
   - hi    # 'हिन्दी'
   - hu    # 'Magyar'
   - id    # 'Indonesian'
@@ -900,6 +1012,7 @@ enabled_language_codes:
 language_codes:
   ca: 'Català'
   cs: 'Čeština'
+  cy: 'Cymraeg'
   da: 'Dansk'
   de: 'Deutsch'
   en: 'English'
@@ -908,6 +1021,7 @@ language_codes:
   en-GB: 'English (UK)'
   fi: 'Suomi'
   fr: 'Français'
+  ga: 'Gaeilge'
   hi: 'हिन्दी'
   hu: 'Magyar'
   id: 'Indonesian'
@@ -940,6 +1054,7 @@ language_codes:
 country_codes:
   ca: :es-ct
   cs: :cz
+  cy: :gb-wls
   da: :dk
   de: :de
   en: :us
@@ -948,6 +1063,7 @@ country_codes:
   eu: :es-pv
   fi: :fi
   fr: :fr
+  ga: :ie
   hi: :in
   hu: :hu
   id: :id
@@ -980,3 +1096,40 @@ log_level: :warn
 # instead of using log files (e.g. log/production.log).
 #
 log_to_stdout: false
+
+### Secure Cookies
+#
+# Enabling secure cookies will enable a few security enhancements including:
+# 1. Only send cookies over HTTPS
+# 2. Prevent Javascript from accessing cookies
+# 3. Cookies can only be accessed in same-site requests
+# You can read more about the strategies employed here and the attack vectors it defends against here:
+# https://guides.rubyonrails.org/security.html#sessions
+#
+# Environment Variable Override:
+# PWP__SECURE_COOKIES='true'
+#
+secure_cookies: false
+
+### Purge After
+#
+# Set the time after which expired pushes, including metadata like 
+# expiration settings and audit logs, are permanently deleted. 
+# Adjust this to control how long metadata is retained for enhanced privacy. 
+# Warning: Once purged, this data is irretrievable.
+#
+# Default: disabled
+#
+# Examples:
+#
+# purge_after: "disabled"
+# purge_after: "3 months"
+# purge_after: "6 months"
+# purge_after: "1 year"
+# purge_after: "2 years"
+# purge_after: "3 years"
+#
+# Environment variable override:
+# PWP__PURGE_AFTER='3 months'
+#
+purge_after: "disabled"

@@ -51,6 +51,8 @@ class FilePushJsonDeletionTest < ActionDispatch::IntegrationTest
     assert res.key?("url_token")
     assert res.key?("expired")
     assert_equal true, res["expired"]
+    assert res.key?("expired_on")
+    assert_not_nil res["expired_on"]
     assert res.key?("deleted")
     assert_equal true, res["deleted"]
     assert res.key?("deletable_by_viewer")
@@ -59,6 +61,16 @@ class FilePushJsonDeletionTest < ActionDispatch::IntegrationTest
     assert_equal Settings.files.expire_after_days_default, res["days_remaining"]
     assert res.key?("views_remaining")
     assert_equal Settings.files.expire_after_views_default, res["views_remaining"]
+    assert_equal res.keys.sort, ["created_at", "days_remaining", "deletable_by_viewer", "deleted", "expire_after_days", "expire_after_views", "expired", "expired_on", "html_url", "json_url", "passphrase", "retrieval_step", "updated_at", "url_token", "views_remaining"].sort
+    assert_equal res.except("url_token", "created_at", "updated_at", "expired_on", "html_url", "json_url"), {"expire_after_views" => 5,
+      "expired" => true,
+      "deletable_by_viewer" => true,
+      "retrieval_step" => false,
+      "passphrase" => nil,
+      "expire_after_days" => 7,
+      "days_remaining" => 7,
+      "views_remaining" => 5,
+      "deleted" => true}
 
     # Now try to retrieve the password again
     get "/f/#{res["url_token"]}.json"

@@ -1,14 +1,14 @@
 # Korean translations for pwpush package.
-# Copyright (C) 2024 pwpush
+# Copyright (C) 2026 pwpush
 # This file is distributed under the same license as the pwpush package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pwpush 1.0\n"
 "Report-Msgid-Bugs-To: contact@translation.io\n"
-"POT-Creation-Date: 2024-12-27 10:59+0100\n"
-"PO-Revision-Date: 2024-12-27 10:59+0100\n"
+"POT-Creation-Date: 2026-01-29 01:43+0100\n"
+"PO-Revision-Date: 2026-01-29 00:43+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Korean\n"
 "Language: ko\n"
@@ -18,64 +18,547 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "\n"
 
-#: ../../../app/controllers/file_pushes_controller.rb:112
-#: ../../../app/controllers/passwords_controller.rb:111
-#: ../../../app/controllers/urls_controller.rb:111
+#: ../../../app/controllers/admin/users_controller.rb:49
+msgid "You cannot delete your own account."
+msgstr "본인 계정은 삭제할 수 없습니다."
+
+#: ../../../app/controllers/api/v1/pushes_controller.rb:255
+#: ../../../app/controllers/pushes_controller.rb:117
+#: ../../../app/controllers/pushes_controller.rb:157
+#: ../../../app/controllers/pushes_controller.rb:275
+#: ../../../app/controllers/pushes_controller.rb:305
+msgid "That push doesn't belong to you."
+msgstr "그 푸시는 당신의 것이 아닙니다."
+
+#: ../../../app/controllers/api/v1/pushes_controller.rb:309
+msgid "That push is not deletable by viewers."
+msgstr "그 푸시는 시청자가 삭제할 수 없습니다."
+
+#: ../../../app/controllers/api/v1/pushes_controller.rb:354
+msgid "You must be logged in to view your active pushes."
+msgstr "활성 푸시를 보려면 로그인해야 합니다."
+
+#: ../../../app/controllers/api/v1/pushes_controller.rb:410
+msgid "You must be logged in to view your expired pushes."
+msgstr "만료된 푸시를 보려면 로그인해야 합니다."
+
+#: ../../../app/controllers/pushes_controller.rb:97
 msgid ""
 "That passphrase is incorrect.  Please try again or contact the person or organ"
 "ization that sent you this link."
 msgstr "해당 암호가 올바르지 않습니다. 다시 시도하거나 이 링크를 보낸 사람 또는 조직에 문의하십시오."
 
-#: ../../../app/controllers/file_pushes_controller.rb:249
-#: ../../../app/controllers/passwords_controller.rb:261
-#: ../../../app/controllers/urls_controller.rb:259
-msgid "That push doesn't belong to you."
-msgstr "그 푸시는 당신의 것이 아닙니다."
+#: ../../../app/controllers/pushes_controller.rb:122
+#: ../../../app/controllers/pushes_controller.rb:163
+msgid "That push has already expired and cannot be edited."
+msgstr "해당 푸시 알림은 이미 만료되어 수정할 수 없습니다."
 
-#: ../../../app/controllers/file_pushes_controller.rb:276
-#: ../../../app/controllers/file_pushes_controller.rb:279
-#: ../../../app/controllers/passwords_controller.rb:288
-#: ../../../app/controllers/passwords_controller.rb:291
+#: ../../../app/controllers/pushes_controller.rb:188
+msgid "must be at least %{count} (days already elapsed + 1)."
+msgstr "최소 %{count}일(경과일수 + 1) 이상이어야 합니다."
+
+#: ../../../app/controllers/pushes_controller.rb:197
+msgid "must be at least %{count} (views already consumed + 1)."
+msgstr "최소 %{count}개(이미 소비된 조회수 + 1) 이상이어야 합니다."
+
+#: ../../../app/controllers/pushes_controller.rb:222
+#: ../../../app/models/push.rb:114
+msgid "You can only attach up to %{count} files per push."
+msgstr "푸시당 최대 %{count}개의 파일만 첨부할 수 있습니다."
+
+#: ../../../app/controllers/pushes_controller.rb:235
+msgid "Push was successfully updated."
+msgstr "푸시가 성공적으로 업데이트되었습니다."
+
+#: ../../../app/controllers/pushes_controller.rb:285
 msgid "That push is not deletable by viewers and does not belong to you."
-msgstr "해당 푸시는 시청자가 삭제할 수 없으며 귀하에게 속하지 않습니다."
+msgstr "해당 푸시는 시청자가 삭제할 수 없으며 귀하의 것이 아닙니다."
 
-#: ../../../app/controllers/file_pushes_controller.rb:288
-#: ../../../app/controllers/passwords_controller.rb:300
-#: ../../../app/controllers/urls_controller.rb:294
-msgid "That push is already expired."
+#: ../../../app/controllers/pushes_controller.rb:290
+#: ../../../app/controllers/pushes_controller.rb:311
+msgid "That push has already expired."
 msgstr "해당 푸시는 이미 만료되었습니다."
 
-#: ../../../app/controllers/file_pushes_controller.rb:304
-#: ../../../app/controllers/passwords_controller.rb:315
-#: ../../../app/controllers/urls_controller.rb:309
-#: ../../../app/views/file_pushes/audit.html.erb:97
-#: ../../../app/views/file_pushes/audit.html.erb:254
-#: ../../../app/views/passwords/audit.html.erb:97
-#: ../../../app/views/passwords/audit.html.erb:188
-#: ../../../app/views/urls/audit.html.erb:84
-#: ../../../app/views/urls/audit.html.erb:170
+#: ../../../app/controllers/pushes_controller.rb:298
+#: ../../../app/views/pushes/audit.html.erb:99
 msgid "The push content has been deleted and the secret URL expired."
 msgstr "푸시 콘텐츠가 삭제되었으며 비밀 URL이 만료되었습니다."
 
-#: ../../../app/controllers/urls_controller.rb:162
-msgid "Invalid URL: Must have a valid URI scheme."
-msgstr "잘못된 URL: 유효한 URI 스키마가 있어야 합니다."
+#: ../../../app/controllers/pushes_controller.rb:317
+msgid "You cannot delete the last file from a file push."
+msgstr "파일 푸시에서 마지막 파일을 삭제할 수 없습니다."
 
-#: ../../../app/controllers/urls_controller.rb:285
-#: ../../../app/controllers/urls_controller.rb:286
-msgid "That push does not belong to you."
-msgstr "그 푸시는 당신의 것이 아닙니다."
+#: ../../../app/controllers/pushes_controller.rb:326
+msgid "File was successfully deleted."
+msgstr "파일이 성공적으로 삭제되었습니다."
 
-#: ../../../app/views/application/_secret_url_bar.html.erb:17
+#: ../../../app/controllers/pushes_controller.rb:328
+msgid "File not found."
+msgstr "파일을 찾을 수 없습니다."
+
+#: ../../../app/controllers/pushes_controller.rb:467
+#: ../../../app/models/push.rb:208
+msgid "File pushes are disabled."
+msgstr "파일 푸시가 비활성화되었습니다."
+
+#: ../../../app/controllers/pushes_controller.rb:477
+#: ../../../app/models/push.rb:212
+msgid "URL pushes are disabled."
+msgstr "URL 푸시가 비활성화되었습니다."
+
+#: ../../../app/controllers/pushes_controller.rb:487
+#: ../../../app/models/push.rb:216
+msgid "QR code pushes are disabled."
+msgstr "QR 코드 푸시가 비활성화되었습니다."
+
+#: ../../../app/models/push.rb:123 ../../../app/models/push.rb:141
+#: ../../../app/models/push.rb:155
+msgid "Payload is required."
+msgstr "탑재량이 필요합니다."
+
+#: ../../../app/models/push.rb:128
+msgid "The payload is too large.  You can only push up to %{count} bytes."
+msgstr "페이로드가 너무 큽니다. 최대 %{count}바이트까지만 푸시할 수 있습니다."
+
+#: ../../../app/models/push.rb:138
+msgid "must be a valid HTTP or HTTPS URL."
+msgstr "유효한 HTTP 또는 HTTPS URL이어야 합니다."
+
+#: ../../../app/models/push.rb:152
+msgid "The QR code payload is too large.  You can only push up to %{count} bytes."
+msgstr "QR 코드 페이로드가 너무 큽니다. 최대 %{count}바이트까지만 푸시할 수 있습니다."
+
+#: ../../../app/views/admin/_navigation.html.erb:9
+msgid "Password Pusher"
+msgstr "비밀번호 푸셔"
+
+#: ../../../app/views/admin/_navigation.html.erb:12
+#: ../../../app/views/admin/index.html.erb:11
+#: ../../../app/views/shared/_header.html.erb:46
+msgid "Administration Center"
+msgstr "관리"
+
+#: ../../../app/views/admin/_navigation.html.erb:17
+msgid "BETA"
+msgstr "베타"
+
+#: ../../../app/views/admin/_navigation.html.erb:31
+msgid "Administration Home"
+msgstr "관리 홈"
+
+#: ../../../app/views/admin/_navigation.html.erb:37
+#: ../../../app/views/admin/index.html.erb:121
+msgid "System Administration"
+msgstr "시스템 관리"
+
+#: ../../../app/views/admin/_navigation.html.erb:43
+msgid "Admin Users"
+msgstr "관리자 사용자"
+
+#: ../../../app/views/admin/_navigation.html.erb:50
+#: ../../../app/views/admin/index.html.erb:161
+#: ../../../app/views/madmin/dashboard/show.html.erb:1
+msgid "Data Explorer"
+msgstr "데이터 탐색기"
+
+#: ../../../app/views/admin/_navigation.html.erb:57
+#: ../../../app/views/admin/index.html.erb:146
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:34
+msgid "Background Jobs"
+msgstr "백그라운드 작업"
+
+#: ../../../app/views/admin/index.html.erb:1
+#: ../../../app/views/layouts/admin.html.erb:38
+msgid "Administration"
+msgstr "관리"
+
+#: ../../../app/views/admin/index.html.erb:13
+msgid "Welcome to the Password Pusher administration panel."
+msgstr "Password Pusher 관리자 패널에 오신 것을 환영합니다."
+
+#: ../../../app/views/admin/index.html.erb:14
+msgid ""
+"Manage your application settings and system administration from this central l"
+"ocation."
+msgstr "이 중앙 위치에서 애플리케이션 설정과 시스템 관리를 관리하세요."
+
+#: ../../../app/views/admin/index.html.erb:21
+msgid "OSS Version %{version}"
+msgstr "OSS 버전 %{version}"
+
+#: ../../../app/views/admin/index.html.erb:40
+msgid "Total Users"
+msgstr "총 사용자 수"
+
+#: ../../../app/views/admin/index.html.erb:60
+msgid "Total Pushes"
+msgstr "총 푸시"
+
+#: ../../../app/views/admin/index.html.erb:80
+#: ../../../app/views/pushes/index.html.erb:1
+#: ../../../app/views/pushes/index.html.erb:26
+#: ../../../app/views/pushes/index.html.erb:34
+msgid "Active Pushes"
+msgstr "활성 푸시"
+
+#: ../../../app/views/admin/index.html.erb:100
+msgid "Total Audit Logs"
+msgstr "총 감사 로그"
+
+#: ../../../app/views/admin/index.html.erb:123
+msgid ""
+"Monitor system performance, manage background jobs, and analyze usage patterns"
+"."
+msgstr "시스템 성능을 모니터링하고, 백그라운드 작업을 관리하고, 사용 패턴을 분석합니다."
+
+#: ../../../app/views/admin/index.html.erb:131
+#: ../../../app/views/admin/users/index.html.erb:1
+#: ../../../app/views/admin/users/index.html.erb:9
+#: ../../../app/views/admin/users/index.html.erb:23
+msgid "Administrator Management"
+msgstr "관리자 관리"
+
+#: ../../../app/views/admin/index.html.erb:132
+msgid "Manage admin accounts and privileges"
+msgstr "관리자 계정 및 권한 관리"
+
+#: ../../../app/views/admin/index.html.erb:147
+msgid "Monitor and manage queued tasks"
+msgstr "대기 중인 작업 모니터링 및 관리"
+
+#: ../../../app/views/admin/index.html.erb:162
+msgid "Query data and manage records"
+msgstr "데이터 쿼리 및 레코드 관리"
+
+#: ../../../app/views/admin/index.html.erb:184
+msgid "Database Administration"
+msgstr "데이터베이스 관리"
+
+#: ../../../app/views/admin/index.html.erb:186
+msgid "Direct access to database records and user management tools."
+msgstr "데이터베이스 레코드와 사용자 관리 도구에 직접 액세스합니다."
+
+#: ../../../app/views/admin/index.html.erb:192
+msgid "Advanced Database Access"
+msgstr "고급 데이터베이스 액세스"
+
+#: ../../../app/views/admin/index.html.erb:193
+msgid "Direct record manipulation and management"
+msgstr "직접 기록 조작 및 관리"
+
+#: ../../../app/views/admin/index.html.erb:196
+msgid "Open Data Explorer"
+msgstr "오픈 데이터 탐색기"
+
+#: ../../../app/views/admin/index.html.erb:218
+msgid "Resources & Support"
+msgstr "리소스 및 지원"
+
+#: ../../../app/views/admin/index.html.erb:220
+msgid "Access documentation, source code, releases, and get help when you need it."
+msgstr "문서, 소스 코드, 릴리스에 액세스하고 필요할 때 도움을 받으세요."
+
+#: ../../../app/views/admin/index.html.erb:230
+msgid "GitHub Repository"
+msgstr "GitHub 저장소"
+
+#: ../../../app/views/admin/index.html.erb:231
+msgid "View source code and contribute"
+msgstr "소스 코드를 보고 기여하세요"
+
+#: ../../../app/views/admin/index.html.erb:246
+msgid "Latest Releases"
+msgstr "최신 릴리스"
+
+#: ../../../app/views/admin/index.html.erb:247
+msgid "View changelog and download updates"
+msgstr "변경 로그 보기 및 업데이트 다운로드"
+
+#: ../../../app/views/admin/index.html.erb:262
+#: ../../../app/views/shared/_footer.html.erb:52
+msgid "Documentation"
+msgstr "선적 서류 비치"
+
+#: ../../../app/views/admin/index.html.erb:263
+msgid "Complete setup and usage guides"
+msgstr "전체 설정 및 사용 가이드"
+
+#: ../../../app/views/admin/index.html.erb:278
+msgid "Support"
+msgstr "지원하다"
+
+#: ../../../app/views/admin/index.html.erb:279
+msgid "Get help and report issues"
+msgstr "도움을 받고 문제를 보고하세요"
+
+#: ../../../app/views/admin/index.html.erb:299
+msgid "Getting Started"
+msgstr "시작하기"
+
+#: ../../../app/views/admin/index.html.erb:302
+msgid ""
+"Welcome to the Password Pusher Administration Center! Here's your complete too"
+"lkit:"
+msgstr "Password Pusher 관리 센터에 오신 것을 환영합니다! 전체 툴킷은 다음과 같습니다."
+
+#: ../../../app/views/admin/index.html.erb:304
+msgid "👥 Manage Administrators:"
+msgstr "👥 관리자 관리:"
+
+#: ../../../app/views/admin/index.html.erb:304
+msgid "Promote or revoke admin privileges for users in your system"
+msgstr "시스템 내 사용자의 관리자 권한을 승격하거나 취소합니다."
+
+#: ../../../app/views/admin/index.html.erb:305
+msgid "📊 Monitor Background Jobs:"
+msgstr "📊 백그라운드 작업 모니터링:"
+
+#: ../../../app/views/admin/index.html.erb:305
+msgid "Track email notifications, push cleanup, and system processing tasks"
+msgstr "이메일 알림 추적, 푸시 정리 및 시스템 처리 작업"
+
+#: ../../../app/views/admin/index.html.erb:306
+msgid "🗄️ Explore Database:"
+msgstr "🗄️ 데이터베이스 탐색:"
+
+#: ../../../app/views/admin/index.html.erb:306
+msgid "Direct access to users, pushes, audit logs, and file storage records"
+msgstr "사용자, 푸시, 감사 로그 및 파일 저장 레코드에 직접 액세스"
+
+#: ../../../app/views/admin/index.html.erb:307
+msgid "📈 View System Stats:"
+msgstr "📈 시스템 통계 보기:"
+
+#: ../../../app/views/admin/index.html.erb:307
+msgid "Monitor user activity, push counts, and audit log entries"
+msgstr "사용자 활동, 푸시 수 및 감사 로그 항목을 모니터링합니다."
+
+#: ../../../app/views/admin/index.html.erb:308
+msgid "🔍 Track Activity:"
+msgstr "🔍 활동 추적:"
+
+#: ../../../app/views/admin/index.html.erb:308
+msgid "Review audit logs to understand system usage and security events"
+msgstr "시스템 사용 및 보안 이벤트를 이해하기 위해 감사 로그를 검토합니다."
+
+#: ../../../app/views/admin/users/index.html.erb:25
+msgid "Manage administrator accounts and privileges"
+msgstr "관리자 계정 및 권한 관리"
+
+#: ../../../app/views/admin/users/index.html.erb:29
+msgid "%{count} Administrators"
+msgstr "%{count} 관리자"
+
+#: ../../../app/views/admin/users/index.html.erb:42
+msgid "Current Administrators"
+msgstr "현재 관리자"
+
+#: ../../../app/views/admin/users/index.html.erb:50
+#: ../../../app/views/admin/users/index.html.erb:142
+#: ../../../app/views/devise/sessions/new.html.erb:7
+msgid "Email"
+msgstr "이메일"
+
+#: ../../../app/views/admin/users/index.html.erb:51
+#: ../../../app/views/admin/users/index.html.erb:143
+#: ../../../app/views/pushes/index.html.erb:39
+msgid "Created"
+msgstr "만들어진"
+
+#: ../../../app/views/admin/users/index.html.erb:52
+#: ../../../app/views/admin/users/index.html.erb:144
+msgid "Last Sign In"
+msgstr "마지막 로그인"
+
+#: ../../../app/views/admin/users/index.html.erb:53
+#: ../../../app/views/admin/users/index.html.erb:145
+#: ../../../app/views/madmin/application/index.html.erb:63
+#: ../../../app/views/madmin/users/index.html.erb:63
+msgid "Actions"
+msgstr "행위"
+
+#: ../../../app/views/admin/users/index.html.erb:70
+msgid "You"
+msgstr "당신"
+
+#: ../../../app/views/admin/users/index.html.erb:83
+#: ../../../app/views/admin/users/index.html.erb:172
+msgid "Never"
+msgstr "절대로"
+
+#: ../../../app/views/admin/users/index.html.erb:93
+msgid ""
+"Are you sure you want to revoke administrator privileges from %{email}? They w"
+"ill lose access to the administration panel."
+msgstr "%{email}]의 관리자 권한을 취소하시겠습니까? 그러면 관리자 패널에 액세스할 수 없게 됩니다."
+
+#: ../../../app/views/admin/users/index.html.erb:98
+msgid "Revoke"
+msgstr "취소"
+
+#: ../../../app/views/admin/users/index.html.erb:103
+#: ../../../app/views/madmin/users/index.html.erb:80
+msgid "Your Account"
+msgstr "내 계정"
+
+#: ../../../app/views/admin/users/index.html.erb:116
+msgid "No administrators found"
+msgstr "관리자를 찾을 수 없습니다"
+
+#: ../../../app/views/admin/users/index.html.erb:117
+msgid "There are currently no administrator accounts in the system."
+msgstr "현재 시스템에는 관리자 계정이 없습니다."
+
+#: ../../../app/views/admin/users/index.html.erb:129
+msgid "Regular Users"
+msgstr "일반 사용자"
+
+#: ../../../app/views/admin/users/index.html.erb:133
+msgid "%{count} Regular Users"
+msgstr "%{count} 일반 사용자"
+
+#: ../../../app/views/admin/users/index.html.erb:181
+msgid ""
+"Are you sure you want to promote %{email} to administrator? This will give the"
+"m full access to the administration panel."
+msgstr "%{email}]을 관리자로 승격하시겠습니까? 이렇게 하면 관리 패널에 대한 전체 액세스 권한이 부여됩니다."
+
+#: ../../../app/views/admin/users/index.html.erb:186
+msgid "Promote"
+msgstr "홍보"
+
+#: ../../../app/views/admin/users/index.html.erb:206
+msgid "No regular users found"
+msgstr "일반 사용자를 찾을 수 없습니다"
+
+#: ../../../app/views/admin/users/index.html.erb:207
+msgid "All users in the system are administrators."
+msgstr "시스템의 모든 사용자는 관리자입니다."
+
+#: ../../../app/views/application/_push_expiration.html.erb:3
+msgid "The file download links above will expire in:"
+msgstr "위의 파일 다운로드 링크는 다음 기간 동안 만료됩니다."
+
+#: ../../../app/views/application/_push_expiration.html.erb:5
+msgid "You can refresh the page to regenerate new download links if views remain."
+msgstr "조회수가 남아 있으면 페이지를 새로 고쳐 새로운 다운로드 링크를 다시 생성할 수 있습니다."
+
+#: ../../../app/views/application/_push_expiration.html.erb:16
+#: ../../../app/views/pushes/audit.html.erb:98
+#: ../../../app/views/pushes/index.html.erb:75
+#: ../../../app/views/shared/_dashboard_header.html.erb:11
+msgid "Expired"
+msgstr "만료됨"
+
+#: ../../../app/views/application/_secret_url_bar.html.erb:14
 msgid "Secret Link Language"
 msgstr "비밀 링크 언어"
 
-#: ../../../app/views/application/_secret_url_bar.html.erb:35
+#: ../../../app/views/application/_secret_url_bar.html.erb:19
+msgid "Autodetect the recipient's language"
+msgstr "자동 감지"
+
+#: ../../../app/views/application/_secret_url_bar.html.erb:38
 #: ../../../app/views/pages/generate_key.html.erb:26
 #: ../../../app/views/pages/generate_key.html.erb:39
 #: ../../../app/views/shared/_copy_button.html.erb:2
 msgid "Copy to Clipboard"
 msgstr "클립 보드에 복사"
+
+#: ../../../app/views/audit_logs/_log_admin_view.html.erb:3
+msgid "Admin view on %{date} by %{user}"
+msgstr "%{user}의 %{date} 관리자 보기"
+
+#: ../../../app/views/audit_logs/_log_admin_view.html.erb:7
+#: ../../../app/views/audit_logs/_log_owner_view.html.erb:7
+msgid "Does not count towards view limit"
+msgstr "조회수 제한에 포함되지 않습니다."
+
+#: ../../../app/views/audit_logs/_log_admin_view.html.erb:9
+#: ../../../app/views/audit_logs/_log_creation.html.erb:8
+#: ../../../app/views/audit_logs/_log_edit.html.erb:8
+#: ../../../app/views/audit_logs/_log_expire.html.erb:8
+#: ../../../app/views/audit_logs/_log_failed_passphrase.html.erb:8
+#: ../../../app/views/audit_logs/_log_failed_view.html.erb:8
+#: ../../../app/views/audit_logs/_log_owner_view.html.erb:9
+#: ../../../app/views/audit_logs/_log_view.html.erb:8
+msgid "IP Address:"
+msgstr "IP 주소:"
+
+#: ../../../app/views/audit_logs/_log_admin_view.html.erb:11
+#: ../../../app/views/audit_logs/_log_creation.html.erb:10
+#: ../../../app/views/audit_logs/_log_edit.html.erb:10
+#: ../../../app/views/audit_logs/_log_expire.html.erb:10
+#: ../../../app/views/audit_logs/_log_failed_passphrase.html.erb:10
+#: ../../../app/views/audit_logs/_log_failed_view.html.erb:10
+#: ../../../app/views/audit_logs/_log_owner_view.html.erb:11
+#: ../../../app/views/audit_logs/_log_view.html.erb:10
+msgid "User Agent:"
+msgstr "사용자 에이전트:"
+
+#: ../../../app/views/audit_logs/_log_admin_view.html.erb:11
+#: ../../../app/views/audit_logs/_log_admin_view.html.erb:13
+#: ../../../app/views/audit_logs/_log_creation.html.erb:10
+#: ../../../app/views/audit_logs/_log_creation.html.erb:12
+#: ../../../app/views/audit_logs/_log_edit.html.erb:10
+#: ../../../app/views/audit_logs/_log_edit.html.erb:12
+#: ../../../app/views/audit_logs/_log_expire.html.erb:10
+#: ../../../app/views/audit_logs/_log_expire.html.erb:12
+#: ../../../app/views/audit_logs/_log_failed_passphrase.html.erb:10
+#: ../../../app/views/audit_logs/_log_failed_passphrase.html.erb:12
+#: ../../../app/views/audit_logs/_log_failed_view.html.erb:10
+#: ../../../app/views/audit_logs/_log_failed_view.html.erb:12
+#: ../../../app/views/audit_logs/_log_owner_view.html.erb:11
+#: ../../../app/views/audit_logs/_log_owner_view.html.erb:13
+#: ../../../app/views/audit_logs/_log_view.html.erb:10
+#: ../../../app/views/audit_logs/_log_view.html.erb:12
+#: ../../../app/views/pushes/audit.html.erb:19
+#: ../../../app/views/pushes/index.html.erb:67
+msgid "None"
+msgstr "없음"
+
+#: ../../../app/views/audit_logs/_log_admin_view.html.erb:13
+#: ../../../app/views/audit_logs/_log_creation.html.erb:12
+#: ../../../app/views/audit_logs/_log_edit.html.erb:12
+#: ../../../app/views/audit_logs/_log_expire.html.erb:12
+#: ../../../app/views/audit_logs/_log_failed_passphrase.html.erb:12
+#: ../../../app/views/audit_logs/_log_failed_view.html.erb:12
+#: ../../../app/views/audit_logs/_log_owner_view.html.erb:13
+#: ../../../app/views/audit_logs/_log_view.html.erb:12
+msgid "Referrer:"
+msgstr "추천인:"
+
+#: ../../../app/views/audit_logs/_log_creation.html.erb:3
+msgid "Created on %{date} by %{user}"
+msgstr "%{user}에 의해 %{date}에 푸시가 생성되었습니다."
+
+#: ../../../app/views/audit_logs/_log_edit.html.erb:3
+msgid "Edited on %{date} by %{user}"
+msgstr "%{date}에 %{user}가 편집했습니다."
+
+#: ../../../app/views/audit_logs/_log_expire.html.erb:3
+msgid "Manually expired on %{date} by %{user}"
+msgstr "푸시는 %{user}에 의해 %{date}에 수동으로 만료되었습니다."
+
+#: ../../../app/views/audit_logs/_log_failed_passphrase.html.erb:3
+msgid "Failed passphrase attempt on %{date} by %{user}"
+msgstr "%{user}의 %{date}에 대한 암호 시도가 실패했습니다."
+
+#: ../../../app/views/audit_logs/_log_failed_view.html.erb:3
+msgid "Failed view attempt on %{date} by %{user}"
+msgstr "%{user}의 %{date}에 대한 보기 시도가 실패했습니다."
+
+#: ../../../app/views/audit_logs/_log_owner_view.html.erb:3
+msgid "Owner view on %{date} by %{user}"
+msgstr "%{user}의 %{date}에 대한 소유자 보기"
+
+#: ../../../app/views/audit_logs/_log_view.html.erb:3
+msgid "Successful view on %{date} by %{user}"
+msgstr "%{date}에 대한 %{user}의 성공적인 뷰"
+
+#: ../../../app/views/devise/confirmations/show.html.erb:4
+msgid "Click Here to Confirm Your Account"
+msgstr "계정을 확인하려면 여기를 클릭하세요"
 
 #: ../../../app/views/devise/mailer/confirmation_instructions.html.erb:8
 #: ../../../app/views/devise/mailer/email_changed.html.erb:8
@@ -212,7 +695,7 @@ msgid "Current Password"
 msgstr "현재 비밀번호"
 
 #: ../../../app/views/devise/registrations/token.html.erb:2
-#: ../../../app/views/shared/_header.html.erb:49
+#: ../../../app/views/shared/_header.html.erb:63
 msgid "API Token"
 msgstr "API 토큰"
 
@@ -233,8 +716,8 @@ msgid ""
 msgstr "필요한 경우 아래에서 이 기존 토큰을 무효화하는 새 토큰을 다시 생성할 수 있습니다."
 
 #: ../../../app/views/devise/registrations/token.html.erb:14
-#: ../../../app/views/file_pushes/show.html.erb:4
-#: ../../../app/views/passwords/show.html.erb:3
+#: ../../../app/views/pushes/show.html.erb:4
+#: ../../../app/views/pushes/show.html.erb:64
 msgid "Copied!"
 msgstr "복사했습니다!"
 
@@ -273,20 +756,17 @@ msgid "A new token will be generated in its place."
 msgstr "그 자리에 새 토큰이 생성됩니다."
 
 #: ../../../app/views/devise/registrations/token.html.erb:49
-#: ../../../app/views/file_pushes/audit.html.erb:214
-#: ../../../app/views/file_pushes/show.html.erb:74
-#: ../../../app/views/passwords/audit.html.erb:145
-#: ../../../app/views/passwords/show.html.erb:58
-#: ../../../app/views/urls/audit.html.erb:132
+#: ../../../app/views/pushes/audit.html.erb:221
+#: ../../../app/views/pushes/show.html.erb:115
 msgid "Are you sure?"
 msgstr "확실합니까?"
 
 #: ../../../app/views/devise/registrations/token.html.erb:52
-#: ../../../app/views/file_pushes/audit.html.erb:217
-#: ../../../app/views/file_pushes/show.html.erb:77
-#: ../../../app/views/passwords/audit.html.erb:148
-#: ../../../app/views/passwords/show.html.erb:61
-#: ../../../app/views/urls/audit.html.erb:135
+#: ../../../app/views/madmin/application/_form.html.erb:212
+#: ../../../app/views/madmin/users/_form.html.erb:80
+#: ../../../app/views/pushes/audit.html.erb:224
+#: ../../../app/views/pushes/show.html.erb:118
+#: ../../../app/views/shared/_pw_generate_confirm_modal.html.erb:17
 msgid "Cancel"
 msgstr "취소"
 
@@ -295,964 +775,469 @@ msgid "Delete & Regenerate"
 msgstr "삭제 및 재생성"
 
 #: ../../../app/views/devise/registrations/token.html.erb:53
-#: ../../../app/views/file_pushes/audit.html.erb:218
-#: ../../../app/views/file_pushes/show.html.erb:78
-#: ../../../app/views/passwords/audit.html.erb:149
-#: ../../../app/views/passwords/show.html.erb:62
-#: ../../../app/views/urls/audit.html.erb:136
+#: ../../../app/views/pushes/audit.html.erb:225
+#: ../../../app/views/pushes/show.html.erb:119
 msgid "Processing..."
 msgstr "처리 중..."
-
-#: ../../../app/views/devise/sessions/new.html.erb:7
-msgid "Email"
-msgstr "이메일"
 
 #: ../../../app/views/devise/sessions/new.html.erb:12
 msgid "Password"
 msgstr "비밀번호"
 
-#: ../../../app/views/file_pushes/active.html.erb:1
-#: ../../../app/views/file_pushes/active.html.erb:18
-msgid "Active File Pushes"
-msgstr "활성 파일 푸시"
-
-#: ../../../app/views/file_pushes/active.html.erb:8
-msgid "You currently have no active file pushes."
-msgstr "현재 활성 파일 푸시가 없습니다."
-
-#: ../../../app/views/file_pushes/active.html.erb:13
-msgid "Push Some Files Now"
-msgstr "지금 일부 파일 푸시"
-
-#: ../../../app/views/file_pushes/active.html.erb:20
-#: ../../../app/views/file_pushes/expired.html.erb:16
-#: ../../../app/views/passwords/active.html.erb:20
-#: ../../../app/views/passwords/expired.html.erb:17
-#: ../../../app/views/urls/active.html.erb:20
-#: ../../../app/views/urls/expired.html.erb:16
-msgid "Active Pushes"
-msgstr "활성 푸시"
-
-#: ../../../app/views/file_pushes/active.html.erb:23
-#: ../../../app/views/passwords/active.html.erb:23
-#: ../../../app/views/urls/active.html.erb:23
-msgid "Push ID"
-msgstr "푸시 ID"
-
-#: ../../../app/views/file_pushes/active.html.erb:24
-#: ../../../app/views/passwords/active.html.erb:24
-#: ../../../app/views/urls/active.html.erb:24
-msgid "Created"
-msgstr "만들어진"
-
-#: ../../../app/views/file_pushes/active.html.erb:25
-#: ../../../app/views/file_pushes/expired.html.erb:20
-#: ../../../app/views/passwords/active.html.erb:25
-#: ../../../app/views/passwords/expired.html.erb:21
-#: ../../../app/views/urls/active.html.erb:25
-#: ../../../app/views/urls/expired.html.erb:20
-msgid "Note"
-msgstr "메모"
-
-#: ../../../app/views/file_pushes/active.html.erb:26
-msgid "File Count"
-msgstr "파일 수"
-
-#: ../../../app/views/file_pushes/active.html.erb:27
-#: ../../../app/views/file_pushes/new.html.erb:9
-#: ../../../app/views/file_pushes/new.html.erb:73
-#: ../../../app/views/passwords/active.html.erb:26
-#: ../../../app/views/passwords/new.html.erb:9
-#: ../../../app/views/passwords/new.html.erb:81
-#: ../../../app/views/urls/active.html.erb:26
-#: ../../../app/views/urls/new.html.erb:9
-#: ../../../app/views/urls/new.html.erb:68
-msgid "Views"
-msgstr "견해"
-
-#: ../../../app/views/file_pushes/active.html.erb:28
-#: ../../../app/views/file_pushes/new.html.erb:6
-#: ../../../app/views/file_pushes/new.html.erb:55
-#: ../../../app/views/passwords/active.html.erb:27
-#: ../../../app/views/passwords/new.html.erb:6
-#: ../../../app/views/passwords/new.html.erb:64
-#: ../../../app/views/urls/active.html.erb:27
-#: ../../../app/views/urls/new.html.erb:6
-#: ../../../app/views/urls/new.html.erb:49
-msgid "Days"
-msgstr "날"
-
-#: ../../../app/views/file_pushes/active.html.erb:39
-#: ../../../app/views/file_pushes/audit.html.erb:19
-#: ../../../app/views/file_pushes/audit.html.erb:270
-#: ../../../app/views/file_pushes/audit.html.erb:282
-#: ../../../app/views/file_pushes/expired.html.erb:31
-#: ../../../app/views/passwords/active.html.erb:38
-#: ../../../app/views/passwords/audit.html.erb:19
-#: ../../../app/views/passwords/audit.html.erb:204
-#: ../../../app/views/passwords/audit.html.erb:216
-#: ../../../app/views/passwords/expired.html.erb:32
-#: ../../../app/views/urls/active.html.erb:38
-#: ../../../app/views/urls/audit.html.erb:19
-#: ../../../app/views/urls/audit.html.erb:186
-#: ../../../app/views/urls/audit.html.erb:198
-#: ../../../app/views/urls/expired.html.erb:31
-msgid "None"
-msgstr "없음"
-
-#: ../../../app/views/file_pushes/active.html.erb:50
-#: ../../../app/views/passwords/active.html.erb:48
-#: ../../../app/views/urls/active.html.erb:48
-msgid "Push Controls"
-msgstr "푸시 컨트롤"
-
-#: ../../../app/views/file_pushes/active.html.erb:52
-#: ../../../app/views/passwords/active.html.erb:50
-#: ../../../app/views/urls/active.html.erb:50
-msgid "Preview"
-msgstr "시사"
-
-#: ../../../app/views/file_pushes/active.html.erb:55
-#: ../../../app/views/passwords/active.html.erb:53
-#: ../../../app/views/urls/active.html.erb:53
-msgid "Audit"
-msgstr "심사"
-
-#: ../../../app/views/file_pushes/audit.html.erb:1
-#: ../../../app/views/passwords/audit.html.erb:1
-#: ../../../app/views/urls/audit.html.erb:1
-msgid "Audit Log for %s"
-msgstr "%s에 대한 감사 로그"
-
-#: ../../../app/views/file_pushes/audit.html.erb:4
-msgid "Audit Log for File Push"
-msgstr "파일 푸시에 대한 감사 로그"
-
-#: ../../../app/views/file_pushes/audit.html.erb:6
-#: ../../../app/views/passwords/audit.html.erb:6
-#: ../../../app/views/urls/audit.html.erb:6
-msgid "Pushed on %s"
-msgstr "%s에 푸시됨"
-
-#: ../../../app/views/file_pushes/audit.html.erb:9
-#: ../../../app/views/passwords/audit.html.erb:9
-#: ../../../app/views/urls/audit.html.erb:9
-msgid "Secret URL for this push"
-msgstr "이 푸시의 비밀 URL"
-
-#: ../../../app/views/file_pushes/audit.html.erb:15
-#: ../../../app/views/file_pushes/new.html.erb:135
-#: ../../../app/views/passwords/audit.html.erb:15
-#: ../../../app/views/passwords/new.html.erb:156
-#: ../../../app/views/urls/audit.html.erb:15
-#: ../../../app/views/urls/new.html.erb:108
-msgid "Reference Note"
-msgstr "참고 사항"
-
-#: ../../../app/views/file_pushes/audit.html.erb:16
-#: ../../../app/views/passwords/audit.html.erb:16
-#: ../../../app/views/urls/audit.html.erb:16
-msgid "Visible Only To You"
-msgstr "나에게만 표시"
-
-#: ../../../app/views/file_pushes/audit.html.erb:28
-#: ../../../app/views/passwords/audit.html.erb:28
-#: ../../../app/views/urls/audit.html.erb:28
-msgid "Settings"
-msgstr "설정"
-
-#: ../../../app/views/file_pushes/audit.html.erb:32
-#: ../../../app/views/file_pushes/audit.html.erb:41
-#: ../../../app/views/passwords/audit.html.erb:32
-#: ../../../app/views/passwords/audit.html.erb:41
-#: ../../../app/views/urls/audit.html.erb:32
-#: ../../../app/views/urls/audit.html.erb:41
-msgid "Expire after"
-msgstr "만료일"
-
-#: ../../../app/views/file_pushes/audit.html.erb:34
-#: ../../../app/views/file_pushes/new.html.erb:8
-#: ../../../app/views/passwords/audit.html.erb:34
-#: ../../../app/views/passwords/new.html.erb:8
-#: ../../../app/views/urls/audit.html.erb:34
-#: ../../../app/views/urls/new.html.erb:8
-msgid "View"
-msgid_plural "Views"
-msgstr[0] "견해"
-msgstr[1] ""
-
-#: ../../../app/views/file_pushes/audit.html.erb:36
-#: ../../../app/views/urls/audit.html.erb:36
-msgid "The push expires after this number of views."
-msgstr "이 조회수가 지나면 푸시가 만료됩니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:43
-#: ../../../app/views/file_pushes/new.html.erb:5
-#: ../../../app/views/passwords/audit.html.erb:43
-#: ../../../app/views/passwords/new.html.erb:5
-#: ../../../app/views/urls/audit.html.erb:43
-#: ../../../app/views/urls/new.html.erb:5
-msgid "Day"
-msgid_plural "Days"
-msgstr[0] "날"
-msgstr[1] ""
-
-#: ../../../app/views/file_pushes/audit.html.erb:45
-#: ../../../app/views/urls/audit.html.erb:45
-msgid "The push expires after this number of days."
-msgstr "이 일 수가 지나면 푸시가 만료됩니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:50
-#: ../../../app/views/passwords/audit.html.erb:50
-msgid "Deletable by Viewers"
-msgstr "시청자 삭제 가능"
-
-#: ../../../app/views/file_pushes/audit.html.erb:53
-#: ../../../app/views/file_pushes/audit.html.erb:66
-#: ../../../app/views/passwords/audit.html.erb:53
-#: ../../../app/views/passwords/audit.html.erb:66
-#: ../../../app/views/urls/audit.html.erb:53
-msgid "True"
-msgstr "진실"
-
-#: ../../../app/views/file_pushes/audit.html.erb:55
-#: ../../../app/views/file_pushes/audit.html.erb:68
-#: ../../../app/views/passwords/audit.html.erb:55
-#: ../../../app/views/passwords/audit.html.erb:68
-#: ../../../app/views/urls/audit.html.erb:55
-msgid "False"
-msgstr "거짓"
-
-#: ../../../app/views/file_pushes/audit.html.erb:58
-msgid "This allows end users to delete content once retrieved."
-msgstr "이를 통해 최종 사용자는 검색된 콘텐츠를 삭제할 수 있습니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:63
-#: ../../../app/views/passwords/audit.html.erb:63
-#: ../../../app/views/urls/audit.html.erb:50
-msgid "1-click Retrieval Step"
-msgstr "원 클릭 검색 단계"
-
-#: ../../../app/views/file_pushes/audit.html.erb:71
-#: ../../../app/views/file_pushes/new.html.erb:92
-#: ../../../app/views/passwords/audit.html.erb:71
-#: ../../../app/views/passwords/new.html.erb:100
-#: ../../../app/views/urls/audit.html.erb:58
-msgid "Helps to avoid chat systems and URL scanners from eating up views."
-msgstr "채팅 시스템 및 URL 스캐너가 보기를 잠식하는 것을 방지하는 데 도움이 됩니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:76
-#: ../../../app/views/file_pushes/new.html.erb:113
-#: ../../../app/views/passwords/audit.html.erb:76
-#: ../../../app/views/passwords/new.html.erb:121
-#: ../../../app/views/urls/audit.html.erb:63
-#: ../../../app/views/urls/new.html.erb:97
-msgid "Passphrase Lockdown"
-msgstr "암호 잠금"
-
-#: ../../../app/views/file_pushes/audit.html.erb:79
-#: ../../../app/views/file_pushes/audit.html.erb:137
-#: ../../../app/views/passwords/audit.html.erb:79
-#: ../../../app/views/urls/audit.html.erb:66
-msgid "No"
-msgstr "아니요"
-
-#: ../../../app/views/file_pushes/audit.html.erb:81
-#: ../../../app/views/file_pushes/audit.html.erb:139
-#: ../../../app/views/passwords/audit.html.erb:81
-#: ../../../app/views/urls/audit.html.erb:68
-msgid "Yes"
-msgstr "예"
-
-#: ../../../app/views/file_pushes/audit.html.erb:84
-#: ../../../app/views/passwords/audit.html.erb:84
-#: ../../../app/views/urls/audit.html.erb:71
-msgid "Require recipients to enter a passphrase to view this push."
-msgstr "이 푸시를 보려면 수신자가 암호를 입력하도록 요구하십시오."
-
-#: ../../../app/views/file_pushes/audit.html.erb:90
-#: ../../../app/views/passwords/audit.html.erb:90
-#: ../../../app/views/urls/audit.html.erb:77
-msgid "Current Status"
-msgstr "현재 상태"
-
-#: ../../../app/views/file_pushes/audit.html.erb:94
-#: ../../../app/views/passwords/audit.html.erb:94
-#: ../../../app/views/urls/audit.html.erb:81
-msgid "State:"
-msgstr "상태:"
-
-#: ../../../app/views/file_pushes/audit.html.erb:96
-#: ../../../app/views/passwords/audit.html.erb:96
-#: ../../../app/views/shared/_dashboard_header.html.erb:26
-#: ../../../app/views/shared/_dashboard_header.html.erb:29
-#: ../../../app/views/shared/_dashboard_header.html.erb:32
-#: ../../../app/views/urls/audit.html.erb:83
-msgid "Expired"
-msgstr "만료됨"
-
-#: ../../../app/views/file_pushes/audit.html.erb:99
-#: ../../../app/views/passwords/audit.html.erb:99
-#: ../../../app/views/shared/_dashboard_header.html.erb:25
-#: ../../../app/views/shared/_dashboard_header.html.erb:28
-#: ../../../app/views/shared/_dashboard_header.html.erb:31
-#: ../../../app/views/urls/audit.html.erb:86
-msgid "Active"
-msgstr "활동적인"
-
-#: ../../../app/views/file_pushes/audit.html.erb:100
-#: ../../../app/views/passwords/audit.html.erb:100
-#: ../../../app/views/urls/audit.html.erb:87
-msgid "Active and still available for viewing."
-msgstr "활성 상태이며 계속 볼 수 있습니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:106
-#: ../../../app/views/passwords/audit.html.erb:106
-#: ../../../app/views/urls/audit.html.erb:93
-msgid "Successful Views"
-msgstr "성공적인 보기"
-
-#: ../../../app/views/file_pushes/audit.html.erb:107
-#: ../../../app/views/urls/audit.html.erb:94
-msgid "The number of times this push has been viewed before expiration."
-msgstr "이 푸시가 만료되기 전에 조회된 횟수입니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:112
-#: ../../../app/views/passwords/audit.html.erb:112
-#: ../../../app/views/urls/audit.html.erb:99
-msgid "Failed View Attempts"
-msgstr "실패한 보기 시도"
-
-#: ../../../app/views/file_pushes/audit.html.erb:113
-#: ../../../app/views/urls/audit.html.erb:100
-msgid "The number of times this push has been viewed after expiration."
-msgstr "만료 후 이 푸시를 본 횟수입니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:118
-#: ../../../app/views/passwords/audit.html.erb:118
-#: ../../../app/views/urls/audit.html.erb:105
-msgid "Days Remaining"
-msgstr "남은 일수"
-
-#: ../../../app/views/file_pushes/audit.html.erb:119
-#: ../../../app/views/passwords/audit.html.erb:119
-#: ../../../app/views/urls/audit.html.erb:106
-msgid ""
-"Number of days until this push expires if the maximum view count isn't reached"
-"."
-msgstr "최대 조회수에 도달하지 않은 경우 이 푸시가 만료될 때까지의 일수입니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:128
-msgid "Payload"
-msgstr "유효 탑재량"
-
-#: ../../../app/views/file_pushes/audit.html.erb:132
-msgid "Contains Message for Receiver"
-msgstr "수신자에 대한 메시지 포함"
-
-#: ../../../app/views/file_pushes/audit.html.erb:135
-#: ../../../app/views/file_pushes/audit.html.erb:150
-msgid "Deleted"
-msgstr "삭제됨"
-
-#: ../../../app/views/file_pushes/audit.html.erb:142
-msgid "Has a text payload been added to this push?"
-msgstr "이 푸시에 텍스트 페이로드가 추가되었습니까?"
-
-#: ../../../app/views/file_pushes/audit.html.erb:147
-msgid "Message Length"
-msgstr "메시지 길이"
-
-#: ../../../app/views/file_pushes/audit.html.erb:152
-msgid "Not Applicable"
-msgstr "해당 없음"
-
-#: ../../../app/views/file_pushes/audit.html.erb:157
-msgid "The length of the attached text payload."
-msgstr "첨부된 텍스트 페이로드의 길이입니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:162
-msgid "Number of Files Attached"
-msgstr "첨부된 파일 수"
-
-#: ../../../app/views/file_pushes/audit.html.erb:170
-msgid "The number of files attached to this push. This value will be 0 when expired."
-msgstr "이 푸시에 첨부된 파일 수입니다. 만료되면 이 값은 0이 됩니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:176
-msgid "Attached Files"
-msgstr "첨부 파일"
-
-#: ../../../app/views/file_pushes/audit.html.erb:182
-msgid "Filename:"
-msgstr "파일 이름:"
-
-#: ../../../app/views/file_pushes/audit.html.erb:184
-msgid "Size: "
-msgstr "크기:"
-
-#: ../../../app/views/file_pushes/audit.html.erb:189
-msgid "All attached files have been deleted."
-msgstr "첨부파일이 모두 삭제되었습니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:200
-#: ../../../app/views/passwords/audit.html.erb:131
-#: ../../../app/views/urls/audit.html.erb:118
-msgid "Expire Now"
-msgstr "지금 만료"
-
-#: ../../../app/views/file_pushes/audit.html.erb:208
-#: ../../../app/views/passwords/audit.html.erb:139
-msgid "Delete This Password?"
-msgstr "이 비밀번호를 삭제하시겠습니까?"
-
-#: ../../../app/views/file_pushes/audit.html.erb:212
-#: ../../../app/views/passwords/audit.html.erb:143
-#: ../../../app/views/urls/audit.html.erb:130
-msgid "This will expire this secret link and"
-msgstr "이렇게 하면 이 비밀 링크가 만료되고"
-
-#: ../../../app/views/file_pushes/audit.html.erb:212
-#: ../../../app/views/passwords/audit.html.erb:143
-#: ../../../app/views/urls/audit.html.erb:130
-msgid "remove all content from the database forever"
-msgstr "데이터베이스에서 모든 콘텐츠를 영원히 제거"
-
-#: ../../../app/views/file_pushes/audit.html.erb:213
-#: ../../../app/views/passwords/audit.html.erb:144
-#: ../../../app/views/urls/audit.html.erb:131
-msgid ""
-"The audit log (including future attempted views) will still be maintained goin"
-"g forward."
-msgstr "감사 로그(향후 조회 시도 포함)는 계속 유지됩니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:218
-#: ../../../app/views/file_pushes/show.html.erb:78
-#: ../../../app/views/passwords/audit.html.erb:149
-#: ../../../app/views/passwords/show.html.erb:62
-#: ../../../app/views/urls/audit.html.erb:136
-msgid "Delete"
-msgstr "삭제"
-
-#: ../../../app/views/file_pushes/audit.html.erb:230
-#: ../../../app/views/passwords/audit.html.erb:161
-#: ../../../app/views/urls/audit.html.erb:148
-msgid "Start of Audit Log"
-msgstr "감사 로그 시작"
-
-#: ../../../app/views/file_pushes/audit.html.erb:233
-#: ../../../app/views/passwords/audit.html.erb:164
-#: ../../../app/views/urls/audit.html.erb:151
-msgid "Push created on"
-msgstr "푸시 생성 날짜"
-
-#: ../../../app/views/file_pushes/audit.html.erb:238
-#: ../../../app/views/passwords/audit.html.erb:169
-#: ../../../app/views/urls/audit.html.erb:156
-msgid ""
-"As the push receives activity, a log of each with identifying information will"
-" show up here."
-msgstr "푸시가 활동을 수신하면 식별 정보가 있는 각각의 로그가 여기에 표시됩니다."
-
-#: ../../../app/views/file_pushes/audit.html.erb:247
-#: ../../../app/views/passwords/audit.html.erb:178
-msgid "Password manually expired by user"
-msgstr "사용자가 수동으로 비밀번호 만료"
-
-#: ../../../app/views/file_pushes/audit.html.erb:249
-#: ../../../app/views/passwords/audit.html.erb:180
-#: ../../../app/views/passwords/audit.html.erb:186
-#: ../../../app/views/urls/audit.html.erb:167
-msgid "at IP address"
-msgstr "IP 주소에서"
-
-#: ../../../app/views/file_pushes/audit.html.erb:250
-#: ../../../app/views/file_pushes/audit.html.erb:265
-#: ../../../app/views/file_pushes/audit.html.erb:277
-#: ../../../app/views/passwords/audit.html.erb:181
-#: ../../../app/views/passwords/audit.html.erb:199
-#: ../../../app/views/passwords/audit.html.erb:211
-#: ../../../app/views/urls/audit.html.erb:181
-#: ../../../app/views/urls/audit.html.erb:193
-msgid "on"
-msgstr "~에"
-
-#: ../../../app/views/file_pushes/audit.html.erb:256
-#: ../../../app/views/file_pushes/audit.html.erb:268
-#: ../../../app/views/file_pushes/audit.html.erb:280
-#: ../../../app/views/passwords/audit.html.erb:190
-#: ../../../app/views/passwords/audit.html.erb:202
-#: ../../../app/views/passwords/audit.html.erb:214
-#: ../../../app/views/urls/audit.html.erb:172
-#: ../../../app/views/urls/audit.html.erb:184
-#: ../../../app/views/urls/audit.html.erb:196
-msgid "User Agent"
-msgstr "사용자 에이전트"
-
-#: ../../../app/views/file_pushes/audit.html.erb:258
-#: ../../../app/views/file_pushes/audit.html.erb:270
-#: ../../../app/views/file_pushes/audit.html.erb:282
-#: ../../../app/views/passwords/audit.html.erb:192
-#: ../../../app/views/passwords/audit.html.erb:204
-#: ../../../app/views/passwords/audit.html.erb:216
-#: ../../../app/views/urls/audit.html.erb:174
-#: ../../../app/views/urls/audit.html.erb:186
-#: ../../../app/views/urls/audit.html.erb:198
-msgid "Referrer"
-msgstr "추천인"
-
-#: ../../../app/views/file_pushes/audit.html.erb:263
-#: ../../../app/views/passwords/audit.html.erb:197
-#: ../../../app/views/urls/audit.html.erb:179
-msgid "Successful view from IP address"
-msgstr "IP 주소에서 조회 성공"
-
-#: ../../../app/views/file_pushes/audit.html.erb:275
-#: ../../../app/views/passwords/audit.html.erb:209
-#: ../../../app/views/urls/audit.html.erb:191
-msgid "Failed view attempt (already expired) by"
-msgstr "실패한 보기 시도(이미 만료됨) by"
-
-#: ../../../app/views/file_pushes/audit.html.erb:286
-#: ../../../app/views/passwords/audit.html.erb:220
-#: ../../../app/views/urls/audit.html.erb:202
-msgid "End of Audit Log"
-msgstr "감사 로그 끝"
-
-#: ../../../app/views/file_pushes/expired.html.erb:1
-#: ../../../app/views/file_pushes/expired.html.erb:14
-msgid "Expired File Pushes"
-msgstr "만료된 파일 푸시"
-
-#: ../../../app/views/file_pushes/expired.html.erb:7
-msgid "You currently have no expired file pushes."
-msgstr "현재 만료된 파일 푸시가 없습니다."
-
-#: ../../../app/views/file_pushes/expired.html.erb:10
-#: ../../../app/views/passwords/expired.html.erb:11
-msgid "Push Something Now"
-msgstr "지금 푸시"
-
-#: ../../../app/views/file_pushes/expired.html.erb:19
-#: ../../../app/views/passwords/expired.html.erb:20
-#: ../../../app/views/urls/expired.html.erb:19
-msgid "ID"
-msgstr "ID"
-
-#: ../../../app/views/file_pushes/expired.html.erb:21
-#: ../../../app/views/passwords/expired.html.erb:22
-#: ../../../app/views/urls/expired.html.erb:21
-msgid "Expired On"
-msgstr "만료 날짜"
-
-#: ../../../app/views/file_pushes/expired.html.erb:41
-#: ../../../app/views/passwords/expired.html.erb:42
-#: ../../../app/views/urls/expired.html.erb:41
-msgid "Audit Log"
-msgstr "감사 로그"
-
-#: ../../../app/views/file_pushes/new.html.erb:1
-#: ../../../app/views/file_pushes/new_anonymous.html.erb:1
-msgid "Securely Send Files"
-msgstr "안전하게 파일 보내기"
-
-#: ../../../app/views/file_pushes/new.html.erb:22
-msgid "Add Files..."
-msgstr "파일 추가..."
-
-#: ../../../app/views/file_pushes/new.html.erb:42
-#: ../../../app/views/passwords/new.html.erb:51
-#: ../../../app/views/urls/new.html.erb:36
-msgid "Expire secret link and delete after:"
-msgstr "비밀 링크 만료 및 다음 이후 삭제:"
-
-#: ../../../app/views/file_pushes/new.html.erb:78
-#: ../../../app/views/file_pushes/preview.html.erb:60
-#: ../../../app/views/file_pushes/print_preview.html.erb:16
-#: ../../../app/views/passwords/new.html.erb:86
-#: ../../../app/views/passwords/preview.html.erb:60
-#: ../../../app/views/passwords/print_preview.html.erb:16
-#: ../../../app/views/urls/new.html.erb:73
-#: ../../../app/views/urls/preview.html.erb:60
-#: ../../../app/views/urls/print_preview.html.erb:16
-msgid "(whichever comes first)"
-msgstr "(뭐든지 가장 먼저 온것)"
-
-#: ../../../app/views/file_pushes/new.html.erb:91
-#: ../../../app/views/passwords/new.html.erb:99
-#: ../../../app/views/urls/new.html.erb:86
-msgid "Use a 1-click retrieval step"
-msgstr "원클릭 검색 단계 사용"
-
-#: ../../../app/views/file_pushes/new.html.erb:102
-#: ../../../app/views/passwords/new.html.erb:110
-msgid "Allow immediate deletion"
-msgstr "즉시 삭제 허용"
-
-#: ../../../app/views/file_pushes/new.html.erb:103
-#: ../../../app/views/passwords/new.html.erb:111
-msgid "Allow users to delete this push once retrieved."
-msgstr "사용자가 검색된 이 푸시를 삭제할 수 있도록 허용합니다."
-
-#: ../../../app/views/file_pushes/new.html.erb:116
-#: ../../../app/views/passwords/new.html.erb:124
-#: ../../../app/views/urls/new.html.erb:100
-msgid "Optional: Require recipients to enter a passphrase to view this push"
-msgstr "선택 사항: 수신자가 이 푸시를 보려면 암호를 입력하도록 요구합니다."
-
-#: ../../../app/views/file_pushes/new.html.erb:124
-msgid "Message"
-msgstr "메시지"
-
-#: ../../../app/views/file_pushes/new.html.erb:127
-msgid "Optional: A message to be included with the push"
-msgstr "선택 사항: 푸시에 포함될 메시지"
-
-#: ../../../app/views/file_pushes/new.html.erb:131
-msgid "Encrypted and visible to the receiving party"
-msgstr "암호화되어 수신자에게 표시됨"
-
-#: ../../../app/views/file_pushes/new.html.erb:138
-#: ../../../app/views/passwords/new.html.erb:159
-#: ../../../app/views/urls/new.html.erb:111
-msgid "Optional"
-msgstr "선택 과목"
-
-#: ../../../app/views/file_pushes/new.html.erb:141
-#: ../../../app/views/passwords/new.html.erb:162
-#: ../../../app/views/urls/new.html.erb:114
-msgid "Encrypted and visible only to you"
-msgstr "암호화되어 나만 볼 수 있음"
-
-#: ../../../app/views/file_pushes/new.html.erb:146
-msgid ""
-"Once expired, all files and content of the push will be deleted immediately an"
-"d entirely."
-msgstr "만료되면 푸시의 모든 파일과 콘텐츠가 즉시 완전히 삭제됩니다."
-
-#: ../../../app/views/file_pushes/new.html.erb:151
-#: ../../../app/views/urls/new.html.erb:125
-msgid "An audit log of activity will be available."
-msgstr "활동의 감사 로그를 사용할 수 있습니다."
-
-#: ../../../app/views/file_pushes/new.html.erb:159
-#: ../../../app/views/passwords/new.html.erb:175
-#: ../../../app/views/urls/new.html.erb:133
-msgid "Push It!"
-msgstr "밀어!"
-
-#: ../../../app/views/file_pushes/new_anonymous.html.erb:9
-msgid "Securely Send Files That Delete Automatically"
-msgstr "자동으로 삭제되는 파일을 안전하게 전송"
-
-#: ../../../app/views/file_pushes/new_anonymous.html.erb:13
-#: ../../../app/views/urls/new_anonymous.html.erb:13
-msgid "Please login to use this feature."
-msgstr "이 기능을 사용하려면 로그인하십시오."
-
-#: ../../../app/views/file_pushes/new_anonymous.html.erb:17
-#: ../../../app/views/urls/new_anonymous.html.erb:17
-msgid "Please login or sign up to use this feature."
-msgstr "이 기능을 사용하려면 로그인하거나 가입하십시오."
-
-#: ../../../app/views/file_pushes/passphrase.html.erb:1
-#: ../../../app/views/passwords/passphrase.html.erb:1
-#: ../../../app/views/urls/passphrase.html.erb:1
-msgid "Enter The Secret Passphrase"
-msgstr "비밀 암호를 입력하십시오"
-
-#: ../../../app/views/file_pushes/passphrase.html.erb:10
-#: ../../../app/views/passwords/passphrase.html.erb:10
-#: ../../../app/views/urls/passphrase.html.erb:12
-msgid "Enter the secret passphrase provided with this URL"
-msgstr "이 URL과 함께 제공된 비밀 암호를 입력하십시오."
-
-#: ../../../app/views/file_pushes/passphrase.html.erb:10
-#: ../../../app/views/passwords/passphrase.html.erb:10
-#: ../../../app/views/urls/passphrase.html.erb:13
-msgid "Enter the secret passphrase"
-msgstr "비밀 암호를 입력하십시오"
-
-#: ../../../app/views/file_pushes/passphrase.html.erb:11
-#: ../../../app/views/passwords/passphrase.html.erb:11
-#: ../../../app/views/urls/passphrase.html.erb:17
-msgid "Go"
-msgstr "가다"
-
-#: ../../../app/views/file_pushes/preliminary.html.erb:3
-#: ../../../app/views/passwords/preliminary.html.erb:3
-#: ../../../app/views/urls/preliminary.html.erb:3
-msgid "Click Here to Proceed"
-msgstr "계속하려면 여기를 클릭하십시오."
-
-#: ../../../app/views/file_pushes/preview.html.erb:1
-#: ../../../app/views/urls/preview.html.erb:1
-msgid "Your Push Has Been Created"
-msgstr "귀하의 푸시가 생성되었습니다"
-
-#: ../../../app/views/file_pushes/preview.html.erb:6
-#: ../../../app/views/passwords/preview.html.erb:6
-#: ../../../app/views/urls/preview.html.erb:6
-msgid "Your push has been created."
-msgstr "푸시가 생성되었습니다."
-
-#: ../../../app/views/file_pushes/preview.html.erb:8
-#: ../../../app/views/passwords/preview.html.erb:8
-#: ../../../app/views/urls/preview.html.erb:8
-msgid "Use this secret link to share it:"
-msgstr "이 비밀 링크를 사용하여 공유하십시오."
-
-#: ../../../app/views/file_pushes/preview.html.erb:14
-#: ../../../app/views/passwords/preview.html.erb:14
-#: ../../../app/views/urls/preview.html.erb:14
-msgid "Print & Share"
-msgstr "인쇄 및 공유"
-
-#: ../../../app/views/file_pushes/preview.html.erb:19
-#: ../../../app/views/passwords/preview.html.erb:19
-#: ../../../app/views/urls/preview.html.erb:19
-msgid "Generate a Printable Page for End Users"
-msgstr "최종 사용자를 위한 인쇄 가능한 페이지 생성"
-
-#: ../../../app/views/file_pushes/preview.html.erb:24
-#: ../../../app/views/file_pushes/preview.html.erb:26
-#: ../../../app/views/passwords/preview.html.erb:24
-#: ../../../app/views/passwords/preview.html.erb:26
-#: ../../../app/views/urls/preview.html.erb:24
-#: ../../../app/views/urls/preview.html.erb:26
-msgid "Optional Custom Message"
-msgstr "선택적 맞춤 메시지"
-
-#: ../../../app/views/file_pushes/preview.html.erb:35
-#: ../../../app/views/passwords/preview.html.erb:35
-#: ../../../app/views/urls/preview.html.erb:35
-msgid "Show Expiration Details"
-msgstr "만료 세부정보 표시"
-
-#: ../../../app/views/file_pushes/preview.html.erb:42
-#: ../../../app/views/passwords/preview.html.erb:42
-#: ../../../app/views/urls/preview.html.erb:42
-msgid "Include ID"
-msgstr "ID 포함"
-
-#: ../../../app/views/file_pushes/preview.html.erb:47
-#: ../../../app/views/passwords/preview.html.erb:47
-#: ../../../app/views/urls/preview.html.erb:47
-msgid "Generate"
-msgstr "생성하다"
-
-#: ../../../app/views/file_pushes/preview.html.erb:56
-#: ../../../app/views/urls/preview.html.erb:56
-msgid "This push will expire after"
-msgstr "이 푸시는 다음 날짜 이후에 만료됩니다."
-
-#: ../../../app/views/file_pushes/preview.html.erb:57
-#: ../../../app/views/file_pushes/print_preview.html.erb:13
-#: ../../../app/views/file_pushes/show.html.erb:43
-#: ../../../app/views/passwords/preview.html.erb:57
-#: ../../../app/views/passwords/print_preview.html.erb:13
-#: ../../../app/views/passwords/show.html.erb:24
-#: ../../../app/views/urls/preview.html.erb:57
-#: ../../../app/views/urls/print_preview.html.erb:13
-msgid "day"
-msgid_plural "days"
-msgstr[0] "날"
-msgstr[1] ""
-
-#: ../../../app/views/file_pushes/preview.html.erb:58
-#: ../../../app/views/file_pushes/print_preview.html.erb:14
-#: ../../../app/views/file_pushes/show.html.erb:46
-#: ../../../app/views/file_pushes/show.html.erb:49
-#: ../../../app/views/pages/about.html.erb:34
-#: ../../../app/views/pages/about.html.erb:40
-#: ../../../app/views/passwords/preview.html.erb:58
-#: ../../../app/views/passwords/print_preview.html.erb:14
-#: ../../../app/views/passwords/show.html.erb:27
-#: ../../../app/views/passwords/show.html.erb:30
-#: ../../../app/views/urls/preview.html.erb:58
-#: ../../../app/views/urls/print_preview.html.erb:14
-msgid "or"
-msgstr "또는"
-
-#: ../../../app/views/file_pushes/preview.html.erb:59
-#: ../../../app/views/file_pushes/print_preview.html.erb:15
-#: ../../../app/views/passwords/preview.html.erb:59
-#: ../../../app/views/passwords/print_preview.html.erb:15
-#: ../../../app/views/urls/preview.html.erb:59
-#: ../../../app/views/urls/print_preview.html.erb:15
-msgid "view"
-msgid_plural "views"
-msgstr[0] "견해"
-msgstr[1] ""
-
-#: ../../../app/views/file_pushes/preview.html.erb:63
-#: ../../../app/views/file_pushes/preview.html.erb:65
-#: ../../../app/views/pages/about.html.erb:68
-#: ../../../app/views/pages/about.html.erb:91
-#: ../../../app/views/passwords/preview.html.erb:63
-#: ../../../app/views/passwords/preview.html.erb:65
-msgid "and"
-msgstr "그리고"
-
-#: ../../../app/views/file_pushes/preview.html.erb:63
-#: ../../../app/views/passwords/preview.html.erb:63
-msgid "can be"
-msgstr "될 수 있다"
-
-#: ../../../app/views/file_pushes/preview.html.erb:63
-#: ../../../app/views/file_pushes/preview.html.erb:65
-#: ../../../app/views/passwords/preview.html.erb:63
-#: ../../../app/views/passwords/preview.html.erb:65
-msgid "deleted by viewers."
-msgstr "시청자에 의해 삭제되었습니다."
-
-#: ../../../app/views/file_pushes/preview.html.erb:65
-#: ../../../app/views/passwords/preview.html.erb:65
-msgid "can NOT be"
-msgstr "수 없습니다"
-
-#: ../../../app/views/file_pushes/preview.html.erb:70
-#: ../../../app/views/passwords/preview.html.erb:70
-#: ../../../app/views/urls/preview.html.erb:64
-msgid "It also includes a"
-msgstr "또한"
-
-#: ../../../app/views/file_pushes/preview.html.erb:70
-#: ../../../app/views/passwords/preview.html.erb:70
-#: ../../../app/views/urls/preview.html.erb:64
-msgid "1-click preliminary retrieval step"
-msgstr "1-click 예비 검색 단계"
-
-#: ../../../app/views/file_pushes/preview.html.erb:74
-#: ../../../app/views/urls/preview.html.erb:68
-msgid "View This Push Now"
-msgstr "지금 이 푸시 보기"
-
-#: ../../../app/views/file_pushes/preview.html.erb:74
-#: ../../../app/views/passwords/preview.html.erb:74
-#: ../../../app/views/urls/preview.html.erb:68
-msgid "(will burn a view) or"
-msgstr "(보기를 구울 것입니다) 또는"
-
-#: ../../../app/views/file_pushes/preview.html.erb:75
-#: ../../../app/views/urls/preview.html.erb:69
-msgid "Push Another"
-msgstr "다른 사람을 밀어"
-
-#: ../../../app/views/file_pushes/preview.html.erb:80
-#: ../../../app/views/passwords/preview.html.erb:80
-#: ../../../app/views/urls/preview.html.erb:74
-msgid "View Audit Log"
-msgstr "감사 로그 보기"
-
-#: ../../../app/views/file_pushes/print_preview.html.erb:1
-#: ../../../app/views/passwords/print_preview.html.erb:1
-#: ../../../app/views/urls/print_preview.html.erb:1
-msgid "Your Secret URL"
-msgstr "귀하의 비밀 URL"
-
-#: ../../../app/views/file_pushes/print_preview.html.erb:12
-#: ../../../app/views/passwords/print_preview.html.erb:12
-#: ../../../app/views/urls/print_preview.html.erb:12
-msgid "This data contained here will expire after"
-msgstr "여기에 포함된 이 데이터는 다음 이후에 만료됩니다."
-
-#: ../../../app/views/file_pushes/show.html.erb:1
-#: ../../../app/views/passwords/show.html.erb:1
-msgid "Your Secret Link"
-msgstr "당신의 비밀 링크"
-
-#: ../../../app/views/file_pushes/show.html.erb:7
-msgid "The following files have been sent to you."
-msgstr "다음 파일이 귀하에게 전송되었습니다."
-
-#: ../../../app/views/file_pushes/show.html.erb:8
-msgid "Please download and store in a secure area."
-msgstr "다운로드하여 안전한 장소에 보관하십시오."
-
-#: ../../../app/views/file_pushes/show.html.erb:13
-msgid "The following message has been sent to you along with the files below."
-msgstr "다음 메시지가 아래 파일과 함께 귀하에게 전송되었습니다."
-
-#: ../../../app/views/file_pushes/show.html.erb:15
-msgid "The message is blurred out.  Click below to reveal it."
-msgstr "메시지가 흐리게 표시됩니다. 아래를 클릭하면 공개됩니다."
-
-#: ../../../app/views/file_pushes/show.html.erb:41
-#: ../../../app/views/passwords/show.html.erb:22
-msgid "This secret link and all content will be deleted in"
-msgstr "이 비밀 링크와 모든 콘텐츠는 다음 날짜에 삭제됩니다."
-
-#: ../../../app/views/file_pushes/show.html.erb:46
-#: ../../../app/views/passwords/show.html.erb:27
-msgid "0 more views"
-msgstr "조회수 0회 더 보기"
-
-#: ../../../app/views/file_pushes/show.html.erb:47
-#: ../../../app/views/passwords/show.html.erb:28
-msgid "(this is the last view)."
-msgstr "(마지막 뷰입니다.)"
-
-#: ../../../app/views/file_pushes/show.html.erb:50
-#: ../../../app/views/passwords/show.html.erb:31
-msgid "more view"
-msgid_plural "more views"
-msgstr[0] "더 보기"
-msgstr[1] ""
-
-#: ../../../app/views/file_pushes/show.html.erb:51
-#: ../../../app/views/passwords/show.html.erb:32
-msgid "(whichever occurs first)."
-msgstr "(먼저 발생하는 것)."
-
-#: ../../../app/views/file_pushes/show.html.erb:56
-#: ../../../app/views/passwords/show.html.erb:37
-msgid "Delete This Secret Link Now"
-msgstr "지금 이 비밀 링크 삭제"
-
-#: ../../../app/views/file_pushes/show.html.erb:68
-#: ../../../app/views/passwords/show.html.erb:52
-msgid "Delete?"
-msgstr "삭제?"
-
-#: ../../../app/views/file_pushes/show.html.erb:72
-#: ../../../app/views/passwords/show.html.erb:56
-msgid "This will expire this secret link and "
-msgstr "이렇게 하면 이 비밀 링크가 만료되고"
-
-#: ../../../app/views/file_pushes/show.html.erb:73
-#: ../../../app/views/passwords/show.html.erb:57
-msgid "delete all related content from the database forever"
-msgstr "데이터베이스에서 모든 관련 콘텐츠를 영원히 삭제"
-
-#: ../../../app/views/file_pushes/show_expired.html.erb:1
-#: ../../../app/views/passwords/show_expired.html.erb:1
-#: ../../../app/views/urls/show_expired.html.erb:1
-msgid "Your Secret Link Has Expired"
-msgstr "비밀 링크가 만료되었습니다"
-
-#: ../../../app/views/file_pushes/show_expired.html.erb:6
-#: ../../../app/views/passwords/show_expired.html.erb:6
-#: ../../../app/views/urls/show_expired.html.erb:6
-msgid "We apologize but this secret link has expired."
-msgstr "죄송하지만 이 비밀 링크는 만료되었습니다."
-
-#: ../../../app/views/file_pushes/show_expired.html.erb:8
-#: ../../../app/views/passwords/show_expired.html.erb:8
-#: ../../../app/views/urls/show_expired.html.erb:8
-msgid ""
-"If needed, please contact the person or organization who gave you this secret "
-"URL."
-msgstr "필요한 경우 이 비밀 URL을 제공한 사람이나 조직에 문의하십시오."
-
-#: ../../../app/views/layouts/admin/application.html.erb:41
-#: ../../../app/views/layouts/login.html.erb:31
+#: ../../../app/views/layouts/admin.html.erb:11
+msgid "Administration - Password Pusher"
+msgstr "관리 - 비밀번호 푸셔"
+
+#: ../../../app/views/layouts/admin.html.erb:52
+msgid "System Active"
+msgstr "시스템 활성화"
+
+#: ../../../app/views/layouts/admin.html.erb:60
+msgid "Back to App"
+msgstr "앱으로 돌아가기"
+
+#: ../../../app/views/layouts/login.html.erb:33
 #: ../../../app/views/shared/_footer.html.erb:11
 #: ../../../app/views/shared/_footer.html.erb:15
 #: ../../../app/views/shared/_header.html.erb:9
 #: ../../../app/views/shared/_header.html.erb:13
 msgid "Password Pusher Logo"
 msgstr "암호 푸셔 로고"
+
+#: ../../../app/views/layouts/madmin/application.html.erb:12
+msgid "Data Explorer - Administration - Password Pusher"
+msgstr "데이터 탐색기 - 관리 - 비밀번호 푸셔"
+
+#: ../../../app/views/layouts/madmin/application.html.erb:20
+msgid "Staging Environment"
+msgstr "스테이징 환경"
+
+#: ../../../app/views/layouts/madmin/application.html.erb:20
+msgid ""
+"This is a staging site for testing and data is reset frequently. Please use %{"
+"production_link} unless you are testing new features."
+msgstr ""
+"이곳은 테스트용 스테이징 사이트이며 데이터가 자주 재설정됩니다. 새로운 기능을 테스트하는 경우가 아니면 %{production_link}을 "
+"사용하세요."
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:20
+msgid "Back to Administration Center"
+msgstr "관리 센터로 돌아가기"
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:36
+msgid "Monitor and manage background job processing and queues"
+msgstr "백그라운드 작업 처리 및 대기열을 모니터링하고 관리합니다."
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:47
+msgid "What are Background Jobs?"
+msgstr "백그라운드 작업이란 무엇인가요?"
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:50
+msgid ""
+"Background jobs handle tasks that run asynchronously without blocking the main"
+" application. In Password Pusher, these include:"
+msgstr ""
+"백그라운드 작업은 메인 애플리케이션을 차단하지 않고 비동기적으로 실행되는 작업을 처리합니다. Password Pusher에서 이러한 작업은 "
+"다음과 같습니다."
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:53
+msgid "Email notifications"
+msgstr "이메일 알림"
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:53
+msgid "Sending push expiration alerts and admin notifications"
+msgstr "푸시 만료 알림 및 관리자 알림 보내기"
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:54
+msgid "Push cleanup"
+msgstr "푸시 정리"
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:54
+msgid "Automatically removing expired pushes from the database"
+msgstr "데이터베이스에서 만료된 푸시를 자동으로 제거합니다."
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:55
+msgid "File processing"
+msgstr "파일 처리"
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:55
+msgid "Handling file uploads and any post-processing tasks."
+msgstr "파일 업로드 및 모든 후속 처리 작업을 처리합니다."
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:56
+msgid "Audit logging"
+msgstr "감사 로깅"
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:56
+msgid "Recording system events and user actions"
+msgstr "시스템 이벤트 및 사용자 작업 기록"
+
+#:
+#: ../../../app/views/layouts/mission_control/jobs/_application_selection.html.erb:59
+msgid ""
+"Use the tabs below to monitor job queues, view failed jobs, and manage job pro"
+"cessing."
+msgstr "아래 탭을 사용하여 작업 대기열을 모니터링하고, 실패한 작업을 보고, 작업 처리를 관리하세요."
+
+#: ../../../app/views/madmin/application/_form.html.erb:42
+#: ../../../app/views/madmin/users/_form.html.erb:14
+msgid "There was %{count} with your submission:"
+msgstr "귀하의 제출 내용에는 %{count}이 포함되어 있습니다."
+
+#: ../../../app/views/madmin/application/_form.html.erb:42
+#: ../../../app/views/madmin/users/_form.html.erb:14
+msgid "error"
+msgstr "오류"
+
+#: ../../../app/views/madmin/application/_form.html.erb:61
+msgid "Basic Information"
+msgstr "기본 정보"
+
+#: ../../../app/views/madmin/application/_form.html.erb:92
+msgid "Security & Access"
+msgstr "보안 및 액세스"
+
+#: ../../../app/views/madmin/application/_form.html.erb:123
+msgid "Activity & Timestamps"
+msgstr "활동 및 타임스탬프"
+
+#: ../../../app/views/madmin/application/_form.html.erb:154
+msgid "Related Records"
+msgstr "관련 기록"
+
+#: ../../../app/views/madmin/application/_form.html.erb:185
+msgid "Additional Fields"
+msgstr "추가 필드"
+
+#: ../../../app/views/madmin/application/_form.html.erb:217
+msgid "Update"
+msgstr "변경"
+
+#: ../../../app/views/madmin/application/_form.html.erb:217
+msgid "Create"
+msgstr "만들다"
+
+#: ../../../app/views/madmin/application/edit.html.erb:1
+#: ../../../app/views/madmin/application/edit.html.erb:20
+msgid "Edit %{name}"
+msgstr "편집 %{name}"
+
+#: ../../../app/views/madmin/application/edit.html.erb:13
+#: ../../../app/views/madmin/application/index.html.erb:77
+#: ../../../app/views/madmin/application/show.html.erb:25
+#: ../../../app/views/pushes/audit.html.erb:204
+#: ../../../app/views/pushes/index.html.erb:86
+msgid "Edit"
+msgstr "편집하다"
+
+#: ../../../app/views/madmin/application/edit.html.erb:21
+msgid "Update %{name} information"
+msgstr "%{name} 정보 업데이트"
+
+#: ../../../app/views/madmin/application/index.html.erb:7
+msgid "Manage %{name} records"
+msgstr "%{name} 레코드 관리"
+
+#: ../../../app/views/madmin/application/index.html.erb:14
+#: ../../../app/views/madmin/application/new.html.erb:1
+#: ../../../app/views/madmin/application/new.html.erb:10
+#: ../../../app/views/madmin/application/new.html.erb:17
+msgid "New %{name}"
+msgstr "새로운 %{name}"
+
+#: ../../../app/views/madmin/application/index.html.erb:26
+#: ../../../app/views/madmin/users/index.html.erb:26
+msgid "Search %{name}..."
+msgstr "%{name}을 검색하세요..."
+
+#: ../../../app/views/madmin/application/index.html.erb:27
+#: ../../../app/views/madmin/users/index.html.erb:27
+msgid "Search"
+msgstr "찾다"
+
+#: ../../../app/views/madmin/application/index.html.erb:40
+#: ../../../app/views/madmin/users/index.html.erb:40
+#: ../../../app/views/shared/_dashboard_header.html.erb:9
+msgid "All"
+msgstr "모두"
+
+#: ../../../app/views/madmin/application/index.html.erb:76
+#: ../../../app/views/madmin/users/index.html.erb:82
+#: ../../../app/views/pushes/_files_form.html.erb:9
+#: ../../../app/views/pushes/_form.html.erb:9
+#: ../../../app/views/pushes/_qr_form.html.erb:9
+#: ../../../app/views/pushes/_url_form.html.erb:9
+#: ../../../app/views/pushes/audit.html.erb:34
+msgid "View"
+msgid_plural "Views"
+msgstr[0] "견해"
+msgstr[1] ""
+
+#: ../../../app/views/madmin/application/new.html.erb:18
+msgid "Create a new %{name} record"
+msgstr "새로운 %{name} 레코드를 만듭니다."
+
+#: ../../../app/views/madmin/application/show.html.erb:19
+msgid "View %{name} details"
+msgstr "%{name} 세부 정보 보기"
+
+#: ../../../app/views/madmin/application/show.html.erb:26
+#: ../../../app/views/madmin/users/index.html.erb:78
+#: ../../../app/views/pushes/audit.html.erb:225
+#: ../../../app/views/pushes/show.html.erb:119
+#: ../../../app/views/shared/_delete_user_button.html.erb:12
+msgid "Delete"
+msgstr "삭제"
+
+#: ../../../app/views/madmin/application/show.html.erb:26
+msgid "Are you sure you want to delete this %{name}?"
+msgstr "%{name}을 삭제하시겠습니까?"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:15
+msgid "Database Explorer"
+msgstr "데이터베이스 탐색기"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:16
+msgid "Direct database access and record management"
+msgstr "직접 데이터베이스 접근 및 레코드 관리"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:21
+msgid "Database %{status}"
+msgstr "데이터베이스 %{status}"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:21
+#: ../../../app/views/madmin/dashboard/show.html.erb:205
+msgid "Connected"
+msgstr "연결됨"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:21
+#: ../../../app/views/madmin/dashboard/show.html.erb:210
+msgid "Disconnected"
+msgstr "연결이 끊김"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:27
+#: ../../../app/views/madmin/dashboard/show.html.erb:237
+msgid "Back to Admin Center"
+msgstr "관리 센터로 돌아가기"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:40
+msgid "Direct Database Access"
+msgstr "직접 데이터베이스 액세스"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:43
+msgid "Warning:"
+msgstr "경고:"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:43
+msgid ""
+"This interface provides direct access to your production database. All changes"
+" are immediate and irreversible. Exercise extreme caution when modifying recor"
+"ds."
+msgstr ""
+"이 인터페이스는 운영 데이터베이스에 직접 액세스할 수 있도록 합니다. 모든 변경 사항은 즉시 적용되며 되돌릴 수 없습니다. 레코드를 수정할 "
+"때는 각별히 주의하십시오."
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:46
+msgid "Recommendation:"
+msgstr "추천:"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:46
+msgid ""
+"Always backup your database before making any changes to ensure you can restor"
+"e data if needed."
+msgstr "필요한 경우 데이터를 복원할 수 있도록 변경하기 전에 항상 데이터베이스를 백업하세요."
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:60
+msgid "Getting Started with Data Explorer"
+msgstr "데이터 탐색기 시작하기"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:62
+msgid ""
+"This tool provides direct access to your database records. Here's how to use i"
+"t effectively:"
+msgstr "이 도구를 사용하면 데이터베이스 레코드에 직접 접근할 수 있습니다. 효과적인 사용 방법은 다음과 같습니다."
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:66
+msgid "📊 Browse Records"
+msgstr "📊 기록 탐색"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:68
+msgid "Users:"
+msgstr "사용자:"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:68
+msgid "View user accounts, check registration dates, and manage permissions"
+msgstr "사용자 계정 보기, 등록 날짜 확인 및 권한 관리"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:69
+msgid "Pushes:"
+msgstr "푸시:"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:69
+msgid "Monitor password pushes, view expiration status, and track usage"
+msgstr "비밀번호 푸시를 모니터링하고, 만료 상태를 보고, 사용량을 추적합니다."
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:70
+msgid "Audit Logs:"
+msgstr "감사 로그:"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:70
+msgid "Track all system changes and user actions"
+msgstr "모든 시스템 변경 사항 및 사용자 작업을 추적합니다."
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:74
+msgid "🔧 Common Tasks"
+msgstr "🔧 일반적인 작업"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:76
+msgid "User Support:"
+msgstr "사용자 지원:"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:76
+msgid "Impersonate users to troubleshoot issues"
+msgstr "문제 해결을 위해 사용자를 사칭합니다."
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:77
+msgid "Data Cleanup:"
+msgstr "데이터 정리:"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:77
+msgid "Remove expired pushes or inactive accounts"
+msgstr "만료된 푸시 또는 비활성 계정 제거"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:78
+msgid "Security Review:"
+msgstr "보안 검토:"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:78
+msgid "Check audit logs for suspicious activity"
+msgstr "의심스러운 활동에 대한 감사 로그를 확인하세요."
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:79
+msgid "Analytics:"
+msgstr "해석학:"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:79
+msgid "Analyze usage patterns and system health"
+msgstr "사용 패턴 및 시스템 상태 분석"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:99
+msgid "Core Data"
+msgstr "핵심 데이터"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:101
+msgid "Manage users, pushes, and audit logs."
+msgstr "사용자, 푸시, 감사 로그를 관리합니다."
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:109
+msgid "Users"
+msgstr "사용자"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:110
+msgid "Manage user accounts and permissions"
+msgstr "사용자 계정 및 권한 관리"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:124
+msgid "Pushes"
+msgstr "푸시"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:125
+msgid "View and manage pushes"
+msgstr "푸시 보기 및 관리"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:139
+msgid "Audit Logs"
+msgstr "감사 로그"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:140
+msgid "Track system activity and changes"
+msgstr "시스템 활동 및 변경 사항 추적"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:165
+msgid "Database Connection"
+msgstr "데이터베이스 연결"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:167
+msgid "Current database connection information and status."
+msgstr "현재 데이터베이스 연결 정보 및 상태."
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:172
+msgid "Database Type"
+msgstr "데이터베이스 유형"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:180
+msgid "Database Name"
+msgstr "데이터베이스 이름"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:188
+msgid "Environment"
+msgstr "환경"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:198
+msgid "Connection Status"
+msgstr "연결 상태"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:229
+msgid "Quick Actions"
+msgstr "빠른 작업"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:245
+msgid "Admin Management"
+msgstr "관리 관리"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:253
+msgid "Go to Application"
+msgstr "애플리케이션으로 이동"
+
+#: ../../../app/views/madmin/dashboard/show.html.erb:261
+msgid "Manage Users"
+msgstr "사용자 관리"
+
+#: ../../../app/views/madmin/users/_form.html.erb:32
+msgid "User Information"
+msgstr "사용자 정보"
+
+#: ../../../app/views/madmin/users/_form.html.erb:42
+msgid "The email address for the new user account."
+msgstr "새 사용자 계정의 이메일 주소입니다."
+
+#: ../../../app/views/madmin/users/_form.html.erb:50
+msgid "Auto-confirm account"
+msgstr "계정 자동 확인"
+
+#: ../../../app/views/madmin/users/_form.html.erb:53
+msgid ""
+"If checked, the user account will be automatically confirmed and ready to use."
+" Otherwise, the user will need to confirm their email address."
+msgstr "체크하면 사용자 계정이 자동으로 확인되어 사용할 수 있습니다. 체크하지 않으면 사용자가 이메일 주소를 확인해야 합니다."
+
+#: ../../../app/views/madmin/users/_form.html.erb:68
+msgid "Password Information"
+msgstr "비밀번호 정보"
+
+#: ../../../app/views/madmin/users/_form.html.erb:70
+msgid ""
+"A secure password will be automatically generated for this user. The user can "
+"reset their password using the \"Forgot Password\" link on the login page."
+msgstr ""
+"이 사용자에게는 안전한 비밀번호가 자동으로 생성됩니다. 사용자는 로그인 페이지의 \"비밀번호 찾기\" 링크를 사용하여 비밀번호를 재설정할 수 있"
+"습니다."
+
+#: ../../../app/views/madmin/users/_form.html.erb:85
+msgid "Create User"
+msgstr "사용자 생성"
 
 #: ../../../app/views/pages/about.html.erb:1
 msgid "About Password Pusher"
@@ -1319,6 +1304,17 @@ msgstr "저자"
 msgid "My name is Peter Giacomo Lombardo. You can find me on"
 msgstr "제 이름은 Peter Giacomo Lombardo입니다. 당신은 나를 찾을 수 있습니다"
 
+#: ../../../app/views/pages/about.html.erb:34
+#: ../../../app/views/pages/about.html.erb:40
+#: ../../../app/views/pushes/preview.html.erb:58
+#: ../../../app/views/pushes/print_preview.html.erb:14
+#: ../../../app/views/pushes/show.html.erb:46
+#: ../../../app/views/pushes/show.html.erb:49
+#: ../../../app/views/pushes/show.html.erb:80
+#: ../../../app/views/pushes/show.html.erb:83
+msgid "or"
+msgstr "또는"
+
 #: ../../../app/views/pages/about.html.erb:38
 msgid "For updates, you can"
 msgstr "업데이트의 경우 다음을 수행할 수 있습니다."
@@ -1366,6 +1362,13 @@ msgstr "중요한 릴리스, 보안 문제, 팁 등에 대한 업데이트를 �
 #: ../../../app/views/pages/about.html.erb:65
 msgid "Follow Password Pusher on"
 msgstr "비밀번호 푸셔 팔로우"
+
+#: ../../../app/views/pages/about.html.erb:68
+#: ../../../app/views/pages/about.html.erb:91
+#: ../../../app/views/pushes/preview.html.erb:65
+#: ../../../app/views/pushes/preview.html.erb:67
+msgid "and"
+msgstr "그리고"
 
 #: ../../../app/views/pages/about.html.erb:72
 msgid "Fix an issue, add a feature or write some documentation."
@@ -1540,97 +1543,259 @@ msgstr "암호 푸셔도 참조하십시오."
 msgid "Configuration documentation"
 msgstr "구성 문서"
 
-#: ../../../app/views/passwords/active.html.erb:1
-#: ../../../app/views/passwords/active.html.erb:18
-msgid "Active Password Pushes"
-msgstr "활성 암호 푸시"
+#: ../../../app/views/pushes/_files_form.html.erb:1
+msgid "Securely Send Files"
+msgstr "안전하게 파일 보내기"
 
-#: ../../../app/views/passwords/active.html.erb:8
-msgid "You currently have no active password pushes."
-msgstr "현재 활성 비밀번호 푸시가 없습니다."
+#: ../../../app/views/pushes/_files_form.html.erb:6
+#: ../../../app/views/pushes/_form.html.erb:6
+#: ../../../app/views/pushes/_qr_form.html.erb:6
+#: ../../../app/views/pushes/_url_form.html.erb:6
+#: ../../../app/views/pushes/audit.html.erb:43
+msgid "Day"
+msgid_plural "Days"
+msgstr[0] "날"
+msgstr[1] ""
 
-#: ../../../app/views/passwords/active.html.erb:13
-msgid "Push a Password Now"
-msgstr "지금 비밀번호 누르기"
+#: ../../../app/views/pushes/_files_form.html.erb:7
+#: ../../../app/views/pushes/_files_form.html.erb:95
+#: ../../../app/views/pushes/_form.html.erb:7
+#: ../../../app/views/pushes/_form.html.erb:69
+#: ../../../app/views/pushes/_qr_form.html.erb:7
+#: ../../../app/views/pushes/_qr_form.html.erb:70
+#: ../../../app/views/pushes/_url_form.html.erb:7
+#: ../../../app/views/pushes/_url_form.html.erb:56
+msgid "Days"
+msgstr "날"
 
-#: ../../../app/views/passwords/audit.html.erb:4
-msgid "Audit Log for Password Push"
-msgstr "비밀번호 푸시에 대한 감사 로그"
+#: ../../../app/views/pushes/_files_form.html.erb:10
+#: ../../../app/views/pushes/_files_form.html.erb:113
+#: ../../../app/views/pushes/_form.html.erb:10
+#: ../../../app/views/pushes/_form.html.erb:86
+#: ../../../app/views/pushes/_qr_form.html.erb:10
+#: ../../../app/views/pushes/_qr_form.html.erb:87
+#: ../../../app/views/pushes/_url_form.html.erb:10
+#: ../../../app/views/pushes/_url_form.html.erb:75
+msgid "Views"
+msgstr "견해"
 
-#: ../../../app/views/passwords/audit.html.erb:36
-msgid "Password expires after this number of views."
-msgstr "이 조회수가 지나면 암호가 만료됩니다."
-
-#: ../../../app/views/passwords/audit.html.erb:45
-msgid "Password expires after this number of days."
-msgstr "암호는 이 일 수가 지나면 만료됩니다."
-
-#: ../../../app/views/passwords/audit.html.erb:58
-msgid "This allows end users to delete passwords once retrieved."
-msgstr "이를 통해 최종 사용자는 검색된 비밀번호를 삭제할 수 있습니다."
-
-#: ../../../app/views/passwords/audit.html.erb:107
-msgid "The number of times this password has been viewed before expiration."
-msgstr "이 비밀번호가 만료되기 전에 조회된 횟수입니다."
-
-#: ../../../app/views/passwords/audit.html.erb:113
-msgid "The number of times this password has been viewed after expiration."
-msgstr "만료 후 이 암호를 본 횟수입니다."
-
-#: ../../../app/views/passwords/audit.html.erb:184
-msgid "Password manually expired by an anonymous user"
-msgstr "익명의 사용자가 암호를 수동으로 만료했습니다."
-
-#: ../../../app/views/passwords/expired.html.erb:1
-#: ../../../app/views/passwords/expired.html.erb:15
-msgid "Expired Password Pushes"
-msgstr "만료된 암호 푸시"
-
-#: ../../../app/views/passwords/expired.html.erb:8
-msgid "You currently have no expired password pushes."
-msgstr "현재 만료된 비밀번호 푸시가 없습니다."
-
-#: ../../../app/views/passwords/new.html.erb:1
-msgid "Securely Send a Password"
-msgstr "안전하게 비밀번호 보내기"
-
-#: ../../../app/views/passwords/new.html.erb:11
-#: ../../../app/views/passwords/new.html.erb:132
+#: ../../../app/views/pushes/_files_form.html.erb:12
+#: ../../../app/views/pushes/_files_form.html.erb:161
+#: ../../../app/views/pushes/_form.html.erb:12
+#: ../../../app/views/pushes/_form.html.erb:134
+#: ../../../app/views/pushes/_qr_form.html.erb:12
+#: ../../../app/views/pushes/_qr_form.html.erb:137
+#: ../../../app/views/pushes/_url_form.html.erb:12
+#: ../../../app/views/pushes/_url_form.html.erb:115
 #: ../../../app/views/shared/_pw_generator_modal.html.erb:72
 msgid "Save"
 msgstr "구하다"
 
-#: ../../../app/views/passwords/new.html.erb:12
+#: ../../../app/views/pushes/_files_form.html.erb:13
+#: ../../../app/views/pushes/_form.html.erb:13
+#: ../../../app/views/pushes/_qr_form.html.erb:13
+#: ../../../app/views/pushes/_url_form.html.erb:13
 msgid "Saved!"
 msgstr "저장되었습니다!"
 
-#: ../../../app/views/passwords/new.html.erb:31
-msgid "Enter the Password or Text to push..."
-msgstr "푸시할 비밀번호나 텍스트를 입력하세요."
+#: ../../../app/views/pushes/_files_form.html.erb:30
+msgid "Uploaded Files"
+msgstr "업로드된 파일"
 
-#: ../../../app/views/passwords/new.html.erb:43
-msgid "Characters"
-msgstr "캐릭터"
+#: ../../../app/views/pushes/_files_form.html.erb:46
+msgid "Are you sure you want to delete this file?"
+msgstr "이 파일을 정말로 삭제하시겠습니까?"
 
-#: ../../../app/views/passwords/new.html.erb:132
+#: ../../../app/views/pushes/_files_form.html.erb:62
+msgid "Add Files..."
+msgstr "파일 추가..."
+
+#: ../../../app/views/pushes/_files_form.html.erb:77
+msgid "You can upload up to %{count} files per push."
+msgstr "푸시당 최대 %{count}개의 파일을 업로드할 수 있습니다."
+
+#: ../../../app/views/pushes/_files_form.html.erb:82
+#: ../../../app/views/pushes/_form.html.erb:56
+#: ../../../app/views/pushes/_qr_form.html.erb:57
+#: ../../../app/views/pushes/_url_form.html.erb:43
+msgid "Expire secret link and delete after:"
+msgstr "비밀 링크 만료 및 다음 이후 삭제:"
+
+#: ../../../app/views/pushes/_files_form.html.erb:118
+#: ../../../app/views/pushes/_form.html.erb:91
+#: ../../../app/views/pushes/_qr_form.html.erb:92
+#: ../../../app/views/pushes/_url_form.html.erb:80
+#: ../../../app/views/pushes/preview.html.erb:61
+#: ../../../app/views/pushes/preview.html.erb:63
+#: ../../../app/views/pushes/print_preview.html.erb:16
+msgid "(whichever comes first)"
+msgstr "(뭐든지 가장 먼저 온것)"
+
+#: ../../../app/views/pushes/_files_form.html.erb:129
+#: ../../../app/views/pushes/_form.html.erb:102
+#: ../../../app/views/pushes/_qr_form.html.erb:104
+#: ../../../app/views/pushes/_url_form.html.erb:92
+msgid "Use a 1-click retrieval step"
+msgstr "원클릭 검색 단계 사용"
+
+#: ../../../app/views/pushes/_files_form.html.erb:130
+#: ../../../app/views/pushes/_form.html.erb:103
+#: ../../../app/views/pushes/_qr_form.html.erb:105
+#: ../../../app/views/pushes/audit.html.erb:73
+msgid "Helps to avoid chat systems and URL scanners from eating up views."
+msgstr "채팅 시스템 및 URL 스캐너가 보기를 잠식하는 것을 방지하는 데 도움이 됩니다."
+
+#: ../../../app/views/pushes/_files_form.html.erb:138
+#: ../../../app/views/pushes/_form.html.erb:111
+#: ../../../app/views/pushes/_qr_form.html.erb:114
+msgid "Allow immediate deletion"
+msgstr "즉시 삭제 허용"
+
+#: ../../../app/views/pushes/_files_form.html.erb:139
+#: ../../../app/views/pushes/_form.html.erb:112
+#: ../../../app/views/pushes/_qr_form.html.erb:115
+msgid "Allow users to delete this push once retrieved."
+msgstr "사용자가 검색된 이 푸시를 삭제할 수 있도록 허용합니다."
+
+#: ../../../app/views/pushes/_files_form.html.erb:149
+#: ../../../app/views/pushes/_form.html.erb:122
+#: ../../../app/views/pushes/_qr_form.html.erb:125
+#: ../../../app/views/pushes/_url_form.html.erb:103
+#: ../../../app/views/pushes/audit.html.erb:78
+msgid "Passphrase Lockdown"
+msgstr "암호 잠금"
+
+#: ../../../app/views/pushes/_files_form.html.erb:152
+#: ../../../app/views/pushes/_form.html.erb:125
+#: ../../../app/views/pushes/_qr_form.html.erb:128
+#: ../../../app/views/pushes/_url_form.html.erb:106
+msgid "Optional: Require recipients to enter a passphrase to view this push"
+msgstr "선택 사항: 수신자가 이 푸시를 보려면 암호를 입력하도록 요구합니다."
+
+#: ../../../app/views/pushes/_files_form.html.erb:161
+#: ../../../app/views/pushes/_form.html.erb:134
+#: ../../../app/views/pushes/_qr_form.html.erb:137
+#: ../../../app/views/pushes/_url_form.html.erb:115
 msgid "the above settings as the page default."
 msgstr "페이지 기본값으로 위의 설정."
 
-#: ../../../app/views/passwords/new.html.erb:144
+#: ../../../app/views/pushes/_files_form.html.erb:175
+#: ../../../app/views/pushes/_files_form.html.erb:198
+#: ../../../app/views/pushes/_form.html.erb:161
+#: ../../../app/views/pushes/_form.html.erb:171
+#: ../../../app/views/pushes/_qr_form.html.erb:164
+#: ../../../app/views/pushes/_qr_form.html.erb:174
+#: ../../../app/views/pushes/_url_form.html.erb:128
+#: ../../../app/views/pushes/_url_form.html.erb:138
+msgid "Optional"
+msgstr "선택 과목"
+
+#: ../../../app/views/pushes/_files_form.html.erb:178
+#: ../../../app/views/pushes/_form.html.erb:164
+#: ../../../app/views/pushes/_qr_form.html.erb:167
+#: ../../../app/views/pushes/_url_form.html.erb:131
+msgid "A name shown in the dashboard, notifications and emails."
+msgstr "대시보드, 알림 및 이메일에 표시되는 이름입니다."
+
+#: ../../../app/views/pushes/_files_form.html.erb:183
+msgid "Message"
+msgstr "메시지"
+
+#: ../../../app/views/pushes/_files_form.html.erb:186
+msgid "Optional: A message to be included with the push"
+msgstr "선택 사항: 푸시에 포함될 메시지"
+
+#: ../../../app/views/pushes/_files_form.html.erb:190
+msgid "Encrypted and visible to the receiving party"
+msgstr "암호화되어 수신자에게 표시됨"
+
+#: ../../../app/views/pushes/_files_form.html.erb:195
+#: ../../../app/views/pushes/_form.html.erb:168
+#: ../../../app/views/pushes/_qr_form.html.erb:171
+#: ../../../app/views/pushes/_url_form.html.erb:135
+#: ../../../app/views/pushes/audit.html.erb:15
+msgid "Reference Note"
+msgstr "참고 사항"
+
+#: ../../../app/views/pushes/_files_form.html.erb:201
+#: ../../../app/views/pushes/_form.html.erb:174
+#: ../../../app/views/pushes/_qr_form.html.erb:177
+#: ../../../app/views/pushes/_url_form.html.erb:141
+msgid "Encrypted and visible only to you"
+msgstr "암호화되어 나만 볼 수 있음"
+
+#: ../../../app/views/pushes/_files_form.html.erb:207
+msgid ""
+"Once expired, all files and content of the push will be deleted immediately an"
+"d entirely."
+msgstr "만료되면 푸시의 모든 파일과 콘텐츠가 즉시 완전히 삭제됩니다."
+
+#: ../../../app/views/pushes/_files_form.html.erb:212
+#: ../../../app/views/pushes/_url_form.html.erb:153
+msgid "An audit log of activity will be available."
+msgstr "활동의 감사 로그를 사용할 수 있습니다."
+
+#: ../../../app/views/pushes/_files_form.html.erb:221
+#: ../../../app/views/pushes/_form.html.erb:188
+#: ../../../app/views/pushes/_qr_form.html.erb:191
+#: ../../../app/views/pushes/_url_form.html.erb:162
+msgid "Updating..."
+msgstr "업데이트 중..."
+
+#: ../../../app/views/pushes/_files_form.html.erb:221
+#: ../../../app/views/pushes/_form.html.erb:188
+#: ../../../app/views/pushes/_qr_form.html.erb:191
+#: ../../../app/views/pushes/_url_form.html.erb:162
+msgid "Update Push"
+msgstr "업데이트 푸시"
+
+#: ../../../app/views/pushes/_files_form.html.erb:223
+#: ../../../app/views/pushes/_form.html.erb:190
+#: ../../../app/views/pushes/_qr_form.html.erb:193
+#: ../../../app/views/pushes/_url_form.html.erb:164
+msgid "Pushing..."
+msgstr "미는..."
+
+#: ../../../app/views/pushes/_files_form.html.erb:223
+#: ../../../app/views/pushes/_form.html.erb:190
+#: ../../../app/views/pushes/_qr_form.html.erb:193
+#: ../../../app/views/pushes/_url_form.html.erb:164
+msgid "Push It!"
+msgstr "밀어!"
+
+#: ../../../app/views/pushes/_form.html.erb:1
+msgid "Securely Send a Password"
+msgstr "안전하게 비밀번호 보내기"
+
+#: ../../../app/views/pushes/_form.html.erb:36
+msgid "Enter the Password or Text to push..."
+msgstr "푸시할 비밀번호나 텍스트를 입력하세요."
+
+#: ../../../app/views/pushes/_form.html.erb:48
+#: ../../../app/views/pushes/_qr_form.html.erb:49
+msgid "Characters"
+msgstr "캐릭터"
+
+#: ../../../app/views/pushes/_form.html.erb:147
+#: ../../../app/views/pushes/_qr_form.html.erb:150
+#: ../../../app/views/shared/_pw_generate_confirm_modal.html.erb:18
 msgid "Generate Password"
 msgstr "비밀번호 생성"
 
-#: ../../../app/views/passwords/new.html.erb:151
+#: ../../../app/views/pushes/_form.html.erb:154
+#: ../../../app/views/pushes/_qr_form.html.erb:157
 msgid "Use the button above to generate a random password."
 msgstr "위의 버튼을 사용하여 임의의 암호를 생성하십시오."
 
-#: ../../../app/views/passwords/new.html.erb:167
+#: ../../../app/views/pushes/_form.html.erb:179
+#: ../../../app/views/pushes/_qr_form.html.erb:182
 msgid ""
 "Tip: Only enter a password into the box.  Other identifying information can co"
 "mpromise security."
 msgstr "팁: 상자에 암호만 입력하십시오. 다른 식별 정보는 보안을 손상시킬 수 있습니다."
 
-#: ../../../app/views/passwords/new.html.erb:168
+#: ../../../app/views/pushes/_form.html.erb:180
+#: ../../../app/views/pushes/_qr_form.html.erb:183
 msgid ""
 "All passwords are encrypted prior to storage and are available to only those w"
 "ith the secret link.  Once expired, encrypted passwords are unequivocally dele"
@@ -1639,31 +1804,547 @@ msgstr ""
 "모든 비밀번호는 저장 전에 암호화되며 비밀 링크가 있는 사람만 사용할 수 있습니다. 만료되면 암호화된 암호는 데이터베이스에서 명확하게 삭제됩"
 "니다."
 
-#: ../../../app/views/passwords/preview.html.erb:1
-msgid "Your Password has been Pushed"
-msgstr "귀하의 비밀번호가 푸시되었습니다"
+#: ../../../app/views/pushes/_qr_form.html.erb:1
+msgid "Securely Send a QR Code"
+msgstr "QR 코드를 안전하게 보내기"
 
-#: ../../../app/views/passwords/preview.html.erb:56
-msgid "This newly pushed password will expire after"
-msgstr "이 새로 푸시된 비밀번호는 다음 날짜 이후에 만료됩니다."
+#: ../../../app/views/pushes/_qr_form.html.erb:36
+msgid "Enter up to 1024 characters..."
+msgstr "최대 1024자까지 입력하세요..."
 
-#: ../../../app/views/passwords/preview.html.erb:74
-msgid "View This Password Now"
-msgstr "지금 이 비밀번호 보기"
-
-#: ../../../app/views/passwords/preview.html.erb:75
-msgid "Push Another Password"
-msgstr "다른 비밀번호 누르기"
-
-#: ../../../app/views/passwords/show.html.erb:7
+#: ../../../app/views/pushes/_show_payload.html.erb:2
+#: ../../../app/views/pushes/_show_qr.html.erb:2
 msgid ""
 "Please obtain and securely store this content in a secure manner, such as in a"
 " password manager."
 msgstr "암호 관리자와 같은 안전한 방식으로 이 콘텐츠를 확보하고 안전하게 저장하십시오."
 
-#: ../../../app/views/passwords/show.html.erb:9
+#: ../../../app/views/pushes/_show_payload.html.erb:4
 msgid "Your password is blurred out.  Click below to reveal it."
 msgstr "비밀번호가 흐리게 표시됩니다. 아래를 클릭하면 공개됩니다."
+
+#: ../../../app/views/pushes/_url_form.html.erb:1
+msgid "Securely Send URLs"
+msgstr "안전하게 URL 보내기"
+
+#: ../../../app/views/pushes/_url_form.html.erb:28
+msgid "URL Redirection"
+msgstr "URL 리디렉션"
+
+#: ../../../app/views/pushes/_url_form.html.erb:32
+msgid "Enter the URL to redirect to..."
+msgstr "리디렉션할 URL을 입력하세요..."
+
+#: ../../../app/views/pushes/_url_form.html.erb:93
+msgid "Helps to avoid chat systems and URL scanners from eating up redirects."
+msgstr "채팅 시스템 및 URL 스캐너가 리디렉션을 소모하는 것을 방지하는 데 도움이 됩니다."
+
+#: ../../../app/views/pushes/_url_form.html.erb:147
+msgid "A secret URL will be generated that will redirect to the URL specified."
+msgstr "지정된 URL로 리디렉션되는 비밀 URL이 생성됩니다."
+
+#: ../../../app/views/pushes/_url_form.html.erb:152
+msgid "Upon expiration, the push URL will be deleted entirely."
+msgstr "만료 시 푸시 URL은 완전히 삭제됩니다."
+
+#: ../../../app/views/pushes/audit.html.erb:1
+msgid "Audit Log for %{push_id}"
+msgstr "%{push_id}에 대한 감사 로그"
+
+#: ../../../app/views/pushes/audit.html.erb:4
+msgid "Audit Log for Push ID: %{push_id}"
+msgstr "푸시 ID: %{push_id}에 대한 감사 로그"
+
+#: ../../../app/views/pushes/audit.html.erb:6
+msgid "Pushed on %{date}"
+msgstr "%{date}에 푸시됨"
+
+#: ../../../app/views/pushes/audit.html.erb:9
+msgid "Secret URL for this push"
+msgstr "이 푸시의 비밀 URL"
+
+#: ../../../app/views/pushes/audit.html.erb:16
+msgid "Visible Only To You"
+msgstr "나에게만 표시"
+
+#: ../../../app/views/pushes/audit.html.erb:28
+msgid "Settings"
+msgstr "설정"
+
+#: ../../../app/views/pushes/audit.html.erb:32
+#: ../../../app/views/pushes/audit.html.erb:41
+msgid "Expire after"
+msgstr "만료일"
+
+#: ../../../app/views/pushes/audit.html.erb:36
+msgid "The push expires after this number of views."
+msgstr "이 조회수가 지나면 푸시가 만료됩니다."
+
+#: ../../../app/views/pushes/audit.html.erb:45
+msgid "The push expires after this number of days."
+msgstr "이 일 수가 지나면 푸시가 만료됩니다."
+
+#: ../../../app/views/pushes/audit.html.erb:51
+msgid "Deletable by Viewers"
+msgstr "시청자 삭제 가능"
+
+#: ../../../app/views/pushes/audit.html.erb:54
+#: ../../../app/views/pushes/audit.html.erb:68
+msgid "True"
+msgstr "진실"
+
+#: ../../../app/views/pushes/audit.html.erb:56
+#: ../../../app/views/pushes/audit.html.erb:70
+msgid "False"
+msgstr "거짓"
+
+#: ../../../app/views/pushes/audit.html.erb:59
+msgid "This allows end users to delete content once retrieved."
+msgstr "이를 통해 최종 사용자는 검색된 콘텐츠를 삭제할 수 있습니다."
+
+#: ../../../app/views/pushes/audit.html.erb:65
+msgid "1-click Retrieval Step"
+msgstr "원 클릭 검색 단계"
+
+#: ../../../app/views/pushes/audit.html.erb:81
+#: ../../../app/views/pushes/audit.html.erb:140
+msgid "No"
+msgstr "아니요"
+
+#: ../../../app/views/pushes/audit.html.erb:83
+#: ../../../app/views/pushes/audit.html.erb:142
+msgid "Yes"
+msgstr "예"
+
+#: ../../../app/views/pushes/audit.html.erb:86
+msgid "Require recipients to enter a passphrase to view this push."
+msgstr "이 푸시를 보려면 수신자가 암호를 입력하도록 요구하십시오."
+
+#: ../../../app/views/pushes/audit.html.erb:92
+msgid "Current Status"
+msgstr "현재 상태"
+
+#: ../../../app/views/pushes/audit.html.erb:96
+msgid "State:"
+msgstr "상태:"
+
+#: ../../../app/views/pushes/audit.html.erb:101
+#: ../../../app/views/shared/_dashboard_header.html.erb:10
+msgid "Active"
+msgstr "활동적인"
+
+#: ../../../app/views/pushes/audit.html.erb:102
+msgid "Active and still available for viewing."
+msgstr "활성 상태이며 계속 볼 수 있습니다."
+
+#: ../../../app/views/pushes/audit.html.erb:108
+msgid "Successful Views"
+msgstr "성공적인 보기"
+
+#: ../../../app/views/pushes/audit.html.erb:109
+msgid "The number of times this push has been viewed before expiration."
+msgstr "이 푸시가 만료되기 전에 조회된 횟수입니다."
+
+#: ../../../app/views/pushes/audit.html.erb:114
+msgid "Failed View Attempts"
+msgstr "실패한 보기 시도"
+
+#: ../../../app/views/pushes/audit.html.erb:115
+msgid "The number of times this push has been viewed after expiration."
+msgstr "만료 후 이 푸시를 본 횟수입니다."
+
+#: ../../../app/views/pushes/audit.html.erb:120
+msgid "Days Remaining"
+msgstr "남은 일수"
+
+#: ../../../app/views/pushes/audit.html.erb:121
+msgid ""
+"Number of days until this push expires if the maximum view count isn't reached"
+"."
+msgstr "최대 조회수에 도달하지 않은 경우 이 푸시가 만료될 때까지의 일수입니다."
+
+#: ../../../app/views/pushes/audit.html.erb:131
+msgid "Payload"
+msgstr "유효 탑재량"
+
+#: ../../../app/views/pushes/audit.html.erb:135
+msgid "Contains Message for Receiver"
+msgstr "수신자에 대한 메시지 포함"
+
+#: ../../../app/views/pushes/audit.html.erb:138
+#: ../../../app/views/pushes/audit.html.erb:153
+msgid "Deleted"
+msgstr "삭제됨"
+
+#: ../../../app/views/pushes/audit.html.erb:145
+msgid "Has a text payload been added to this push?"
+msgstr "이 푸시에 텍스트 페이로드가 추가되었습니까?"
+
+#: ../../../app/views/pushes/audit.html.erb:150
+msgid "Message Length"
+msgstr "메시지 길이"
+
+#: ../../../app/views/pushes/audit.html.erb:155
+msgid "Not Applicable"
+msgstr "해당 없음"
+
+#: ../../../app/views/pushes/audit.html.erb:160
+msgid "The length of the attached text payload."
+msgstr "첨부된 텍스트 페이로드의 길이입니다."
+
+#: ../../../app/views/pushes/audit.html.erb:165
+msgid "Number of Files Attached"
+msgstr "첨부된 파일 수"
+
+#: ../../../app/views/pushes/audit.html.erb:173
+msgid "The number of files attached to this push. This value will be 0 when expired."
+msgstr "이 푸시에 첨부된 파일 수입니다. 만료되면 이 값은 0이 됩니다."
+
+#: ../../../app/views/pushes/audit.html.erb:179
+#: ../../../app/views/pushes/show.html.erb:28
+msgid "Attached Files"
+msgstr "첨부 파일"
+
+#: ../../../app/views/pushes/audit.html.erb:185
+msgid "Filename:"
+msgstr "파일 이름:"
+
+#: ../../../app/views/pushes/audit.html.erb:187
+msgid "Size: "
+msgstr "크기:"
+
+#: ../../../app/views/pushes/audit.html.erb:192
+msgid "All attached files have been deleted."
+msgstr "첨부파일이 모두 삭제되었습니다."
+
+#: ../../../app/views/pushes/audit.html.erb:207
+msgid "Expire Now"
+msgstr "지금 만료"
+
+#: ../../../app/views/pushes/audit.html.erb:215
+msgid "Delete This Push?"
+msgstr "이 푸시를 삭제하시겠습니까?"
+
+#: ../../../app/views/pushes/audit.html.erb:219
+msgid "This will expire this secret link and"
+msgstr "이렇게 하면 이 비밀 링크가 만료되고"
+
+#: ../../../app/views/pushes/audit.html.erb:219
+msgid "remove all content from the database forever"
+msgstr "데이터베이스에서 모든 콘텐츠를 영원히 제거"
+
+#: ../../../app/views/pushes/audit.html.erb:220
+msgid ""
+"The audit log (including future attempted views) will still be maintained goin"
+"g forward."
+msgstr "감사 로그(향후 조회 시도 포함)는 계속 유지됩니다."
+
+#: ../../../app/views/pushes/audit.html.erb:237
+msgid "Start of Audit Log"
+msgstr "감사 로그 시작"
+
+#: ../../../app/views/pushes/audit.html.erb:243
+msgid ""
+"As the push receives activity, a log of each with identifying information will"
+" show up here."
+msgstr "푸시가 활동을 수신하면 식별 정보가 있는 각각의 로그가 여기에 표시됩니다."
+
+#: ../../../app/views/pushes/audit.html.erb:247
+msgid "End of Audit Log"
+msgstr "감사 로그 끝"
+
+#: ../../../app/views/pushes/edit.html.erb:1
+#: ../../../app/views/pushes/preview.html.erb:98
+msgid "Edit Push"
+msgstr "편집 푸시"
+
+#: ../../../app/views/pushes/edit.html.erb:4
+msgid "Editing Push"
+msgstr "편집 푸시"
+
+#: ../../../app/views/pushes/index.html.erb:9
+msgid "You currently have no active pushes."
+msgstr "현재 활성화된 푸시가 없습니다."
+
+#: ../../../app/views/pushes/index.html.erb:11
+msgid "You currently have no expired pushes."
+msgstr "현재 만료된 푸시가 없습니다."
+
+#: ../../../app/views/pushes/index.html.erb:13
+msgid "You currently have no pushes."
+msgstr "현재 푸시가 없습니다."
+
+#: ../../../app/views/pushes/index.html.erb:19
+msgid "Push a Password Now"
+msgstr "지금 비밀번호 누르기"
+
+#: ../../../app/views/pushes/index.html.erb:28
+msgid "Expired Pushes"
+msgstr "만료된 푸시"
+
+#: ../../../app/views/pushes/index.html.erb:30
+msgid "All Pushes"
+msgstr "모든 푸시"
+
+#: ../../../app/views/pushes/index.html.erb:37
+msgid "Name or ID"
+msgstr "이름 또는 ID"
+
+#: ../../../app/views/pushes/index.html.erb:38
+msgid "Kind"
+msgstr "종류"
+
+#: ../../../app/views/pushes/index.html.erb:40
+msgid "Note"
+msgstr "메모"
+
+#: ../../../app/views/pushes/index.html.erb:41
+msgid "Remaining"
+msgstr "남은"
+
+#: ../../../app/views/pushes/index.html.erb:55
+msgid "File(s)"
+msgstr "파일(들)"
+
+#: ../../../app/views/pushes/index.html.erb:57
+msgid "URL"
+msgstr "웹 주소"
+
+#: ../../../app/views/pushes/index.html.erb:59
+msgid "QR Code"
+msgstr "QR 코드"
+
+#: ../../../app/views/pushes/index.html.erb:61
+msgid "Text"
+msgstr "텍스트"
+
+#: ../../../app/views/pushes/index.html.erb:77
+msgid "%{views} views or %{days} days"
+msgstr "%{views}회 조회 또는 %{days}일"
+
+#: ../../../app/views/pushes/index.html.erb:80
+msgid "Push Controls"
+msgstr "푸시 컨트롤"
+
+#: ../../../app/views/pushes/index.html.erb:83
+msgid "Preview"
+msgstr "시사"
+
+#: ../../../app/views/pushes/index.html.erb:90
+msgid "Audit"
+msgstr "심사"
+
+#: ../../../app/views/pushes/new.html.erb:1
+msgid "Securely Send a Password, Text or File"
+msgstr "비밀번호, 문자 또는 파일을 안전하게 보내기"
+
+#: ../../../app/views/pushes/passphrase.html.erb:1
+msgid "Enter The Secret Passphrase"
+msgstr "비밀 암호를 입력하십시오"
+
+#: ../../../app/views/pushes/passphrase.html.erb:12
+msgid "Enter the secret passphrase provided with this URL"
+msgstr "이 URL과 함께 제공된 비밀 암호를 입력하십시오."
+
+#: ../../../app/views/pushes/passphrase.html.erb:13
+msgid "Enter the secret passphrase"
+msgstr "비밀 암호를 입력하십시오"
+
+#: ../../../app/views/pushes/passphrase.html.erb:17
+msgid "Go"
+msgstr "가다"
+
+#: ../../../app/views/pushes/preliminary.html.erb:4
+msgid "Click Here to Proceed"
+msgstr "계속하려면 여기를 클릭하십시오."
+
+#: ../../../app/views/pushes/preview.html.erb:1
+#: ../../../app/views/pushes/preview.html.erb:6
+msgid "Push Preview"
+msgstr "푸시 미리보기"
+
+#: ../../../app/views/pushes/preview.html.erb:8
+msgid "Use this secret link to share it:"
+msgstr "이 비밀 링크를 사용하여 공유하십시오."
+
+#: ../../../app/views/pushes/preview.html.erb:14
+msgid "Print & Share"
+msgstr "인쇄 및 공유"
+
+#: ../../../app/views/pushes/preview.html.erb:19
+msgid "Generate a Printable Page for End Users"
+msgstr "최종 사용자를 위한 인쇄 가능한 페이지 생성"
+
+#: ../../../app/views/pushes/preview.html.erb:24
+#: ../../../app/views/pushes/preview.html.erb:26
+msgid "Optional Custom Message"
+msgstr "선택적 맞춤 메시지"
+
+#: ../../../app/views/pushes/preview.html.erb:35
+msgid "Show Expiration Details"
+msgstr "만료 세부정보 표시"
+
+#: ../../../app/views/pushes/preview.html.erb:42
+msgid "Include ID"
+msgstr "ID 포함"
+
+#: ../../../app/views/pushes/preview.html.erb:47
+msgid "Generate"
+msgstr "생성하다"
+
+#: ../../../app/views/pushes/preview.html.erb:56
+#: ../../../app/views/pushes/show.html.erb:41
+#: ../../../app/views/pushes/show.html.erb:75
+msgid "This secret link and all content will be deleted in"
+msgstr "이 비밀 링크와 모든 콘텐츠는 다음 날짜에 삭제됩니다."
+
+#: ../../../app/views/pushes/preview.html.erb:57
+#: ../../../app/views/pushes/print_preview.html.erb:13
+#: ../../../app/views/pushes/show.html.erb:43
+#: ../../../app/views/pushes/show.html.erb:77
+msgid "day"
+msgid_plural "days"
+msgstr[0] "날"
+msgstr[1] ""
+
+#: ../../../app/views/pushes/preview.html.erb:59
+#: ../../../app/views/pushes/print_preview.html.erb:15
+msgid "view"
+msgid_plural "views"
+msgstr[0] "견해"
+msgstr[1] ""
+
+#: ../../../app/views/pushes/preview.html.erb:65
+msgid "can be"
+msgstr "될 수 있다"
+
+#: ../../../app/views/pushes/preview.html.erb:65
+#: ../../../app/views/pushes/preview.html.erb:67
+msgid "deleted by viewers."
+msgstr "시청자에 의해 삭제되었습니다."
+
+#: ../../../app/views/pushes/preview.html.erb:67
+msgid "can NOT be"
+msgstr "수 없습니다"
+
+#: ../../../app/views/pushes/preview.html.erb:73
+msgid "It also includes a"
+msgstr "또한"
+
+#: ../../../app/views/pushes/preview.html.erb:73
+msgid "1-click preliminary retrieval step"
+msgstr "1-click 예비 검색 단계"
+
+#: ../../../app/views/pushes/preview.html.erb:77
+msgid "View This Push Now"
+msgstr "지금 이 푸시 보기"
+
+#: ../../../app/views/pushes/preview.html.erb:82
+msgid "(will burn a view) or"
+msgstr "(보기를 구울 것입니다) 또는"
+
+#: ../../../app/views/pushes/preview.html.erb:84
+#: ../../../app/views/pushes/preview.html.erb:86
+#: ../../../app/views/pushes/preview.html.erb:88
+msgid "Push Another"
+msgstr "다른 사람을 밀어"
+
+#: ../../../app/views/pushes/preview.html.erb:95
+msgid "View Audit Log"
+msgstr "감사 로그 보기"
+
+#: ../../../app/views/pushes/preview.html.erb:103
+msgid ""
+"Tip: Pushing to an international user?  Change the secret link language using "
+"the dropdown menu to the right of the URL."
+msgstr "팁: 해외 사용자에게 푸시하시겠습니까? URL 오른쪽에 있는 드롭다운 메뉴를 사용하여 비밀 링크 언어를 변경합니다."
+
+#: ../../../app/views/pushes/preview.html.erb:104
+msgid ""
+"Alternatively auto-detection will select a language based on end-user browser "
+"settings."
+msgstr "또는 자동 감지가 최종 사용자 브라우저 설정에 따라 언어를 선택합니다."
+
+#: ../../../app/views/pushes/print_preview.html.erb:1
+msgid "Your Secret URL"
+msgstr "귀하의 비밀 URL"
+
+#: ../../../app/views/pushes/print_preview.html.erb:12
+msgid "This data contained here will expire after"
+msgstr "여기에 포함된 이 데이터는 다음 이후에 만료됩니다."
+
+#: ../../../app/views/pushes/show.html.erb:1
+msgid "Your Secret Link"
+msgstr "당신의 비밀 링크"
+
+#: ../../../app/views/pushes/show.html.erb:7
+msgid "The following files have been sent to you."
+msgstr "다음 파일이 귀하에게 전송되었습니다."
+
+#: ../../../app/views/pushes/show.html.erb:8
+msgid "Please download and store in a secure area."
+msgstr "다운로드하여 안전한 장소에 보관하십시오."
+
+#: ../../../app/views/pushes/show.html.erb:13
+msgid "The following message has been sent to you along with the files below."
+msgstr "다음 메시지가 아래 파일과 함께 귀하에게 전송되었습니다."
+
+#: ../../../app/views/pushes/show.html.erb:15
+msgid "The message is blurred out.  Click below to reveal it."
+msgstr "메시지가 흐리게 표시됩니다. 아래를 클릭하면 공개됩니다."
+
+#: ../../../app/views/pushes/show.html.erb:46
+#: ../../../app/views/pushes/show.html.erb:80
+msgid "0 more views"
+msgstr "조회수 0회 더 보기"
+
+#: ../../../app/views/pushes/show.html.erb:47
+#: ../../../app/views/pushes/show.html.erb:81
+msgid "(this is the last view)."
+msgstr "(마지막 뷰입니다.)"
+
+#: ../../../app/views/pushes/show.html.erb:50
+#: ../../../app/views/pushes/show.html.erb:84
+msgid "more view"
+msgid_plural "more views"
+msgstr[0] "더 보기"
+msgstr[1] ""
+
+#: ../../../app/views/pushes/show.html.erb:51
+#: ../../../app/views/pushes/show.html.erb:85
+msgid "(whichever occurs first)."
+msgstr "(먼저 발생하는 것)."
+
+#: ../../../app/views/pushes/show.html.erb:57
+#: ../../../app/views/pushes/show.html.erb:90
+msgid "Delete This Secret Link Now"
+msgstr "지금 이 비밀 링크 삭제"
+
+#: ../../../app/views/pushes/show.html.erb:109
+msgid "Delete?"
+msgstr "삭제?"
+
+#: ../../../app/views/pushes/show.html.erb:113
+msgid "This will expire this secret link and "
+msgstr "이렇게 하면 이 비밀 링크가 만료되고"
+
+#: ../../../app/views/pushes/show.html.erb:114
+msgid "delete all related content from the database forever"
+msgstr "데이터베이스에서 모든 관련 콘텐츠를 영원히 삭제"
+
+#: ../../../app/views/pushes/show_expired.html.erb:1
+msgid "Your Secret Link Has Expired"
+msgstr "비밀 링크가 만료되었습니다"
+
+#: ../../../app/views/pushes/show_expired.html.erb:6
+msgid "We apologize but this secret link has expired."
+msgstr "죄송하지만 이 비밀 링크는 만료되었습니다."
+
+#: ../../../app/views/pushes/show_expired.html.erb:8
+msgid ""
+"If needed, please contact the person or organization who gave you this secret "
+"URL."
+msgstr "필요한 경우 이 비밀 URL을 제공한 사람이나 조직에 문의하십시오."
 
 #: ../../../app/views/shared/_cookie_consent.html.erb:6
 msgid ""
@@ -1676,30 +2357,18 @@ msgstr "브라우저 쿠키는 이 도구가 작동하는 데 도움이 됩니�
 msgid "Dashboard"
 msgstr "계기반"
 
-#: ../../../app/views/shared/_dashboard_header.html.erb:10
-#: ../../../app/views/shared/_topnav.html.erb:4
-msgid "Passwords"
-msgstr "비밀번호"
-
-#: ../../../app/views/shared/_dashboard_header.html.erb:14
-#: ../../../app/views/shared/_topnav.html.erb:8
-msgid "Files"
-msgstr "파일"
-
-#: ../../../app/views/shared/_dashboard_header.html.erb:19
-#: ../../../app/views/shared/_topnav.html.erb:13
-msgid "URLs"
-msgstr "URL"
-
-#: ../../../app/views/shared/_dashboard_header.html.erb:36
-#: ../../../app/views/shared/_dashboard_header.html.erb:38
-#: ../../../app/views/shared/_dashboard_header.html.erb:40
+#: ../../../app/views/shared/_dashboard_header.html.erb:13
 msgid "New"
 msgstr "새로운"
 
-#: ../../../app/views/shared/_footer.html.erb:4
-msgid "Peter"
-msgstr "베드로"
+#: ../../../app/views/shared/_delete_user_button.html.erb:6
+msgid ""
+"⚠️ WARNING: Deleting %{email} will also permanently delete ALL %{count} push(e"
+"s) created by this user. This action cannot be undone. Are you sure you want t"
+"o proceed?"
+msgstr ""
+"⚠️ 경고: %{email}을 삭제하면 이 사용자가 생성한 모든 %{count} 푸시가 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없습니다"
+". 계속하시겠습니까?"
 
 #: ../../../app/views/shared/_footer.html.erb:22
 msgid "Front Page"
@@ -1733,33 +2402,37 @@ msgstr "도구"
 msgid "Overview"
 msgstr "개요"
 
-#: ../../../app/views/shared/_footer.html.erb:52
-msgid "Documentation"
-msgstr "선적 서류 비치"
-
 #: ../../../app/views/shared/_header.html.erb:37
 msgid "Account"
 msgstr "계정"
 
-#: ../../../app/views/shared/_header.html.erb:42
-msgid "Admin Dashboard"
-msgstr "관리자 대시보드"
-
-#: ../../../app/views/shared/_header.html.erb:46
+#: ../../../app/views/shared/_header.html.erb:55
 msgid "Edit Login Details"
 msgstr "로그인 정보 편집"
 
-#: ../../../app/views/shared/_header.html.erb:52
+#: ../../../app/views/shared/_header.html.erb:71
 msgid "Log Out"
 msgstr "로그 아웃"
 
-#: ../../../app/views/shared/_header.html.erb:58
+#: ../../../app/views/shared/_header.html.erb:78
 msgid "Log In"
 msgstr "로그인"
 
-#: ../../../app/views/shared/_header.html.erb:62
+#: ../../../app/views/shared/_header.html.erb:82
 msgid "Sign Up"
 msgstr "가입하기"
+
+#: ../../../app/views/shared/_pw_generate_confirm_modal.html.erb:5
+msgid "Confirm Password Generation"
+msgstr "비밀번호 생성 확인"
+
+#: ../../../app/views/shared/_pw_generate_confirm_modal.html.erb:11
+msgid "This will replace the existing content in the text area."
+msgstr "이렇게 하면 텍스트 영역의 기존 내용이 대체됩니다."
+
+#: ../../../app/views/shared/_pw_generate_confirm_modal.html.erb:12
+msgid "Are you sure you want to continue?"
+msgstr "계속하시겠습니까?"
 
 #: ../../../app/views/shared/_pw_generator_modal.html.erb:5
 msgid "Configure Password Generation"
@@ -1813,69 +2486,18 @@ msgstr "자음"
 msgid "Reset to Defaults"
 msgstr "기본값으로 재설정"
 
-#: ../../../app/views/urls/active.html.erb:1
-#: ../../../app/views/urls/active.html.erb:18
-msgid "Active URL Pushes"
-msgstr "활성 URL 푸시"
+#: ../../../app/views/shared/_topnav.html.erb:4
+msgid "Passwords"
+msgstr "비밀번호"
 
-#: ../../../app/views/urls/active.html.erb:8
-msgid "You currently have no active URL pushes."
-msgstr "현재 활성 URL 푸시가 없습니다."
+#: ../../../app/views/shared/_topnav.html.erb:8
+msgid "Files"
+msgstr "파일"
 
-#: ../../../app/views/urls/active.html.erb:13
-#: ../../../app/views/urls/expired.html.erb:10
-msgid "Push a URL Now"
-msgstr "지금 URL 푸시"
+#: ../../../app/views/shared/_topnav.html.erb:13
+msgid "URLs"
+msgstr "URL"
 
-#: ../../../app/views/urls/audit.html.erb:4
-msgid "Audit Log for URL Push"
-msgstr "URL 푸시에 대한 감사 로그"
-
-#: ../../../app/views/urls/audit.html.erb:126
-msgid "Delete This URL Push?"
-msgstr "이 URL 푸시를 삭제하시겠습니까?"
-
-#: ../../../app/views/urls/audit.html.erb:165
-msgid "URL Push manually expired by user"
-msgstr "URL 푸시가 사용자에 의해 수동으로 만료됨"
-
-#: ../../../app/views/urls/expired.html.erb:1
-#: ../../../app/views/urls/expired.html.erb:14
-msgid "Expired URL Pushes"
-msgstr "만료된 URL 푸시"
-
-#: ../../../app/views/urls/expired.html.erb:7
-msgid "You currently have no expired URL pushes."
-msgstr "현재 만료된 URL 푸시가 없습니다."
-
-#: ../../../app/views/urls/new.html.erb:1
-msgid "Securely Send URLs"
-msgstr "안전하게 URL 보내기"
-
-#: ../../../app/views/urls/new.html.erb:21
-msgid "URL Redirection"
-msgstr "URL 리디렉션"
-
-#: ../../../app/views/urls/new.html.erb:25
-msgid "Enter the URL to redirect to..."
-msgstr "리디렉션할 URL을 입력하세요..."
-
-#: ../../../app/views/urls/new.html.erb:87
-msgid "Helps to avoid chat systems and URL scanners from eating up redirects."
-msgstr "채팅 시스템 및 URL 스캐너가 리디렉션을 소모하는 것을 방지하는 데 도움이 됩니다."
-
-#: ../../../app/views/urls/new.html.erb:119
-msgid "A secret URL will be generated that will redirect to the URL specified."
-msgstr "지정된 URL로 리디렉션되는 비밀 URL이 생성됩니다."
-
-#: ../../../app/views/urls/new.html.erb:124
-msgid "Upon expiration, the push URL will be deleted entirely."
-msgstr "만료 시 푸시 URL은 완전히 삭제됩니다."
-
-#: ../../../app/views/urls/new_anonymous.html.erb:1
-msgid "Securely Share URLs"
-msgstr "URL을 안전하게 공유"
-
-#: ../../../app/views/urls/new_anonymous.html.erb:9
-msgid "Securely Send URLs That Expire Automatically"
-msgstr "자동으로 만료되는 URL을 안전하게 전송"
+#: ../../../app/views/shared/_topnav.html.erb:18
+msgid "QR Codes"
+msgstr "QR 코드 ᴮᴱᵀᴬ"

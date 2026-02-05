@@ -787,9 +787,6 @@ Lint/SuppressedException:
 Lint/SymbolConversion:
   Enabled: true
 
-Lint/Syntax:
-  Enabled: true
-
 Lint/ToEnumArguments:
   Enabled: false
 
@@ -941,9 +938,6 @@ Naming/MethodName:
   Enabled: false
 
 Naming/MethodParameterName:
-  Enabled: false
-
-Naming/PredicateName:
   Enabled: false
 
 Naming/RescuedExceptionsVariableName:

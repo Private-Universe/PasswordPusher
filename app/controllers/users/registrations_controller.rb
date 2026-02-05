@@ -30,9 +30,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    # Call Devise's default destroy behavior
+    super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -45,20 +46,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/token
   def token
-    redirect_to user_session_path if current_user.nil?
-
-    # Pre-existing accounts don't have a token yet.
-    # Save the user record to have one automatically generated.
-    current_user.save if current_user && current_user.authentication_token.blank?
+    if current_user.nil?
+      redirect_to user_session_path
+    elsif current_user&.authentication_token.blank?
+      current_user.regenerate_authentication_token!
+    end
   end
 
-  # PUT /resource/token
+  # DELETE /resource/token
   def regen_token
-    redirect_to user_session_path unless user_signed_in?
-    current_user.authentication_token = nil
-    current_user.save
-
-    redirect_to token_user_registration_path
+    if current_user.nil?
+      redirect_to user_session_path
+    else
+      current_user.regenerate_authentication_token!
+      redirect_to token_user_registration_path
+    end
   end
 
   # protected

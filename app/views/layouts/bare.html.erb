@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>">
+<html lang="<%= I18n.locale %>" data-controller="theme">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
@@ -10,13 +10,15 @@
 
   <%= render partial: "shared/layout_icons", cached: true %>
 
-  <%= render partial: "layouts/ga" if Rails.env == "production" %>
+  <%= render partial: "application/ga", cached: true %>
+  <%= render partial: "application/plausible", cached: true %>
 
   <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <%= csp_meta_tag if defined?(csp_meta_tag) %>
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  <%= tag.meta name: 'turbo-drive-enabled', content: ENV.key?('TURBO_DRIVE_ENABLED') ? ENV['TURBO_DRIVE_ENABLED'].to_s.downcase : true %>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
