@@ -42,12 +42,12 @@ class QrDeletionTest < ActionDispatch::IntegrationTest
     # Get redirected to the push that is now expired
     follow_redirect!
     assert_response :success
-    assert response.body.include?("We apologize but this secret link has expired.")
+    assert response.body.include?("We apologize but this secure link has expired.")
 
     # Retrieve the preliminary page.  It should show expired too.
     get preliminary_push_path(Push.last)
     assert_response :success
-    assert response.body.include?("We apologize but this secret link has expired.")
+    assert response.body.include?("We apologize but this secure link has expired.")
   end
 
   def test_delete_already_expired_goes_to_expired_path
@@ -82,7 +82,7 @@ class QrDeletionTest < ActionDispatch::IntegrationTest
 
     expired_p = css_select "p.text-center"
     assert(expired_p)
-    assert(expired_p.first.content.include?("We apologize but this secret link has expired."))
+    assert(expired_p.first.content.include?("We apologize but this secure link has expired."))
 
     # Delete the already expired push
     delete expire_push_path(request.url.match(/\/p\/(.*)/)[1])
@@ -91,11 +91,11 @@ class QrDeletionTest < ActionDispatch::IntegrationTest
     # Get redirected to the push that is now expired
     follow_redirect!
     assert_response :success
-    assert response.body.include?("We apologize but this secret link has expired.")
+    assert response.body.include?("We apologize but this secure link has expired.")
 
     # Retrieve the preliminary page.  It should show expired too.
     get preliminary_push_path(Push.last)
     assert_response :success
-    assert response.body.include?("We apologize but this secret link has expired.")
+    assert response.body.include?("We apologize but this secure link has expired.")
   end
 end

@@ -64,7 +64,7 @@
     <div class='row'>
         <div class='col-12 col-sm-8 p-3'>
             <div class='row'>
-                <div><%= _('Expire secret link and delete after:') %></div>
+                <div><%= _('Expire secure link and delete after:') %></div>
                 <div class='col-10'>
                     <%= range_field_tag("push_expire_after_days", @push.persisted? ? @push.days_remaining : @push.settings_for_kind.expire_after_days_default,
                                         { :name => "push[expire_after_days]",
@@ -188,7 +188,7 @@
             <div class='row my-3 px-5'> <hr> </div>
             <div class='row mb-3'>
                 <p class='fst-italic'><%= _('Tip: Only enter a password into the box.  Other identifying information can compromise security.') %></p>
-                <p class='fst-italic fw-light'><%= _('All passwords are encrypted prior to storage and are available to only those with the secret link.  Once expired, encrypted passwords are unequivocally deleted from the database.') %></p>
+                    <p class='fst-italic fw-light'><%= _('All passwords are encrypted prior to storage and are available to only those with the secure link.  Once expired, encrypted passwords are unequivocally deleted from the database.') %></p>
             </div>
         </div>
     </div>

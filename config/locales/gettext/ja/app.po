@@ -451,7 +451,7 @@ msgid "Expired"
 msgstr "期限切れ"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:14
-msgid "Secret Link Language"
+msgid "Secure Link Language"
 msgstr "秘密のリンク言語"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:19
@@ -1622,7 +1622,7 @@ msgstr "プッシュごとに最大%{count}ファイルをアップロードで�
 #: ../../../app/views/pushes/_form.html.erb:56
 #: ../../../app/views/pushes/_qr_form.html.erb:57
 #: ../../../app/views/pushes/_url_form.html.erb:43
-msgid "Expire secret link and delete after:"
+msgid "Expire secure link and delete after:"
 msgstr "リンクを期限切れにする条件を設定する"
 
 #: ../../../app/views/pushes/_files_form.html.erb:118

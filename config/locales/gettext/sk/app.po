@@ -471,7 +471,7 @@ msgid "Expired"
 msgstr "Vypršala platnosť"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:14
-msgid "Secret Link Language"
+msgid "Secure Link Language"
 msgstr "Jazyk tajného prepojenia"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:19
@@ -1684,7 +1684,7 @@ msgstr "Na jedno odoslanie môžete nahrať až %{count} súborov."
 #: ../../../app/views/pushes/_form.html.erb:56
 #: ../../../app/views/pushes/_qr_form.html.erb:57
 #: ../../../app/views/pushes/_url_form.html.erb:43
-msgid "Expire secret link and delete after:"
+msgid "Expire secure link and delete after:"
 msgstr "Ukončite platnosť tajného odkazu a potom ho vymažte:"
 
 #: ../../../app/views/pushes/_files_form.html.erb:118

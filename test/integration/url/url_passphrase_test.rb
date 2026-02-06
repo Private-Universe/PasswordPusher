@@ -236,6 +236,6 @@ class UrlPassphraseTest < ActionDispatch::IntegrationTest
     # This time, the push should be expired
     get secret_url
     assert_response :success
-    assert response.body.include?("We apologize but this secret link has expired.")
+    assert response.body.include?("We apologize but this secure link has expired.")
   end
 end

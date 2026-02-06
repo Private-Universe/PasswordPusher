@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class='row'>
-                <div><%= _('Expire secret link and delete after:') %></div>
+                <div><%= _('Expire secure link and delete after:') %></div>
                 <div class='col-10'>
                     <%= range_field_tag("push_expire_after_days", @push.persisted? ? @push.days_remaining : @push.settings_for_kind.expire_after_days_default,
                                         { :name => "push[expire_after_days]",

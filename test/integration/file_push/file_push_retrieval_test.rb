@@ -52,7 +52,7 @@ class FilePushRetrievalTest < ActionDispatch::IntegrationTest
     assert p_tags[0].text == "The following message has been sent to you along with the files below."
     assert p_tags[1].text == "The message is blurred out.  Click below to reveal it."
     assert p_tags[2].text == "Attached Files"
-    assert p_tags[3].text.include?("This secret link and all content will be deleted")
+    assert p_tags[3].text.include?("This secure link and all content will be deleted")
 
     # Assert that the right password is in the page
     download_link = css_select "a.list-group-item.list-group-item-action"

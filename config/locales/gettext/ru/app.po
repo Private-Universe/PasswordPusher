@@ -478,7 +478,7 @@ msgid "Expired"
 msgstr "Просрочена"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:14
-msgid "Secret Link Language"
+msgid "Secure Link Language"
 msgstr "Язык секретной ссылки"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:19
@@ -1721,7 +1721,7 @@ msgstr "Вы можете загрузить до %{count} файлов для �
 #: ../../../app/views/pushes/_form.html.erb:56
 #: ../../../app/views/pushes/_qr_form.html.erb:57
 #: ../../../app/views/pushes/_url_form.html.erb:43
-msgid "Expire secret link and delete after:"
+msgid "Expire secure link and delete after:"
 msgstr "Секретная ссылка просрочится и удалится после:"
 
 #: ../../../app/views/pushes/_files_form.html.erb:118

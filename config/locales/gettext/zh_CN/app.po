@@ -451,7 +451,7 @@ msgid "Expired"
 msgstr "已到期"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:14
-msgid "Secret Link Language"
+msgid "Secure Link Language"
 msgstr "秘密链接语言"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:19
@@ -1599,7 +1599,7 @@ msgstr "您每次推送最多可以上传 %{count} 个文件。"
 #: ../../../app/views/pushes/_form.html.erb:56
 #: ../../../app/views/pushes/_qr_form.html.erb:57
 #: ../../../app/views/pushes/_url_form.html.erb:43
-msgid "Expire secret link and delete after:"
+msgid "Expire secure link and delete after:"
 msgstr "秘密链接将在以下情况过期并被删除："
 
 #: ../../../app/views/pushes/_files_form.html.erb:118
@@ -1779,7 +1779,7 @@ msgstr "提示：仅在框中输入密码。其他识别信息可能会危及安
 #: ../../../app/views/pushes/_qr_form.html.erb:183
 msgid ""
 "All passwords are encrypted prior to storage and are available to only those w"
-"ith the secret link.  Once expired, encrypted passwords are unequivocally dele"
+"ith the secure link.  Once expired, encrypted passwords are unequivocally dele"
 "ted from the database."
 msgstr "所有密码在存储之前都经过加密，并且只有拥有秘密链接的人才能使用。一旦过期，加密密码就会从数据库中明确删除。"
 
@@ -2005,7 +2005,7 @@ msgid "Delete This Push?"
 msgstr "删除此推送？"
 
 #: ../../../app/views/pushes/audit.html.erb:219
-msgid "This will expire this secret link and"
+msgid "This will expire this secure link and"
 msgstr "这将使这个秘密链接过期并且"
 
 #: ../../../app/views/pushes/audit.html.erb:219
@@ -2143,7 +2143,7 @@ msgid "Push Preview"
 msgstr "推送预览"
 
 #: ../../../app/views/pushes/preview.html.erb:8
-msgid "Use this secret link to share it:"
+msgid "Use this secure link to share it:"
 msgstr "使用此秘密链接分享它："
 
 #: ../../../app/views/pushes/preview.html.erb:14
@@ -2174,7 +2174,7 @@ msgstr "产生"
 #: ../../../app/views/pushes/preview.html.erb:56
 #: ../../../app/views/pushes/show.html.erb:41
 #: ../../../app/views/pushes/show.html.erb:75
-msgid "This secret link and all content will be deleted in"
+msgid "This secure link and all content will be deleted in"
 msgstr "此秘密链接和所有内容将在此之后删除："
 
 #: ../../../app/views/pushes/preview.html.erb:57
@@ -2234,7 +2234,7 @@ msgstr "查看审计日志"
 
 #: ../../../app/views/pushes/preview.html.erb:103
 msgid ""
-"Tip: Pushing to an international user?  Change the secret link language using "
+"Tip: Pushing to an international user?  Change the secure link language using "
 "the dropdown menu to the right of the URL."
 msgstr "提示：推送给国际用户？使用 URL 右侧的下拉菜单更改秘密链接的页面展示语言。"
 
@@ -2253,7 +2253,7 @@ msgid "This data contained here will expire after"
 msgstr "此处包含的数据将在以下时间过期"
 
 #: ../../../app/views/pushes/show.html.erb:1
-msgid "Your Secret Link"
+msgid "Your Secure Link"
 msgstr "你的秘密链接"
 
 #: ../../../app/views/pushes/show.html.erb:7
@@ -2296,7 +2296,7 @@ msgstr "（以先发生为准）。"
 
 #: ../../../app/views/pushes/show.html.erb:57
 #: ../../../app/views/pushes/show.html.erb:90
-msgid "Delete This Secret Link Now"
+msgid "Delete This Secure Link Now"
 msgstr "立即删除此秘密链接"
 
 #: ../../../app/views/pushes/show.html.erb:109
@@ -2304,7 +2304,7 @@ msgid "Delete?"
 msgstr "删除？"
 
 #: ../../../app/views/pushes/show.html.erb:113
-msgid "This will expire this secret link and "
+msgid "This will expire this secure link and "
 msgstr "这将使这个秘密链接过期并且"
 
 #: ../../../app/views/pushes/show.html.erb:114
@@ -2312,11 +2312,11 @@ msgid "delete all related content from the database forever"
 msgstr "永远从数据库中删除所有相关内容"
 
 #: ../../../app/views/pushes/show_expired.html.erb:1
-msgid "Your Secret Link Has Expired"
+msgid "Your Secure Link Has Expired"
 msgstr "您的秘密链接已过期"
 
 #: ../../../app/views/pushes/show_expired.html.erb:6
-msgid "We apologize but this secret link has expired."
+msgid "We apologize but this secure link has expired."
 msgstr "抱歉，此秘密链接已过期。"
 
 #: ../../../app/views/pushes/show_expired.html.erb:8

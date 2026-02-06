@@ -91,11 +91,11 @@ class FilePushDeletionTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_response :success
 
-    assert_select "p", "We apologize but this secret link has expired."
+    assert_select "p", "We apologize but this secure link has expired."
 
     # Retrieve the preliminary page.  It should show expired too.
     get preliminary_push_path(Push.last)
     assert_response :success
-    assert response.body.include?("We apologize but this secret link has expired.")
+    assert response.body.include?("We apologize but this secure link has expired.")
   end
 end

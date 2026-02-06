@@ -461,7 +461,7 @@ msgid "Expired"
 msgstr "หมดอายุ"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:14
-msgid "Secret Link Language"
+msgid "Secure Link Language"
 msgstr "ภาษาลิงค์ลับ"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:19
@@ -1657,7 +1657,7 @@ msgstr "คุณสามารถอัปโหลดไฟล์ได้ส
 #: ../../../app/views/pushes/_form.html.erb:56
 #: ../../../app/views/pushes/_qr_form.html.erb:57
 #: ../../../app/views/pushes/_url_form.html.erb:43
-msgid "Expire secret link and delete after:"
+msgid "Expire secure link and delete after:"
 msgstr "ลิงค์ลับหมดอายุและลบหลังจาก:"
 
 #: ../../../app/views/pushes/_files_form.html.erb:118
@@ -1839,7 +1839,7 @@ msgstr ""
 #: ../../../app/views/pushes/_qr_form.html.erb:183
 msgid ""
 "All passwords are encrypted prior to storage and are available to only those w"
-"ith the secret link.  Once expired, encrypted passwords are unequivocally dele"
+"ith the secure link.  Once expired, encrypted passwords are unequivocally dele"
 "ted from the database."
 msgstr ""
 "รหัสผ่านทั้งหมดจะถูกเข้ารหัสก่อนการจัดเก็บและใช้ได้กับผู้ที่มีลิงก์ลับเท่านั้น"
@@ -2067,7 +2067,7 @@ msgid "Delete This Push?"
 msgstr "ลบการผลักดันนี้หรือไม่?"
 
 #: ../../../app/views/pushes/audit.html.erb:219
-msgid "This will expire this secret link and"
+msgid "This will expire this secure link and"
 msgstr "นี่จะทำให้ลิงค์ลับนี้หมดอายุและ"
 
 #: ../../../app/views/pushes/audit.html.erb:219
@@ -2205,7 +2205,7 @@ msgid "Push Preview"
 msgstr "ดูตัวอย่างการกด"
 
 #: ../../../app/views/pushes/preview.html.erb:8
-msgid "Use this secret link to share it:"
+msgid "Use this secure link to share it:"
 msgstr "ใช้ลิงค์ลับนี้เพื่อแบ่งปัน:"
 
 #: ../../../app/views/pushes/preview.html.erb:14
@@ -2236,7 +2236,7 @@ msgstr "สร้าง"
 #: ../../../app/views/pushes/preview.html.erb:56
 #: ../../../app/views/pushes/show.html.erb:41
 #: ../../../app/views/pushes/show.html.erb:75
-msgid "This secret link and all content will be deleted in"
+msgid "This secure link and all content will be deleted in"
 msgstr "ลิงค์ลับนี้และเนื้อหาทั้งหมดจะถูกลบใน"
 
 #: ../../../app/views/pushes/preview.html.erb:57
@@ -2296,7 +2296,7 @@ msgstr "ดูบันทึกการตรวจสอบ"
 
 #: ../../../app/views/pushes/preview.html.erb:103
 msgid ""
-"Tip: Pushing to an international user?  Change the secret link language using "
+"Tip: Pushing to an international user?  Change the secure link language using "
 "the dropdown menu to the right of the URL."
 msgstr ""
 "เคล็ดลับ: ส่งไปยังผู้ใช้ต่างประเทศหรือไม่ เปลี่ยนภาษาของลิงก์ลับโดยใช้เมนูแบบเ"
@@ -2319,7 +2319,7 @@ msgid "This data contained here will expire after"
 msgstr "ข้อมูลนี้มีอยู่ที่นี่จะหมดอายุหลังจากนั้น"
 
 #: ../../../app/views/pushes/show.html.erb:1
-msgid "Your Secret Link"
+msgid "Your Secure Link"
 msgstr "ลิงค์ลับของคุณ"
 
 #: ../../../app/views/pushes/show.html.erb:7
@@ -2362,7 +2362,7 @@ msgstr "(อย่างใดอย่างหนึ่งเกิดขึ�
 
 #: ../../../app/views/pushes/show.html.erb:57
 #: ../../../app/views/pushes/show.html.erb:90
-msgid "Delete This Secret Link Now"
+msgid "Delete This Secure Link Now"
 msgstr "ลบลิงค์ลับนี้ทันที"
 
 #: ../../../app/views/pushes/show.html.erb:109
@@ -2370,7 +2370,7 @@ msgid "Delete?"
 msgstr "ลบ?"
 
 #: ../../../app/views/pushes/show.html.erb:113
-msgid "This will expire this secret link and "
+msgid "This will expire this secure link and "
 msgstr "นี่จะทำให้ลิงค์ลับนี้หมดอายุและ"
 
 #: ../../../app/views/pushes/show.html.erb:114
@@ -2378,11 +2378,11 @@ msgid "delete all related content from the database forever"
 msgstr "ลบเนื้อหาที่เกี่ยวข้องทั้งหมดออกจากฐานข้อมูลอย่างถาวร"
 
 #: ../../../app/views/pushes/show_expired.html.erb:1
-msgid "Your Secret Link Has Expired"
+msgid "Your Secure Link Has Expired"
 msgstr "ลิงก์ลับของคุณหมดอายุแล้ว"
 
 #: ../../../app/views/pushes/show_expired.html.erb:6
-msgid "We apologize but this secret link has expired."
+msgid "We apologize but this secure link has expired."
 msgstr "ขออภัย ลิงก์ลับนี้หมดอายุแล้ว"
 
 #: ../../../app/views/pushes/show_expired.html.erb:8

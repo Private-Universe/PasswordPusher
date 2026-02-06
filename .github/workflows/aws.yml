@@ -74,6 +74,9 @@ jobs:
         image: ${{ steps.build-image.outputs.image }}
         secrets: |
           DATABASE_URL=${{ secrets.DATABASE_URL }}
+          SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
+          PWPUSH_MASTER_KEY=${{ secrets.PWPUSH_MASTER_KEY }}
+          RETRIEVAL_STEP_DEFAULT=${{ secrets.RETRIEVAL_STEP_DEFAULT }}
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1

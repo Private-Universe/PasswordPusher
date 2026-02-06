@@ -45,7 +45,7 @@
           <% end %>
       <% end %>
       <p class="text-muted mt-5">
-        <%= _("This secret link and all content will be deleted in") %>
+        <%= _("This secure link and all content will be deleted in") %>
         <strong>
           <%= @push.days_remaining.to_s + ' ' + n_('day', 'days', @push.days_remaining) %>
         </strong>
@@ -60,7 +60,7 @@
       </p>
       <% if @push.deletable_by_viewer && @push.views_remaining.positive? %>
         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-          <em class="bi bi-trash"></em> <%= _('Delete This Secret Link Now') %>
+          <em class="bi bi-trash"></em> <%= _('Delete This Secure Link Now') %>
         </button>
       <% end %>
     </div>
@@ -76,7 +76,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <%= _('This will expire this secret link and ') %>
+          <%= _('This will expire this secure link and ') %>
           <strong><%= _('delete all related content from the database forever') %></strong>.
           <%= _('Are you sure?') %>
         </div>

@@ -476,7 +476,7 @@ msgid "Expired"
 msgstr "Beidzies derīguma termiņš"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:14
-msgid "Secret Link Language"
+msgid "Secure Link Language"
 msgstr "Slepenās saites valoda"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:19
@@ -1705,7 +1705,7 @@ msgstr "Jūs varat augšupielādēt līdz %{count} failiem uz katru push."
 #: ../../../app/views/pushes/_form.html.erb:56
 #: ../../../app/views/pushes/_qr_form.html.erb:57
 #: ../../../app/views/pushes/_url_form.html.erb:43
-msgid "Expire secret link and delete after:"
+msgid "Expire secure link and delete after:"
 msgstr "Beigt slepenās saites derīguma termiņu un dzēst pēc:"
 
 #: ../../../app/views/pushes/_files_form.html.erb:118

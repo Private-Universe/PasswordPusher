@@ -67,7 +67,7 @@ class FilePushCreationTest < ActionDispatch::IntegrationTest
     assert p_tags[0].text == "The following message has been sent to you along with the files below."
     assert p_tags[1].text == "The message is blurred out.  Click below to reveal it."
     assert p_tags[2].text == "Attached Files"
-    assert p_tags[3].text.include?("This secret link and all content will be deleted")
+    assert p_tags[3].text.include?("This secure link and all content will be deleted")
 
     # Assert that the right password is in the page
     download_link = css_select "a.list-group-item.list-group-item-action"
@@ -138,7 +138,7 @@ class FilePushCreationTest < ActionDispatch::IntegrationTest
     assert p_tags[0].text == "The following message has been sent to you along with the files below."
     assert p_tags[1].text == "The message is blurred out.  Click below to reveal it."
     assert p_tags[2].text == "Attached Files"
-    assert p_tags[3].text.include?("This secret link and all content will be deleted")
+    assert p_tags[3].text.include?("This secure link and all content will be deleted")
 
     pre = css_select "pre"
     assert(pre)
@@ -203,7 +203,7 @@ class FilePushCreationTest < ActionDispatch::IntegrationTest
 
     delete_link = css_select "button.btn-danger"
     assert(delete_link.length == 1)
-    assert(delete_link.children.last.text.include?("Delete This Secret Link Now"))
+    assert(delete_link.children.last.text.include?("Delete This Secure Link Now"))
   end
 
   def test_deletable_by_viewer_falls_back_to_default

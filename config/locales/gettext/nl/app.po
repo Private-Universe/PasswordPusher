@@ -471,7 +471,7 @@ msgid "Expired"
 msgstr "Verlopen"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:14
-msgid "Secret Link Language"
+msgid "Secure Link Language"
 msgstr "Taal van geheime link"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:19
@@ -1701,7 +1701,7 @@ msgstr "Je kunt tot %{count} bestanden per push uploaden."
 #: ../../../app/views/pushes/_form.html.erb:56
 #: ../../../app/views/pushes/_qr_form.html.erb:57
 #: ../../../app/views/pushes/_url_form.html.erb:43
-msgid "Expire secret link and delete after:"
+msgid "Expire secure link and delete after:"
 msgstr "Laat de geheime link verlopen en verwijderen na:"
 
 #: ../../../app/views/pushes/_files_form.html.erb:118

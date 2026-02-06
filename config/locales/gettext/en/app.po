@@ -463,8 +463,8 @@ msgid "Expired"
 msgstr "Expired"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:14
-msgid "Secret Link Language"
-msgstr "Secret Link Language"
+msgid "Secure Link Language"
+msgstr "Secure Link Language"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:19
 msgid "Autodetect the recipient's language"
@@ -1676,8 +1676,8 @@ msgstr "You can upload up to %{count} files per push."
 #: ../../../app/views/pushes/_form.html.erb:56
 #: ../../../app/views/pushes/_qr_form.html.erb:57
 #: ../../../app/views/pushes/_url_form.html.erb:43
-msgid "Expire secret link and delete after:"
-msgstr "Expire secret link and delete after:"
+msgid "Expire secure link and delete after:"
+msgstr "Expire secure link and delete after:"
 
 #: ../../../app/views/pushes/_files_form.html.erb:118
 #: ../../../app/views/pushes/_form.html.erb:91
@@ -1860,7 +1860,7 @@ msgstr ""
 #: ../../../app/views/pushes/_qr_form.html.erb:183
 msgid ""
 "All passwords are encrypted prior to storage and are available to only those w"
-"ith the secret link.  Once expired, encrypted passwords are unequivocally dele"
+"ith the secure link.  Once expired, encrypted passwords are unequivocally dele"
 "ted from the database."
 msgstr ""
 "All passwords are encrypted prior to storage and are available to only those w"
@@ -2235,8 +2235,8 @@ msgid "Push Preview"
 msgstr "Push Preview"
 
 #: ../../../app/views/pushes/preview.html.erb:8
-msgid "Use this secret link to share it:"
-msgstr "Use this secret link to share it:"
+msgid "Use this secure link to share it:"
+msgstr "Use this secure link to share it:"
 
 #: ../../../app/views/pushes/preview.html.erb:14
 msgid "Print & Share"
@@ -2266,8 +2266,8 @@ msgstr "Generate"
 #: ../../../app/views/pushes/preview.html.erb:56
 #: ../../../app/views/pushes/show.html.erb:41
 #: ../../../app/views/pushes/show.html.erb:75
-msgid "This secret link and all content will be deleted in"
-msgstr "This secret link and all content will be deleted in"
+msgid "This secure link and all content will be deleted in"
+msgstr "This secure link and all content will be deleted in"
 
 #: ../../../app/views/pushes/preview.html.erb:57
 #: ../../../app/views/pushes/print_preview.html.erb:13
@@ -2326,7 +2326,7 @@ msgstr "View Audit Log"
 
 #: ../../../app/views/pushes/preview.html.erb:103
 msgid ""
-"Tip: Pushing to an international user?  Change the secret link language using "
+"Tip: Pushing to an international user?  Change the secure link language using "
 "the dropdown menu to the right of the URL."
 msgstr ""
 "Tip: Pushing to an international user?  Change the secret link language using "
@@ -2341,16 +2341,16 @@ msgstr ""
 "settings."
 
 #: ../../../app/views/pushes/print_preview.html.erb:1
-msgid "Your Secret URL"
-msgstr "Your Secret URL"
+msgid "Your Secure URL"
+msgstr "Your Secure URL"
 
 #: ../../../app/views/pushes/print_preview.html.erb:12
 msgid "This data contained here will expire after"
 msgstr "This data contained here will expire after"
 
 #: ../../../app/views/pushes/show.html.erb:1
-msgid "Your Secret Link"
-msgstr "Your Secret Link"
+msgid "Your Secure Link"
+msgstr "Your Secure Link"
 
 #: ../../../app/views/pushes/show.html.erb:7
 msgid "The following files have been sent to you."
@@ -2392,28 +2392,28 @@ msgstr "(whichever occurs first)."
 
 #: ../../../app/views/pushes/show.html.erb:57
 #: ../../../app/views/pushes/show.html.erb:90
-msgid "Delete This Secret Link Now"
-msgstr "Delete This Secret Link Now"
+msgid "Delete This Secure Link Now"
+msgstr "Delete This Secure Link Now"
 
 #: ../../../app/views/pushes/show.html.erb:109
 msgid "Delete?"
 msgstr "Delete?"
 
 #: ../../../app/views/pushes/show.html.erb:113
-msgid "This will expire this secret link and "
-msgstr "This will expire this secret link and "
+msgid "This will expire this secure link and "
+msgstr "This will expire this secure link and "
 
 #: ../../../app/views/pushes/show.html.erb:114
 msgid "delete all related content from the database forever"
 msgstr "delete all related content from the database forever"
 
 #: ../../../app/views/pushes/show_expired.html.erb:1
-msgid "Your Secret Link Has Expired"
-msgstr "Your Secret Link Has Expired"
+msgid "Your Secure Link Has Expired"
+msgstr "Your Secure Link Has Expired"
 
 #: ../../../app/views/pushes/show_expired.html.erb:6
-msgid "We apologize but this secret link has expired."
-msgstr "We apologize but this secret link has expired."
+msgid "We apologize but this secure link has expired."
+msgstr "We apologize but this secure link has expired."
 
 #: ../../../app/views/pushes/show_expired.html.erb:8
 msgid ""

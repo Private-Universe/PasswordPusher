@@ -463,7 +463,7 @@ msgid "Expired"
 msgstr "میعاد ختم"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:14
-msgid "Secret Link Language"
+msgid "Secure Link Language"
 msgstr "خفیہ لنک کی زبان"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:19
@@ -1692,7 +1692,7 @@ msgstr "آپ ہر پش کے لیے %{count} فائلیں اپ لوڈ کر سکت
 #: ../../../app/views/pushes/_form.html.erb:56
 #: ../../../app/views/pushes/_qr_form.html.erb:57
 #: ../../../app/views/pushes/_url_form.html.erb:43
-msgid "Expire secret link and delete after:"
+msgid "Expire secure link and delete after:"
 msgstr "خفیہ لنک کی میعاد ختم کریں اور اس کے بعد حذف کریں:"
 
 #: ../../../app/views/pushes/_files_form.html.erb:118

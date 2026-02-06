@@ -53,7 +53,7 @@ class QrPassphraseTest < ActionDispatch::IntegrationTest
     # We should be on the password#show page now
     p_tags = assert_select "p"
     assert p_tags[0].text == "Please obtain and securely store this content in a secure manner, such as in a password manager."
-    assert p_tags[1].text.include?("This secret link and all content will be deleted")
+    assert p_tags[1].text.include?("This secure link and all content will be deleted")
   end
 
   def test_password_bad_passphrase

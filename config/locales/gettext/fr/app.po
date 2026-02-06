@@ -485,7 +485,7 @@ msgid "Expired"
 msgstr "Expiré"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:14
-msgid "Secret Link Language"
+msgid "Secure Link Language"
 msgstr "Langue du lien secret"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:19
@@ -1736,7 +1736,7 @@ msgstr "Vous pouvez télécharger jusqu'à %{count} fichiers par publication."
 #: ../../../app/views/pushes/_form.html.erb:56
 #: ../../../app/views/pushes/_qr_form.html.erb:57
 #: ../../../app/views/pushes/_url_form.html.erb:43
-msgid "Expire secret link and delete after:"
+msgid "Expire secure link and delete after:"
 msgstr "Expiration et suppression du lien privé après :"
 
 #: ../../../app/views/pushes/_files_form.html.erb:118

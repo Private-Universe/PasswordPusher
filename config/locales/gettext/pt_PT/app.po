@@ -479,7 +479,7 @@ msgid "Expired"
 msgstr "Expirado"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:14
-msgid "Secret Link Language"
+msgid "Secure Link Language"
 msgstr "Idioma do Link Secreto"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:19
@@ -1705,7 +1705,7 @@ msgstr "Pode carregar até %{count} ficheiros por push."
 #: ../../../app/views/pushes/_form.html.erb:56
 #: ../../../app/views/pushes/_qr_form.html.erb:57
 #: ../../../app/views/pushes/_url_form.html.erb:43
-msgid "Expire secret link and delete after:"
+msgid "Expire secure link and delete after:"
 msgstr "Expirar o link secreto e eliminar após:"
 
 #: ../../../app/views/pushes/_files_form.html.erb:118

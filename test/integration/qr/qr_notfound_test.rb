@@ -15,7 +15,7 @@ class QrNotfoundTest < ActionDispatch::IntegrationTest
 
     # Validate the expiration page
     p_tags = assert_select "p"
-    assert p_tags[0].text.include?("We apologize but this secret link has expired.")
+    assert p_tags[0].text.include?("We apologize but this secure link has expired.")
   end
 
   def test_password_preliminary_not_found
@@ -25,6 +25,6 @@ class QrNotfoundTest < ActionDispatch::IntegrationTest
 
     # Validate the expiration page
     p_tags = assert_select "p"
-    assert p_tags[0].text.include?("We apologize but this secret link has expired.")
+    assert p_tags[0].text.include?("We apologize but this secure link has expired.")
   end
 end

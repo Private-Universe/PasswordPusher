@@ -30,8 +30,8 @@ end
 # was created by an anonymous user, this data is no longer needed and we delete it (we
 # don't want it).
 #
-# If a user attempts to retrieve a secret link that doesn't exist anymore, we still show
-# the standard "This secret link has expired" message.  This strategy provides two benefits:
+# If a user attempts to retrieve a secure link that doesn't exist anymore, we still show
+# the standard "This secure link has expired" message.  This strategy provides two benefits:
 #
 # 1. It hides the fact that if a secret ever exists or not (more secure)
 # 2. It allows us to delete data that we don't want
@@ -68,12 +68,12 @@ task generate_robots_txt: :environment do
 
   contents = "User-agent: *\n"
 
-  # Old secret links have `/f/` and `/r/` in them for file pushes and url pushes respectively.
+  # Old secure links have `/f/` and `/r/` in them for file pushes and url pushes respectively.
   contents += "Disallow: /p/\n"
   contents += "Disallow: /f/\n"
   contents += "Disallow: /r/\n"
 
-  # New secret links can be generated at `/p/new`.
+  # New secure links can be generated at `/p/new`.
   contents += "Allow: /p/new\n"
   contents += "Allow: /pages/\n"
 

@@ -478,7 +478,7 @@ msgid "Expired"
 msgstr "Wygasłe"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:14
-msgid "Secret Link Language"
+msgid "Secure Link Language"
 msgstr "Język tajnego linku"
 
 #: ../../../app/views/application/_secret_url_bar.html.erb:19
@@ -1706,7 +1706,7 @@ msgstr "Możesz przesłać do %{count} plików na push."
 #: ../../../app/views/pushes/_form.html.erb:56
 #: ../../../app/views/pushes/_qr_form.html.erb:57
 #: ../../../app/views/pushes/_url_form.html.erb:43
-msgid "Expire secret link and delete after:"
+msgid "Expire secure link and delete after:"
 msgstr "Wygaś tajny link i usuń go po:"
 
 #: ../../../app/views/pushes/_files_form.html.erb:118
