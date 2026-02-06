@@ -20,38 +20,7 @@
       <% if Settings.brand.show_footer_menu %>
         <ul class="nav col-md-5 justify-content-end">
           <li class="nav-item"><%= link_to _('Front Page'), root_path(locale: locale.to_s), class: 'nav-link px-2 text-muted' %></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle px-2 text-muted" href="#" id="resourcesDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= _('Resources') %>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="resourcesDropdownMenuLink">
-              <li class="dropdown-item">
-                <%= link_to 'https://hub.docker.com/u/pglombardo', class: 'nav-link px-2 text-muted', target: '_blank' do %>
-                  <%= _('Docker Containers') %>
-                  <em class="bi bi-box-arrow-up-right ms-2"></em>
-                <% end %>
-              </li>
-              <li class="dropdown-item"><%= link_to _('FAQ'), "https://docs.pwpush.com/docs/faq/", target: "_blank", class: 'nav-link px-2 text-muted' %></li>
-              <li class="dropdown-item"><%= link_to _('JSON API'), "https://docs.pwpush.com/docs/json-api/", target: "_blank", class: 'nav-link px-2 text-muted' %></li>
-              <li class="dropdown-item"><%= link_to _('Key Generator'), page_path('generate_key'), class: 'nav-link px-2 text-muted' %></li>
-              <li class="dropdown-item">
-                <%= link_to 'https://github.com/pglombardo/PasswordPusher', class: 'nav-link px-2 text-muted', target: '_blank' do %>
-                  <%= _('Source Code') %>
-                  <em class="bi bi-box-arrow-up-right ms-2"></em>
-                <% end %>
-              </li>
-              <li class="dropdown-item"><%= link_to _('Tools'), "https://docs.pwpush.com/docs/3rd-party-tools/", target: "_blank", class: 'nav-link px-2 text-muted' %></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle px-2 text-muted" href="#" id="aboutDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= _('About') %>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="aboutDropdownMenuLink">
-              <li class="dropdown-item"><%= link_to _('Overview'), page_path('about'), class: 'nav-link px-2 text-muted' %></li>
-              <li class="dropdown-item"><%= link_to _('Documentation'), "https://docs.pwpush.com", target: "_blank", class: 'nav-link px-2 text-muted' %></li>
-            </ul>
-          </li>
+          <%# Resources and About dropdowns hidden by Private Universe customization %>
         </ul>
       <% end %>
     </div>

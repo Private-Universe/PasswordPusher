@@ -673,4 +673,7 @@ bin/*.rb
 /public/assets/
 .cursor
 
+# Local docker-compose override for development (do not commit)
+docker-compose.override.yml
+
 
