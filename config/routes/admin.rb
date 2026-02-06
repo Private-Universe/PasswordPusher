@@ -1,14 +1,16 @@
 if Settings.enable_logins
-  authenticated :user, ->(u) { u.admin? } do
-    namespace :admin do
-      resources :file_pushes
-      resources :passwords
-      resources :urls
-      resources :users
-      resources :views
+  authenticated :user, lambda { |u| u.admin? } do
+    get "/admin", to: "admin#index", as: :admin_root
 
-      root to: "users#index"
+    namespace :admin do
+      resources :users, only: [:index, :destroy] do
+        member do
+          patch :promote
+          patch :revoke
+        end
+      end
     end
-    mount MissionControl::Jobs::Engine, at: "/admin/jobs"
+
+    mount MissionControl::Jobs::Engine, at: "/admin/jobs" if defined?(::MissionControl::Jobs::Engine)
   end
 end

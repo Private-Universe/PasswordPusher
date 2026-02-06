@@ -20,16 +20,16 @@ class UrlPassphraseTest < ActionDispatch::IntegrationTest
   end
 
   def test_url_passphrase
-    get new_url_path
+    get new_push_path(tab: "url")
     assert_response :success
 
-    post urls_path, params: {url: {payload: "https://pwpush.com", passphrase: "asdf"}}
+    post pushes_path, params: {push: {kind: "url", payload: "https://pwpush.com", passphrase: "asdf"}}
     assert_response :redirect
 
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Your push has been created."
+    assert_select "h2", "Push Preview"
 
     # Attempt to retrieve the url without the passphrase
     get request.url.sub("/preview", "")
@@ -56,16 +56,16 @@ class UrlPassphraseTest < ActionDispatch::IntegrationTest
   end
 
   def test_url_bad_passphrase
-    get new_url_path
+    get new_push_path(tab: "url")
     assert_response :success
 
-    post urls_path, params: {url: {payload: "https://pwpush.com", passphrase: "asdf"}}
+    post pushes_path, params: {push: {kind: "url", payload: "https://pwpush.com", passphrase: "asdf"}}
     assert_response :redirect
 
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Your push has been created."
+    assert_select "h2", "Push Preview"
 
     # Attempt to retrieve the url without the passphrase
     get request.url.sub("/preview", "")
@@ -81,6 +81,7 @@ class UrlPassphraseTest < ActionDispatch::IntegrationTest
     forms = css_select "form"
     assert_select "form input", 1
     input = css_select "input#passphrase.form-control"
+    failed_passphrase_log_count = AuditLog.where(kind: :failed_passphrase).count
     assert_equal input.first.attributes["placeholder"].value, "Enter the secret passphrase provided with this URL"
 
     # Provide a bad passphrase
@@ -88,6 +89,7 @@ class UrlPassphraseTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     follow_redirect!
     assert_response :success
+    assert_equal failed_passphrase_log_count + 1, AuditLog.where(kind: :failed_passphrase).count
 
     # We should be back on the passphrase page now with an error message
     divs = css_select "div.alert-warning"
@@ -99,16 +101,16 @@ class UrlPassphraseTest < ActionDispatch::IntegrationTest
   end
 
   def test_anonymous_can_access_url_passphrase
-    get new_url_path
+    get new_push_path(tab: "url")
     assert_response :success
 
-    post urls_path, params: {url: {payload: "https://pwpush.com", passphrase: "asdf"}}
+    post pushes_path, params: {push: {kind: "url", payload: "https://pwpush.com", passphrase: "asdf"}}
     assert_response :redirect
 
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Your push has been created."
+    assert_select "h2", "Push Preview"
 
     @push_url = request.url.sub("/preview", "")
     sign_out :user
@@ -138,19 +140,22 @@ class UrlPassphraseTest < ActionDispatch::IntegrationTest
   end
 
   def test_url_passphrase_view_tracking
-    get new_url_path
+    get new_push_path(tab: "url")
     assert_response :success
 
-    post urls_path, params: {url: {payload: "https://pwpush.com", passphrase: "asdf"}}
+    post pushes_path, params: {push: {kind: "url", payload: "https://pwpush.com", passphrase: "asdf"}}
     assert_response :redirect
 
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Your push has been created."
+    assert_select "h2", "Push Preview"
 
-    push = Url.last
+    push = Push.where(kind: "url").last
     view_count = push.views_remaining
+
+    # Sign out so the view counts as a regular view, not owner_view
+    sign_out @luca
 
     # Attempt to retrieve the url without the passphrase
     get request.url.sub("/preview", "")
@@ -179,20 +184,23 @@ class UrlPassphraseTest < ActionDispatch::IntegrationTest
   end
 
   def test_url_passphrase_view_expiration
-    get new_url_path
+    get new_push_path(tab: "url")
     assert_response :success
 
-    post urls_path, params: {url: {payload: "https://pwpush.com", passphrase: "asdf", expire_after_views: 1}}
+    post pushes_path, params: {push: {kind: "url", payload: "https://pwpush.com", passphrase: "asdf", expire_after_views: 1}}
     assert_response :redirect
 
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Your push has been created."
+    assert_select "h2", "Push Preview"
 
-    push = Url.last
+    push = Push.where(kind: "url").last
     view_count = push.views_remaining
     secret_url = request.url.sub("/preview", "")
+
+    # Sign out so the view counts as a regular view, not owner_view
+    sign_out @luca
 
     # Attempt to retrieve the secret url
     get secret_url

@@ -1,23 +1,22 @@
 # frozen_string_literal: true
 
-threads_count = Integer(ENV["RAILS_MAX_THREADS"] || 3)
-threads threads_count, threads_count
+max_threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
+threads min_threads_count, max_threads_count
 
 rails_env = ENV.fetch("RAILS_ENV", "development")
 environment rails_env
 
 case rails_env
 when "production"
-  # Default to 2 workers.  To override, set the WEB_CONCURRENCY environment variable
-  workers_count = Integer(ENV.fetch("WEB_CONCURRENCY") { 2 })
-  workers workers_count if workers_count > 1
+  workers Integer(ENV.fetch("WEB_CONCURRENCY") { 0 })
 
   preload_app!
 when "development"
   worker_timeout 3600
 end
 
+port ENV.fetch("PORT", 5100)
+
 # To restart: `bin/pwpush restart`
 plugin :tmp_restart
-
-port ENV.fetch("PORT", 5100)

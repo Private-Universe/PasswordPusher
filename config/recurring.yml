@@ -12,31 +12,56 @@
 production:
   expire_pushes:
     class: ExpirePushesJob
-    queue: background
+    queue: recurring
     schedule: every 2 hours
-
-#  expire_pulls:
-#    class: ExpirePullsJob
-#    queue: background
-#    schedule: every 3 hours
 
   cleanup_pushes:
     class: CleanUpPushesJob
-    queue: background
+    queue: recurring
     schedule: every day at 5am
+
+  purge_expired_pushes:
+    class: PurgeExpiredPushesJob
+    queue: recurring
+    schedule: every day at 4am
+
+  purge_unattached_blobs:
+    class: PurgeUnattachedBlobsJob
+    queue: recurring
+    schedule: every 3 days
+
+  cleanup_cache:
+    class: CleanupCacheJob
+    queue: recurring
+    schedule: every day at 3am
+
+  clear_solid_queue_finished_jobs:
+    command: "SolidQueue::Job.clear_finished_in_batches(sleep_between_batches: 0.3)"
+    queue: recurring
+    schedule: every hour at minute 12
 
 development:
   expire_pushes:
     class: ExpirePushesJob
-    queue: background
+    queue: recurring
     schedule: every 4 hours
-
-#  expire_pulls:
-#    class: ExpirePullsJob
-#    queue: background
-#    schedule: every 5 hours
 
   cleanup_pushes:
     class: CleanUpPushesJob
-    queue: background
+    queue: recurring
     schedule: every 7 hours
+
+  purge_expired_pushes:
+    class: PurgeExpiredPushesJob
+    queue: recurring
+    schedule: every day at 4am
+
+  purge_unattached_blobs:
+    class: PurgeUnattachedBlobsJob
+    queue: recurring
+    schedule: every 3 days
+
+  cleanup_cache:
+    class: CleanupCacheJob
+    queue: recurring
+    schedule: every 6 hours

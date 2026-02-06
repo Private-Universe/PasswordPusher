@@ -2,7 +2,7 @@
 ARG BUNDLE_WITHOUT=development:test
 ARG BUNDLE_DEPLOYMENT=true
 
-FROM ruby:3.3-alpine AS build-env
+FROM ruby:3.4-alpine AS build-env
 
 # include global args
 ARG BUNDLE_WITHOUT
@@ -20,6 +20,7 @@ RUN apk add --no-cache \
     mariadb-dev \
     nodejs \
     sqlite-dev \
+    yaml-dev \
     tzdata \
     yarn
 
@@ -46,6 +47,12 @@ RUN yarn install
 
 COPY ./ ${APP_ROOT}/
 
+# Normalize line endings for repository scripts only (avoid touching binary gems)
+RUN if [ -d ${APP_ROOT}/bin ]; then find ${APP_ROOT}/bin -type f -exec sed -i 's/\r$//' {} \; || true; fi
+RUN if [ -d ${APP_ROOT}/script ]; then find ${APP_ROOT}/script -type f -exec sed -i 's/\r$//' {} \; || true; fi
+# Also fix shebangs for gem executables installed into vendor/bundle/*/bin
+RUN if [ -d ${APP_ROOT}/vendor/bundle/ruby ]; then find ${APP_ROOT}/vendor/bundle/ruby -type f -path '*/bin/*' -exec sed -i 's/\r$//' {} \; || true; fi
+
 # Set DATABASE_URL to sqlite to have a ready
 # to use db file for ephemeral configuration
 ENV DATABASE_URL=sqlite3:db/db.sqlite3
@@ -67,7 +74,7 @@ RUN bundle exec rake db:setup
 
 ################## Build done ##################
 
-FROM ruby:3.3-alpine
+FROM ruby:3.4-alpine
 
 # include global args
 ARG BUNDLE_WITHOUT

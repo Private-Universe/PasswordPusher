@@ -665,3 +665,15 @@ bin/*.rb
 /config/credentials/development.key
 /config/credentials/staging.key
 /config/credentials/production.key
+
+/containers/docker/mariadb-data/
+/containers/docker/postgres-data/
+/containers/docker/mysql-data/
+
+/public/assets/
+.cursor
+
+# Local docker-compose override for development (do not commit)
+docker-compose.override.yml
+
+

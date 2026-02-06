@@ -1,0 +1,31 @@
+<% if ENV.key?('GA_ENABLE') && Rails.env == "production" %>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script nonce="<%= request.content_security_policy_nonce %>" src="https://www.googletagmanager.com/gtag/js?id=<%= ENV['GA_ACCOUNT'] %>" async></script>
+  <script nonce="<%= request.content_security_policy_nonce %>">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    <% if current_user.nil? %>
+      gtag('config', '<%= ENV['GA_ACCOUNT'] %>');
+    <% else %>
+      gtag('config', '<%= ENV['GA_ACCOUNT'] %>', {'user_id': '<%= current_user.id %>' });
+    <% end %>
+  </script>
+
+  <script nonce="<%= request.content_security_policy_nonce %>">
+    let isInitialLoad = true;
+    document.addEventListener('turbolinks:load', () => {
+      if (isInitialLoad){isInitialLoad = false; return;}
+      <% if current_user.nil? %>
+        gtag('config', '<%= ENV['GA_ACCOUNT'] %>', {
+          page_path: window.location.pathname,
+        });
+      <% else %>
+        gtag('config', '<%= ENV['GA_ACCOUNT'] %>', {
+          page_path: window.location.pathname,
+          user_id: '<%= current_user.id %>'
+        });
+      <% end %>
+    });
+  </script>
+<% end %>

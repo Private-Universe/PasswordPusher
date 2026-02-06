@@ -4,11 +4,11 @@ require "test_helper"
 
 class PasswordCreationTest < ActionDispatch::IntegrationTest
   def test_textarea_has_safeties
-    get new_password_path
+    get new_push_path(tab: "text")
     assert_response :success
 
     # Validate some elements
-    text_area = css_select "textarea#password_payload.form-control"
+    text_area = css_select "textarea#push_payload.form-control"
 
     assert text_area.attribute("spellcheck")
     assert text_area.attribute("spellcheck").value == "false"
@@ -24,16 +24,16 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
   end
 
   def test_password_creation
-    get new_password_path
+    get new_push_path(tab: "text")
     assert_response :success
 
-    post passwords_path, params: {password: {payload: "testpw"}}
+    post pushes_path, params: {push: {kind: "text", payload: "testpw"}}
     assert_response :redirect
 
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Your push has been created."
+    assert_select "h2", "Push Preview"
 
     # Password page
     get request.url.sub("/preview", "")
@@ -55,13 +55,13 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
     get "/"
     assert_response :success
 
-    post passwords_path, params: {password: {payload: "æ ¼ ö ç ý"}}
+    post pushes_path, params: {push: {kind: "text", payload: "æ ¼ ö ç ý"}}
     assert_response :redirect
 
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Your push has been created."
+    assert_select "h2", "Push Preview"
 
     # Password page
     get request.url.sub("/preview", "")
@@ -83,13 +83,13 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
     get "/"
     assert_response :success
 
-    post passwords_path, params: {password: {payload: "£"}}
+    post pushes_path, params: {push: {kind: "text", payload: "£"}}
     assert_response :redirect
 
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Your push has been created."
+    assert_select "h2", "Push Preview"
 
     # Password page
     get request.url.sub("/preview", "")
@@ -114,7 +114,7 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
     # DELETABLE_PASSWORDS_ENABLED enables or disables the ability for users
     # to delete passwords when viewing
 
-    deletable_checkbox = css_select "#password_deletable_by_viewer"
+    deletable_checkbox = css_select "#push_deletable_by_viewer"
     assert(deletable_checkbox)
 
     found = Settings.pw.enable_deletable_pushes
@@ -124,7 +124,7 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
     assert found
 
     # Assert default value on form: DELETABLE_PASSWORDS_DEFAULT
-    deletable_checkbox = css_select "input#password_deletable_by_viewer"
+    deletable_checkbox = css_select "input#push_deletable_by_viewer"
     assert(deletable_checkbox.length == 1)
 
     # DELETABLE_PASSWORDS_DEFAULT determines initial check state
@@ -139,7 +139,7 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
     get "/"
     assert_response :success
 
-    post passwords_path, params: {password: {payload: "testpw", deletable_by_viewer: "on"}}
+    post pushes_path, params: {push: {kind: "text", payload: "testpw", deletable_by_viewer: "on"}}
     assert_response :redirect
 
     follow_redirect!
@@ -164,7 +164,7 @@ class PasswordCreationTest < ActionDispatch::IntegrationTest
     get "/"
     assert_response :success
 
-    post passwords_path, params: {password: {payload: "testpw"}}
+    post pushes_path, params: {push: {kind: "text", payload: "testpw"}}
     assert_response :redirect
 
     follow_redirect!

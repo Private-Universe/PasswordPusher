@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class FilePushCreationTest < ActionDispatch::IntegrationTest
+class FilePushRetrievalTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
@@ -19,11 +19,12 @@ class FilePushCreationTest < ActionDispatch::IntegrationTest
   end
 
   def test_anonymous_retrieval
-    get new_file_push_path
+    get new_push_path(tab: "files")
     assert_response :success
 
-    post file_pushes_path, params: {
-      file_push: {
+    post pushes_path, params: {
+      push: {
+        kind: "file",
         payload: "Message",
         files: [
           fixture_file_upload("monkey.png", "image/jpeg")
@@ -35,7 +36,7 @@ class FilePushCreationTest < ActionDispatch::IntegrationTest
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Your push has been created."
+    assert_select "h2", "Push Preview"
 
     #################################################
     # Sign out to test anonymous retrieval
