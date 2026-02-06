@@ -13,9 +13,18 @@ class DropLegacyModels < ActiveRecord::Migration[7.2]
       drop_table :urls, force: :cascade
       drop_table :file_pushes, force: :cascade
     else
-      error_message = "Data migration not completed. Please run v1.56.3 first and allow the data migration to complete. Then update to this version. See https://github.com/pglombardo/PasswordPusher/releases/tag/v1.56.0 for more information."
-      Rails.logger.error("Migration failed: #{error_message}")
-      raise ActiveRecord::MigrationError, error_message
+      # Emergency override for operators: set PWP_SKIP_DATA_MIGRATION_CHECK=1 to force the drop.
+      # WARNING: using this may cause irreversible data loss if you have not migrated legacy data.
+      if ENV['PWP_SKIP_DATA_MIGRATION_CHECK'] == '1'
+        Rails.logger.warn("PWP_SKIP_DATA_MIGRATION_CHECK=1 set; forcing drop of legacy tables despite missing data migration.")
+        drop_table :passwords, force: :cascade
+        drop_table :urls, force: :cascade
+        drop_table :file_pushes, force: :cascade
+      else
+        error_message = "Data migration not completed. Please run v1.56.3 first and allow the data migration to complete. Then update to this version. See https://github.com/pglombardo/PasswordPusher/releases/tag/v1.56.0 for more information."
+        Rails.logger.error("Migration failed: #{error_message}")
+        raise ActiveRecord::MigrationError, error_message
+      end
     end
   end
 
