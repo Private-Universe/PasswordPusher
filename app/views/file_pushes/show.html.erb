@@ -5,7 +5,7 @@
     <picture>
       <source srcset="<%= asset_path('logo-transparent-lg.png') %>" media="(prefers-color-scheme: light) or (prefers-color-scheme: no-preference)">
       <source srcset="<%= asset_path('logo-transparent-lg-dark.png') %>" media="(prefers-color-scheme: dark)">
-      <img src="<%= asset_path('logo-transparent-lg.png') %>" alt="Password Pusher Logo" style='width: 300px; padding: 30px; margin-bottom: 20px;' />
+      <img src="<%= asset_path('logo-transparent-lg.png') %>" alt="Password Pusher Logo" class="size-300" />
     </picture>
   <% end %>
   <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center bg-light" data-controller="copy passwords" data-copy-lang-copied-value="<%= _('Copied!') %>">

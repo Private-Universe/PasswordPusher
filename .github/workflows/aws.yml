@@ -65,23 +65,37 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-    - name: Fill in the new image ID in the Amazon ECS task definition
+    - name: Create task definition from current revision and register new one
       id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
-      with:
-        task-definition: ecs.json
-        container-name: passwordpusherv2
-        image: ${{ steps.build-image.outputs.image }}
-        secrets: |
-          DATABASE_URL=${{ secrets.DATABASE_URL }}
-          SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
-          PWPUSH_MASTER_KEY=${{ secrets.PWPUSH_MASTER_KEY }}
-          RETRIEVAL_STEP_DEFAULT=${{ secrets.RETRIEVAL_STEP_DEFAULT }}
+      env:
+        AWS_REGION: ap-southeast-2
+        CLUSTER: PasswordPusherV3
+        SERVICE: passwordpusher
+        IMAGE: ${{ steps.build-image.outputs.image }}
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        set -e
+        echo "Describing current service..."
+        aws ecs describe-services --cluster "$CLUSTER" --services "$SERVICE" --region "$AWS_REGION" > svc.json
+        TASK_DEF_ARN=$(jq -r '.services[0].taskDefinition' svc.json)
+        echo "Current task definition: $TASK_DEF_ARN"
+        aws ecs describe-task-definition --task-definition "$TASK_DEF_ARN" --region "$AWS_REGION" > td.json
+        # Remove fields not allowed when registering a new task definition
+        jq 'del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities, .registeredAt, .registeredBy)' td.json > td-register.json
+        # Update image and append RELEASE_ID env var (preserves existing env vars)
+        jq --arg IMAGE "$IMAGE" --arg TAG "$IMAGE_TAG" '
+          .containerDefinitions |= map(
+            .image = $IMAGE
+            | .environment |= (if . == null then [{"name":"RELEASE_ID","value":$TAG}] else (. + [{"name":"RELEASE_ID","value":$TAG}]) end)
+          )
+        ' td-register.json > td-register-2.json
+        aws ecs register-task-definition --cli-input-json file://td-register-2.json --region "$AWS_REGION" > register_out.json
+        NEW_TASK_DEF_ARN=$(jq -r '.taskDefinition.taskDefinitionArn' register_out.json)
+        echo "Registered new task definition: $NEW_TASK_DEF_ARN"
+        echo "::set-output name=task-definition::$NEW_TASK_DEF_ARN"
 
-    - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-      with:
-        task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: passwordpusher
-        cluster: PasswordPusherV3
-        wait-for-service-stability: true
+    - name: Update ECS service to use new task definition and wait for stability
+      run: |
+        set -e
+        aws ecs update-service --cluster PasswordPusherV3 --service passwordpusher --task-definition ${{ steps.task-def.outputs.task-definition }} --region ap-southeast-2
+        aws ecs wait services-stable --cluster PasswordPusherV3 --services passwordpusher --region ap-southeast-2

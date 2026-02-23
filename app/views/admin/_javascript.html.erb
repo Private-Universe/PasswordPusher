@@ -2,7 +2,7 @@
 
 <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
-<style>
+<style nonce="<%= request.content_security_policy_nonce %>">
   /* Admin Navigation Styling */
   .hover-bg-light:hover {
     background-color: rgba(0, 0, 0, 0.05) !important;

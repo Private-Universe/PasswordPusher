@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   # Health check endpoint that returns a simple 200 OK response
   get "/up" => proc { |env|
-    [200, {"Content-Type" => "text/html"}, ["<html style='background:green;width:100%;height:100vh'></html>"]]
+    [200, {"Content-Type" => "text/html"}, ["<html><body>OK</body></html>"]]
   }
 
   post "/csp-violation-report", to: "csp_reports#create"

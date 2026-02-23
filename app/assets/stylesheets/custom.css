@@ -11,4 +11,17 @@
     color: #000;
     background-color: #1acaca;
 }
+
+/* Utility classes added to replace inline styles for CSP compliance */
+.w-280 { width: 280px; min-width: 280px; }
+.logo-height { height: 40px; }
+.dot-8 { width: 8px; height: 8px; }
+.size-300 { width: 300px; padding: 30px; margin-bottom: 20px; }
+.max-h-120 { max-height: 120px; max-width: 100%; height: auto; }
+.max-w-600 { max-width: 600px; }
+.max-h-450 { max-height: 450px; }
+.rounded-32 { width: 32px; height: 32px; }
+.box-48 { width: 48px; height: 48px; }
+.circle-8 { width: 8px; height: 8px; border-radius: 50%; }
+.text-sm-07 { font-size: 0.7rem; }
 */

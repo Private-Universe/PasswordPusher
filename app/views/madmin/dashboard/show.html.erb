@@ -17,7 +17,7 @@
     </div>
     <div class="d-flex align-items-center gap-3">
       <div class="d-flex align-items-center px-3 py-1 rounded-pill text-sm fw-medium bg-<%= db_connected ? 'success' : 'danger' %> bg-opacity-10 text-<%= db_connected ? 'success' : 'danger' %>">
-        <div class="rounded-circle bg-<%= db_connected ? 'success' : 'danger' %> me-2" style="width: 8px; height: 8px;"></div>
+        <div class="rounded-circle bg-<%= db_connected ? 'success' : 'danger' %> me-2 dot-8"></div>
         <%= _("Database %{status}") % { status: db_connected ? _("Connected") : _("Disconnected") } %>
       </div>
       <%= link_to admin_root_path, class: "btn btn-outline-secondary btn-sm d-flex align-items-center" do %>
@@ -91,7 +91,7 @@
       <div class="card h-100 shadow-sm">
         <div class="card-body">
           <div class="d-flex align-items-center mb-4">
-            <div class="bg-primary bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
+            <div class="bg-primary bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center me-3 size-48">
               <svg class="text-primary" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
               </svg>
@@ -157,7 +157,7 @@
       <div class="card h-100 shadow-sm">
         <div class="card-body">
           <div class="d-flex align-items-center mb-4">
-            <div class="bg-info bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
+            <div class="bg-info bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center me-3 size-48">
               <svg class="text-info" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
               </svg>

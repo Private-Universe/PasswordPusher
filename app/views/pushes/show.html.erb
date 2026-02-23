@@ -6,7 +6,7 @@
         <picture>
           <source srcset="<%= asset_path('logo-transparent-lg-bare.png') %>" media="(prefers-color-scheme: light) or (prefers-color-scheme: no-preference)">
           <source srcset="<%= asset_path('logo-transparent-lg-dark.png') %>" media="(prefers-color-scheme: dark)">
-          <img src="<%= asset_path('logo-transparent-lg-bare.png') %>" alt="Password Pusher Logo" style='width: 300px; padding: 30px; margin-bottom: 20px;' />
+          <img src="<%= asset_path('logo-transparent-lg-bare.png') %>" alt="Password Pusher Logo" class="size-300" />
         </picture>
       <% end %>
       <% if @push.payload.nil? || @push.payload.empty? %>
