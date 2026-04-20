@@ -26,6 +26,7 @@
 on:
   release:
     types: [created]
+  workflow_dispatch:
 
 name: Deploy to Amazon ECS
 
@@ -63,7 +64,7 @@ jobs:
         chmod 600 ./github_key
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> "$GITHUB_OUTPUT"
 
     - name: Create task definition from current revision and register new one
       id: task-def
@@ -71,6 +72,7 @@ jobs:
         AWS_REGION: ap-southeast-2
         CLUSTER: PasswordPusherV3
         SERVICE: passwordpusher
+        CONTAINER_NAME: passwordpusherv2
         IMAGE: ${{ steps.build-image.outputs.image }}
         IMAGE_TAG: ${{ github.sha }}
       run: |
@@ -80,19 +82,24 @@ jobs:
         TASK_DEF_ARN=$(jq -r '.services[0].taskDefinition' svc.json)
         echo "Current task definition: $TASK_DEF_ARN"
         aws ecs describe-task-definition --task-definition "$TASK_DEF_ARN" --region "$AWS_REGION" > td.json
-        # Remove fields not allowed when registering a new task definition
-        jq 'del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities, .registeredAt, .registeredBy)' td.json > td-register.json
-        # Update image and append RELEASE_ID env var (preserves existing env vars)
-        jq --arg IMAGE "$IMAGE" --arg TAG "$IMAGE_TAG" '
-          .containerDefinitions |= map(
-            .image = $IMAGE
-            | .environment |= (if . == null then [{"name":"RELEASE_ID","value":$TAG}] else (. + [{"name":"RELEASE_ID","value":$TAG}]) end)
-          )
-        ' td-register.json > td-register-2.json
-        aws ecs register-task-definition --cli-input-json file://td-register-2.json --region "$AWS_REGION" > register_out.json
+        # ECS describe-task-definition wraps the real payload under .taskDefinition.
+        # Start from that object, drop read-only keys, then update only the app container image.
+        jq --arg IMAGE "$IMAGE" --arg CONTAINER_NAME "$CONTAINER_NAME" '
+          .taskDefinition
+          | del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities, .registeredAt, .registeredBy)
+          | .containerDefinitions |= map(
+              if .name == $CONTAINER_NAME then
+                .image = $IMAGE
+              else
+                .
+              end
+            )
+        ' td.json > td-register.json
+
+        aws ecs register-task-definition --cli-input-json file://td-register.json --region "$AWS_REGION" > register_out.json
         NEW_TASK_DEF_ARN=$(jq -r '.taskDefinition.taskDefinitionArn' register_out.json)
         echo "Registered new task definition: $NEW_TASK_DEF_ARN"
-        echo "::set-output name=task-definition::$NEW_TASK_DEF_ARN"
+        echo "task-definition=$NEW_TASK_DEF_ARN" >> "$GITHUB_OUTPUT"
 
     - name: Update ECS service to use new task definition and wait for stability
       run: |
