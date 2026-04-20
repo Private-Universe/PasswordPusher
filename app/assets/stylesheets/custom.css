@@ -11,6 +11,7 @@
     color: #000;
     background-color: #1acaca;
 }
+*/
 
 /* Utility classes added to replace inline styles for CSP compliance */
 .w-280 { width: 280px; min-width: 280px; }
@@ -24,4 +25,3 @@
 .box-48 { width: 48px; height: 48px; }
 .circle-8 { width: 8px; height: 8px; border-radius: 50%; }
 .text-sm-07 { font-size: 0.7rem; }
-*/

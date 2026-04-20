@@ -183,7 +183,7 @@ host_protocol: 'https'
 # PWP__SHOW_VERSION=true
 #
 # Default: true
-show_version: true
+show_version: false
 
 ### Show the GDPR cookie consent banner
 #
