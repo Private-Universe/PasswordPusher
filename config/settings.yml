@@ -228,7 +228,7 @@ login_session_timeout: "2 hours"
 # Environment variable override:
 # PWP__DISABLE_SIGNUPS='false'
 #
-disable_signups: false
+disable_signups: true
 
 ## Disable Logins
 #
@@ -239,7 +239,7 @@ disable_signups: false
 # Environment variable override:
 # PWP__DISABLE_LOGINS='true'
 #
-disable_logins: false
+disable_logins: true
 
 ## Require Multi-Factor Authentication
 #
