@@ -2,7 +2,7 @@
 ARG BUNDLE_WITHOUT=development:test
 ARG BUNDLE_DEPLOYMENT=true
 
-FROM ruby:3.4-alpine AS build-env
+FROM ruby:4.0.5-alpine AS build-env
 
 # include global args
 ARG BUNDLE_WITHOUT
@@ -11,70 +11,54 @@ ARG BUNDLE_DEPLOYMENT
 LABEL org.opencontainers.image.authors='pglombardo@hey.com'
 
 # Required packages
-RUN apk add --no-cache \
-    build-base \
-    curl \
+RUN apk update && apk add --no-cache \
     git \
+    build-base \
+    musl-dev \
     libc6-compat \
     libpq-dev \
     mariadb-dev \
     nodejs \
     sqlite-dev \
-    yaml-dev \
     tzdata \
-    yarn
+    yaml-dev \
+    yarn \
+    pkgconf \
+    openssl-dev \
+    libffi-dev
 
 ENV APP_ROOT=/opt/PasswordPusher
 
 WORKDIR ${APP_ROOT}
 ENV PATH=${APP_ROOT}:${PATH} HOME=${APP_ROOT}
 
-COPY Gemfile Gemfile.lock package.json yarn.lock ./
+COPY Gemfile Gemfile.lock ./
 
 ENV RACK_ENV=production RAILS_ENV=production
 
 RUN bundle config set without "${BUNDLE_WITHOUT}" \
     && bundle config set deployment "${BUNDLE_DEPLOYMENT}" \
-    && bundle install
-
-# Removing unneccesary files/directories
-RUN rm -rf vendor/bundle/ruby/*/cache \
+    && bundle install \
+    && rm -rf vendor/bundle/ruby/*/cache \
     && rm -rf vendor/bundle/ruby/*/bundler/gems/*/.git \
     && find vendor/bundle/ruby/*/gems/ -name "*.c" -delete \
     && find vendor/bundle/ruby/*/gems/ -name "*.o" -delete
 
-RUN yarn install
+COPY package.json yarn.lock ./
+
+RUN yarn install --frozen-lockfile
 
 COPY ./ ${APP_ROOT}/
 
-# Normalize line endings for repository scripts only (avoid touching binary gems)
-RUN if [ -d ${APP_ROOT}/bin ]; then find ${APP_ROOT}/bin -type f -exec sed -i 's/\r$//' {} \; || true; fi
-RUN if [ -d ${APP_ROOT}/script ]; then find ${APP_ROOT}/script -type f -exec sed -i 's/\r$//' {} \; || true; fi
-# Also fix shebangs for gem executables installed into vendor/bundle/*/bin
-RUN if [ -d ${APP_ROOT}/vendor/bundle/ruby ]; then find ${APP_ROOT}/vendor/bundle/ruby -type f -path '*/bin/*' -exec sed -i 's/\r$//' {} \; || true; fi
+RUN SECRET_KEY_BASE_DUMMY=1 bundle exec bootsnap precompile --gemfile
+RUN SECRET_KEY_BASE_DUMMY=1 bundle exec bootsnap precompile app/ lib/
+RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 
-# Set DATABASE_URL to sqlite to have a ready
-# to use db file for ephemeral configuration
-ENV DATABASE_URL=sqlite3:db/db.sqlite3
-
-# Set a default secret_key_base
-# For those self-hosting this app, you should
-# generate your own secret_key_base and set it
-# in your environment.
-# 1. Generate a secret_key_base value with:
-#    bundle exec rails secret
-# 2. Set the secret_key_base in your environment:
-#    SECRET_KEY_BASE=<value>
-ENV SECRET_KEY_BASE=783ff1544b9612d8bceb8e26a0bab0cf22543eec658a498e7ef9e1d617976f960092005c8a54cb588759dc6dd8fd054bc4eca4a94dd7b96c6efda4a14a01bfbd
-
-RUN bundle exec bootsnap precompile --gemfile
-RUN bundle exec bootsnap precompile app/ lib/
-RUN bundle exec rails assets:precompile
-RUN bundle exec rake db:setup
+RUN rm -rf tmp/cache tmp/pids tmp/sockets app/assets/images/features
 
 ################## Build done ##################
 
-FROM ruby:3.4-alpine
+FROM ruby:4.0.5-alpine
 
 # include global args
 ARG BUNDLE_WITHOUT
@@ -83,46 +67,52 @@ ARG BUNDLE_DEPLOYMENT
 LABEL maintainer='pglombardo@hey.com'
 
 # install packages
-RUN apk add --no-cache \
+RUN apk update && apk add --no-cache \
     bash \
+    curl \
     libc6-compat \
     libpq \
     mariadb-connector-c \
     nodejs \
-    sqlite-dev \
     tzdata \
-    yarn
+    yarn \
+    jemalloc
 
 # Create a user and group to run the application
 ARG UID=1000
 ARG GID=1000
 
-RUN addgroup -g "${GID}" pwpusher \
-  && adduser -D -u "${UID}" -G pwpusher pwpusher
-
 ENV LC_CTYPE=UTF-8 LC_ALL=en_US.UTF-8
 ENV APP_ROOT=/opt/PasswordPusher
-WORKDIR ${APP_ROOT}
 ENV RACK_ENV=production RAILS_ENV=production
+ENV LD_PRELOAD=/usr/lib/libjemalloc.so.2
 
-# Set a default secret_key_base
-# For those self-hosting this app, you should
-# generate your own secret_key_base and set it
-# in your environment.
-# 1. Generate a secret_key_base value with:
-#    bundle exec rails secret
-# 2. Set the secret_key_base in your environment:
-#    SECRET_KEY_BASE=<value>
-ENV SECRET_KEY_BASE=783ff1544b9612d8bceb8e26a0bab0cf22543eec658a498e7ef9e1d617976f960092005c8a54cb588759dc6dd8fd054bc4eca4a94dd7b96c6efda4a14a01bfbd
+WORKDIR ${APP_ROOT}
+
+RUN addgroup -g "${GID}" pwpusher \
+  && adduser -D -u "${UID}" -G pwpusher pwpusher
 
 COPY --from=build-env --chown=pwpusher:pwpusher ${APP_ROOT} ${APP_ROOT}
 
 RUN bundle config set without "${BUNDLE_WITHOUT}" \
     && bundle config set deployment "${BUNDLE_DEPLOYMENT}"
 
-RUN chmod +x /opt/PasswordPusher/entrypoint.sh
-RUN sed -i 's/\r$//' entrypoint.sh
-ENTRYPOINT ["/opt/PasswordPusher/entrypoint.sh"]
+RUN mkdir -p ${APP_ROOT}/storage/db && chown -R pwpusher:pwpusher ${APP_ROOT}/storage
+
+COPY containers/docker/entrypoint.sh /usr/local/bin/docker-entrypoint
+COPY containers/docker/worker-entrypoint.sh /usr/local/bin/docker-worker-entrypoint
+RUN chmod +x /usr/local/bin/docker-entrypoint /usr/local/bin/docker-worker-entrypoint
+
+RUN rm -rf ${APP_ROOT}/.do \
+      ${APP_ROOT}/.github \
+      ${APP_ROOT}/app.json \
+      ${APP_ROOT}/bin/move_up_stable_tag.sh \
+      ${APP_ROOT}/containers \
+      ${APP_ROOT}/test \
+      ${APP_ROOT}/ct.yaml
+
+RUN touch /opt/PasswordPusher/.env.production && chown pwpusher:pwpusher /opt/PasswordPusher/.env.production
 
 USER pwpusher
-EXPOSE 5100
+EXPOSE 80 443 5100
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]
