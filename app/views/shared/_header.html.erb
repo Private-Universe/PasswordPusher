@@ -14,10 +14,6 @@
           <% end %>
         </picture>
       </div>
-      <div class="d-none d-sm-block">
-        <span class="fs-4 fw-semibold d-block lh-sm"><%= Settings.brand.title %></span>
-        <span class="small text-muted"><%= Settings.brand.tagline %></span>
-      </div>
     <% end %>
 
     <nav class="d-flex align-items-center gap-2">
@@ -64,6 +60,20 @@
           </ul>
         </div>
       <% end %>
+
+      <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle d-flex align-items-center gap-2" type="button" id="languageDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <em class="bi bi-translate"></em>
+          <span class="d-none d-md-inline"><%= _('Language') %></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="languageDropdownMenuLink">
+          <% I18n.available_locales.each do |lang| %>
+            <li>
+              <%= link_to Settings.language_codes[lang], url_for(locale: lang.to_s), hreflang: lang.to_s, rel: 'alternate', class: "dropdown-item d-flex align-items-center gap-2 py-2" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </nav>
   </header>
 </div>

@@ -1,0 +1,27 @@
+services:
+  pwpush-local:
+    build:
+      context: .
+      dockerfile: containers/docker/Dockerfile
+    platform: linux/amd64
+    ports:
+      - "5100:5100"
+    environment:
+      RAILS_ENV: production
+      PWP__DISABLE_LOGINS: "true"
+      PWP__DISABLE_SIGNUPS: "true"
+      PWP__ALLOW_ANONYMOUS: "true"
+      PWP__FILES__STORAGE: "local"
+      PWP__SHOW_VERSION: "false"
+    volumes:
+      - pwpush-local-storage:/opt/PasswordPusher/storage
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5100/up"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+volumes:
+  pwpush-local-storage:
+    driver: local
