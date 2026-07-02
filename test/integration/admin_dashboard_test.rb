@@ -5,33 +5,8 @@ require "test_helper"
 class AdminDashboardTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  setup do
-    Settings.enable_logins = true
-    Rails.application.reload_routes!
-  end
-
-  teardown do
-    Settings.enable_logins = false
-    Rails.application.reload_routes!
-  end
-
-  # Test that admin routes are not available when logins are disabled
-  def test_admin_routes_not_available_when_logins_disabled
-    Settings.enable_logins = false
-    Rails.application.reload_routes!
-
-    get "/admin"
-    assert_response :not_found
-
-    get "/admin/users"
-    assert_response :not_found
-
-    get "/admin/jobs"
-    assert_response :not_found
-
-    get "/admin/dbexplore"
-    assert_response :not_found
-  end
+  # Admin routes are always defined but wrapped in authenticated :user; unauthenticated
+  # requests get 404 (Devise authenticated block; no route match for guests).
 
   # Test that admin routes are not available to unauthenticated users
   def test_admin_routes_not_available_to_unauthenticated_users
@@ -51,7 +26,6 @@ class AdminDashboardTest < ActionDispatch::IntegrationTest
   # Test that admin routes are not available to non-admin users
   def test_admin_routes_not_available_to_non_admin_users
     @luca = users(:luca)
-    @luca.confirm
     sign_in @luca
 
     get admin_root_path
@@ -65,8 +39,6 @@ class AdminDashboardTest < ActionDispatch::IntegrationTest
 
     get madmin_root_path
     assert_response :not_found
-
-    sign_out @luca
   end
 
   # Test that admin routes are available to admin users
@@ -89,15 +61,12 @@ class AdminDashboardTest < ActionDispatch::IntegrationTest
     get "/admin/dbexplore"
     assert_response :success
     assert_select "h4", "Direct Database Access"
-
-    sign_out @mr_admin
   end
 
   # Test admin user management functionality
   def test_admin_user_management_functionality
     @mr_admin = users(:mr_admin)
     @luca = users(:luca)
-    @luca.confirm
     sign_in @mr_admin
 
     # Test promote user to admin
@@ -117,14 +86,11 @@ class AdminDashboardTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     @mr_admin.reload
     assert @mr_admin.admin?
-
-    sign_out @mr_admin
   end
 
   # Test that non-admin users cannot access user management
   def test_user_management_not_available_to_non_admin_users
     @luca = users(:luca)
-    @luca.confirm
     @giuliana = users(:giuliana)
     sign_in @luca
 
@@ -135,8 +101,6 @@ class AdminDashboardTest < ActionDispatch::IntegrationTest
     # Test revoke action
     patch revoke_admin_user_path(@giuliana)
     assert_response :not_found
-
-    sign_out @luca
   end
 
   # Test Data Explorer (Madmin) functionality
@@ -170,14 +134,11 @@ class AdminDashboardTest < ActionDispatch::IntegrationTest
 
     get madmin_active_storage_variant_records_path
     assert_response :success
-
-    sign_out @mr_admin
   end
 
   # Test that Data Explorer is not available to non-admin users
   def test_data_explorer_not_available_to_non_admin_users
     @luca = users(:luca)
-    @luca.confirm
     sign_in @luca
 
     get madmin_root_path
@@ -191,8 +152,6 @@ class AdminDashboardTest < ActionDispatch::IntegrationTest
 
     get madmin_audit_logs_path
     assert_response :not_found
-
-    sign_out @luca
   end
 
   # Test Background Jobs (MissionControl::Jobs) functionality
@@ -203,20 +162,15 @@ class AdminDashboardTest < ActionDispatch::IntegrationTest
     get "/admin/jobs"
     assert_response :success
     assert_select "h1", "Background Jobs"
-
-    sign_out @mr_admin
   end
 
   # Test that Background Jobs is not available to non-admin users
   def test_background_jobs_not_available_to_non_admin_users
     @luca = users(:luca)
-    @luca.confirm
     sign_in @luca
 
     get "/admin/jobs"
     assert_response :not_found
-
-    sign_out @luca
   end
 
   # Test admin dashboard content and statistics
@@ -240,7 +194,5 @@ class AdminDashboardTest < ActionDispatch::IntegrationTest
 
     # Test that Getting Started section is present
     assert_select "h2", text: /Getting Started/
-
-    sign_out @mr_admin
   end
 end

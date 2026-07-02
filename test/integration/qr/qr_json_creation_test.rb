@@ -4,8 +4,13 @@ require "test_helper"
 
 class QrJsonCreationTest < ActionDispatch::IntegrationTest
   setup do
-    Settings.enable_logins = true
     Settings.enable_qr_pushes = true
+    # QR JSON API uses retrieval_step_default when param omitted; align with current default (off).
+    Settings.qr.retrieval_step_default = false
+  end
+
+  teardown do
+    Settings.reload!
   end
 
   def test_basic_json_creation

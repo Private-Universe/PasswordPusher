@@ -149,7 +149,7 @@ class Api::V1::PushesController < Api::BaseController
   def create
     permitted_params = push_params
 
-    # Require authentication if anonymous creation is disabled or 
+    # Require authentication if anonymous creation is disabled or
     # when creating file pushes / uploading attachments.
     authenticate_user! if requires_authentication_for_create?(permitted_params)
 
@@ -352,11 +352,7 @@ class Api::V1::PushesController < Api::BaseController
     https://docs.pwpush.com/docs/json-api/
   EOS
   def active
-    unless Settings.enable_logins
-      render json: {error: I18n._("You must be logged in to view your active pushes.")}, status: :unauthorized
-      return
-    end
-
+    authenticate_user!
     page = validate_page_parameter
     return if page.nil?
 
@@ -408,11 +404,7 @@ class Api::V1::PushesController < Api::BaseController
     https://docs.pwpush.com/docs/json-api/
   EOS
   def expired
-    unless Settings.enable_logins
-      render json: {error: I18n._("You must be logged in to view your expired pushes.")}, status: :unauthorized
-      return
-    end
-
+    authenticate_user!
     page = validate_page_parameter
     return if page.nil?
 
@@ -426,6 +418,18 @@ class Api::V1::PushesController < Api::BaseController
   end
 
   private
+
+  def requires_authentication_for_create?(permitted_params)
+    return true unless Settings.allow_anonymous
+    return true if request.path.start_with?("/f")
+
+    # Keep auth semantics aligned with API surface:
+    # - v1 /p.json treats files key presence as file intent
+    # - v2 /api/v2/pushes should do the same for auth gating
+    ((request.path.include?("/p.json") || params["controller"] == "api/v2/pushes") &&
+      permitted_params.key?(:files)) ||
+      permitted_params[:kind] == "file"
+  end
 
   # validate_page_parameter
   #
@@ -465,18 +469,6 @@ class Api::V1::PushesController < Api::BaseController
     respond_to do |format|
       format.json { render json: {error: "not-found"}.to_json, status: :not_found }
     end
-  end
-
-  def requires_authentication_for_create?(permitted_params)
-    return true unless Settings.allow_anonymous
-    return true if request.path.start_with?("/f")
-
-    # Keep auth semantics aligned with API surface:
-    # - v1 /p.json treats files key presence as file intent
-    # - v2 /api/v2/pushes should do the same for auth gating
-    ((request.path.include?("/p.json") || params["controller"] == "api/v2/pushes") &&
-      permitted_params.key?(:files)) ||
-      permitted_params[:kind] == "file"
   end
 
   def push_params

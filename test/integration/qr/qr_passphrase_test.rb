@@ -4,16 +4,14 @@ require "test_helper"
 
 class QrPassphraseTest < ActionDispatch::IntegrationTest
   setup do
-    Settings.enable_logins = true
     Settings.enable_qr_pushes = true
 
     @luca = users(:luca)
-    @luca.confirm
     sign_in @luca
   end
 
   teardown do
-    sign_out :user
+    Settings.reload!
   end
 
   def test_password_passphrase
@@ -26,7 +24,7 @@ class QrPassphraseTest < ActionDispatch::IntegrationTest
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     # Attempt to retrieve the password without the passphrase
     get request.url.sub("/preview", "")
@@ -66,7 +64,7 @@ class QrPassphraseTest < ActionDispatch::IntegrationTest
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     # Attempt to retrieve the password without the passphrase
     get request.url.sub("/preview", "")

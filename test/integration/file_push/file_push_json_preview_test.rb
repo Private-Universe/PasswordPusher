@@ -7,11 +7,14 @@ class FilePushJsonPreviewTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    Settings.enable_logins = true
     Settings.enable_file_pushes = true
     Rails.application.reload_routes!
     @luca = users(:luca)
-    @luca.confirm
+  end
+
+  teardown do
+    Settings.reload!
+    Rails.application.reload_routes!
   end
 
   def test_preview_response

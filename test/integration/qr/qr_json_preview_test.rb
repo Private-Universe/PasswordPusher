@@ -5,8 +5,11 @@ require "uri"
 
 class QrJsonPreviewTest < ActionDispatch::IntegrationTest
   setup do
-    Settings.enable_logins = true
     Settings.enable_qr_pushes = true
+  end
+
+  teardown do
+    Settings.reload!
   end
 
   def test_preview_anonymous_response
@@ -24,11 +27,7 @@ class QrJsonPreviewTest < ActionDispatch::IntegrationTest
   end
 
   def test_authenticated_preview_response
-    Settings.enable_logins = true
-
     @luca = users(:luca)
-    @luca.confirm
-
     post json_pushes_path(format: :json), params: {password: {kind: "qr", payload: "testqr", expire_after_views: 2}},
       headers: {"X-User-Email": @luca.email,
                 "X-User-Token": @luca.authentication_token}, as: :json

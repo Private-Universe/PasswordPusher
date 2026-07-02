@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 module PushesHelper
+  include ShareMessageHelper
+
+  PUSH_PAYLOAD_AUTO_REBLUR_SECONDS = 20
+
+  def push_payload_auto_reblur_seconds
+    PUSH_PAYLOAD_AUTO_REBLUR_SECONDS
+  end
+
   def filesize(size)
     units = %w[B KiB MiB GiB TiB Pib EiB ZiB]
 
