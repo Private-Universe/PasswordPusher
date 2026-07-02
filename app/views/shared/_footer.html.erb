@@ -1,33 +1,36 @@
-<footer class="footer mt-auto py-3">
+<footer class="footer mt-auto py-3 border-top">
   <div class="container">
-    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <p class="col-md-5 mb-0 text-muted">&copy; <%= Time.now.year %> <%= link_to "Private Universe", "https://www.privateuniverse.com.au", target: "_blank", rel: "noopener noreferrer", class: "text-muted text-decoration-none" %></p>
-
-      <%= link_to root_path(locale: locale.to_s), class: "col-md-2 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" do %>
-        <picture>
-          <% if Settings.brand.nil? || Settings.brand.light_logo.nil? %>
-            <source srcset="<%= asset_path('logo-transparent-sm-bare.png') %>" media="(prefers-color-scheme: light) or (prefers-color-scheme: no-preference)">
-            <source srcset="<%= asset_path('logo-transparent-sm-dark-bare.png') %>" media="(prefers-color-scheme: dark)">
-            <img src="<%= asset_path('logo-transparent-sm-bare.png') %>" alt="<%= _('Password Pusher Logo') %>" class="logo-height">
-          <% else %>
-            <source srcset="<%= Settings.brand.light_logo %>" media="(prefers-color-scheme: light) or (prefers-color-scheme: no-preference)">
-            <source srcset="<%= Settings.brand.dark_logo %>" media="(prefers-color-scheme: dark)">
-            <img src="<%= Settings.brand.light_logo %>" alt="<%= _('Password Pusher Logo') %>" class="logo-height">
-          <% end %>
-        </picture>
-      <% end %>
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <div class="d-flex align-items-center gap-2">
+        <%= link_to root_path(locale: locale.to_s), class: "text-decoration-none" do %>
+          <picture>
+            <% if Settings.brand.nil? || Settings.brand.light_logo.nil? %>
+              <source srcset="<%= asset_path('logo-transparent-sm-bare.png') %>" media="(prefers-color-scheme: light) or (prefers-color-scheme: no-preference)">
+              <source srcset="<%= asset_path('logo-transparent-sm-dark-bare.png') %>" media="(prefers-color-scheme: dark)">
+              <img src="<%= asset_path('logo-transparent-sm-bare.png') %>" alt="<%= _('Password Pusher Logo') %>" class="logo-height d-block">
+            <% else %>
+              <source srcset="<%= Settings.brand.light_logo %>" media="(prefers-color-scheme: light) or (prefers-color-scheme: no-preference)">
+              <source srcset="<%= Settings.brand.dark_logo %>" media="(prefers-color-scheme: dark)">
+              <img src="<%= Settings.brand.light_logo %>" alt="<%= _('Password Pusher Logo') %>" class="logo-height d-block">
+            <% end %>
+          </picture>
+        <% end %>
+        <span class="text-muted small">
+          &copy; <%= Time.now.year %>
+          <%= link_to "Private Universe", "https://www.privateuniverse.com.au", target: "_blank", rel: "noopener noreferrer", class: "text-muted text-decoration-none" %>
+        </span>
+      </div>
 
       <% if Settings.brand.show_footer_menu %>
-        <ul class="nav col-md-5 justify-content-end">
-          <li class="nav-item"><%= link_to _('Front Page'), root_path(locale: locale.to_s), class: 'nav-link px-2 text-muted' %></li>
+        <nav class="d-flex flex-wrap gap-3 small">
+          <%= link_to _('Front Page'), root_path(locale: locale.to_s), class: 'text-muted text-decoration-none' %>
           <%# Resources and About dropdowns hidden by Private Universe customization %>
-        </ul>
+        </nav>
       <% end %>
     </div>
+
     <% if Settings.brand.disclaimer %>
-    <div>
-      <p class="fw-light fst-italic text-center font-small"><%= Settings.brand.disclaimer %></p>
-    </div>
+      <p class="text-muted small fst-italic text-center mt-3 mb-0"><%= Settings.brand.disclaimer %></p>
     <% end %>
   </div>
 </footer>

@@ -4,12 +4,14 @@ require "test_helper"
 
 class QrRequestedLocaleTest < ActionDispatch::IntegrationTest
   setup do
-    Settings.enable_logins = true
     Settings.enable_qr_pushes = true
 
     @luca = users(:luca)
-    @luca.confirm
     sign_in @luca
+  end
+
+  teardown do
+    Settings.reload!
   end
 
   def test_requested_locale
@@ -22,7 +24,7 @@ class QrRequestedLocaleTest < ActionDispatch::IntegrationTest
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     # Retrieve the push with a locale
     push_with_locale = request.url.sub("/preview", "") + "/r?locale=es"
@@ -68,7 +70,7 @@ class QrRequestedLocaleTest < ActionDispatch::IntegrationTest
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     # Retrieve the push with a locale
     push_with_locale = request.url.sub("/preview", "") + "/r?locale=es"

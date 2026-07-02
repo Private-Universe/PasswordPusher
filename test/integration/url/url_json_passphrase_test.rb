@@ -6,12 +6,15 @@ class UrlJsonPassphraseTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    Settings.enable_logins = true
     Settings.enable_url_pushes = true
     Rails.application.reload_routes!
 
     @luca = users(:luca)
-    @luca.confirm
+  end
+
+  teardown do
+    Settings.reload!
+    Rails.application.reload_routes!
   end
 
   def test_basic_json_passphrase

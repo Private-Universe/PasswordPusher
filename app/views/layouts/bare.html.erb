@@ -8,16 +8,18 @@
   <meta content="<%= _('Password Pusher is an application to securely send passwords over the web. Links to passwords expire after a certain number of views and/or time has passed.') %>" name='description'>
   <meta content='width=device-width, initial-scale=1' name='viewport'>
 
+  <%= render partial: "shared/robots_meta" %>
+
   <%= render partial: "shared/layout_icons", cached: true %>
 
   <%= render partial: "application/ga", cached: true %>
-  <%= render partial: "application/plausible", cached: true %>
+  <%= render partial: "application/plausible" %>
 
   <%= csrf_meta_tags %>
   <%= csp_meta_tag if defined?(csp_meta_tag) %>
 
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  <%= stylesheet_link_tag PasswordPusher::Theme.stylesheet_logical_name, "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
   <%= tag.meta name: 'turbo-drive-enabled', content: ENV.key?('TURBO_DRIVE_ENABLED') ? ENV['TURBO_DRIVE_ENABLED'].to_s.downcase : true %>
 </head>
 

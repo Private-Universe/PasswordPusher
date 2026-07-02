@@ -4,7 +4,6 @@ require "test_helper"
 
 class PasswordDeletionTest < ActionDispatch::IntegrationTest
   def test_anonymous_password_deletion
-    assert Settings.pw.enable_deletable_pushes == true
     # create
     post pushes_path, params: {push: {kind: "text", payload: "testpw", deletable_by_viewer: "on"}}
     assert_response :redirect
@@ -12,7 +11,7 @@ class PasswordDeletionTest < ActionDispatch::IntegrationTest
     # preview
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     # view the push
     get request.url.sub("/preview", "")
@@ -39,7 +38,6 @@ class PasswordDeletionTest < ActionDispatch::IntegrationTest
   end
 
   def test_delete_already_expired_goes_to_expired_path
-    assert Settings.pw.enable_deletable_pushes == true
     # create
     post pushes_path, params: {push: {kind: "text", payload: "testpw", deletable_by_viewer: "on", expire_after_views: 1}}
     assert_response :redirect
@@ -47,7 +45,7 @@ class PasswordDeletionTest < ActionDispatch::IntegrationTest
     # preview
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     push_url = request.url.sub("/preview", "")
 

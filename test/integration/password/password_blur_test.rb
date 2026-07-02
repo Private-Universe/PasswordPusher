@@ -10,7 +10,7 @@ class PasswordBlurTest < ActionDispatch::IntegrationTest
   end
 
   teardown do
-    Settings.pw.enable_blur = true
+    Settings.reload!
   end
 
   def test_blur_enabled
@@ -20,7 +20,7 @@ class PasswordBlurTest < ActionDispatch::IntegrationTest
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     # File Push page
     get request.url.sub("/preview", "")
@@ -40,7 +40,7 @@ class PasswordBlurTest < ActionDispatch::IntegrationTest
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     # File Push page
     get request.url.sub("/preview", "")

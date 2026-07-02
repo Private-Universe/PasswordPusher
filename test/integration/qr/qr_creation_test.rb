@@ -6,17 +6,16 @@ class QrCreationTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    Settings.enable_logins = true
     Settings.enable_qr_pushes = true
     Rails.application.reload_routes!
 
     @luca = users(:luca)
-    @luca.confirm
     sign_in @luca
   end
 
   teardown do
-    sign_out @luca
+    Settings.reload!
+    Rails.application.reload_routes!
   end
 
   def test_textarea_has_safeties
@@ -52,7 +51,7 @@ class QrCreationTest < ActionDispatch::IntegrationTest
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     # Password page
     get request.url.sub("/preview", "")

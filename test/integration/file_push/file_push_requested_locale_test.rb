@@ -6,16 +6,15 @@ class FilePushRequestedLocaleTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    Settings.enable_logins = true
     Settings.enable_file_pushes = true
     Rails.application.reload_routes!
     @luca = users(:luca)
-    @luca.confirm
     sign_in @luca
   end
 
   teardown do
-    sign_out :user
+    Settings.reload!
+    Rails.application.reload_routes!
   end
 
   def test_requested_locale
@@ -38,7 +37,7 @@ class FilePushRequestedLocaleTest < ActionDispatch::IntegrationTest
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     # Retrieve the push with a locale
     push_with_locale = request.url.sub("/preview", "") + "/r?locale=es"
@@ -93,7 +92,7 @@ class FilePushRequestedLocaleTest < ActionDispatch::IntegrationTest
     # Preview page
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     # Retrieve the push with a locale
     push_with_locale = request.url.sub("/preview", "") + "/r?locale=es"

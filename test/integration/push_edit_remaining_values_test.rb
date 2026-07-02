@@ -4,13 +4,16 @@ require "test_helper"
 
 class PushEditRemainingValuesTest < ActionDispatch::IntegrationTest
   setup do
-    Settings.enable_logins = true
     Settings.enable_url_pushes = true
     Settings.enable_file_pushes = true
     Settings.enable_qr_pushes = true
 
     @user = users(:luca)
     sign_in @user
+  end
+
+  teardown do
+    Settings.reload!
   end
 
   test "text push edit form shows remaining days not original days" do

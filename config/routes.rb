@@ -14,8 +14,6 @@ Rails.application.routes.draw do
     draw :pushes
     draw :pwp_api
 
-    apipie
-
     get "/pages/*id" => "pages#show", :as => :page, :format => false
 
     mount Mailbin::Engine => :mailbin if Rails.env.development?

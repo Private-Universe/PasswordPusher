@@ -6,16 +6,17 @@ class QrDeletionTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    Settings.enable_logins = true
     Settings.enable_qr_pushes = true
 
     @luca = users(:luca)
-    @luca.confirm
     sign_in @luca
   end
 
+  teardown do
+    Settings.reload!
+  end
+
   def test_anonymous_qr_deletion
-    assert Settings.qr.enable_deletable_pushes == true
     # create
     post pushes_path, params: {push: {kind: "qr", payload: "testqr", deletable_by_viewer: "on"}}
     assert_response :redirect
@@ -23,7 +24,7 @@ class QrDeletionTest < ActionDispatch::IntegrationTest
     # preview
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     # view the push
     get request.url.sub("/preview", "")
@@ -51,7 +52,6 @@ class QrDeletionTest < ActionDispatch::IntegrationTest
   end
 
   def test_delete_already_expired_goes_to_expired_path
-    assert Settings.pw.enable_deletable_pushes == true
     # create
     post pushes_path, params: {push: {kind: "qr", payload: "testqr", deletable_by_viewer: "on", expire_after_views: 1}}
     assert_response :redirect
@@ -59,7 +59,7 @@ class QrDeletionTest < ActionDispatch::IntegrationTest
     # preview
     follow_redirect!
     assert_response :success
-    assert_select "h2", "Push Preview"
+    assert_select "h2", "Push Created"
 
     push_url = request.url.sub("/preview", "")
 

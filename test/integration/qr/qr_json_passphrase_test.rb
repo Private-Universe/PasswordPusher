@@ -4,8 +4,11 @@ require "test_helper"
 
 class QrJsonPassphraseTest < ActionDispatch::IntegrationTest
   setup do
-    Settings.enable_logins = true
     Settings.enable_qr_pushes = true
+  end
+
+  teardown do
+    Settings.reload!
   end
 
   def test_basic_json_passphrase

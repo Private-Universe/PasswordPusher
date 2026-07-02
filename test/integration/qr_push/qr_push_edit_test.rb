@@ -6,16 +6,15 @@ class QrPushEditTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    Settings.enable_logins = true
     Settings.enable_qr_pushes = true
     Rails.application.reload_routes!
     @luca = users(:luca)
-    @luca.confirm
     sign_in @luca
   end
 
   teardown do
-    sign_out :user
+    Settings.reload!
+    Rails.application.reload_routes!
   end
 
   test "authenticated user can access edit page for their own qr push" do
@@ -154,7 +153,7 @@ class QrPushEditTest < ActionDispatch::IntegrationTest
     push.update_columns(expired: true, expired_on: Time.current, payload_ciphertext: nil)
 
     get edit_push_path(push)
-    assert_redirected_to push_path(push)
+    assert_redirected_to pushes_path
 
     patch push_path(push), params: {
       push: {
@@ -162,7 +161,7 @@ class QrPushEditTest < ActionDispatch::IntegrationTest
         payload: "New QR content"
       }
     }
-    assert_redirected_to push_path(push)
+    assert_redirected_to pushes_path
   end
 
   test "edit page shows update button for qr push" do

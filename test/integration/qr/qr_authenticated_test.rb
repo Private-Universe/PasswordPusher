@@ -4,8 +4,11 @@ require "test_helper"
 
 class QrAuthenticatedTest < ActionDispatch::IntegrationTest
   setup do
-    Settings.enable_logins = true
     Settings.enable_qr_pushes = true
+  end
+
+  teardown do
+    Settings.reload!
   end
 
   def test_authenticated_json_creation

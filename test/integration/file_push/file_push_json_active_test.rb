@@ -6,12 +6,15 @@ class FilePushJsonActiveTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    Settings.enable_logins = true
     Settings.enable_file_pushes = true
     Rails.application.reload_routes!
 
     @luca = users(:luca)
-    @luca.confirm
+  end
+
+  teardown do
+    Settings.reload!
+    Rails.application.reload_routes!
   end
 
   def test_basic_json_expired
@@ -52,7 +55,7 @@ class FilePushJsonActiveTest < ActionDispatch::IntegrationTest
       "expire_after_views" => 5,
       "expired" => false,
       "deletable_by_viewer" => true,
-      "retrieval_step" => false,
+      "retrieval_step" => true,
       "passphrase" => "",
       "expire_after_days" => 7,
       "days_remaining" => 7,

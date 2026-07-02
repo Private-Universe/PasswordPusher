@@ -6,14 +6,14 @@ class FilePushAnonymousAccessTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    Settings.enable_logins = true
     Settings.enable_file_pushes = true
 
     Rails.application.reload_routes!
   end
 
   teardown do
-    Settings.disable_signups = false
+    Settings.reload!
+    Rails.application.reload_routes!
   end
 
   def test_anonymous_disabled_signups_no_signup_link
