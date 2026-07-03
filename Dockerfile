@@ -50,6 +50,8 @@ RUN yarn install --frozen-lockfile
 
 COPY ./ ${APP_ROOT}/
 
+RUN chmod +x ${APP_ROOT}/bin/* && sed -i 's/\r$//' ${APP_ROOT}/bin/*
+
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec bootsnap precompile --gemfile
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec bootsnap precompile app/ lib/
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
